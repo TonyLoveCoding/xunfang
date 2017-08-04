@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="mybatisplus:war exploded">
-    <output-path>$PROJECT_DIR$/target/mybatisplus</output-path>
+  <artifact type="exploded-war" name="xunfang:war exploded">
+    <output-path>$PROJECT_DIR$/target/xunfang</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -68,7 +68,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/mybatisplus/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/xunfang/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="xunfang/web/Web" />
     </root>
