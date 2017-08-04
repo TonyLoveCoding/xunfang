@@ -38,20 +38,30 @@
     </bean>
 
     <!-- 配置sqlSessionFactory -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean">
         <!-- 注入数据源 -->
         <property name="dataSource" ref="dataSource"/>
         <!-- 扫描mybatis核心配置文件 -->
         <property name="configLocation" value="classpath:spring/mybatis.xml"/>
         <!-- 扫描java bean，自动使用别名 -->
-        <property name="typeAliasesPackage" value="org.imooc.bean"/>
-        <!-- 扫描mybatis的SQL配置文件 -->
+        <property name="typeAliasesPackage" value="team.etop.xunfang.modules.model"/>
+        <!-- MP 全局配置注入 -->
+        <property name="globalConfig" ref="globalConfig"/>
+        <!--扫描mybatis的SQL配置文件-->
         <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
+    </bean>
+
+    <!-- 定义 MP 全局策略 -->
+    <bean id="globalConfig" class="com.baomidou.mybatisplus.entity.GlobalConfiguration">
+        <property name="idType" value="2"/>
+        <property name="dbType" value="mysql"/>
+        <!-- 全局表为下划线命名设置 true -->
+        <property name="dbColumnUnderline" value="true"/>
     </bean>
 
     <!-- 扫描Dao接口包 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="org.imooc.dao"/>
+        <property name="basePackage" value="team.etop.xunfang.modules.mapper"/>
     </bean>
 </beans>
