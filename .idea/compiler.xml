@@ -8,11 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mybatisplus" />
         <module name="xunfang" />
+        <module name="xunfang_withSolr" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mybatisplus" target="1.7" />
       <module name="xunfang" target="1.7" />
+      <module name="xunfang_withSolr" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

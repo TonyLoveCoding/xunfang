@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="xunfang:war exploded">
-    <output-path>$PROJECT_DIR$/target/xunfang</output-path>
+  <artifact type="exploded-war" name="xunfang_withSolr:war exploded">
+    <output-path>$PROJECT_DIR$/target/xunfang_withSolr</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -68,7 +68,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/xunfang/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/xunfang_withSolr/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="xunfang_withSolr/web/Web" />
     </root>
