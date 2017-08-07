@@ -6,8 +6,8 @@
         <setting name="useGeneratedKeys" value="true"/>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-
-    <!--<plugins>-->
-        <!--<plugin interceptor="org.imooc.mapper.interceptor.PageInterceptor"/>-->
-    <!--</plugins>-->
+    <plugins>
+        <plugin interceptor="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+        </plugin>
+    </plugins>
 </configuration>

@@ -48,7 +48,7 @@
         <!-- MP 全局配置注入 -->
         <property name="globalConfig" ref="globalConfig"/>
         <!--扫描mybatis的SQL配置文件-->
-        <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
     <!-- 定义 MP 全局策略 -->
@@ -62,6 +62,8 @@
     <!-- 扫描Dao接口包 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="team.etop.xunfang.modules.mapper"/>
+        <property name="basePackage" value="team.etop.xunfang.modules.mapper team.etop.xunfang.api.dao"/>
     </bean>
+
+
 </beans>
