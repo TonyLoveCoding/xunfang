@@ -1,7 +1,7 @@
 package team.etop.xunfang.modules.mapper;
 
-import team.etop.xunfang.modules.entity.Permission;
-import team.etop.xunfang.common.SuperMapper;
+import team.etop.xunfang.modules.po.Permission;
+import team.etop.xunfang.common.bean.SuperMapper;
 
 /**
  * <p>

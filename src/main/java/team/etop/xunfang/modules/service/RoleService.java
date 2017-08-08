@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service;
 
-import team.etop.xunfang.modules.entity.Role;
+import team.etop.xunfang.modules.po.Role;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service.impl;
 
-import team.etop.xunfang.modules.entity.Dic;
+import team.etop.xunfang.modules.po.Dic;
 import team.etop.xunfang.modules.mapper.DicDao;
 import team.etop.xunfang.modules.service.DicService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

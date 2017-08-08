@@ -1,4 +1,4 @@
-package team.etop.xunfang.common;
+package team.etop.xunfang.common.bean;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 

@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service.impl;
 
-import team.etop.xunfang.modules.entity.PrototypeRoomPicture;
+import team.etop.xunfang.modules.po.PrototypeRoomPicture;
 import team.etop.xunfang.modules.mapper.PrototypeRoomPictureDao;
 import team.etop.xunfang.modules.service.PrototypeRoomPictureService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

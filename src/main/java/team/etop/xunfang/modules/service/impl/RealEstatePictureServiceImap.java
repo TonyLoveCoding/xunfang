@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service.impl;
 
-import team.etop.xunfang.modules.entity.RealEstatePicture;
+import team.etop.xunfang.modules.po.RealEstatePicture;
 import team.etop.xunfang.modules.mapper.RealEstatePictureDao;
 import team.etop.xunfang.modules.service.RealEstatePictureService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

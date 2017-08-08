@@ -6,7 +6,7 @@
 	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
 	<!-- 通用查询映射结果 -->
-	<resultMap id="BaseResultMap" type="team.etop.xunfang.modules.entity.Permission">
+	<resultMap id="BaseResultMap" type="team.etop.xunfang.modules.po.Permission">
 		<id column="id" property="id" />
 		<result column="name" property="name" />
 		<result column="description" property="description" />

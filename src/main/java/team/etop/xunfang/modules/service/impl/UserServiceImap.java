@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service.impl;
 
-import team.etop.xunfang.modules.entity.User;
+import team.etop.xunfang.modules.po.User;
 import team.etop.xunfang.modules.mapper.UserDao;
 import team.etop.xunfang.modules.service.UserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

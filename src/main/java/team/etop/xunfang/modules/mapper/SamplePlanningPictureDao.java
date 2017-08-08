@@ -1,7 +1,7 @@
 package team.etop.xunfang.modules.mapper;
 
-import team.etop.xunfang.modules.entity.SamplePlanningPicture;
-import team.etop.xunfang.common.SuperMapper;
+import team.etop.xunfang.modules.po.SamplePlanningPicture;
+import team.etop.xunfang.common.bean.SuperMapper;
 
 /**
  * <p>

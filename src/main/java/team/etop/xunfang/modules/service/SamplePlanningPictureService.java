@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service;
 
-import team.etop.xunfang.modules.entity.SamplePlanningPicture;
+import team.etop.xunfang.modules.po.SamplePlanningPicture;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

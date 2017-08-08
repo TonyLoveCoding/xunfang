@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service.impl;
 
-import team.etop.xunfang.modules.entity.Permission;
+import team.etop.xunfang.modules.po.Permission;
 import team.etop.xunfang.modules.mapper.PermissionDao;
 import team.etop.xunfang.modules.service.PermissionService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

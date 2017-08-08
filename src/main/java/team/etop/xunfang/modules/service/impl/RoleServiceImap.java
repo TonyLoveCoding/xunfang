@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service.impl;
 
-import team.etop.xunfang.modules.entity.Role;
+import team.etop.xunfang.modules.po.Role;
 import team.etop.xunfang.modules.mapper.RoleDao;
 import team.etop.xunfang.modules.service.RoleService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

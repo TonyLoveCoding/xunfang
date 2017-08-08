@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service;
 
-import team.etop.xunfang.modules.entity.CarouselPhotos;
+import team.etop.xunfang.modules.po.CarouselPhotos;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

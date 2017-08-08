@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service;
 
-import team.etop.xunfang.modules.entity.EffectPicture;
+import team.etop.xunfang.modules.po.EffectPicture;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

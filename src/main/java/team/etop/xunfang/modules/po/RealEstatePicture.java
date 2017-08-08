@@ -1,4 +1,4 @@
-package team.etop.xunfang.modules.entity;
+package team.etop.xunfang.modules.po;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableName;
@@ -12,8 +12,8 @@ import java.io.Serializable;
  * @author ZTF
  * @since 2017-08-07
  */
-@TableName("effect_picture")
-public class EffectPicture extends Model<EffectPicture> {
+@TableName("real_estate_picture")
+public class RealEstatePicture extends Model<RealEstatePicture> {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,7 +44,7 @@ public class EffectPicture extends Model<EffectPicture> {
 
 	@Override
 	public String toString() {
-		return "EffectPicture{" +
+		return "RealEstatePicture{" +
 			"id=" + id +
 			", name=" + name +
 			"}";

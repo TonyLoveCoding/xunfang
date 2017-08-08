@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.service.impl;
 
-import team.etop.xunfang.modules.entity.Estate;
+import team.etop.xunfang.modules.po.Estate;
 import team.etop.xunfang.modules.mapper.EstateDao;
 import team.etop.xunfang.modules.service.EstateService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;

@@ -55,7 +55,7 @@ public class CustomGenerator{
         // strategy.setInclude(new String[] { "user" }); // 需要生成的表
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义 mapper 父类
-         strategy.setSuperMapperClass("team.etop.xunfang.common.SuperMapper");
+         strategy.setSuperMapperClass("team.etop.xunfang.common.bean.SuperMapper");
         mpg.setStrategy(strategy);
 
         // 包配置

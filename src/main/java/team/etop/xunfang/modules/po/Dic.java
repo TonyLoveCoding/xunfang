@@ -1,4 +1,4 @@
-package team.etop.xunfang.modules.entity;
+package team.etop.xunfang.modules.po;
 
 import com.baomidou.mybatisplus.activerecord.Model;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package team.etop.xunfang.modules.entity;
+package team.etop.xunfang.modules.po;
 
 import java.util.Date;
 import com.baomidou.mybatisplus.activerecord.Model;
