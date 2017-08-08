@@ -1,0 +1,16 @@
+package team.etop.xunfang.modules.service;
+
+import team.etop.xunfang.modules.entity.RealEstatePicture;
+import com.baomidou.mybatisplus.service.IService;
+
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author ZTF
+ * @since 2017-08-07
+ */
+public interface RealEstatePictureService extends IService<RealEstatePicture> {
+	
+}
