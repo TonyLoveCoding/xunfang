@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-07
+ * @since 2017-08-09
  */
 @TableName("carousel_photos")
 public class CarouselPhotos extends Model<CarouselPhotos> {
@@ -20,7 +20,7 @@ public class CarouselPhotos extends Model<CarouselPhotos> {
     private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private byte[] name;
+	private String name;
 	@TableField("URL")
 	private String url;
 	private Integer status;
@@ -36,11 +36,11 @@ public class CarouselPhotos extends Model<CarouselPhotos> {
 		this.id = id;
 	}
 
-	public byte[] getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(byte[] name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

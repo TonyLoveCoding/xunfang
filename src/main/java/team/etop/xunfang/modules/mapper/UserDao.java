@@ -9,7 +9,7 @@ import team.etop.xunfang.common.bean.SuperMapper;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-07
+ * @since 2017-08-09
  */
 public interface UserDao extends SuperMapper<User> {
 

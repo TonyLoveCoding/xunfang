@@ -2,206 +2,77 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="xunfang_withSolr:war exploded" />
+      <artifact name="xunfang:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9e532bb-2afc-4eb8-817d-064eed4e94d9" name="Default" comment="更新GIT文件">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/xunfang_war.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/xunfang_war_exploded.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__cglib_cglib_3_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_baomidou_mybatis_plus_2_0_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_extensions_guice_multibindings_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_inject_guice_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_hazelcast_hazelcast_3_7_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_c3p0_0_9_5_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jstl_jstl_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_6_0_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_2_10_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ehcache_ehcache_core_2_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ant_ant_1_9_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_ant_ant_launcher_1_9_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_math3_3_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_all_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_aspectj_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_cache_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_core_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_config_ogdl_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_core_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_cipher_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_core_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_crypto_hash_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_ehcache_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_event_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_guice_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_hazelcast_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_lang_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_quartz_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_spring_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_shiro_shiro_web_1_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_solr_solr_solrj_6_6_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_velocity_velocity_1_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_4_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjrt_1_8_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_9.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_woodstox_woodstox_core_asl_4_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_ehcache_1_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_noggit_noggit_0_6.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opensymphony_quartz_quartz_1_6_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_10_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__taglibs_standard_1_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pom.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/Msg.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/PageInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/SuperMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/CarouselPhotosDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/DicDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/EffectPictureDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/EstateDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/PermissionDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/PrototypeRoomPictureDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/RealEstatePictureDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/RoleDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/SamplePlanningPictureDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/UserDao.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/CarouselPhotosMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/DicMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/EffectPictureMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/EstateMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/PermissionMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/PrototypeRoomPictureMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/RealEstatePictureMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/RoleMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/SamplePlanningPictureMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/UserMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/CarouselPhotos.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Dic.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/EffectPicture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Estate.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Permission.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/PrototypeRoomPicture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/RealEstatePicture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Role.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/SamplePlanningPicture.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/User.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/CarouselPhotosService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/DicService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/EffectPictureService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/EstateService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/PermissionService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/PrototypeRoomPictureService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/RealEstatePictureService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/RoleService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/SamplePlanningPictureService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/UserService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/CarouselPhotosServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/DicServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/EffectPictureServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/EstateServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/PermissionServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/PrototypeRoomPictureServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/RealEstatePictureServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/RoleServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/SamplePlanningPictureServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/UserServiceImap.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/CarouselPhotosController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/DicController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/EffectPictureController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/EstateController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/PermissionController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/PrototypeRoomPictureController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/RealEstatePictureController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/RoleController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/SamplePlanningPictureController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/UserController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/shiro/realms/ShiroRealm.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/dto/UserDto.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/web/UserController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/ehcache.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/search/web/SearchController.java" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/mapper/DicMapper.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/mapper/EffectPictureMapper.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/mapper/HousesMapper.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/mapper/PrototypeRoomMapper.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/properties/dao.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/properties/paginator.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/properties/solr.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/properties/system.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-dao.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/spring/mybatis.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/spring/root-context.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/spring/shiro.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/HomePage/homeIndex.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/content/test.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/system/common.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/Paginator/jqPaginator.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/Paginator/pageController.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap-theme.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap-theme.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap-theme.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap-theme.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/css/bootstrap.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/js/bootstrap.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/bookstrap/js/npm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/jquery/jquery-3.2.1.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/assets/jsp/HomePage/homeIndex.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/util/Generator/CustomGenerator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/xunfang.iml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/CarouselPhotosMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/CarouselPhotosMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/DicMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/DicMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/EffectPictureMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/EffectPictureMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/EstateMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/EstateMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/PermissionMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/PermissionMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/PrototypeRoomPictureMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/PrototypeRoomPictureMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/RealEstatePictureMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/RealEstatePictureMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/RoleMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/RoleMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/SamplePlanningPictureMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/SamplePlanningPictureMapper.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/xml/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/modules/UserMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/CarouselPhotosDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/CarouselPhotosDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/DicDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/DicDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/EffectPictureDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/EffectPictureDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/EstateDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/EstateDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/PermissionDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/PermissionDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/PrototypeRoomPictureDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/PrototypeRoomPictureDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/RealEstatePictureDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/RealEstatePictureDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/RoleDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/RoleDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/SamplePlanningPictureDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/SamplePlanningPictureDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/mapper/UserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/CarouselPhotos.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/CarouselPhotos.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Dic.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Dic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/EffectPicture.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/EffectPicture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Estate.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Estate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Permission.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Permission.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/PrototypeRoomPicture.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/PrototypeRoomPicture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/RealEstatePicture.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/RealEstatePicture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Role.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Role.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/SamplePlanningPicture.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/SamplePlanningPicture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/User.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/CarouselPhotosService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/CarouselPhotosService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/DicService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/DicService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/EffectPictureService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/EffectPictureService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/EstateService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/EstateService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/PermissionService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/PermissionService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/PrototypeRoomPictureService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/PrototypeRoomPictureService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/RealEstatePictureService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/RealEstatePictureService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/RoleService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/RoleService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/SamplePlanningPictureService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/SamplePlanningPictureService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/CarouselPhotosServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/CarouselPhotosServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/DicServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/DicServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/EffectPictureServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/EffectPictureServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/EstateServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/EstateServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/PermissionServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/PermissionServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/PrototypeRoomPictureServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/PrototypeRoomPictureServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/RealEstatePictureServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/RealEstatePictureServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/RoleServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/RoleServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/SamplePlanningPictureServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/SamplePlanningPictureServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/UserServiceImap.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/service/impl/UserServiceImap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/CarouselPhotosController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/CarouselPhotosController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/DicController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/DicController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/EffectPictureController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/EffectPictureController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/EstateController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/EstateController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/PermissionController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/PermissionController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/PrototypeRoomPictureController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/PrototypeRoomPictureController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/RealEstatePictureController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/RealEstatePictureController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/RoleController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/RoleController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/SamplePlanningPictureController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/SamplePlanningPictureController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/UserController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -216,8 +87,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/web/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="68" column="25" lean-forward="false" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
+            <state relative-caret-position="-612">
+              <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,23 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/dto/UserDto.java">
+      <file leaf-file-name="SearchController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/search/web/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-              <folding>
-                <element signature="e#311#312#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Msg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/Msg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="578">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -249,31 +108,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PageInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/PageInfo.java">
+      <file leaf-file-name="CustomGenerator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/util/Generator/CustomGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SuperMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/SuperMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="paginator.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/properties/paginator.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="17" />
+            <state relative-caret-position="102">
+              <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -305,7 +144,7 @@
       <GitPushTagMode />
     </option>
     <push-targets>
-      <push-target-info target-remote="origin" target-branch="庭峰" repo="$PROJECT_DIR$" source="master" />
+      <push-target-info target-remote="origin" target-branch="master" repo="$PROJECT_DIR$" source="master" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -350,8 +189,9 @@
         <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/PageInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/SuperMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/QueryDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/web/UserController.java" />
         <option value="$PROJECT_DIR$/gitignore/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/search/web/SearchController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/web/UserController.java" />
       </list>
     </option>
   </component>
@@ -481,6 +321,7 @@
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -491,19 +332,81 @@
             <path>
               <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
               <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="gitignore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="etop" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="etop" type="462c0819:PsiDirectoryNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="etop" type="462c0819:PsiDirectoryNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="etop" type="462c0819:PsiDirectoryNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="Errors" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../JAVA_holiday2/xunfang" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -513,19 +416,19 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\Paginator" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\jsp\system" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\jsp" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\WEB-INF\jsp\system" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\resources" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\slideshow" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\detail" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\index" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\search" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\login" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\resources\mapper\modules" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\Paginator" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\jsp\system" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\jsp" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\WEB-INF\jsp\system" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -540,7 +443,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CustomGenerator">
+  <component name="RunManager" selected="Tomcat Server.Unnamed">
     <configuration name="CustomGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -810,7 +713,9 @@
       <workItem from="1502192584300" duration="7000" />
       <workItem from="1502192592771" duration="1489000" />
       <workItem from="1502194332427" duration="1980000" />
-      <workItem from="1502199048551" duration="846000" />
+      <workItem from="1502199048551" duration="929000" />
+      <workItem from="1502202698244" duration="105000" />
+      <workItem from="1502239521380" duration="2486000" />
     </task>
     <task id="LOCAL-00001" summary="新增实体类">
       <created>1502108115344</created>
@@ -866,44 +771,44 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40295000" />
+    <option name="totallyTimeSpent" value="42969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.50681376" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16372202" sideWeight="0.49785408" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24302575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20324005" sideWeight="0.49318624" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0058892816" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.66784453" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24946351" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="JRebel Executor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20324005" sideWeight="0.49318624" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10365135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1566549" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1004,29 +909,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/pagehelper/pagehelper/5.0.4/pagehelper-5.0.4.jar!/com/github/pagehelper/PageInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/Paginator/Paginator.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/properties/system.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/api/vo/JsonResult.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/api/vo/PageInfo.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/Paginator/jqPaginator.min.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1112,13 +994,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/api/dao/SolrDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/util/Generator/CustomGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/web/CarouselPhotosController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -1204,25 +1079,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/CarouselPhotos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-33">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/dto/UserQuery.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/QueryDto.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/dto/UserDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
-          <folding>
-            <element signature="e#311#312#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/Msg.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1241,14 +1099,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/SuperMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/src/测试导入.sql" />
+    <entry file="file://$PROJECT_DIR$/gitignore/.gitkeep" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/properties/paginator.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1257,15 +1110,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/bean/SuperMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="2" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="18" />
+        <state relative-caret-position="340">
+          <caret line="10" column="47" lean-forward="false" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/测试导入.sql">
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/dto/UserDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding>
+            <element signature="e#311#312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/search/web/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/Permission.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/SamplePlanningPicture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-237">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/modules/po/CarouselPhotos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/util/Generator/CustomGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PrototypeRoomMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1273,18 +1178,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gitignore/.gitkeep">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/HousesMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="3" column="11" lean-forward="true" selection-start-line="3" selection-start-column="11" selection-end-line="3" selection-end-column="11" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/web/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="68" column="25" lean-forward="false" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
+        <state relative-caret-position="-612">
+          <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-07
+ * @since 2017-08-09
  */
 @Controller
 @RequestMapping("/modules/effectPicture")

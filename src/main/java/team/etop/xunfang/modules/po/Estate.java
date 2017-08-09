@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-07
+ * @since 2017-08-09
  */
 public class Estate extends Model<Estate> {
 

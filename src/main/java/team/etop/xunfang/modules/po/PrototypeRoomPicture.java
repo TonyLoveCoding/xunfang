@@ -10,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-07
+ * @since 2017-08-09
  */
 @TableName("prototype_room_picture")
 public class PrototypeRoomPicture extends Model<PrototypeRoomPicture> {
@@ -18,7 +18,7 @@ public class PrototypeRoomPicture extends Model<PrototypeRoomPicture> {
     private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private byte[] name;
+	private String name;
 
 
 	public Long getId() {
@@ -29,11 +29,11 @@ public class PrototypeRoomPicture extends Model<PrototypeRoomPicture> {
 		this.id = id;
 	}
 
-	public byte[] getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(byte[] name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
