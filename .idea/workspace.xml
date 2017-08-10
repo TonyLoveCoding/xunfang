@@ -6,21 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9e532bb-2afc-4eb8-817d-064eed4e94d9" name="Default" comment="1、新增菜单模拟模块">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/query.jsp" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/content/test.jsp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/web/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/user/web/UserIndexController.java" />
+    <list default="true" id="f9e532bb-2afc-4eb8-817d-064eed4e94d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/Tree/Tree.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/common/Tree/Tree.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/dto/MenuDto.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/dto/MenuDto.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-dao.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-dao.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-service.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-web.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/applicationContext-web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/jsp/main/menu.js" afterPath="$PROJECT_DIR$/src/main/webapp/assets/jsp/main/menu.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.css" afterPath="$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.js" afterPath="$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -912,7 +899,7 @@
       <workItem from="1502296257981" duration="597000" />
       <workItem from="1502326881623" duration="3212000" />
       <workItem from="1502334723622" duration="1574000" />
-      <workItem from="1502346333329" duration="8722000" />
+      <workItem from="1502346333329" duration="8745000" />
     </task>
     <task id="LOCAL-00001" summary="新增实体类">
       <created>1502108115344</created>
@@ -970,7 +957,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502326983522</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="1、提供菜单功能">
+      <created>1502355629385</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1502355629386</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -982,7 +976,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86608000" />
+    <option name="totallyTimeSpent" value="86631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1096,7 +1090,8 @@
     <MESSAGE value="更新GIT文件" />
     <MESSAGE value="修复图片类型错误" />
     <MESSAGE value="1、新增菜单模拟模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="1、新增菜单模拟模块" />
+    <MESSAGE value="1、提供菜单功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="1、提供菜单功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
