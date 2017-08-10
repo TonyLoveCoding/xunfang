@@ -47,7 +47,6 @@ public class UserController {
             user.setPassword("etop"+i);
             userList.add(user);
         }
-
         modelAndView.addObject("userList",userList);
         modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
