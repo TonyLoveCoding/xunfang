@@ -27,6 +27,7 @@ public class CustomGenerator{
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImap");
         gc.setControllerName("%sController");
+
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
@@ -61,6 +62,7 @@ public class CustomGenerator{
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("team.etop.xunfang");
+
         pc.setModuleName("modules");
         mpg.setPackageInfo(pc);
 

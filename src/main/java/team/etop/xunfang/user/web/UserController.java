@@ -47,7 +47,6 @@ public class UserController {
             user.setPassword("etop"+i);
             userList.add(user);
         }
-
         modelAndView.addObject("userList",userList);
         modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
@@ -71,7 +70,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/delete")
-    public Msg updateUser(@RequestParam("id") Long id)throws Exception{
+    public Msg deleteUser(@RequestParam("id") Long id)throws Exception{
 
         boolean isUsing=false;
         //下面判断是否当前账户
@@ -86,7 +85,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/update")
-    public Msg deleteUser(@RequestParam("id") Long id)throws Exception{
+    public Msg updateUser(@RequestParam("id") Long id)throws Exception{
         //这里进行表单校验 可能采用JSR303或手动正则匹配
 
         boolean isExit=false;
