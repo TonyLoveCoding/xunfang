@@ -2,7 +2,6 @@ package team.etop.xunfang.common.Tree;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @version V1.0
@@ -23,6 +22,16 @@ public class Tree<T> {
      * 节点的子节点
      */
     private List<Tree<T>> children = new ArrayList<Tree<T>>();
+
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     /**
      * 父ID

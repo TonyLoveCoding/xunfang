@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserIndexController {
 
     @Value("${userPage.PageSize}")
     private Long PageSize;
@@ -35,16 +35,16 @@ public class UserController {
     @RequestMapping("/query")
     public ModelAndView queryUser(@RequestParam(value = "pn",defaultValue ="1")Integer pageNum,
                                   @RequestParam(value = "keyWord",defaultValue ="")String keyWord) throws Exception{
-        ModelAndView modelAndView = new ModelAndView("user/query");
+        ModelAndView modelAndView = new ModelAndView("/user/query");
         //PageSize * visiblePages所有数据总数
         PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
         //数据库查询数据
         List<User> userList=new ArrayList<>();
         for(long i=PageSize*(pageNum-1);i<PageSize*(pageNum);i++){
             User user = new User();
+            user.setId(i);
             user.setAccount("etop"+i);
             user.setUsername("机器人"+i+"号");
-            user.setPassword("etop"+i);
             userList.add(user);
         }
         modelAndView.addObject("userList",userList);

@@ -5,6 +5,10 @@ $(document).ready(function () {
         var $this = $(this);
         var checkElement = $this.next();
 
+        var url=$this.attr("name");
+        if(url!="")
+        $(".iframeMain").attr("src",url);
+
         if (checkElement.is('.treeview-menu') && checkElement.is(':visible')) {
             checkElement.slideUp(animationSpeed, function() {
                 checkElement.removeClass('menu-open');

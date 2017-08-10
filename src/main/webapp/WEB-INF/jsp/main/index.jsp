@@ -12,22 +12,59 @@
     <style type="text/css">
         .main-sidebar{
             position: absolute;
-            top: 0;
+            top: 50px;
             left: 0;
-            height: 100%;
+            height: 103%;
             min-height: 100%;
             width: 230px;
             z-index: 810;
             background-color: #222d32;
         }
-    </style>
+        .navbar{
 
+            width: 100%;
+            height: 50px;
+            background-color: #3c8dbc;
+            border-radius: 0;
+        }
+        .navbarLeft{
+            float: left;
+            background-color: #367fa9;
+            width: 230px;
+            height: 100%;
+        }
+        .navbarLeft .logo-lg{
+            display: block;
+            color: #fff;
+            font-size: 20px;
+            line-height: 50px;
+            text-align: center;
+            font-weight: 300;
+            font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+        }
+        .navbarLeft .logo-lg b{
+
+            font-weight: 600;
+        }
+        .iframeMain{
+            width: 100%;
+            height: 100%;
+            padding-left: 230px;
+        }
+        html,body{
+            height:100%;
+        }
+    </style>
 </head>
 <body>
+<nav class="navbar">
+    <div class="navbarLeft"><span class="logo-lg"><b>寻房网</b><div class="glyphicon glyphicon-home"></div>后台管理</span></div>
+</nav>
 <aside class="main-sidebar">
     <section id="div_menu" class="sidebar">
     </section>
 </aside>
+<iframe src="/main/welcome" class="iframeMain" seamless ></iframe>
 
 <script src="/assets/menu/jquery.min.js"></script>
 <script src="/assets/menu/sidebar-menu.js"></script>

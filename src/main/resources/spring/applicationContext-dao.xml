@@ -62,7 +62,7 @@
     <!-- 扫描Dao接口包 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="team.etop.xunfang.modules.mapper team.etop.xunfang.api.dao"/>
+        <property name="basePackage" value="team.etop.xunfang.modules.mapper team.etop.xunfang.*.dao"/>
     </bean>
 
 

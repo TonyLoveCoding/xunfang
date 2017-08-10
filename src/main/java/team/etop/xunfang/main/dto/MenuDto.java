@@ -10,11 +10,13 @@ public class MenuDto {
     private Long id;
     private Long parent_id;
     private String menuNmae;
+    private String url;
 
-    public MenuDto(Long id, String menuNmae, Long parent_id) {
+    public MenuDto(Long id, String menuNmae, Long parent_id, String url) {
         this.id = id;
         this.parent_id = parent_id;
         this.menuNmae = menuNmae;
+        this.url = url;
     }
 
     public Long getId() {
@@ -39,5 +41,13 @@ public class MenuDto {
 
     public void setMenuNmae(String menuNmae) {
         this.menuNmae = menuNmae;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
