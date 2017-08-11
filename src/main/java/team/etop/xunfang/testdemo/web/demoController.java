@@ -1,19 +1,20 @@
 package team.etop.xunfang.testdemo.web;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.estate.dto.EstateDto;
+import team.etop.xunfang.testdemo.dto.Data;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.net.URLDecoder;
 import java.util.Iterator;
 
 /**
@@ -68,5 +69,15 @@ public class demoController {
         ModelAndView modelAndView=new ModelAndView("/DemoTest/demo01");
         modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
+    }
+
+    @RequestMapping("/resolveJsonObject")
+    @ResponseBody
+    public void resolveJsonObject(@RequestParam("x") float x,@RequestParam("y") float y,@RequestParam("w") float w,@RequestParam("h") float h, String image)throws Exception{
+        System.out.println("x:"+x);
+        System.out.println("y:"+y);
+        System.out.println("w:"+w);
+        System.out.println("h:"+h);
+        System.out.println(image);
     }
 }
