@@ -1,14 +1,24 @@
 $(document).ready(function () {
     var animationSpeed = 300;
+    var frm =$("#iframeMain");
+    var url;
+    $(frm).load(function(){
+
+        if(url!=""){
+            var ifm= $("#iframeMain");
+            var iframeHeight = $("#iframeMain").contents().find("body").height();
+            ifm.attr("style","height:"+iframeHeight+"px");
+            $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+        }
+    });
 
     $(document.body).on('click', '.sidebar-menu li a', function(e){
         var $this = $(this);
+        url=$this.attr("name");
         var checkElement = $this.next();
-
-        var url=$this.attr("name");
-        if(url!="")
-        $(".iframeMain").attr("src",url);
-
+        if(url!=""){
+            $("#iframeMain").attr("src",url);
+        }
         if (checkElement.is('.treeview-menu') && checkElement.is(':visible')) {
             checkElement.slideUp(animationSpeed, function() {
                 checkElement.removeClass('menu-open');

@@ -10,6 +10,7 @@
     <link href="/assets/menu/font-awesome.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/menu/sidebar-menu.css">
     <style type="text/css">
+        body{margin:0; padding:0;}
         .main-sidebar{
             position: absolute;
             top: 50px;
@@ -21,7 +22,7 @@
             background-color: #222d32;
         }
         .navbar{
-
+            margin-bottom: 0px!important;
             width: 100%;
             height: 50px;
             background-color: #3c8dbc;
@@ -46,7 +47,7 @@
 
             font-weight: 600;
         }
-        .iframeMain{
+        #iframeMain{
             width: 100%;
             height: 100%;
             padding-left: 230px;
@@ -64,7 +65,7 @@
     <section id="div_menu" class="sidebar">
     </section>
 </aside>
-<iframe src="/main/welcome" class="iframeMain" seamless ></iframe>
+<iframe src="/main/welcome" id="iframeMain"  scrolling="no" frameborder="0"></iframe>
 
 <script src="/assets/menu/jquery.min.js"></script>
 <script src="/assets/menu/sidebar-menu.js"></script>
