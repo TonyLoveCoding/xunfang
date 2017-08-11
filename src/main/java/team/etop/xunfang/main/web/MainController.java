@@ -42,7 +42,7 @@ public class MainController {
         menuDtoList.add(new MenuDto(1L,"主菜单",1L,""));
         menuDtoList.add(new MenuDto(2L,"权限系统",1L,""));
         menuDtoList.add(new MenuDto(3L,"内容管理",1L,""));
-        menuDtoList.add(new MenuDto(4L,"用户管理",2L,"/user/query"));
+        menuDtoList.add(new MenuDto(4L,"用户管理",2L,"/user/login"));
         menuDtoList.add(new MenuDto(5L,"角色管理",2L,""));
         menuDtoList.add(new MenuDto(6L,"权限管理",2L,""));
         menuDtoList.add(new MenuDto(7L,"权限增加",6L,""));

@@ -63,27 +63,28 @@
             <div class="modal-content">
 
                 <div class="modal-title">
-                    <h1 class="text-center">添加</h1>
+                    <h1 class="text-center">添加用户</h1>
                 </div>
                 <div class="modal-body">
                     <form class="form-group" id="form1" name="form1" action="/user/addUser" method="post" novalidate>
                         <div class="modal-body">
                             <label>账号</label>
-                            <input type="hidden" name="account" value=${user.account }>
-                        </div>
-
-                        <div class="modal-body">
-                            <label>密码</label>
-                            <input class="form-control" type="password" name="password" autofocus="autofocus" placeholder="至少6位字母或数字" value="${user.password }">
-                        </div>
-                        <div class="modal-body">
-                            <label>验证密码密码</label>
-                            <input class="form-control" type="password" name="checkPwd" autofocus="autofocus" placeholder="至少6位字母或数字" value="${user.password}">
+                            <input type="text" name="account" value=${user.account }>
                         </div>
                         <div class="modal-body">
                             <label>昵称</label>
                             <input type="text" name="name" value=${user.username }>
                         </div>
+
+                        <div class="modal-body">
+                            <label>密码</label>
+                            <input type="password" name="password" autofocus="autofocus" placeholder="至少6位字母或数字" value="${user.password }">
+                        </div>
+                        <div class="modal-body">
+                            <label>验证密码</label>
+                            <input type="password" name="checkPwd" autofocus="autofocus" placeholder="至少6位字母或数字" value="${user.password}">
+                        </div>
+
 
                         <div class="modal-footer">
                             <button class="btn btn-primary" type="submit" id="tijiao">提交</button>

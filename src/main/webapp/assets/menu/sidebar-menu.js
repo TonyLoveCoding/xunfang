@@ -6,12 +6,12 @@ $(document).ready(function () {
 
         if(url!=""){
             var ifm= $("#iframeMain");
-            var iframeHeight = $("#iframeMain").contents().find("body").height();
-            ifm.attr("style","height:"+iframeHeight+"px");
-            $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
-        }
-    });
 
+    var iframeHeight = $("#iframeMain").contents().find("body").height();
+    ifm.attr("style","height:"+iframeHeight+"px");
+    $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+}
+});
     $(document.body).on('click', '.sidebar-menu li a', function(e){
         var $this = $(this);
         url=$this.attr("name");

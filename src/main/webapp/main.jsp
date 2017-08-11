@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="\css\bootstrap.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 
     <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="\css\bootstrap-theme.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-theme.min.css">
 
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="assets/jquery/query-3.2.1..min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -291,17 +296,6 @@
 
 
 
-<script src="/js/jquery-3.0.0.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/bootstrapValidator.js"></script>
-<script src="/js/language/zh_CN.js"></script>
-<script src="/js/jquery.flot.js"></script>
-<script src="/js/jquery.flot.resize.js"></script>
-<script src="/js/jquery.js"></script>
-<script src="/js/bootstrapValidator.min.js"></script>
-<script src="/js/bootstrap-paginator.js"></script>
-<script src="/js/html5.js"></script>
-<script src="/js/excanvas.min.js"></script>
 
 
 </html>
