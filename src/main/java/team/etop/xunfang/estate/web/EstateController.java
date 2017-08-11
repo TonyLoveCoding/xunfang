@@ -50,6 +50,7 @@ public class EstateController {
         //从数据库取出
         for(int i=0;i<13;i++){
             Estate estate=new Estate();
+            estate.setId((long)i);
             estate.setEstateName("楼盘名："+i);
             estate.setStatus(0);
             estate.setEstateAddress("楼盘地址："+i);
@@ -59,8 +60,9 @@ public class EstateController {
             estate.setMinPrice(i);
             estate.setMaxPrice(i);
             estateList.add(estate);
+            System.out.println(estate);
         }
-        ModelAndView modelAndView=new ModelAndView("/estate/query");
+        ModelAndView modelAndView=new ModelAndView("/HomePage/homeIndex");
         modelAndView.addObject("estateList",estateList);
         modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
