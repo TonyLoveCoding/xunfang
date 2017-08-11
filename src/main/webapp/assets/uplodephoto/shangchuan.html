@@ -1,18 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: asus
-  Date: 2017/8/10
-  Time: 16:41
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
 <head>
-    <title>æµ‹è¯•</title>
-    <link rel="stylesheet" href="assets/uplodephoto/css/jquery.Jcrop.css">
-    <script src="assets/uplodephoto/js/jquery-1.8.3.js"></script>
-    <script type="text/javascript" src="assets/uplodephoto/js/jquery.Jcrop.js"></script>
-    <script type="text/javascript" src="assets/uplodephoto/js/imgCropUpload.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>IE Image Upload</title>
+    <link rel="stylesheet" href="css/jquery.Jcrop.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.Jcrop.js"></script>
+    <script type="text/javascript" src="js/imgCropUpload.js"></script>
     <style type="text/css">
         body {
             font-size: 16px;
@@ -22,9 +15,9 @@
         *:before,
         *:after {
             -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            -ms-box-sizing: border-box;
-            box-sizing: border-box;
+               -moz-box-sizing: border-box;
+                -ms-box-sizing: border-box;
+                    box-sizing: border-box;
         }
 
         .crop-picker-wrap {
@@ -45,7 +38,7 @@
             padding: 9px 0;
             background-color: #1ab2ff;
 
-            color: #fff;
+            color: #fff;            
             cursor: pointer;
         }
         .crop-picker-file {
@@ -123,64 +116,65 @@
     </style>
 </head>
 <body>
+
 <form action="demo/demo01" enctype="multipart/form-data" method="post">
     <input type="hidden" name="pn" value="1">
     <table class="table">
         <tbody>
-            <tr style="border: hidden">
-                <th>æ¥¼ç›˜åç§°ï¼š</th>
-                <th><input name="estateName" value="${estate.estateName}"></th>
-            </tr>
-            <tr style="border: hidden">
-                <th>æ¥¼ç›˜åœ°å€ï¼š</th>
-                <th><input name="estateAddress" value="${estate.estateAddress}"></th>
-            </tr>
-            <tr style="border: hidden">
-                <th>ä½ç½®ï¼š</th>
-                <th><input name="location" value="${estate.location}"></th>
-            </tr>
-            <tr style="border: hidden">
-                <th>ç±»å‹ï¼š</th>
-                <th><input name="type" value="${estate.type}"></th>
-            </tr>
-            <tr style="border: hidden">
-                <th>æˆ·å‹ï¼š</th>
-                <th><input name="houseType" value="${estate.houseType}"></th>
-            </tr>
-            <tr style="border: hidden">
-                <th>ä»·æ ¼ï¼š</th>
-                <th><input name="minPrice" value="${estate.minPrice}"></th>
-            </tr>
+        <tr style="border: hidden">
+            <th>Â¥ÅÌÃû³Æ£º</th>
+            <th><input name="estateName" value="${estate.estateName}"></th>
+        </tr>
+        <tr style="border: hidden">
+            <th>Â¥ÅÌµØÖ·£º</th>
+            <th><input name="estateAddress" value="${estate.estateAddress}"></th>
+        </tr>
+        <tr style="border: hidden">
+            <th>Î»ÖÃ£º</th>
+            <th><input name="location" value="${estate.location}"></th>
+        </tr>
+        <tr style="border: hidden">
+            <th>ÀàĞÍ£º</th>
+            <th><input name="type" value="${estate.type}"></th>
+        </tr>
+        <tr style="border: hidden">
+            <th>»§ĞÍ£º</th>
+            <th><input name="houseType" value="${estate.houseType}"></th>
+        </tr>
+        <tr style="border: hidden">
+            <th>¼Û¸ñ£º</th>
+            <th><input name="minPrice" value="${estate.minPrice}"></th>
+        </tr>
         </tbody>
     </table>
     <div class="btn-group center-block" role="group" aria-label="...">
-        <button type="submit" class="btn btn-default center-block">ç¡®å®šä¿®æ”¹</button>
+        <button type="submit" class="btn btn-default center-block">È·¶¨ĞŞ¸Ä</button>
     </div>
 </form>
 
-<div id="TCrop"></div>
+    <div id="TCrop"></div>
 <script type="text/javascript">
     $(function() {
         Crop.init({
             id: 'TCrop',
-            /* ä¸Šä¼ è·¯å¾„ */
+            /* ÉÏ´«Â·¾¶ */
             url: '',
-            /* å…è®¸ä¸Šä¼ çš„å›¾ç‰‡çš„åç¼€ */
+            /* ÔÊĞíÉÏ´«µÄÍ¼Æ¬µÄºó×º */
             allowsuf: ['jpg', 'jpeg', 'png', 'gif'],
-            /* JCropå‚æ•°è®¾ç½® */
+            /* JCrop²ÎÊıÉèÖÃ */
             cropParam: {
-                minSize: [300, 300],          // é€‰æ¡†æœ€å°å°ºå¯¸
-                maxSize: [300, 300],        // é€‰æ¡†æœ€å¤§å°ºå¯¸
-                allowSelect: true,          // å…è®¸æ–°é€‰æ¡†
-                allowMove: true,            // å…è®¸é€‰æ¡†ç§»åŠ¨
-                allowResize: true,          // å…è®¸é€‰æ¡†ç¼©æ”¾
-                dragEdges: true,            // å…è®¸æ‹–åŠ¨è¾¹æ¡†
-                onChange: function(c) {},   // é€‰æ¡†æ”¹å˜æ—¶çš„äº‹ä»¶ï¼Œå‚æ•°c={x, y, x1, y1, w, h}
-                onSelect: function(c) {}    // é€‰æ¡†é€‰å®šæ—¶çš„äº‹ä»¶ï¼Œå‚æ•°c={x, y, x1, y1, w, h}
+                minSize: [300, 300],          // Ñ¡¿ò×îĞ¡³ß´ç
+                maxSize: [300, 300],        // Ñ¡¿ò×î´ó³ß´ç
+                allowSelect: true,          // ÔÊĞíĞÂÑ¡¿ò
+                allowMove: true,            // ÔÊĞíÑ¡¿òÒÆ¶¯
+                allowResize: true,          // ÔÊĞíÑ¡¿òËõ·Å
+                dragEdges: true,            // ÔÊĞíÍÏ¶¯±ß¿ò
+                onChange: function(c) {},   // Ñ¡¿ò¸Ä±äÊ±µÄÊÂ¼ş£¬²ÎÊıc={x, y, x1, y1, w, h}
+                onSelect: function(c) {}    // Ñ¡¿òÑ¡¶¨Ê±µÄÊÂ¼ş£¬²ÎÊıc={x, y, x1, y1, w, h}
             },
-            /* æ˜¯å¦è¿›è¡Œè£å‰ªï¼Œä¸è£å‰ªåˆ™æŒ‰åŸå›¾ä¸Šä¼ ï¼Œé»˜è®¤è¿›è¡Œè£å‰ª */
+            /* ÊÇ·ñ½øĞĞ²Ã¼ô£¬²»²Ã¼ôÔò°´Ô­Í¼ÉÏ´«£¬Ä¬ÈÏ½øĞĞ²Ã¼ô */
             isCrop: true,
-            /* å›¾ç‰‡ä¸Šä¼ å®Œæˆä¹‹åçš„å›è°ƒï¼Œæ— è®ºæ˜¯å¦æˆåŠŸä¸Šä¼  */
+            /* Í¼Æ¬ÉÏ´«Íê³ÉÖ®ºóµÄ»Øµ÷£¬ÎŞÂÛÊÇ·ñ³É¹¦ÉÏ´« */
             onComplete: function(data) {
                 console.log('upload complete!');
             }

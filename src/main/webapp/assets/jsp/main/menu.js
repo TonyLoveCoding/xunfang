@@ -29,14 +29,14 @@ $(document).ready(function () {
                     li = $("<li class=\"treeview\"></li>");
                     isFirstMenu=isFirstMenu-1;
                 }
-                $(li).append("<a href=\"javascript:return false;\" name='"+menu_list[menu].url+"'><i class=\"fa fa-share\"></i> <span>"+menu_list[menu].text+"</span><i class=\"fa fa-angle-right pull-right\"></i></a>");
+                $(li).append("<a href=\"javascript:void(0);\" name='"+menu_list[menu].url+"'><i class=\"fa fa-share\"></i> <span>"+menu_list[menu].text+"</span><i class=\"fa fa-angle-right pull-right\"></i></a>");
                 var nextParent=$("<ul class=\"treeview-menu\"></ul>");
                 $(nextParent).appendTo(li);
                 $(li).appendTo(parent);
                 showall(menu_list[menu].children, nextParent);
             }
             else {
-                $("<li><a href=\"javascript:return false;\" name='"+menu_list[menu].url+"'><i class=\"fa fa-circle-o\"></i>"
+                $("<li><a href=\"javascript:void(0);\" name='"+menu_list[menu].url+"'><i class=\"fa fa-circle-o\"></i>"
                     +menu_list[menu].text
                     +"</a></li>").appendTo(parent);
             }

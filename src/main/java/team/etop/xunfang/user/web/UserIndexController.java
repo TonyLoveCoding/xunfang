@@ -40,7 +40,7 @@ public class UserIndexController {
         PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
         //数据库查询数据
         List<User> userList=new ArrayList<>();
-        for(long i=PageSize*(pageNum-1);i<PageSize*(pageNum);i++){
+        for(long i=PageSize*(pageNum-1);i<100;i++){
             User user = new User();
             user.setId(i);
             user.setAccount("etop"+i);

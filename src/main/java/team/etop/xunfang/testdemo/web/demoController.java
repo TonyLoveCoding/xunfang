@@ -46,8 +46,6 @@ public class demoController {
             //取得request中的所有文件名
             Iterator<String> iter = multiRequest.getFileNames();
             while(iter.hasNext()){
-                //记录上传过程起始时的时间，用来计算上传时间
-                int pre = (int) System.currentTimeMillis();
                 //取得上传文件
                 MultipartFile file = multiRequest.getFile(iter.next());
                 if(file != null){
