@@ -24,29 +24,29 @@
             <table class="table table-hover table table-striped">
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    <%--<th>ID</th>--%>
                     <th>楼盘名</th>
-                    <th>区域</th>
-                    <th>总价</th>
+                    <th>楼盘地址</th>
+                    <th>位置</th>
                     <th>类型</th>
                     <th>户型</th>
-                    <th>特色</th>
-                    <th>效果图</th>
-                    <th>样板间图</th>
+                    <th>最低价</th>
+                    <th>最高价</th>
+                    <%--<th>样板间图</th>--%>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${houses}" var="house">
+                <c:forEach items="${estateList}" var="estate">
                     <tr>
-                        <th>${house.name}</th>
-                        <th>${house.id}</th>
-                        <th>${house.area}</th>
-                        <th>${house.price}</th>
-                        <th>${house.type}</th>
-                        <th>${house.houseType}</th>
-                        <th>${house.feature}</th>
-                        <th>${house.effectPicture}</th>
-                        <th>${house.prototypeRoom}</th>
+                        <th>${estate.estateName}</th>
+                        <%--<th>${house.id}</th>--%>
+                        <th>${estate.estateAddress}</th>
+                        <th>${estate.location}</th>
+                        <th>${estate.type}</th>
+                        <th>${estate.houseType}</th>
+                        <th>${estate.minPrice}</th>
+                        <th>${estate.maxPrice}</th>
+                        <%--<th>${house.prototypeRoom}</th>--%>
                     </tr>
                 </c:forEach>
                 </tbody>

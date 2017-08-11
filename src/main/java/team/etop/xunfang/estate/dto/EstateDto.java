@@ -387,6 +387,10 @@ public class EstateDto {
                 ", createTime=" + createTime +
                 ", plotRatio=" + plotRatio +
                 ", area=" + area +
+                ", effectPictureDtoList=" + effectPictureDtoList +
+                ", prototypeRoomPictureDtoList=" + prototypeRoomPictureDtoList +
+                ", realEststePictureDtoList=" + realEststePictureDtoList +
+                ", samplePlanningPictureDtoList=" + samplePlanningPictureDtoList +
                 '}';
     }
 }

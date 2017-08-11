@@ -65,7 +65,7 @@
     <section id="div_menu" class="sidebar">
     </section>
 </aside>
-<iframe src="/main/welcome" id="iframeMain"  scrolling="no" frameborder="0"></iframe>
+<iframe src="/main/welcome" id="iframeMain"  scrolling="no" frameborder="0" ></iframe>
 
 <script src="/assets/menu/jquery.min.js"></script>
 <script src="/assets/menu/sidebar-menu.js"></script>
