@@ -13,6 +13,7 @@ import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.estate.dto.EstateDto;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.Iterator;
 
 /**
@@ -33,7 +34,7 @@ public class demoController {
     private Long visiblePages;
 
     @RequestMapping("/demo01")
-    public ModelAndView demo01(EstateDto estateDto,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum,HttpServletRequest request){
+    public ModelAndView demo01(EstateDto estateDto,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum,HttpServletRequest request)throws Exception{
         PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
         System.out.println(estateDto);
         //创建一个通用的多部分解析器
@@ -58,9 +59,9 @@ public class demoController {
                         //重命名上传后的文件名
 //                        String fileName = "demoUpload" + file.getOriginalFilename();
                         //定义上传路径
-//                        String path = "H:/" + fileName;
-//                        File localFile = new File(path);
-//                        file.transferTo(localFile);
+                        String path = "E:/IOText/" + myFileName;
+                        File localFile = new File(path);
+                        file.transferTo(localFile);
                     }
                 }
             }
