@@ -9,12 +9,6 @@
     <list default="true" id="f9e532bb-2afc-4eb8-817d-064eed4e94d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/estate/query.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/estate/query.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main/index.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/system/common.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/system/common.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/query.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/query.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/userList.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/userList.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.js" afterPath="$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,12 +20,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="sidebar-menu.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sidebar-menu.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
               <caret line="24" column="61" lean-forward="false" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="401">
+              <caret line="49" column="47" lean-forward="false" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1082#1097#0" expanded="true" />
+                <element signature="e#1150#1159#0" expanded="true" />
+                <element signature="e#1860#1869#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -128,13 +137,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/properties/dao.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/spring/applicationContext-dao.xml" />
         <option value="$PROJECT_DIR$/src/test/java/util/Date/insertDate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/query.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/system/common.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/user/userList.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/main/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/estate/query.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/assets/menu/sidebar-menu.js" />
+        <option value="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" />
       </list>
     </option>
   </component>
@@ -364,6 +373,29 @@
               <item name="etop" type="462c0819:PsiDirectoryNode" />
               <item name="xunfang" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="etop" type="462c0819:PsiDirectoryNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="etop" type="462c0819:PsiDirectoryNode" />
+              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
@@ -902,7 +934,7 @@
       <workItem from="1502463183301" duration="19000" />
       <workItem from="1502465425608" duration="3892000" />
       <workItem from="1502500156635" duration="173000" />
-      <workItem from="1502500379763" duration="1747000" />
+      <workItem from="1502500379763" duration="1859000" />
     </task>
     <task id="LOCAL-00001" summary="新增实体类">
       <created>1502108115344</created>
@@ -1009,7 +1041,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502501330261</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="修复body小于Html高度的BUG">
+      <created>1502502161087</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1502502161087</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1039,7 +1078,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114566000" />
+    <option name="totallyTimeSpent" value="114678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1067,7 +1106,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.49785408" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25912017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1722103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1159,7 +1198,8 @@
     <MESSAGE value="1/修改iframe子适应" />
     <MESSAGE value="1/新增模拟数据插入" />
     <MESSAGE value="合并-泽昌" />
-    <option name="LAST_COMMIT_MESSAGE" value="合并-泽昌" />
+    <MESSAGE value="修复body小于Html高度的BUG" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复body小于Html高度的BUG" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1546,23 +1586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="47" column="30" lean-forward="false" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-            <element signature="e#765#766#0" expanded="true" />
-            <element signature="e#833#834#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
-            <element signature="e#1082#1097#0" expanded="true" />
-            <element signature="e#1150#1159#0" expanded="true" />
-            <element signature="e#1856#1865#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/assets/menu/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1576,6 +1599,19 @@
         <state relative-caret-position="306">
           <caret line="24" column="61" lean-forward="false" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="49" column="47" lean-forward="false" selection-start-line="49" selection-start-column="47" selection-end-line="49" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1082#1097#0" expanded="true" />
+            <element signature="e#1150#1159#0" expanded="true" />
+            <element signature="e#1860#1869#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
