@@ -41,25 +41,28 @@
             <tbody>
                 <tr border="1">
                     <th>开发商报价：${estate.estateName}</th>
+                    <th>楼盘户型：${estate.estateName}</th>
                 </tr>
                 <tr style="border: hidden">
                     <th>销售状态：${estate.estateName}</th>
+                    <th>产权年限：${estate.estateName}年</th>
                 </tr>
                 <tr style="border: hidden">
                     <th>最新开盘：${estate.estateName}</th>
+                    <th>拿地时间：${estate.estateName}</th>
                 </tr>
                 <tr style="border: hidden">
                     <th>最早交房：${estate.estateName}</th>
                 </tr>
-                <tr style="border: hidden">
-                    <th>楼盘户型：${estate.estateName}</th>
-                </tr>
-                <tr style="border: hidden">
-                    <th>产权年限：${estate.estateName}</th>
-                </tr>
-                <tr style="border: hidden">
-                    <th>拿地时间：${estate.estateName}</th>
-                </tr>
+                <%--<tr style="border: hidden">--%>
+                    <%--<th>楼盘户型：${estate.estateName}</th>--%>
+                <%--</tr>--%>
+                <%--<tr style="border: hidden">--%>
+                    <%--<th>产权年限：${estate.estateName}年</th>--%>
+                <%--</tr>--%>
+                <%--<tr style="border: hidden">--%>
+                    <%--<th>拿地时间：${estate.estateName}</th>--%>
+                <%--</tr>--%>
             </tbody>
         </table>
         <br>
@@ -67,8 +70,43 @@
         <table class="table">
             <tbody>
                 <tr border="1">
-                    <th>开发商报价：${estate.estateName}</th>
+                    <th>物业公司：${estate.estateName}</th>
+                    <th>车位情况：${estate.estateName}</th>
                 </tr>
+                <tr style="border: hidden">
+                    <th>物业费用：${estate.estateName}</th>
+                    <th>容积率：${estate.estateName}</th>
+                </tr>
+                <tr style="border: hidden">
+                    <th>水电燃气：${estate.estateName}</th>
+                    <th>装修情况：${estate.estateName}</th>
+                </tr>
+                <tr style="border: hidden">
+                    <th>绿化率：${estate.estateName}%</th>
+                    <th>楼栋信息：${estate.estateName}</th>
+                </tr>
+                <%--<tr style="border: hidden">--%>
+                    <%--<th>车位情况：${estate.estateName}</th>--%>
+                <%--</tr>--%>
+                <%--<tr style="border: hidden">--%>
+                    <%--<th>容积率：${estate.estateName}</th>--%>
+                <%--</tr>--%>
+                <%--<tr style="border: hidden">--%>
+                    <%--<th>装修情况：${estate.estateName}</th>--%>
+                <%--</tr>--%>
+                <%--<tr style="border: hidden">--%>
+                    <%--<th>楼栋信息：${estate.estateName}</th>--%>
+                <%--</tr>--%>
+            </tbody>
+        </table>
+        <hr>
+        <h3>楼盘图片</h3>
+        <table class="table">
+            <thead>效果图（加数量）</thead>
+            <tbody>
+                <c:forEach var="e" items="${estate.effectPictureDtoList}">
+
+                </c:forEach>
             </tbody>
         </table>
     </div>
