@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f9e532bb-2afc-4eb8-817d-064eed4e94d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/team/etop/xunfang/main/web/MainController.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -175,8 +174,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="3" />
+    <option name="x" value="21" />
+    <option name="y" value="34" />
     <option name="width" value="1036" />
     <option name="height" value="724" />
   </component>
@@ -318,212 +317,6 @@
               <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
               <item name="xunfang" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="etop" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="etop" type="462c0819:PsiDirectoryNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="etop" type="462c0819:PsiDirectoryNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="etop" type="462c0819:PsiDirectoryNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="etop" type="462c0819:PsiDirectoryNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
-              <item name="fonts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="estate" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xunfang" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xunfang" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -542,19 +335,19 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\sql" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\fonts" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\menu" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\resources\mapper\modules" />
+      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\Paginator" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\WEB-INF\jsp\main" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\menu" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\slideshow" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\detail" />
       <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\java\team\etop\xunfang\index" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\fonts" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\menu" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\resources\mapper\modules" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\Paginator" />
-      <recent name="C:\Users\63574\Desktop\源码\xunfang\src\main\webapp\assets\jsp\system" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -934,7 +727,7 @@
       <workItem from="1502463183301" duration="19000" />
       <workItem from="1502465425608" duration="3892000" />
       <workItem from="1502500156635" duration="173000" />
-      <workItem from="1502500379763" duration="1859000" />
+      <workItem from="1502500379763" duration="2038000" />
     </task>
     <task id="LOCAL-00001" summary="新增实体类">
       <created>1502108115344</created>
@@ -1048,7 +841,14 @@
       <option name="project" value="LOCAL" />
       <updated>1502502161087</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="修复body小于Html高度的BUG">
+      <created>1502502249125</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1502502249125</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1078,7 +878,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114678000" />
+    <option name="totallyTimeSpent" value="114857000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1106,7 +906,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.49785408" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979977" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="JRebel remote servers log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1722103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1722103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="JRebel" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
