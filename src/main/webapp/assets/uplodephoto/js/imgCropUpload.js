@@ -58,7 +58,7 @@
         var $form = $('<form action="' + opt.url + '" enctype="multipart/form-data" method="post" target="uploadIfr"/>');
         var $cropDataInp = $('<input type="hidden" name="cropData">');
         var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">选择图片</button></div>');
-        var $fileInp = $('<input type="file" id="file" accept="' + accept + '" class="crop-picker-file">');
+        var $fileInp = $('<input type="file" name="files" id="file" accept="' + accept + '" class="crop-picker-file">');
         $picker.append($fileInp);
         $form.append($cropDataInp).append($picker);
 

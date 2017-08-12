@@ -3,7 +3,22 @@ $(document).ready(function () {
     var frm =$("#iframeMain");
     var url;
     $(frm).load(function(){
-
+        if(url!=""){
+            var ifm= $("#iframeMain");
+            var iframeHeight = $("#iframeMain").contents().find("body").height();
+            ifm.attr("style","height:"+iframeHeight+"px");
+            $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+            var pre_height=iframeHeight;
+            timer = setInterval(function(){
+                iframeHeight = $("#iframeMain").contents().find("body").height();
+                if (iframeHeight != pre_height){
+                    ifm.attr("style","height:"+iframeHeight+"px");
+                    $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+                }
+            },500);
+        }
+    });
+    $("#iframeMain").contents().find("body").resize(function () {
         if(url!=""){
             var ifm= $("#iframeMain");
             var iframeHeight = $("#iframeMain").contents().find("body").height();
@@ -17,6 +32,10 @@ $(document).ready(function () {
         url=$this.attr("name");
         var checkElement = $this.next();
         if(url!=""){
+            var body=$("#iframeMain").contents().find("body");
+            var ifm= $("#iframeMain");
+            body.attr("style","height:580px");
+            ifm.attr("style","height:580px");
             $("#iframeMain").attr("src",url);
         }
         if (checkElement.is('.treeview-menu') && checkElement.is(':visible')) {

@@ -5,7 +5,6 @@
   Time: 16:41
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>测试</title>
@@ -16,7 +15,8 @@
     <style type="text/css">
         body {
             font-size: 16px;
-            font-family:"Microsoft YaHei",Arial, Helvetica, sans-serif
+            font-family:"Microsoft YaHei",Arial, Helvetica, sans-serif;
+            height: auto;
         }
         *,
         *:before,
