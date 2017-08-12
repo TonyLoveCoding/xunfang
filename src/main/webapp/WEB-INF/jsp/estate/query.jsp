@@ -8,6 +8,14 @@
         function loadData(num) {
             $("#PageCount").val("${pageInfo.total}");
         }
+
+        function contirmd() {
+            var  msg="您确定要删除吗？"
+            if(confirm(msg)==true){
+                return ture;
+            }else{
+                return false;
+            }
     </script>
 </head>
 <body>
@@ -32,7 +40,7 @@
                     <th>户型</th>
                     <th>最低价</th>
                     <th>最高价</th>
-                    <%--<th>样板间图</th>--%>
+                    <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -46,7 +54,12 @@
                         <th>${estate.houseType}</th>
                         <th>${estate.minPrice}</th>
                         <th>${estate.maxPrice}</th>
-                        <%--<th>${house.prototypeRoom}</th>--%>
+                        <th>
+                            <div class="btn-group center-block" role="group" aria-label="...">
+                                <a class="btn btn-default center-block" href="/estate/selectbyid?id=${estate.id}" role="button">查看</a>
+                                <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
+                            </div>
+                        </th>
                     </tr>
                 </c:forEach>
                 </tbody>

@@ -62,7 +62,7 @@ public class EstateController {
             estateList.add(estate);
             System.out.println(estate);
         }
-        ModelAndView modelAndView=new ModelAndView("/HomePage/homeIndex");
+        ModelAndView modelAndView=new ModelAndView("/estate/query");
         modelAndView.addObject("estateList",estateList);
         modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
