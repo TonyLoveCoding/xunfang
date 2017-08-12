@@ -5,12 +5,12 @@ $(document).ready(function () {
     $(frm).load(function(){
         if(url!=""){
             var ifm= $("#iframeMain");
-            var iframeHeight = $("#iframeMain").contents().find("body").height();
+            var iframeHeight = $("#iframeMain").contents().find("html").height();
             ifm.attr("style","height:"+iframeHeight+"px");
             $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
             var pre_height=iframeHeight;
             timer = setInterval(function(){
-                iframeHeight = $("#iframeMain").contents().find("body").height();
+                iframeHeight = $("#iframeMain").contents().find("html").height();
                 if (iframeHeight != pre_height){
                     ifm.attr("style","height:"+iframeHeight+"px");
                     $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
@@ -22,7 +22,7 @@ $(document).ready(function () {
         if(url!=""){
             var ifm= $("#iframeMain");
 
-    var iframeHeight = $("#iframeMain").contents().find("body").height();
+    var iframeHeight = $("#iframeMain").contents().find("html").height();
     ifm.attr("style","height:"+iframeHeight+"px");
     $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
 }

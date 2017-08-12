@@ -10,12 +10,13 @@
         }
 
         function contirmd() {
-            var  msg="您确定要删除吗？"
-            if(confirm(msg)==true){
+            var msg = "您确定要删除吗？"
+            if (confirm(msg) == true) {
                 return ture;
-            }else{
+            } else {
                 return false;
             }
+        }
     </script>
 </head>
 <body>

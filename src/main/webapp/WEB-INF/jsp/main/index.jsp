@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <link rel="stylesheet" href="/assets/bookstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link href="/assets/menu/font-awesome.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/menu/sidebar-menu.css">
     <style type="text/css">
