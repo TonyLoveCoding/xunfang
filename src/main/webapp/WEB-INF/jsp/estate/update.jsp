@@ -236,12 +236,12 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel1">添加图片</h4>
+                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
                 </div>
                 <div class="modal-body">
                     <div id="TCrop"></div>
@@ -271,12 +271,12 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel2">添加图片</h4>
+                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
                 </div>
                 <div class="modal-body">
                     <div id="TCrop"></div>
@@ -306,12 +306,12 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel3">添加图片</h4>
+                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
                 </div>
                 <div class="modal-body">
                     <div id="TCrop"></div>
@@ -341,12 +341,12 @@
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel4">添加图片</h4>
+                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
                 </div>
                 <div class="modal-body">
                     <div id="TCrop"></div>
