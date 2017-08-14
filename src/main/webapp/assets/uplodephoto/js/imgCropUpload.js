@@ -57,7 +57,7 @@
         var $ifr = $('<iframe id="uploadIfr" name="uploadIfr" class="crop-hidden"></iframe>');
         var $form = $('<form action="' + opt.url + '" enctype="multipart/form-data" method="post" target="uploadIfr"/>');
         var $cropDataInp = $('<input type="hidden" name="cropData">');
-        var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">选择图片</button></div>');
+        var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">添加图片</button></div>');
         var $fileInp = $('<input type="file" name="files" id="file" accept="' + accept + '" class="crop-picker-file">');
         $picker.append($fileInp);
         $form.append($cropDataInp).append($picker);

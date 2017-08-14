@@ -5,12 +5,12 @@ $(document).ready(function () {
     $(frm).load(function(){
         if(url!=""){
             var ifm= $("#iframeMain");
-            var iframeHeight = $("#iframeMain").contents().find("body").height();
+            var iframeHeight = $("#iframeMain").contents().find("html").height();
             ifm.attr("style","height:"+iframeHeight+"px");
             $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
             var pre_height=iframeHeight;
             timer = setInterval(function(){
-                iframeHeight = $("#iframeMain").contents().find("body").height();
+                iframeHeight = $("#iframeMain").contents().find("html").height();
                 if (iframeHeight != pre_height){
                     ifm.attr("style","height:"+iframeHeight+"px");
                     $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
@@ -21,12 +21,12 @@ $(document).ready(function () {
     $("#iframeMain").contents().find("body").resize(function () {
         if(url!=""){
             var ifm= $("#iframeMain");
-            var iframeHeight = $("#iframeMain").contents().find("body").height();
-            ifm.attr("style","height:"+iframeHeight+"px");
-            $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
-        }
-    });
 
+    var iframeHeight = $("#iframeMain").contents().find("html").height();
+    ifm.attr("style","height:"+iframeHeight+"px");
+    $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+}
+});
     $(document.body).on('click', '.sidebar-menu li a', function(e){
         var $this = $(this);
         url=$this.attr("name");

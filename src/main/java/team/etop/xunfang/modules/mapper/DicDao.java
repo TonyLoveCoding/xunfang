@@ -3,6 +3,8 @@ package team.etop.xunfang.modules.mapper;
 import team.etop.xunfang.modules.po.Dic;
 import team.etop.xunfang.common.bean.SuperMapper;
 
+import java.util.List;
+
 /**
  * <p>
   *  Mapper 接口
@@ -12,5 +14,5 @@ import team.etop.xunfang.common.bean.SuperMapper;
  * @since 2017-08-09
  */
 public interface DicDao extends SuperMapper<Dic> {
-
+    List<Dic> selectByType(String type);
 }

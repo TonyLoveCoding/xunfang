@@ -1,7 +1,6 @@
 <html>
 <head>
     <title></title>
-    <style type="text/css">body{overflow：hidden}</style>
 </head>
 <body>
 
