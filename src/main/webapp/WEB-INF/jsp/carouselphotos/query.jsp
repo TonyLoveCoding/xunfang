@@ -37,30 +37,14 @@
 <body>
 <h4>轮播图（${count}）</h4>
 <div>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-        添加轮播图
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加轮播图</h4>
-                </div>
-                <div class="modal-body">
-                    输入图片链接：<input type="text" name="url" style="width: 100%">
-                    <div id="TCrop"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
-        </div>
+    <div class="btn-group center-block" role="group" aria-label="...">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary center-block" data-toggle="modal" data-target="#myModal">
+            添加轮播图
+        </button>
+        <a class="btn btn-default center-block" href="" role="button" >返回</a>
     </div>
+
     <table class="table">
         <thead>
             <th>图片</th>
@@ -75,7 +59,7 @@
                     </td>
                     <td style="vertical-align: middle">
                         <div class="btn-group center-block" role="group" aria-label="...">
-                            <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
+                            <a class="btn btn-default center-block" href="/carouselPhotos/deletephoto?id=${photo.id}" role="button" onclick="return contirmd()">删除</a>
                         </div>
                     </td>
                 </tr>
@@ -83,6 +67,26 @@
             </c:forEach>
         </tbody>
     </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加轮播图</h4>
+            </div>
+            <div class="modal-body">
+                输入图片链接：<input type="text" name="url" style="width: 100%">
+                <div id="TCrop"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default crop-cancel" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary crop-save"onclick="">保存</button>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

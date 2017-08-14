@@ -229,150 +229,125 @@
     </table>
     <br>
     <h3>楼盘图片</h3>
-    <h4>效果图（${esize}）</h4>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-        添加图片
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="TCrop"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>效果图（${esize}）</h5>
+            <div class="halving_line"></div>
         </div>
     </div>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+            添加图片
+        </button>
+    </div>
+
     <br>
-    <table class="table">
-        <tbody>
+    <div class="row">
+        <div class="col-md-12">
             <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
-                <td style="text-align: center">
+                <div class="col-md-4" style="text-align: center">
                     <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </td>
+                </div>
             </c:forEach>
-        </tbody>
-    </table>
-    <h4>样板间（${psize}）</h4>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-        添加图片
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="TCrop"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
         </div>
     </div>
-    <br>
-    <table class="table">
-        <tbody>
-        <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
-            <td style="text-align: center">
-                <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-            </td>
-        </c:forEach>
-        </tbody>
-    </table>
-    <h4>环境规划图（${ssize}）</h4>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-        添加图片
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="TCrop"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>样板间（${psize}）</h5>
+            <div class="halving_line"></div>
         </div>
     </div>
-    <br>
-    <table class="table">
-        <tbody>
-        <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
-            <td style="text-align: center">
-                <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-            </td>
-        </c:forEach>
-        </tbody>
-    </table>
-    <h4>楼盘实景图（${rsize}）</h4>
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
-        添加图片
-    </button>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+            添加图片
+        </button>
+    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">添加图片</h4>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
+                <div class="col-md-4" style="text-align: center">
+                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
+                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
-                <div class="modal-body">
-                    <div id="TCrop"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
+            </c:forEach>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>环境规划图（${ssize}）</h5>
+            <div class="halving_line"></div>
+        </div>
+    </div>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+            添加图片
+        </button>
+    </div>
+
     <br>
-    <table class="table">
-        <tbody>
-        <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
-            <td style="text-align: center">
-                <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-            </td>
-        </c:forEach>
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
+                <div class="col-md-4" style="text-align: center">
+                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
+                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>楼盘实景图（${rsize}）</h5>
+            <div class="halving_line"></div>
+        </div>
+    </div>
+    <div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+            添加图片
+        </button>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
+                <div class="col-md-4" style="text-align: center">
+                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
+                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
 </div>
 <div class="btn-group center-block" role="group" aria-label="...">
     <a class="btn btn-default center-block" href="" role="button">保存</a>
     <a class="btn btn-default center-block" href="" role="button" >返回</a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">添加图片</h4>
+            </div>
+            <div class="modal-body">
+                <div id="TCrop"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

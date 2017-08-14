@@ -70,9 +70,9 @@
         var $cropContainer = $('<div class="crop-container"/>').append($cropArea).append($cropPreviewWrap);
         $cropWrap.append($cropContainer);
         // var $saveSource = $('<div class="crop-save">上传原图</div>');
-        var $save = $('<div class="crop-save">保存</div>');
-        var $cropCancel = $('<div class="crop-cancel">取消</div>');
-        var $cropOpe = $('<div class="crop-operate"/>').append($save).append($cropCancel);
+        // var $save = $('<div class="crop-save">保存</div>');
+        // var $cropCancel = $('<div class="crop-cancel">取消</div>');
+        var $cropOpe = $('<div class="crop-operate"/>');
 
         if(!opt.isCrop) {
             $cropPreviewWrap.addClass('crop-hidden');

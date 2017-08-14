@@ -9,13 +9,21 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="assets/uplodephoto/css/jquery.Jcrop.css">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="assets/uplodephoto/js/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="assets/uplodephoto/js/jquery.Jcrop.js"></script>
     <style>
         .photo300{
             width: 300px;
             height: 300px;
+            margin-top: 10px;
         }
+        .halving_line{
+            background-color: #0074c1;
+            width: 100%;
+            height: 2px;}
     </style>
 </head>
 <body>
@@ -93,54 +101,66 @@
         </table>
         <br>
         <h3>楼盘图片</h3>
-        <table class="table">
-            <thead>效果图（${esize}）</thead>
-            <tbody>
-            <tr>
+        <div class="row">
+            <div class="col-md-12">
+                <h5>效果图（${esize}）</h5>
+                <div class="halving_line"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
-                    <th>
+                    <div class="col-md-4" >
                         <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo300">
-                    </th>
+                    </div>
                 </c:forEach>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table">
-            <thead>样板间（${psize}）</thead>
-            <tbody>
-            <tr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h5>样板间（${psize}）</h5>
+                <div class="halving_line"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
-                    <th>
+                    <div class="col-md-4" >
                         <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo300">
-                    </th>
+                    </div>
                 </c:forEach>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table">
-            <thead>环境规划图（${ssize}）</thead>
-            <tbody>
-            <tr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h5>环境规划图（${ssize}）</h5>
+                <div class="halving_line"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
-                    <th>
+                    <div class="col-md-4" >
                         <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo300">
-                    </th>
+                    </div>
                 </c:forEach>
-            </tr>
-            </tbody>
-        </table>
-        <table class="table">
-            <thead>楼盘实景图（${rsize}）</thead>
-            <tbody>
-            <tr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h5>楼盘实景图（${rsize}）</h5>
+                <div class="halving_line"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
                 <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
-                    <th>
+                    <div class="col-md-4" >
                         <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo300">
-                    </th>
+                    </div>
                 </c:forEach>
-            </tr>
-            </tbody>
-        </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>

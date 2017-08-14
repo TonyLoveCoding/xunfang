@@ -104,7 +104,7 @@ public class EstateController {
             e.printStackTrace();
         }
         //图片需要先拆分原本的字符串，通过long l = Long.parseLong([String]);语句得到的id进行查询图片
-        for(int i=0;i<3;i++){
+        for(int i=0;i<7;i++){
             EffectPictureDto effectPictureDto=new EffectPictureDto();
             effectPictureDto.setName("1.png");
             String effectpicture=savePath+effectPictureDto.getName();
@@ -128,7 +128,7 @@ public class EstateController {
             realEststePictureDtoList.add(realEststePictureDto);
             estateDto.setRealEststePictureDtoList(realEststePictureDtoList);
         }
-        for(int i=0;i<0;i++){
+        for(int i=0;i<1;i++){
             SamplePlanningPictureDto samplePlanningPictureDto=new SamplePlanningPictureDto();
             samplePlanningPictureDto.setName("1.png");
             String samplePlanningpicture=savePath+samplePlanningPictureDto.getName();
@@ -240,7 +240,7 @@ public class EstateController {
         estateDto.setMinPrice(123);
         estateDto.setMaxPrice(123);
 //        System.out.println(estateDto);
-        for(int i=0;i<3;i++){
+        for(int i=0;i<7;i++){
             EffectPictureDto effectPictureDto=new EffectPictureDto();
             effectPictureDto.setName("1.png");
             String effectpicture=savePath+effectPictureDto.getName();

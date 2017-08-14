@@ -1,7 +1,7 @@
 ;(function(global, $, Crop) {
     var defaultOpt = {
         /* 整个图片选择、裁剪、上传区域的最外围包裹元素id，默认TCrop */
-        id: 'TCrop',
+        id: 'myModal',
         /* 上传路径 */
         url: 'demo/demo01',
         /* 允许上传的图片的后缀，暂时支持以下四种，其余格式图片未测试 */
@@ -69,11 +69,14 @@
         $cropPreviewWrap.append($cropPreview);
         var $cropContainer = $('<div class="crop-container"/>').append($cropArea).append($cropPreviewWrap);
         $cropWrap.append($cropContainer);
-        // var $saveSource = $('<div class="crop-save">上传原图</div>');
+        /*var $saveSource = $('<div class="crop-save">上传原图</div>');
         var $save = $('<div class="crop-save">保存</div>');
         var $cropCancel = $('<div class="crop-cancel">取消</div>');
         var $cropOpe = $('<div class="crop-operate"/>').append($save).append($cropCancel);
+        var $save = $('<div class="crop-save">保存</div>');
+        var $cropCancel = $('<div class="crop-cancel">取消</div>');     */
 
+        var $cropOpe = $('<div class="crop-operate"/>');
         if(!opt.isCrop) {
             $cropPreviewWrap.addClass('crop-hidden');
         }
