@@ -1,0 +1,107 @@
+.tab-items{
+	padding-top:20px;
+}
+
+.index-info {
+	padding-left:0px;
+	
+}
+
+.index-info li{
+	list-style-type:none;
+	font-size: 24px;
+}
+
+.index-info li b{ 
+	font-size: 20px;
+	color: #bfbfbf;
+}
+.tab-items h3{ 
+	font-size: 30px;
+	color: #CC0000;
+}
+
+.tabs > li{ 
+	text-align:center;
+	font-size: 20px;
+	width: 370px;
+}
+
+.tabs > li.active > a,
+.tabs > li.active > a:hover,
+.tabs > li.active > a:focus
+{
+	color: #fff;
+	background-color: #0099FF;
+}
+
+.details-header .active{
+	font-size: 20px; 
+}	
+ 
+
+.details-info li .field{
+	font-size: 20px;
+	color: #888;
+	display:inline;
+	width: 300px;
+}
+.details-info li .value{
+	font-size: 24px;
+	color: #666;
+	display:inline; 
+	margin:80px;
+}
+
+//对相册tab的导航栏设置
+.nav-stacked{
+	width: 200px;
+	margin-top: 50px;
+	border-radius: 4px;
+	border: 1px solid #ddd;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+}
+.nav-stacked li{
+	margin: 0;
+	border-top: 1px solid #ddd;
+}
+.nav-stacked li:first-child{
+	border-top: none;
+}
+.nav-stacked li a{
+	margin: 0;
+	padding: 8px 16px;
+	border-radius: 0; 
+}
+.nav-stacked li.active a, .nav-stacked li.active a:hover{
+	color: #fff;
+	background: #0088cc;
+	border: 1px solid #0088cc;
+}
+.nav-stacked li:first-child a{
+	border-radius: 4px 4px 0 0;
+}
+.nav-stacked li:last-child a{
+	border-radius: 0 0 4px 4px;
+}
+.nav-stacked.affix{
+	margin-top: 50px 
+} 
+
+//对锚点的居中设置
+#section-1{
+	margin-top:-100px;
+	padding-top:100px;
+}
+#section-2{
+	margin-top:-100px;
+	padding-top:100px;
+}
+#section-3{
+	margin-top:-100px;
+	padding-top:100px;
+} 
+#section-4{
+	margin-top:-100px;
+	padding-top:100px;
+} 

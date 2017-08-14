@@ -1,0 +1,99 @@
+
+	.hot_bg{
+		height: 750px; 
+		background: url('/image/bg-row.jpg') center no-repeat;
+	}
+	.top{
+		position:fixed; top:0; left:0; width:100%; height:20px; background:#bfbfbf;
+	}
+	.hoverDiv{
+	padding-left:52px;
+    background: url('image/arr_right.png') 240px center no-repeat;
+    overflow: hidden;
+	}
+	
+	.hoverBlock{
+		display: none;
+		position: absolute;
+		text-align: left;
+		width: 190px;
+		height: 420px;
+		padding-top: 20px;
+		background: #fff\0;
+		-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+		background: rgba(255,255,255,0.9);
+		left: 277px;
+		top: 0;
+		z-index: 10;
+	}
+	
+	.hoverBlock > h3{
+		color: #000;
+		text-align:center;
+	}
+	
+	.search-terms-item{
+		padding-left:20px;
+		background: #0a73b7 center no-repeat;
+		overflow: hidden;
+		border-color: #ffffff;
+		border-bottom: 3px solid #0fa7d6;
+	}
+	
+	.search-terms-item:hover{
+		background: #005e9c center no-repeat;
+	}
+	
+	.search-terms-list li { 
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    margin-right: 5px;
+    overflow: hidden; 
+	}
+	
+	.search-terms-item h3 a,.search-terms-list li a{
+    	color:#fff;
+	}
+	.search-terms-item h3 {
+		font-size: 24px;  
+		height: 24px;
+		line-height: 24px;
+		overflow: hidden;
+	}
+	.search-terms-item h3 a {
+		font-size: 22px; 
+	}
+	
+	.condition-col li {
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+	}
+	.condition-col li.no-link{
+		color: #999;
+		height: auto;
+		line-height: 16px;
+	}
+	.condition-col li a:hover{
+		color: #f44336;
+	}
+	
+	.condition-cols2{
+    text-align: left;
+    width: 150px;
+    padding-left: 10px;
+	}
+	.item-price .condition-cols2{
+		width: 250px;
+	}
+	.condition-cols2 .condition-col{
+		float: left;
+		width: 60px;
+		margin-right: 8px;
+	}
+	.item-price .condition-cols2 .condition-col{
+		width: 100px;
+	}
+	
+	 
