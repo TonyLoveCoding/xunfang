@@ -10,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-09
+ * @since 2017-08-13
  */
 @TableName("prototype_room_picture")
 public class PrototypeRoomPicture extends Model<PrototypeRoomPicture> {

@@ -9,7 +9,7 @@ import team.etop.xunfang.common.bean.SuperMapper;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-09
+ * @since 2017-08-13
  */
 public interface EstateDao extends SuperMapper<Estate> {
 

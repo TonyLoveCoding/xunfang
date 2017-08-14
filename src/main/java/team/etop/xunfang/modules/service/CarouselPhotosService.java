@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-09
+ * @since 2017-08-13
  */
 public interface CarouselPhotosService extends IService<CarouselPhotos> {
 	

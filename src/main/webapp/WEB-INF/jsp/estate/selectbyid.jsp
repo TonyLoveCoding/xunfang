@@ -11,10 +11,16 @@
     <title>Title</title>
 </head>
 <body>
-    <div>
-        <h3>基本信息</h3>
-        <table class="table">
-            <tbody>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>基本信息</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tbody>
                 <tr border="1">
                     <th>楼盘名称：${estate.estateName}</th>
                 </tr>
@@ -33,12 +39,20 @@
                 <tr style="border: hidden">
                     <th>开发商：${estate.estateName}</th>
                 </tr>
-            </tbody>
-        </table>
-        <br>
-        <h3>销售信息</h3>
-        <table class="table">
-            <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>销售信息</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tbody>
                 <tr border="1">
                     <th>开发商报价：${estate.estateName}</th>
                 </tr>
@@ -60,17 +74,23 @@
                 <tr style="border: hidden">
                     <th>拿地时间：${estate.estateName}</th>
                 </tr>
-            </tbody>
-        </table>
-        <br>
-        <h3>小区详情</h3>
-        <table class="table">
-            <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>小区详情</h3>
+            <table class="table">
+                <tbody>
                 <tr border="1">
                     <th>开发商报价：${estate.estateName}</th>
                 </tr>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
+</div>
 </body>
 </html>

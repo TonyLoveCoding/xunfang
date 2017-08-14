@@ -6,9 +6,12 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import org.junit.Test;
 
 public class CustomGenerator{
-    public static void main(String[] args) throws InterruptedException {
+
+    @Test
+    public void testGenerator() throws InterruptedException {
         AutoGenerator mpg = new AutoGenerator();
 
         // 全局配置
@@ -62,7 +65,7 @@ public class CustomGenerator{
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("team.etop.xunfang");
-
+        pc.setEntity("bo");
         pc.setModuleName("modules");
         mpg.setPackageInfo(pc);
 

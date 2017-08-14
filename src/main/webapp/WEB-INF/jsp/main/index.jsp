@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link href="/assets/menu/font-awesome.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="/assets/menu/sidebar-menu.css">
     <style type="text/css">
@@ -66,7 +64,6 @@
     </section>
 </aside>
 <iframe src="/main/welcome" id="iframeMain"  scrolling="no" frameborder="0" ></iframe>
-
 <script src="/assets/menu/jquery.min.js"></script>
 <script src="/assets/menu/sidebar-menu.js"></script>
 <script src="/assets/jsp/main/menu.js"></script>

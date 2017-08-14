@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-09
+ * @since 2017-08-13
  */
 public class Estate extends Model<Estate> {
 
@@ -75,6 +75,7 @@ public class Estate extends Model<Estate> {
 	@TableField("plot_ratio")
 	private Float plotRatio;
 	private Float area;
+	private String thumbnail;
 
 
 	public Long getId() {
@@ -349,6 +350,14 @@ public class Estate extends Model<Estate> {
 		this.area = area;
 	}
 
+	public String getThumbnail() {
+		return thumbnail;
+	}
+
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
@@ -391,6 +400,7 @@ public class Estate extends Model<Estate> {
 			", createTime=" + createTime +
 			", plotRatio=" + plotRatio +
 			", area=" + area +
+			", thumbnail=" + thumbnail +
 			"}";
 	}
 }

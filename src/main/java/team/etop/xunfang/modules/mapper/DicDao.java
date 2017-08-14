@@ -11,7 +11,7 @@ import java.util.List;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-09
+ * @since 2017-08-13
  */
 public interface DicDao extends SuperMapper<Dic> {
     List<Dic> selectByType(String type);

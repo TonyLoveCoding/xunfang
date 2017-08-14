@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-09
+ * @since 2017-08-13
  */
 @Service
 public class RealEstatePictureServiceImap extends ServiceImpl<RealEstatePictureDao, RealEstatePicture> implements RealEstatePictureService {
