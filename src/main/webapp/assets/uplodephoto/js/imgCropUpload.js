@@ -1,7 +1,7 @@
 ;(function(global, $, Crop) {
     var defaultOpt = {
         /* 整个图片选择、裁剪、上传区域的最外围包裹元素id，默认TCrop */
-        id: 'TCrop',
+        id: 'myModal',
         /* 上传路径 */
         url: 'demo/demo01',
         /* 允许上传的图片的后缀，暂时支持以下四种，其余格式图片未测试 */
@@ -57,7 +57,8 @@
         var $ifr = $('<iframe id="uploadIfr" name="uploadIfr" class="crop-hidden"></iframe>');
         var $form = $('<form action="' + opt.url + '" enctype="multipart/form-data" method="post" target="uploadIfr"/>');
         var $cropDataInp = $('<input type="hidden" name="cropData">');
-        var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">选择图片</button></div>');
+        var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">添加图片</button></div>');
+        var $closewindow=$('<div class="crop-picker-wrap"><button type="button" class="crop-picker" data-dismiss="modal">关闭窗口</button></div>')
         var $fileInp = $('<input type="file" name="files" id="file" accept="' + accept + '" class="crop-picker-file">');
         $picker.append($fileInp);
         $form.append($cropDataInp).append($picker);
@@ -69,11 +70,14 @@
         $cropPreviewWrap.append($cropPreview);
         var $cropContainer = $('<div class="crop-container"/>').append($cropArea).append($cropPreviewWrap);
         $cropWrap.append($cropContainer);
-        // var $saveSource = $('<div class="crop-save">上传原图</div>');
+        /*var $saveSource = $('<div class="crop-save">上传原图</div>');
         var $save = $('<div class="crop-save">保存</div>');
         var $cropCancel = $('<div class="crop-cancel">取消</div>');
-        var $cropOpe = $('<div class="crop-operate"/>').append($save).append($cropCancel);
+        var $cropOpe = $('<div class="crop-operate"/>').append($save).append($cropCancel);*/
+        var $save = $('<div class="crop-save">保存</div>');
+        var $cropCancel = $('<div class="crop-cancel" data-dismiss="modal">取消</div>');
 
+        var $cropOpe = $('<div class="crop-operate"/>').append($save).append($cropCancel);
         if(!opt.isCrop) {
             $cropPreviewWrap.addClass('crop-hidden');
         }
@@ -414,6 +418,8 @@
         }
         var form = $.data(dom, 'crop').$cropObj.$form.get(0);
         form.submit();
+        cancel();
+        alert("上传成功")
     };
 
     /* 取消裁剪 */
@@ -426,6 +432,9 @@
         var $cropObj = $.data(dom, 'crop').$cropObj;
         $cropObj.$cropWrap.addClass('crop-hidden');
         $cropObj.$cropPicker.removeClass('crop-hidden');
+        $cropObj.$fileInp.wrap('<form></form>');
+        $cropObj.$fileInp.parent()[0].reset();
+        $cropObj.$fileInp.unwrap();
     };
 
     /* 销毁上传裁剪区域 */

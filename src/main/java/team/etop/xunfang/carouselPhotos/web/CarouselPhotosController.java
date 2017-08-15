@@ -43,7 +43,7 @@ public class CarouselPhotosController {
         //拼接图片存储地址
         String name1="http://othgjp7hs.bkt.clouddn.com/17-8-9/"+carouselPhotos1.getName();
         carouselPhotos1.setName(name1);
-        carouselPhotos1.setUrl("楼盘");
+        carouselPhotos1.setUrl(name1);
         carouselPhotos1.setId((long)1);
         list.add(carouselPhotos1);
         count++;
@@ -55,7 +55,7 @@ public class CarouselPhotosController {
         carouselPhotos2.setId((long)2);
         list.add(carouselPhotos2);
         count++;
-        ModelAndView modelAndView=new ModelAndView("carouselPhotos/query");
+        ModelAndView modelAndView=new ModelAndView("/carouselphotos/query");
         modelAndView.addObject("list",list);
         modelAndView.addObject("count",count);
         return modelAndView;

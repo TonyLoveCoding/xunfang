@@ -123,6 +123,7 @@
     </style>
 </head>
 <body>
+<%--<input type="file" value="123">--%>
 <form action="demo/demo01" enctype="multipart/form-data" method="post">
     <input type="hidden" name="pn" value="1">
     <table class="table">

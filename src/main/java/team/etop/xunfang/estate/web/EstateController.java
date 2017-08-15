@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.PageInfo;
-import team.etop.xunfang.estate.dto.EffectPictureDto;
-import team.etop.xunfang.estate.dto.EstateDto;
+import team.etop.xunfang.estate.dto.*;
 import team.etop.xunfang.modules.po.Estate;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +36,9 @@ public class EstateController {
     //显示的总页数
     @Value("${searchPage.visiblePages}")
     private Long visiblePages;
+    //楼盘图片保存地址
+    @Value("${businessImage.savePath}")
+    private String savePath;
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
@@ -76,9 +78,18 @@ public class EstateController {
     @RequestMapping("/selectbyid")
     public ModelAndView selectEstateById(@RequestParam("id")long id){
         //根据id从数据库取出对应楼盘信息,必须存放在EstateDto中
+        System.out.println(id);
         EstateDto estateDto=new EstateDto();
         List<EffectPictureDto> effectPictureList=new ArrayList<>();
+        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=new ArrayList<>();
+        List<RealEststePictureDto> realEststePictureDtoList=new ArrayList<>();
+        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=new ArrayList<>();
+        estateDto.setId(id);
         estateDto.setStatus(0);
+        estateDto.setEstateName("楼盘名称");
+        estateDto.setGreenRate((float)70);
+        estateDto.setStatus(0);
+        estateDto.setPropertyRights("70年");
         estateDto.setVisitTimes(id);
         estateDto.setMinPrice(123);
         estateDto.setMaxPrice(123);
@@ -93,36 +104,70 @@ public class EstateController {
             e.printStackTrace();
         }
         //图片需要先拆分原本的字符串，通过long l = Long.parseLong([String]);语句得到的id进行查询图片
-        EffectPictureDto effectPictureDto=new EffectPictureDto();
-        effectPictureDto.setName("7867759.jpg");
-        String effectpicture="http://othgjp7hs.bkt.clouddn.com/17-8-9/"+effectPictureDto.getName();
-        effectPictureDto.setName(effectpicture);
-        effectPictureList.add(effectPictureDto);
-        estateDto.setEffectPictureDtoList(effectPictureList);
+        for(int i=0;i<7;i++){
+            EffectPictureDto effectPictureDto=new EffectPictureDto();
+            effectPictureDto.setName("1.png");
+            String effectpicture=savePath+effectPictureDto.getName();
+            effectPictureDto.setName(effectpicture);
+            effectPictureList.add(effectPictureDto);
+            estateDto.setEffectPictureDtoList(effectPictureList);
+        }
+        for(int i=0;i<3;i++){
+            PrototypeRoomPictureDto prototypeRoomPictureDto=new PrototypeRoomPictureDto();
+            prototypeRoomPictureDto.setName("1.png");
+            String prototypeRoomPicture=savePath+prototypeRoomPictureDto.getName();
+            prototypeRoomPictureDto.setName(prototypeRoomPicture);
+            prototypeRoomPictureDtoList.add(prototypeRoomPictureDto);
+            estateDto.setPrototypeRoomPictureDtoList(prototypeRoomPictureDtoList);
+        }
+        for(int i=0;i<2;i++){
+            RealEststePictureDto realEststePictureDto=new RealEststePictureDto();
+            realEststePictureDto.setName("1.png");
+            String realEststepicture=savePath+realEststePictureDto.getName();
+            realEststePictureDto.setName(realEststepicture);
+            realEststePictureDtoList.add(realEststePictureDto);
+            estateDto.setRealEststePictureDtoList(realEststePictureDtoList);
+        }
+        for(int i=0;i<1;i++){
+            SamplePlanningPictureDto samplePlanningPictureDto=new SamplePlanningPictureDto();
+            samplePlanningPictureDto.setName("1.png");
+            String samplePlanningpicture=savePath+samplePlanningPictureDto.getName();
+            samplePlanningPictureDto.setName(samplePlanningpicture);
+            samplePlanningPictureDtoList.add(samplePlanningPictureDto);
+            estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
+        }
+        int esize=effectPictureList.size();
+        int psize=prototypeRoomPictureDtoList.size();
+        int rsize=realEststePictureDtoList.size();
+        int ssize=samplePlanningPictureDtoList.size();
         ModelAndView modelAndView=new ModelAndView("/estate/selectbyid");
         modelAndView.addObject("EstateDto",estateDto);
+        modelAndView.addObject("esize",esize);
+        modelAndView.addObject("psize",psize);
+        modelAndView.addObject("rsize",rsize);
+        modelAndView.addObject("ssize",ssize);
         return modelAndView;
     }
 
     /**
      * 修改楼盘信息（应该有一个get方法，一个post方法）
-     * @param estate
-     * @param request
+     * @param id
      * @return
      */
     @RequestMapping("/update")
-    public ModelAndView updateEstate(@RequestParam("estate")EstateDto estate, HttpServletRequest request){
+    public ModelAndView updateEstate(@RequestParam("id")long id){
         Date date=new Date();
+        EstateDto estateDto=new EstateDto();
         DateFormat dateFormat=DateFormat.getDateTimeInstance();
         String datetime=dateFormat.format(date);
         try{
             SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             date=simpleDateFormat.parse(datetime);
-            estate.setCreateTime(date);
+            estateDto.setCreateTime(date);
         }catch (ParseException e){
             e.printStackTrace();
         }
-        List<EffectPictureDto> effectPictureDtoList=estate.getEffectPictureDtoList();
+        List<EffectPictureDto> effectPictureDtoList=estateDto.getEffectPictureDtoList();
         for(EffectPictureDto e:effectPictureDtoList){
             e.setName("7867759.jpg");
             String effectpicture="http://othgjp7hs.bkt.clouddn.com/17-8-9/"+e.getName();
@@ -177,4 +222,45 @@ public class EstateController {
         return null;
     }
 
+    @RequestMapping("/update1")
+    public ModelAndView updateEstatedemo(@RequestParam("id")long id){
+        List<EffectPictureDto> effectPictureList=new ArrayList<>();
+        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=new ArrayList<>();
+        List<RealEststePictureDto> realEststePictureDtoList=new ArrayList<>();
+        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=new ArrayList<>();
+//        System.out.println("楼盘id"+id);
+        EstateDto estateDto=new EstateDto();
+        estateDto.setId(id);
+        estateDto.setStatus(0);
+        estateDto.setEstateName("楼盘名称");
+        estateDto.setGreenRate((float)70);
+        estateDto.setStatus(0);
+        estateDto.setPropertyRights("70年");
+        estateDto.setVisitTimes(id);
+        estateDto.setMinPrice(123);
+        estateDto.setMaxPrice(123);
+//        System.out.println(estateDto);
+        for(int i=0;i<7;i++){
+            EffectPictureDto effectPictureDto=new EffectPictureDto();
+            effectPictureDto.setName("1.png");
+            String effectpicture=savePath+effectPictureDto.getName();
+            effectPictureDto.setName(effectpicture);
+            effectPictureList.add(effectPictureDto);
+            estateDto.setEffectPictureDtoList(effectPictureList);
+        }
+        int esize=effectPictureList.size();
+        ModelAndView modelAndView=new ModelAndView("/estate/update");
+        int psize=prototypeRoomPictureDtoList.size();
+        int rsize=realEststePictureDtoList.size();
+        int ssize=samplePlanningPictureDtoList.size();
+        estateDto.setPrototypeRoomPictureDtoList(prototypeRoomPictureDtoList);
+        estateDto.setRealEststePictureDtoList(realEststePictureDtoList);
+        estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
+        modelAndView.addObject("psize",psize);
+        modelAndView.addObject("rsize",rsize);
+        modelAndView.addObject("ssize",ssize);
+        modelAndView.addObject("EstateDto",estateDto);
+        modelAndView.addObject("esize",esize);
+        return  modelAndView;
+    }
 }

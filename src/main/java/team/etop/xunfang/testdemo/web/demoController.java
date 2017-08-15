@@ -91,8 +91,8 @@ public class demoController {
         float h=Float.parseFloat(strings[3]);
         System.out.println(multipartFile.getOriginalFilename());
         String filepath=savePath+multipartFile.getOriginalFilename();
-        multipartFile.transferTo(new File(filepath));
-        Thumbnails.of(filepath).sourceRegion((int)x,(int)y,(int)w,(int)h).size(300,300).keepAspectRatio(false).toFile("C:\\Users\\asus\\Desktop\\新建文件夹 (2)\\1.png");
+        //multipartFile.transferTo(new File(filepath));
+        Thumbnails.of(filepath).sourceRegion((int)x,(int)y,(int)w,(int)h).size(300,300).keepAspectRatio(false).toFile(savePath+multipartFile.getOriginalFilename());
         System.out.println("上传完成");
     }
 }

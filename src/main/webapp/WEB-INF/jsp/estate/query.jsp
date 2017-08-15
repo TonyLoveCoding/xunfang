@@ -48,7 +48,6 @@
                 <c:forEach items="${estateList}" var="estate">
                     <tr>
                         <th>${estate.estateName}</th>
-                        <%--<th>${house.id}</th>--%>
                         <th>${estate.estateAddress}</th>
                         <th>${estate.location}</th>
                         <th>${estate.type}</th>
