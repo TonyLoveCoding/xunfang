@@ -41,10 +41,15 @@ public class insertDate {
 
     @Test
     public void insertData(){
-
         for(int i=0;i<119;i++){
             estateDao.insert(getEstate.returnEstate(dicDao,effectPictureDao));
         }
+        List<Estate> estates = estateDao.selectList(null);
+        for(Estate estate:estates){
+            System.out.println(estate);
+        }
+
+
     }
 
 

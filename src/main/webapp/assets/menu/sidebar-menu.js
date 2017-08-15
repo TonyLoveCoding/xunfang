@@ -9,13 +9,13 @@ $(document).ready(function () {
             ifm.attr("style","height:"+iframeHeight+"px");
             $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
             var pre_height=iframeHeight;
-            timer = setInterval(function(){
-                iframeHeight = $("#iframeMain").contents().find("html").height();
-                if (iframeHeight != pre_height){
-                    ifm.attr("style","height:"+iframeHeight+"px");
-                    $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
-                }
-            },500);
+            // timer = setInterval(function(){
+            //     iframeHeight = $("#iframeMain").contents().find("html").height();
+            //     if (iframeHeight != pre_height){
+            //         ifm.attr("style","height:"+iframeHeight+"px");
+            //         $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+            //     }
+            // },500);
         }
     });
     $("#iframeMain").contents().find("body").resize(function () {
