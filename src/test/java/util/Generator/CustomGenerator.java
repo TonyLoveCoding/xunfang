@@ -25,11 +25,11 @@ public class CustomGenerator{
         gc.setAuthor("ZTF");
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
-        gc.setMapperName("%sDao");
+        gc.setMapperName("%sMapperGenerate");
         gc.setXmlName("%sMapper");
-        gc.setServiceName("%sService");
-        gc.setServiceImplName("%sServiceImap");
-        gc.setControllerName("%sController");
+        gc.setServiceName("%sServiceGenerate");
+        gc.setServiceImplName("%sServiceImplGenerate");
+        gc.setControllerName("%sControllerGenerate");
 
         mpg.setGlobalConfig(gc);
 
@@ -65,7 +65,7 @@ public class CustomGenerator{
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("team.etop.xunfang");
-        pc.setEntity("bo");
+        pc.setEntity("po");
         pc.setModuleName("modules");
         mpg.setPackageInfo(pc);
 

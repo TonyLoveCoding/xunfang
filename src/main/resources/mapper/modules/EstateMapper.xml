@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="team.etop.xunfang.modules.mapper.EstateDao">
+<mapper namespace="team.etop.xunfang.modules.mapper.EstateMapperGenerate">
 
 	<!-- 开启二级缓存 -->
 	<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
@@ -41,11 +41,14 @@
 		<result column="create_time" property="createTime" />
 		<result column="plot_ratio" property="plotRatio" />
 		<result column="area" property="area" />
+		<result column="thumbnail" property="thumbnail" />
+		<result column="turnover" property="turnover" />
+		<result column="sign" property="sign" />
 	</resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, status, visit_times AS visitTimes, min_price AS minPrice, max_price AS maxPrice, developer_quotes AS developerQuotes, location, type, house_type AS houseType, feature, sample_plate AS samplePlate, live_action AS liveAction, prototype_room AS prototypeRoom, effective_photos AS effectivePhotos, estate_name AS estateName, estate_address AS estateAddress, property, developer, sale_status AS saleStatus, first_delivery AS firstDelivery, latest_opening AS latestOpening, property_rights AS propertyRights, take_time AS takeTime, company, property_cost AS propertyCost, power_type AS powerType, green_rate AS greenRate, parking_spaces AS parkingSpaces, decoration, estate_information AS estateInformation, update_time AS updateTime, create_time AS createTime, plot_ratio AS plotRatio, area
+        id, status, visit_times AS visitTimes, min_price AS minPrice, max_price AS maxPrice, developer_quotes AS developerQuotes, location, type, house_type AS houseType, feature, sample_plate AS samplePlate, live_action AS liveAction, prototype_room AS prototypeRoom, effective_photos AS effectivePhotos, estate_name AS estateName, estate_address AS estateAddress, property, developer, sale_status AS saleStatus, first_delivery AS firstDelivery, latest_opening AS latestOpening, property_rights AS propertyRights, take_time AS takeTime, company, property_cost AS propertyCost, power_type AS powerType, green_rate AS greenRate, parking_spaces AS parkingSpaces, decoration, estate_information AS estateInformation, update_time AS updateTime, create_time AS createTime, plot_ratio AS plotRatio, area, thumbnail, turnover, sign
     </sql>
 
 </mapper>

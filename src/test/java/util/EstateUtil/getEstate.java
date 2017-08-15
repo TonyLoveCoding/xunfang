@@ -1,10 +1,11 @@
 package util.EstateUtil;
 
-import team.etop.xunfang.modules.mapper.DicDao;
-import team.etop.xunfang.modules.mapper.EffectPictureDao;
+
+import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
 import team.etop.xunfang.modules.po.Dic;
 import team.etop.xunfang.modules.po.EffectPicture;
 import team.etop.xunfang.modules.po.Estate;
+import team.etop.xunfang.search.mapper.Search_DicMapper;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Random;
  * @date: 2017/8/13 15:30
  */
 public class getEstate {
-    public static Estate returnEstate(DicDao dicDao, EffectPictureDao effectPictureDao){
+    public static Estate returnEstate(Search_DicMapper dicDao, EffectPictureMapperGenerate effectPictureDao){
         List<Dic> areas = dicDao.selectByType("location");
         List<Dic> types = dicDao.selectByType("type");
         List<Dic> houseTypes = dicDao.selectByType("houseType");

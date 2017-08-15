@@ -9,7 +9,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-13
+ * @since 2017-08-15
  */
 public class Dic extends Model<Dic> {
 

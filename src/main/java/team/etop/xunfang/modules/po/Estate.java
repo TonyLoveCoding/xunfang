@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-13
+ * @since 2017-08-15
  */
 public class Estate extends Model<Estate> {
 
@@ -76,6 +76,8 @@ public class Estate extends Model<Estate> {
 	private Float plotRatio;
 	private Float area;
 	private String thumbnail;
+	private Integer turnover;
+	private String sign;
 
 
 	public Long getId() {
@@ -358,6 +360,22 @@ public class Estate extends Model<Estate> {
 		this.thumbnail = thumbnail;
 	}
 
+	public Integer getTurnover() {
+		return turnover;
+	}
+
+	public void setTurnover(Integer turnover) {
+		this.turnover = turnover;
+	}
+
+	public String getSign() {
+		return sign;
+	}
+
+	public void setSign(String sign) {
+		this.sign = sign;
+	}
+
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
@@ -401,6 +419,8 @@ public class Estate extends Model<Estate> {
 			", plotRatio=" + plotRatio +
 			", area=" + area +
 			", thumbnail=" + thumbnail +
+			", turnover=" + turnover +
+			", sign=" + sign +
 			"}";
 	}
 }
