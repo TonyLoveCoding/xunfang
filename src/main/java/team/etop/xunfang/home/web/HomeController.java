@@ -14,13 +14,11 @@ import team.etop.xunfang.home.dto.HomeDto;
 @Controller
 @RequestMapping("")
 public class HomeController {
+    
 
-     @RequestMapping("home1")
-    public HomeDto home(){
-    return new HomeDto();
- }
-    @RequestMapping("home2")
-    public ModelAndView home2(){
-        return new ModelAndView();
+    @RequestMapping("/details")
+    public ModelAndView initDetails(){
+        return new ModelAndView("/home/details");
     }
+
 }
