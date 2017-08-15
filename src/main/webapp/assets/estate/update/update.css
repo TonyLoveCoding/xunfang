@@ -45,7 +45,7 @@ body {
 
 .crop-wrapper {
     display: inline-block;
-    min-width: 750px;
+    min-width: 100%;
     margin: 10px 0;
     padding: 10px;
     border: 1px solid #ccc;
@@ -73,7 +73,7 @@ body {
 .crop-preview-wrapper {
     width: 200px;
     height: 200px;
-    margin-left: 28px;
+    margin-left: 0px;
     overflow: hidden;
 }
 .crop-preview-container {

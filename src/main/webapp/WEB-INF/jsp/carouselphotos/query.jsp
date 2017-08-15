@@ -71,7 +71,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="width: auto">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -81,10 +81,10 @@
                 输入图片链接：<input type="text" name="url" style="width: 100%">
                 <div id="TCrop"></div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default crop-cancel" data-dismiss="modal">关闭</button>
-                <button type="submit" class="btn btn-primary crop-save"onclick="">保存</button>
-            </div>
+            <%--<div class="modal-footer">--%>
+                <%--<button type="button" class="btn btn-default crop-cancel" data-dismiss="modal">关闭</button>--%>
+                <%--<button type="submit" class="btn btn-primary crop-save"onclick="">保存</button>--%>
+            <%--</div>--%>
         </div>
     </div>
 </div>
