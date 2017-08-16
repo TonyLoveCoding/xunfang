@@ -85,7 +85,7 @@
         $cropWrap.append($cropOpe);
         $form.append($cropWrap);
 
-        $wrap.append($ifr).append($form);
+        $("#choosePhotos").append($ifr).append($form);
 
         return {
             $ifr: $ifr,
