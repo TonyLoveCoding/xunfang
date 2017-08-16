@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src="assets/uplodephoto/js/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="assets/uplodephoto/js/jquery.Jcrop.js"></script>
-    <script type="text/javascript" src="assets/uplodephoto/js/imgCropUpload.js"></script>
-    <link rel="stylesheet" href="assets/estate/update/update.css">
-    <script type="text/javascript" src="assets/estate/update/update.js"></script>
+    <script type="text/javascript" src="assets/carouselPhotos/js/imgCropUpload.js"></script>
+    <link rel="stylesheet" href="assets/carouselPhotos/css/query.css">
+    <script type="text/javascript" src="assets/carouselPhotos/js/query.js"></script>
     <script type="text/javascript">
         function contirmd() {
             var msg = "您确定要删除吗？"
@@ -29,7 +29,7 @@
     </script>
     <style>
         .photo300{
-            width: 800px;
+            width: 810px;
             height: 300px;
         }
     </style>
@@ -76,28 +76,6 @@
             </div>
         </div>
     </c:forEach>
-    <%--<table class="table">--%>
-        <%--<thead>--%>
-            <%--<th>图片</th>--%>
-            <%--<th>操作</th>--%>
-        <%--</thead>--%>
-        <%--<tbody>--%>
-            <%--<c:forEach var="photo" items="${list}">--%>
-                <%--<tr>--%>
-                    <%--<td>--%>
-                        <%--<img src="${photo.name}" class="photo300"><br/>--%>
-                        <%--图片链接：${photo.url}--%>
-                    <%--</td>--%>
-                    <%--<td style="vertical-align: middle">--%>
-                        <%--<div class="btn-group center-block" role="group" aria-label="...">--%>
-                            <%--<a class="btn btn-default center-block" href="/carouselPhotos/deletephoto?id=${photo.id}" role="button" onclick="return contirmd()">删除</a>--%>
-                        <%--</div>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<br/>--%>
-            <%--</c:forEach>--%>
-        <%--</tbody>--%>
-    <%--</table>--%>
 </div>
 
 <!-- Modal -->
@@ -112,10 +90,7 @@
                 输入图片链接：<input type="text" name="url" style="width: 100%">
                 <div id="TCrop"></div>
             </div>
-            <%--<div class="modal-footer">--%>
-                <%--<button type="button" class="btn btn-default crop-cancel" data-dismiss="modal">关闭</button>--%>
-                <%--<button type="submit" class="btn btn-primary crop-save"onclick="">保存</button>--%>
-            <%--</div>--%>
+
         </div>
     </div>
 </div>
