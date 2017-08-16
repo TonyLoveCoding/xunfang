@@ -43,41 +43,41 @@
             <artifactId>solr-solrj</artifactId>
             <version>6.6.0</version>
         </dependency>
-    <dependency>
-        <groupId>net.sf.ehcache</groupId>
-        <artifactId>ehcache</artifactId>
-        <version>${ehcache.version}</version>
-    </dependency>
-    <!-- 模板引擎-->
-    <dependency>
-        <groupId>org.mybatis</groupId>
-        <artifactId>mybatis-ehcache</artifactId>
-        <version>${mybatis-ehcache.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.velocity</groupId>
-        <artifactId>velocity</artifactId>
-        <version>${velocity.version}</version>
-    </dependency>
-    <!-- shiro核心包 -->
-    <dependency>
-        <groupId>org.apache.shiro</groupId>
-        <artifactId>shiro-all</artifactId>
-        <version>${shiro.version}</version>
-    </dependency>
-    <!-- 添加shiro web支持 -->
-    <dependency>
-        <groupId>org.apache.shiro</groupId>
-        <artifactId>shiro-web</artifactId>
-        <version>${shiro.version}</version>
-    </dependency>
-    <!--&lt;!&ndash; 添加shiro spring支持 &ndash;&gt;-->
-    <dependency>
-        <groupId>org.apache.shiro</groupId>
-        <artifactId>shiro-spring</artifactId>
-        <version>${shiro.version}</version>
-    </dependency>
-    <!--文件上传-->
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
+        </dependency>
+        <!-- 模板引擎-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-ehcache</artifactId>
+            <version>${mybatis-ehcache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>${velocity.version}</version>
+        </dependency>
+        <!-- shiro核心包 -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-all</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!-- 添加shiro web支持 -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!--&lt;!&ndash; 添加shiro spring支持 &ndash;&gt;-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <!--文件上传-->
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -99,14 +99,14 @@
             <version>${myabatis-plus.version}</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.mybatis</groupId>-->
-            <!--<artifactId>mybatis</artifactId>-->
-            <!--<version>${mybatis.version}</version>-->
+        <!--<groupId>org.mybatis</groupId>-->
+        <!--<artifactId>mybatis</artifactId>-->
+        <!--<version>${mybatis.version}</version>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.mybatis</groupId>-->
-            <!--<artifactId>mybatis-spring</artifactId>-->
-            <!--<version>${mybatis-spring.version}</version>-->
+        <!--<groupId>org.mybatis</groupId>-->
+        <!--<artifactId>mybatis-spring</artifactId>-->
+        <!--<version>${mybatis-spring.version}</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>junit</groupId>
