@@ -14,7 +14,7 @@ import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
 import team.etop.xunfang.modules.mapper.EstateMapperGenerate;
 import team.etop.xunfang.modules.po.Estate;
 import team.etop.xunfang.search.mapper.DicMapper;
-import util.EstateUtil.getEstate;
+import util.EstateUtil.getEstateTaiNan;
 
 import java.io.IOException;
 
@@ -43,7 +43,7 @@ public class SolrJTest {
     @Test
     public void creteDoc() throws IOException, SolrServerException {
         SolrInputDocument solrInputFields=new SolrInputDocument();
-        Estate estate = getEstate.returnEstate(dicDao, effectPictureDao);
+        Estate estate = getEstateTaiNan.returnEstate(dicDao, effectPictureDao);
         estateDao.insert(estate);
         solrInputFields.addField("id",estate.getId());
         solrInputFields.addField("estate_visit_times",estate.getVisitTimes());
