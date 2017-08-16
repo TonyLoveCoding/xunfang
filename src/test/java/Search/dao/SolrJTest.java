@@ -14,7 +14,7 @@
 //import team.etop.xunfang.modules.mapper.EffectPictureDao;
 //import team.etop.xunfang.modules.mapper.EstateDao;
 //import team.etop.xunfang.modules.po.Estate;
-//import util.EstateUtil.getEstate;
+//import util.EstateUtil.getEstateTaiNan;
 //
 //import java.io.IOException;
 //
@@ -46,7 +46,7 @@
 //    public void creteDoc() throws IOException, SolrServerException {
 //        SolrClient solrClient=new HttpSolrClient.Builder(baseURL).build();
 //        SolrInputDocument solrInputFields=new SolrInputDocument();
-//        Estate estate = getEstate.returnEstate(dicDao, effectPictureDao);
+//        Estate estate = getEstateTaiNan.returnEstate(dicDao, effectPictureDao);
 //        estateDao.insert(estate);
 //        solrInputFields.addField("id",estate.getId());
 //        solrInputFields.addField("estate_visit_times",estate.getVisitTimes());

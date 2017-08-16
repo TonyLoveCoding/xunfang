@@ -17,7 +17,7 @@ import java.util.Random;
  * @author: TingFeng Zhang
  * @date: 2017/8/13 15:30
  */
-public class getEstate {
+public class getEstateTaiNan {
     public static Estate returnEstate(Search_DicMapper dicDao, EffectPictureMapperGenerate effectPictureDao){
         List<Dic> areas = dicDao.selectByType("location");
         List<Dic> types = dicDao.selectByType("type");
@@ -104,18 +104,21 @@ public class getEstate {
 
         estate.setPowerType("每月1000");
 
-        estate.setGreenRate(11.1);
+        estate.setGreenRate((float)11.1);
 
-		<result column="power_type" property="powerType" />
-		<result column="green_rate" property="greenRate" />
-		<result column="parking_spaces" property="parkingSpaces" />
-		<result column="decoration" property="decoration" />
-		<result column="estate_information" property="estateInformation" />
-		<result column="plot_ratio" property="plotRatio" />
-		<result column="area" property="area" />
-		<result column="turnover" property="turnover" />
-		<result column="sign" property="sign" />
+        estate.setParkingSpaces("很多空位");
 
+        estate.setDecoration("一般般");
+
+        estate.setEstateInformation("没什么可说的");
+
+        estate.setPlotRatio((float)70.0);
+
+        estate.setArea((float)110.0);
+
+        estate.setTurnover(2);
+
+        estate.setSign("楼盘");
 
         return  estate;
     }

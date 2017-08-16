@@ -319,153 +319,27 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
+                    <%--从list中取出热门楼盘信息展现，默认数量是8个--%>
+                    <c:forEach begin="0" end="7" items="${list}" var="estate">
+                        <div class="col-md-3">
+                            <div class="thumbnail hovereffect">
+                                <a href="home/details/${estate.id}">
+                                <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
+                                    <div class="overlay">
+                                        <h2>${estate.estateName}</h2>
+                                    </div>
+                                </a>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="home/details#">${estate.estateName}</a>
+                                    </h3>
+                                    <p>
+                                        ${estate.location} | 建面: ${estate.area} m² | ${estate.minPrice}-${estate.maxPrice} 万
+                                    </p>
                                 </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
 
@@ -480,153 +354,27 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
+                    <%--从list中取出最新楼盘信息展现，默认数量是8个--%>
+                    <c:forEach begin="8" end="15" items="${list}" var="estate">
+                        <div class="col-md-3">
+                            <div class="thumbnail hovereffect">
+                                <a href="home/details/${estate.id}">
+                                    <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
+                                    <div class="overlay">
+                                        <h2>${estate.estateName}</h2>
+                                    </div>
+                                </a>
+                                <div class="caption">
+                                    <h3>
+                                        <a href="home/details#">${estate.estateName}</a>
+                                    </h3>
+                                    <p>
+                                            ${estate.location} | 建面: ${estate.area} m² | ${estate.minPrice}-${estate.maxPrice} 万
+                                    </p>
                                 </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
