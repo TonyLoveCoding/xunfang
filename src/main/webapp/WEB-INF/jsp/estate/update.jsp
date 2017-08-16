@@ -19,142 +19,144 @@
     <script type="text/javascript" src="assets/estate/update/update.js"></script>
 </head>
 <body>
-<div>
+<div  class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <h3>基本信息</h3>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px">
             <div class="halving_line"></div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">楼盘名称：</div>
-            </div>
-            <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.estateName}">
-            </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">楼盘名称：</div>
         </div>
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">楼盘地址：</div>
-            </div>
-            <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateAddress" value="${EstateDto.estateAddress}">
-            </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.estateName}">
         </div>
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">物业类型：</div>
-            </div>
-            <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="property" value="${EstateDto.property}">
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">楼盘地址：</div>
         </div>
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">建筑类型：</div>
-            </div>
-            <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="type" value="${EstateDto.type}">
-            </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateAddress" value="${EstateDto.estateAddress}">
         </div>
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">开发商：</div>
-            </div>
-            <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="developer" value="${EstateDto.developer}">
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">物业类型：</div>
+        </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="property" value="${EstateDto.property}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">建筑类型：</div>
+        </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="type" value="${EstateDto.type}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">开发商：</div>
+        </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="developer" value="${EstateDto.developer}">
         </div>
     </div>
     <br>
     <%--小区详情模块--%>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <h3>小区详情</h3>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px">
             <div class="halving_line"></div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px;padding-right: 0px">
-                <div style="font-size:15px">物业公司：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.company}">
-            </div>
-            <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">车位情况：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.parkingSpaces}">
-            </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">物业公司：</div>
         </div>
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">物业费用：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.propertyCost}">
-            </div>
-            <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">容积率：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.plotRatio}">
-            </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.company}">
         </div>
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px;padding-right: 0px">
-                <div style="font-size:15px">水电燃气：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.powerType}">
-            </div>
-            <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">装修情况：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.decoration}">
-            </div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">车位情况：</div>
         </div>
-        <div class="row">
-            <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">绿化率：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="developer" value="${EstateDto.greenRate}%">
-            </div>
-            <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">楼栋信息：</div>
-            </div>
-            <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="estateName" value="${EstateDto.estateInformation}">
-            </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.parkingSpaces}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">物业费用：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.propertyCost}">
+        </div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">容积率：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.plotRatio}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px;padding-right: 0px">
+            <div style="font-size:15px">水电燃气：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.powerType}">
+        </div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">装修情况：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.decoration}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">绿化率：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="developer" value="${EstateDto.greenRate}">%
+        </div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">楼栋信息：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.estateInformation}">
         </div>
     </div>
     <br>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <h3>楼盘图片</h3>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <h5>效果图（${esize}）</h5>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px">
             <div class="halving_line"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <div id="choosePhotos"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
-                <div class="col-md-4" style="text-align: center">
+                <div class="col-sm-4" style="text-align: center">
                     <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
@@ -162,18 +164,25 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <h5>样板间（${psize}）</h5>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px">
             <div class="halving_line"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px">
+            <div id="choosePhotos"></div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
-                <div class="col-md-4" style="text-align: center">
+                <div class="col-sm-4" style="text-align: center">
                     <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
@@ -181,18 +190,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <h5>环境规划图（${ssize}）</h5>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px">
             <div class="halving_line"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
-                <div class="col-md-4" style="text-align: center">
+                <div class="col-sm-4" style="text-align: center">
                     <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
@@ -200,18 +211,20 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <h5>楼盘实景图（${rsize}）</h5>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px">
             <div class="halving_line"></div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
-                <div class="col-md-4" style="text-align: center">
+                <div class="col-sm-4" style="text-align: center">
                     <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
@@ -219,25 +232,29 @@
         </div>
     </div>
     <br>
-    <div class="btn-group center-block" role="group" aria-label="...">
-        <a class="btn btn-default center-block" href="" role="button">保存</a>
-        <a class="btn btn-default center-block" href="" role="button" >返回</a>
-    </div>
-</div>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document" style="width: auto">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">添加图片</h4>
-            </div>
-            <div class="modal-body">
-                <div id="TCrop"></div>
+    <div class="row">
+        <div class="col-sm-12" style="padding-left: 0px">
+            <div class="btn-group center-block" role="group" aria-label="...">
+                <a class="btn btn-default center-block" href="" role="button">保存</a>
+                <a class="btn btn-default center-block" href="" role="button" >返回</a>
             </div>
         </div>
     </div>
 </div>
+
+<%--<!-- Modal -->--%>
+<%--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">--%>
+    <%--<div class="modal-dialog" role="document" style="width: auto">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div class="modal-header">--%>
+                <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
+                <%--<h4 class="modal-title" id="myModalLabel">添加图片</h4>--%>
+            <%--</div>--%>
+            <%--<div class="modal-body">--%>
+                <%--<div id="TCrop"></div>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 </body>
 </html>
