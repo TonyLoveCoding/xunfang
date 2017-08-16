@@ -19,12 +19,13 @@ public class UserController {
     @RequestMapping("/login")
     public ModelAndView login(HttpServletRequest request){
         ModelAndView modelAndView=new ModelAndView("/user/userList");
+        System.out.println("git测试");
         User user=new User();
         user.setId(Long.parseLong("1"));
         user.setAccount("admin");
         user.setUsername("测试1");
         user.setEstatesRelevance("楼盘221");
-        user.setRolesRelevance("管理员");
+        user.setRolesRelevance("管理员"+"git测试");
 //        user.setCreatetime(new InsertDate(2015,3,4,9,10,2));
 //        user.setCreatetime(new InsertDate(2015,3,4,9,10,2));
         user.setStatus(0);
