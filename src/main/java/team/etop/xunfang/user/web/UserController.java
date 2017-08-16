@@ -24,7 +24,7 @@ public class UserController {
         user.setId(Long.parseLong("1"));
         user.setAccount("admin");
         user.setUsername("测试1");
-        user.setEstatesRelevance("楼地方是大夫434234234243234主分支更新了！");
+        user.setEstatesRelevance("6");
         user.setRolesRelevance("管理员"+"git测试主分支更新了！");
         System.out.println("主分支更新了！");
 //        user.setCreatetime(new InsertDate(2015,3,4,9,10,2));
