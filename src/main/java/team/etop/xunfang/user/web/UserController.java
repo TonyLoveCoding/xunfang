@@ -23,7 +23,7 @@ public class UserController {
         user.setId(Long.parseLong("1"));
         user.setAccount("admin");
         user.setUsername("测试1");
-        user.setEstatesRelevance("楼盘1");
+        user.setEstatesRelevance("楼盘221");
         user.setRolesRelevance("管理员");
 //        user.setCreatetime(new InsertDate(2015,3,4,9,10,2));
 //        user.setCreatetime(new InsertDate(2015,3,4,9,10,2));
