@@ -10,7 +10,7 @@ import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
 import team.etop.xunfang.modules.mapper.EstateMapperGenerate;
 import team.etop.xunfang.modules.po.Estate;
 import team.etop.xunfang.search.mapper.DicMapper;
-import util.EstateUtil.getEstate;
+import util.EstateUtil.getEstateZTF;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/applicationContext.xml"})
-public class insertDate {
+public class insertDateZTF {
 
     @Autowired
     DicMapper search_DicMapper;
@@ -38,7 +38,7 @@ public class insertDate {
     @Test
     public void insertData(){
         for(int i=0;i<119;i++){
-            estateMapper.insert(getEstate.returnEstate(search_DicMapper,effectPictureMapper));
+            estateMapper.insert(getEstateZTF.returnEstate(search_DicMapper,effectPictureMapper));
         }
         List<Estate> estates = estateMapper.selectList(null);
         for(Estate estate:estates){

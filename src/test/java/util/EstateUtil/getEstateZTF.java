@@ -17,7 +17,7 @@ import java.util.Random;
  * @author: TingFeng Zhang
  * @date: 2017/8/13 15:30
  */
-public class getEstate {
+public class getEstateZTF {
     public static Estate returnEstate(DicMapper dicDao, EffectPictureMapperGenerate effectPictureDao){
         List<Dic> areas = dicDao.selectByType("location");
         List<Dic> types = dicDao.selectByType("type");

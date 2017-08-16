@@ -2,19 +2,17 @@ package Search.dao;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
 import team.etop.xunfang.modules.mapper.EstateMapperGenerate;
 import team.etop.xunfang.modules.po.Estate;
 import team.etop.xunfang.search.mapper.DicMapper;
-import util.EstateUtil.getEstate;
+import util.EstateUtil.getEstateZTF;
 
 import java.io.IOException;
 
@@ -26,7 +24,7 @@ import java.io.IOException;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/applicationContext.xml"})
-public class SolrJTest {
+public class SolrJTestZTF {
 
     @Autowired
     DicMapper dicDao;
@@ -43,7 +41,7 @@ public class SolrJTest {
     @Test
     public void creteDoc() throws IOException, SolrServerException {
         SolrInputDocument solrInputFields=new SolrInputDocument();
-        Estate estate = getEstate.returnEstate(dicDao, effectPictureDao);
+        Estate estate = getEstateZTF.returnEstate(dicDao, effectPictureDao);
         estateDao.insert(estate);
         solrInputFields.addField("id",estate.getId());
         solrInputFields.addField("estate_visit_times",estate.getVisitTimes());
