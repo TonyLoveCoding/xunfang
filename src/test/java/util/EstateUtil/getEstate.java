@@ -28,39 +28,95 @@ public class getEstate {
         int num=0;
         Random random=new Random();
         Estate estate=new Estate();
+
         EffectPicture effectPicture=new EffectPicture();
         effectPicture.setName("73952648.jpg");
         effectPictureDao.insert(effectPicture);
+
         estate.setEffectivePhotos(effectPicture.getId().toString());
+
         estate.setThumbnail("73952648.jpg");
+
         num=random.nextInt(areas.size());
         estate.setLocation(areas.get(num).getName());
+
         num=random.nextInt(features.size());
         estate.setFeature(features.get(num).getName());
+
         num=random.nextInt(types.size());
         estate.setType(types.get(num).getName());
+
         num=random.nextInt(houseTypes.size());
         estate.setHouseType(houseTypes.get(num).getName());
 
         estate.setSaleStatus(0);
+
         num=random.nextInt(addressName.length);
         estate.setEstateAddress(addressName[num]);
+
         num=random.nextInt(housesName.length);
         estate.setEstateName(housesName[num]);
+
         num=random.nextInt(2);
         estate.setStatus(num);
+
         num=random.nextInt(500)+500;
         estate.setMaxPrice(num);
+
         num=random.nextInt(500);
         estate.setMinPrice(num);
+
         num=random.nextInt(4000)+3000;
         estate.setDeveloperQuotes(num);
+
         num=random.nextInt(100000);
         estate.setVisitTimes((long)num);
+
         num=random.nextInt(1000);
         estate.setArea((float)num);
+
         estate.setCreateTime(new Date());
+
         estate.setUpdateTime(new Date());
+
+        estate.setSamplePlate(effectPicture.getId().toString());
+
+        estate.setLiveAction(effectPicture.getId().toString());
+
+        estate.setPrototypeRoom(effectPicture.getId().toString());
+
+        estate.setProperty("新华小区");
+
+        estate.setDeveloper("万达");
+
+        estate.setFirstDelivery(new Date());
+
+        estate.setLatestOpening(new Date());
+
+        num=random.nextInt(100);
+        estate.setPropertyRights("70");
+
+        estate.setTakeTime(new Date());
+
+        estate.setCompany("腾讯");
+
+        estate.setPropertyCost("10000");
+
+        estate.setPowerType("每月1000");
+
+        estate.setGreenRate(11.1);
+
+		<result column="power_type" property="powerType" />
+		<result column="green_rate" property="greenRate" />
+		<result column="parking_spaces" property="parkingSpaces" />
+		<result column="decoration" property="decoration" />
+		<result column="estate_information" property="estateInformation" />
+		<result column="plot_ratio" property="plotRatio" />
+		<result column="area" property="area" />
+		<result column="turnover" property="turnover" />
+		<result column="sign" property="sign" />
+
+
         return  estate;
     }
 }

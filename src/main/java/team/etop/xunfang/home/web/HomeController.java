@@ -14,7 +14,6 @@ import team.etop.xunfang.home.dto.HomeDto;
 @Controller
 @RequestMapping("")
 public class HomeController {
-    
 
     @RequestMapping("/details")
     public ModelAndView initDetails(){
