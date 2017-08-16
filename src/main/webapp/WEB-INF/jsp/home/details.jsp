@@ -115,18 +115,21 @@
                     <a href="home/details#">增城楼盘</a>
                 </li>
                 <li class="active">
-                    实地蔷薇国际
+                    ${estate.estateName}
                 </li>
             </ul>
             <div class="page-header">
                 <div class="details-title">
-                    <b  id="section-0">实地蔷薇国际</b>
-                    <label class="label label-success">在售</label>
-                    <label class="label label-default">改善宜居</label>
-                    <label class="label label-default">紧邻地铁</label>
-                    <label class="label label-default">环境优质</label>
+                    <b  id="section-0">${estate.estateName}</b>
+                    <label class="label label-success">
+                        <c:if test="${estate.status eq 1}">在售</c:if>
+                        <c:if test="${estate.status eq 0}">不在售</c:if>
+                    </label>
+                    <label class="label label-default">${estate.sign}</label>
+                    <label class="label label-default">${estate.sign}</label>
+                    <label class="label label-default">${estate.sign}</label>
                 </div>
-                <small>  别名：蔷薇国际,实地蔷薇花园 </small>
+                <small>  别名：${estate.estateName}</small>
             </div>
             <div class="tabbable" id="tabs-420817">
                 <ul class="nav nav-tabs tabs" id="section-1">
@@ -229,19 +232,19 @@
                                     <div class="list-group-item">
                                         <ul class="index-info">
                                             <li>
-                                                <b>开发商报价：</b><font color="#CC0000">18,500元/平米</font>
+                                                <b>开发商报价：</b><font color="#CC0000">${estate.developerQuotes}元/平米</font>
                                             </li>
                                             <li>
-                                                <b>参考总价：</b>157-216万
+                                                <b>参考总价：</b>${estate.minPrice}-${estate.maxPrice}万
                                             </li>
                                             <li>
-                                                <b>楼盘户型：</b>三居(3)，四居(2)
+                                                <b>楼盘户型：</b>${estate.houseType}
                                             </li>
                                             <li>
-                                                <b>楼盘地址：</b>增城 - 三联村蕉冚地段（逸翠山庄旁边）
+                                                <b>楼盘地址：</b>${estate.estateAddress}
                                             </li>
                                             <li>
-                                                <b>最新开盘时间：</b>2017-05-07
+                                                <b>最新开盘时间：</b>${estate.latestOpening}
                                             </li>
                                         </ul>
                                     </div>
@@ -251,10 +254,10 @@
                                         </h3>
                                         <ul class="index-info">
                                             <li>
-                                                智能生活住所
+                                                ${estate.sign}生活住所
                                             </li>
                                             <li>
-                                                一日狂销百套，广州东最火爆楼盘—实地·蔷薇国际！
+                                                一日狂销${estate.turnover}套，${estate.location}最火爆楼盘—${estate.estateName}！
                                             </li>
                                         </ul>
                                     </div>
@@ -278,15 +281,15 @@
                                         <ul class="index-info details-info">
                                             <li>
                                                 <div class="field">楼盘名称　</div>
-                                                <div class="value">实地蔷薇国际</div>
+                                                <div class="value">${estate.estateName}</div>
                                             </li>
                                             <li>
                                                 <div class="field">楼盘地址　</div>
-                                                <div class="value">实地蔷薇国际位于三联村蕉冚地段（逸翠山庄旁边）</div>
+                                                <div class="value">${estate.estateName}位于${estate.estateAddress}</div>
                                             </li>
                                             <li>
                                                 <div class="field">物业类型　</div>
-                                                <div class="value">住宅</div>
+                                                <div class="value">${estate.property}</div>
                                             </li>
                                             <li>
                                                 <div class="field">建筑类型　</div>
@@ -298,7 +301,7 @@
                                             </li>
                                             <li>
                                                 <div class="field">开发商　　</div>
-                                                <div class="value">广东誉丰地产发展有限公司</div>
+                                                <div class="value">${estate.developer}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -309,11 +312,14 @@
                                         <ul class="index-info details-info">
                                             <li>
                                                 <div class="field">开发商报价</div>
-                                                <div class="value">18,500元/平米</div>
+                                                <div class="value">${estate.developerQuotes}元/平米</div>
                                             </li>
                                             <li>
                                                 <div class="field">销售状态　</div>
-                                                <div class="value">在售</div>
+                                                <div class="value">
+                                                    <c:if test="${estate.status eq 1}">在售</c:if>
+                                                    <c:if test="${estate.status eq 0}">不在售</c:if>
+                                                </div>
                                             </li>
                                             <li>
                                                 <div class="field">优惠信息　</div>
@@ -321,23 +327,23 @@
                                             </li>
                                             <li>
                                                 <div class="field">最新开盘　</div>
-                                                <div class="value">2017-05-07</div>
+                                                <div class="value">${estate.latestOpening}</div>
                                             </li>
                                             <li>
                                                 <div class="field">最早交房　</div>
-                                                <div class="value">楼盘户型</div>
+                                                <div class="value">${estate.firstDelivery}</div>
                                             </li>
                                             <li>
                                                 <div class="field">楼盘户型　</div>
-                                                <div class="value">三居(3)，四居(2)</div>
+                                                <div class="value">${estate.houseType}</div>
                                             </li>
                                             <li>
                                                 <div class="field">产权年限　</div>
-                                                <div class="value">70年</div>
+                                                <div class="value">${estate.propertyRights}</div>
                                             </li>
                                             <li>
                                                 <div class="field">拿地时间　</div>
-                                                <div class="value">暂无</div>
+                                                <div class="value">${estate.takeTime}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -348,35 +354,35 @@
                                         <ul class="index-info details-info">
                                             <li>
                                                 <div class="field">物业公司　</div>
-                                                <div class="value">广东实地物业管理有限公司</div>
+                                                <div class="value">${estate.company}</div>
                                             </li>
                                             <li>
                                                 <div class="field">物业费用　</div>
-                                                <div class="value">2.8元/m²/月</div>
+                                                <div class="value">${estate.propertyCost}元/m²/月</div>
                                             </li>
                                             <li>
                                                 <div class="field">水电燃气　</div>
-                                                <div class="value">民水民电有燃气</div>
+                                                <div class="value">${estate.powerType}</div>
                                             </li>
                                             <li>
                                                 <div class="field">绿化率　　</div>
-                                                <div class="value">30%</div>
+                                                <div class="value">${estate.greenRate}%</div>
                                             </li>
                                             <li>
                                                 <div class="field">车位情况　</div>
-                                                <div class="value">暂无</div>
+                                                <div class="value">${estate.parkingSpaces}</div>
                                             </li>
                                             <li>
                                                 <div class="field">容积率　　</div>
-                                                <div class="value">3.0</div>
+                                                <div class="value">${estate.plotRatio}</div>
                                             </li>
                                             <li>
                                                 <div class="field">装修状况　</div>
-                                                <div class="value">精装修</div>
+                                                <div class="value">${estate.decoration}</div>
                                             </li>
                                             <li>
                                                 <div class="field">楼栋信息　</div>
-                                                <div class="value">项目共24栋楼，3844户</div>
+                                                <div class="value">${estate.estateInformation}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -672,11 +678,11 @@
 
                                     <div class="col-xs-2" id="myScrollspy">
                                         <ul class="nav nav-tabs nav-stacked affix" data-spy="affix" data-offset-top="100">
-                                            <li><a href="home/details#section-0">全部（54）</a></li>
-                                            <li><a href="home/details#section-1">效果图（12）</a></li>
-                                            <li><a href="home/details#section-2">样板间（20）</a></li>
-                                            <li><a href="home/details#section-3">环境规划图（1）</a></li>
-                                            <li><a href="home/details#section-4">楼盘实景图（21）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-0">全部（54）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-1">效果图（12）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-2">样板间（20）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-3">环境规划图（1）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-4">楼盘实景图（21）</a></li>
                                         </ul>
                                     </div>
 

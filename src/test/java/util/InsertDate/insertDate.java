@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
 import team.etop.xunfang.modules.mapper.EstateMapperGenerate;
 import team.etop.xunfang.modules.po.Estate;
-import team.etop.xunfang.search.mapper.DicMapper;
-import util.EstateUtil.getEstate;
+import team.etop.xunfang.search.mapper.Search_DicMapper;
+import util.EstateUtil.getEstateTaiNan;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ import java.util.List;
 public class insertDate {
 
     @Autowired
-    DicMapper search_DicMapper;
+    Search_DicMapper search_DicMapper;
 
     @Autowired
     EffectPictureMapperGenerate effectPictureMapper;
@@ -38,7 +38,7 @@ public class insertDate {
     @Test
     public void insertData(){
         for(int i=0;i<119;i++){
-            estateMapper.insert(getEstate.returnEstate(search_DicMapper,effectPictureMapper));
+            estateMapper.insert(getEstateTaiNan.returnEstate(search_DicMapper,effectPictureMapper));
         }
         List<Estate> estates = estateMapper.selectList(null);
         for(Estate estate:estates){
