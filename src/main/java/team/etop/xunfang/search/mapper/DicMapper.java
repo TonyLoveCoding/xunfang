@@ -13,6 +13,6 @@ import java.util.List;
  * @author: TingFeng Zhang
  * @date: 2017/8/15 18:15
  */
-public interface Search_DicMapper {
+public interface DicMapper {
     List<Dic> selectByType(String type);
 }

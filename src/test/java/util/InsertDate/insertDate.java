@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
 import team.etop.xunfang.modules.mapper.EstateMapperGenerate;
 import team.etop.xunfang.modules.po.Estate;
-import team.etop.xunfang.search.mapper.Search_DicMapper;
+import team.etop.xunfang.search.mapper.DicMapper;
 import util.EstateUtil.getEstate;
 
 import java.util.List;
@@ -27,7 +27,7 @@ import java.util.List;
 public class insertDate {
 
     @Autowired
-    Search_DicMapper search_DicMapper;
+    DicMapper search_DicMapper;
 
     @Autowired
     EffectPictureMapperGenerate effectPictureMapper;

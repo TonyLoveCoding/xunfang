@@ -38,6 +38,24 @@ public class EstateSearchBean {
     private Date createTime;
     private Float area;
     private String thumbnail;
+    private String sign;
+    private Long turnover;
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
+    public Long getTurnover() {
+        return turnover;
+    }
+
+    public void setTurnover(Long turnover) {
+        this.turnover = turnover;
+    }
 
     public Long getId() {
         return id;
