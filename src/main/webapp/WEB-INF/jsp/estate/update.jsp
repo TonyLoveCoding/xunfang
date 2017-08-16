@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="assets/estate/update/update.css">
     <script type="text/javascript" src="assets/estate/update/update.js"></script>
 </head>
-<body>
+<body style="height: auto">
 <div  class="container-fluid">
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
