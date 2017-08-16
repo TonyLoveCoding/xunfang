@@ -12,6 +12,87 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        a {
+            text-decoration: none;
+            out-line: none;
+            color: #ffffff
+        }
+        .userdata ul li a{
+            color: #000000!important;
+        }
+
+        a:hover, a:visited, a:link, a:active {
+            text-decoration: none;
+            out-line: none;
+            color: #ffffff;
+        }
+
+        .roleBtnShow {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .vernav {
+            width: 240px!important;
+            left: -10px!important;
+            top: 169px!important;
+        }
+        .ajax_btn{
+            margin-right: 5px;
+        }
+    </style>
+
+    <script>
+        var ID;
+        $(document).ready(function () {
+        $(document).on('click','.roleBtn',function(){
+            ID = $(this).attr("id");
+
+           alert(ID);
+
+            $.ajax({
+                url: "user/getRoleJson",
+                data: "ID="+ ID,
+                type: "GET",
+
+                success: function (result) {
+
+
+
+                    if(result.success){
+
+                        var roleList = result.map.roleJsonList;
+
+                        $("#updateRole").empty();
+                        $.each(roleList, function (index, item) {
+
+                              alert(item.role.roleName);
+                                var roleBtn = $("<button></button>")
+                                    .addClass("btn roleBtnShow")
+                                    .attr("type", "button")
+                                    .attr("id", item.role.id)
+                                    .append(item.role.roleName);
+
+                                $("#updateRole").append(roleBtn);
+
+
+                        });
+                    }
+                    else{
+
+                    }
+
+                }
+            });
+
+        });
+        });
+    </script>
+
+
+
 </head>
 <body>
 <%--查找用户框，增加用户按钮
@@ -95,6 +176,9 @@
 <%--用户列表--%>
 <div class="container-fluid">
     <div class="row clearfix">
+        <div class="col-md-10 column">
+
+        </div>
 
         <div class="col-md-10 column">
             <table class="table table-striped">
@@ -110,9 +194,7 @@
                         姓名
                     </th>
 
-                    <th>
-                        所拥有楼盘
-                    </th>
+
 
                     <th>
                         用户类型
@@ -126,6 +208,9 @@
                     <th>
                         用户状态
                     </th>
+                    <th>
+                        所拥有楼盘
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
@@ -136,25 +221,53 @@
                         <th>${user.id }</th>
                         <th>${user.account }</th>
                         <th>${user.username }</th>
-                        <th>${user.estatesRelevance }</th>
-                            <%--可做成按钮，进行楼盘管理--%>
                         <th>${user.rolesRelevance}</th>
                         <th>${user.createtime }</th>
                         <th>${user.updatetime }</th>
                         <th>${user.status }</th>
+                        <%--<th>${user.estatesRelevance }</th>--%>
+                            <%--可做成按钮，进行楼盘管理--%>
+                        <td><a class=" btn btn-info estateBtn" data-target="#findEstatesList${user.username}" data-toggle="modal" href="" id="${user.account}">查看楼盘</a></td>
+                            <%--查看樓盤模态框--%>
+                            <%--分配角色模态框--%>
+                        <div id="findEstatesList${user.username}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="form-wrap">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-title">
+                                            <h1 class="text-center">查看楼盘</h1>
+                                        </div>
 
-                        <td><a class="btn btn-success" data-target="#updateUser" data-toggle="modal"
-                               href="">修改</a></td>
-                        <td><a class="btn btn-danger" data-target="#deleteUser" data-toggle="modal"
-                               href="" method="post">删除</a></td>
-                        <td><a class="btn btn-info" data-target="#updateUserRole" data-toggle="modal"
-                               href="">分配角色</a></td>
-                        <td><a class="btn btn-info" data-target="#updateEstate" data-toggle="modal"
-                               href="">楼盘管理</a></td>
+                                        <form class="form-group" id="form00" name="form00"
+                                              action="" method="post">
+                                            <div class="modal-body" id="">
+                                                 暫未實現
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-primary" type="submit" id="tijiao222">提交
+                                                </button>
+                                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            <%--查看樓盤模态框结束--%>
+
+                        <td><a class="btn btn-success" data-target="#updateUser${user.username}" data-toggle="modal" href="">修改</a></td>
+                            <%--<td><a class="btn btn-danger" data-target="#deleteUser" data-toggle="modal" href="" method="post">删除</a></td>--%>
+                            <%--<td><a class="btn btn-info" data-target="#updateUserRole" data-toggle="modal"--%>
+                            <%--href="">分配角色</a></td>--%>
+                            <%--<td><a class="btn btn-info" data-target="#updateEstate" data-toggle="modal"--%>
+                            <%--href="">楼盘管理</a></td>--%>
 
 
                             <%--修改用户信息模态框--%>
-                        <div id="updateUser" class="modal fade" aria-labelledby="myModalLabel"  aria-hidden="true">
+                        <div id="updateUser${user.username}" class="modal fade" aria-labelledby="myModalLabel"  aria-hidden="true">
                             <div class="form-wrap">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -167,8 +280,7 @@
                                             <h1 class="text-center">修改</h1>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="form-group" id="form3" name="form3" action="/user/updateUser"
-                                                  method="post">
+                                            <form class="form-group" id="form3" name="form3" action="/user/updateUser" method="post" novalidate>
                                                 <div class="modal-body">
                                                     <label>账号:</label>
                                                     <input type="text" name="account" value=${user.account }>
@@ -210,11 +322,18 @@
                         </div>
                             <%--修改用户模态框结束--%>
 
+                        <td><a class="btn btn-danger" data-target="#deleteUser${user.username}" data-toggle="modal" href="" method="post">删除</a></td>
+
                             <%--删除用户模态框--%>
-                        <div id="deleteUser" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div id="deleteUser${user.username}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="form-wrap">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button class="close" data-dismiss="modal">
+                                                <span>&times;</span>
+                                            </button>
+                                        </div>
                                         <div class="modal-title">
                                             <h1 class="text-center">删除</h1>
                                         </div>
@@ -238,22 +357,23 @@
                         </div>
                             <%--删除用户模态框结束--%>
 
+
+                        <td><a class=" btn btn-info roleBtn" data-target="#updateUserRole${user.username}" data-toggle="modal" href="" id="${user.account}">分配角色</a></td>
+
                             <%--分配角色模态框--%>
-                        <div id="updateUserRole" class="modal fade" aria-labelledby="myModalLabel"
-                             aria-hidden="true">
+                        <div id="updateUserRole${user.username}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="form-wrap">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-title">
                                             <h1 class="text-center">分配角色</h1>
                                         </div>
-                                        <div class="modal-body">
+
                                             <form class="form-group" id="form0" name="form0"
-                                                  action="/user/updateUserRole" method="post">
-                                                <input type="hidden" name="userid" value=${user.userid }>
-                                                <input type="radio" name="type" value="管理员" checked>管理员
-                                                <input type="radio" name="type" value="教师"> 教师
-                                                <input type="radio" name="type" value="学生">学生</input>
+                                                  action="" method="post">
+                                                <div class="modal-body" id="updateRole">
+
+                                                </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-primary" type="submit" id="tijiao223">提交
                                                     </button>
@@ -261,7 +381,7 @@
                                                 </div>
 
                                             </form>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -274,11 +394,17 @@
                 </tbody>
             </table>
         </div>
+        <div class="col-md-4 colum">
+
+        </div>
 
     </div>
 </div>
 
 
 </body>
+
+
+
 
 </html>
