@@ -262,4 +262,13 @@ public class EstateController {
         modelAndView.addObject("esize",esize);
         return  modelAndView;
     }
+
+    @RequestMapping("/add")
+    public ModelAndView addEstate(EstateDto estateDto){
+        Date date=new Date();
+        estateDto.setUpdateTime(date);
+        //存入数据库
+        ModelAndView modelAndView=new ModelAndView("/estate/add");
+        return modelAndView;
+    }
 }

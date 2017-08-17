@@ -24,7 +24,12 @@
     <div class="row">
         <div class="col-md-4">
             <div class="input-group">
-                <input id="input_search_keyword" type="text" class="form-control input-lg" value="${search_keyword}"><span id="submit_search" class="input-group-addon btn btn-primary">搜索</span>
+                <input id="input_search_keyword" type="text" class="form-control input-md" value="${search_keyword}"><span id="submit_search" class="input-group-addon btn btn-primary">搜索</span>
+            </div>
+        </div>
+        <div class="col-md-1 col-md-offset-1">
+            <div class="btn-group center-block" role="group" aria-label="...">
+                <a class="btn btn-default center-block" href="/estate/add" role="button">添加楼盘</a>
             </div>
         </div>
     </div>
