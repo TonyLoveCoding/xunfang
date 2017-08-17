@@ -77,8 +77,9 @@ public class demoController {
 
     @RequestMapping("/resolveJsonObject")
     @ResponseBody
-    public void resolveJsonObject(@RequestParam("files") MultipartFile multipartFile,@RequestParam("cropData")String data)throws Exception{
+    public void resolveJsonObject(@RequestParam("files") MultipartFile multipartFile,@RequestParam("cropData")String data,@RequestParam("url")String url)throws Exception{
         System.out.println(data);
+        System.out.println(url);
         String[] datas=data.split("\"|[a-zA-Z]|\\{|\\}|\\:");
         String str="";
         for(String d:datas){
@@ -91,7 +92,7 @@ public class demoController {
         float h=Float.parseFloat(strings[3]);
         System.out.println(multipartFile.getOriginalFilename());
         String filepath=savePath+multipartFile.getOriginalFilename();
-        //multipartFile.transferTo(new File(filepath));
+        multipartFile.transferTo(new File(filepath));
         Thumbnails.of(filepath).sourceRegion((int)x,(int)y,(int)w,(int)h).size(300,300).keepAspectRatio(false).toFile(savePath+multipartFile.getOriginalFilename());
         System.out.println("上传完成");
     }

@@ -58,8 +58,9 @@
         var $form = $('<form action="' + opt.url + '" enctype="multipart/form-data" method="post" target="uploadIfr"/>');
         var $cropDataInp = $('<input type="hidden" name="cropData">');
         var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">添加图片</button></div>');
+        var $closewindow=$('<div class="crop-picker-wrap"><button type="button" class="crop-picker" data-dismiss="modal">关闭窗口</button></div>');
+        var $urlinput=$('输入图片链接：<input type="text" name="url" style="width: 100%">');
         var $fileInp = $('<input type="file" name="files" id="file" accept="' + accept + '" class="crop-picker-file">');
-        // var $inputvalue=$('<input type="text" name="url">');
         $picker.append($fileInp);
         $form.append($cropDataInp).append($picker);
 
@@ -67,11 +68,9 @@
         var $cropArea = $('<div class="crop-area-wrapper"></div>');
         var $cropPreviewWrap = $('<div class="crop-preview-wrapper"></div>');
         var $cropPreview = $('<div class="crop-preview-container"/>');
-        var $inputArea=$('<div class="crop-input-operate"></div>')
         $cropPreviewWrap.append($cropPreview);
         var $cropContainer = $('<div class="crop-container"/>').append($cropArea).append($cropPreviewWrap);
         $cropWrap.append($cropContainer);
-        $cropWrap.append($inputArea);
         /*var $saveSource = $('<div class="crop-save">上传原图</div>');
         var $save = $('<div class="crop-save">保存</div>');
         var $cropCancel = $('<div class="crop-cancel">取消</div>');
@@ -97,7 +96,6 @@
             $fileInp: $fileInp,
             $cropWrap: $cropWrap,
             $cropArea: $cropArea,
-            $inputArea:$inputArea,//
             $cropPreview: $cropPreview,
             // $saveSource: $saveSource,
             $save: $save,
@@ -162,24 +160,22 @@
     /* 主要裁剪流程 */
     function _crop($cropObj, fileInp) {
         var cropArea = $cropObj.$cropArea.get(0);
-        // var cropContainer=$cropObj.$cropWrap.get(0);
-        var inputArea=$cropObj.$inputArea.get(0);
+        var cropContainer=$cropObj.$cropWrap.get(0);
         var cropPreview = $cropObj.$cropPreview.get(0);
         var opt = _getOpt();
         var jcropOpt = opt.cropParam;
         cropArea.innerHTML = '';
         if(fileInp.files && fileInp.files[0]) {
             var img = document.createElement('img');
+
             //创建一个input的element
             var input=document.createElement('input');
             img.style.visibility = 'hidden';
             //先设置为不可见
             input.style.visibility='hidden';
             cropArea.appendChild(img);
-            //将input加入inputArea
-            if(document.getElementsByName("url").length<=1){
-                inputArea.appendChild(input);
-            }
+            //将input加入containter
+
 
             img.onload = function() {
                 /* 在图片加载完成之后便可以获取原图的大小，根据原图大小和预览区域大小获取图片的缩放比例以及原图在预览时所展现的大小 */
@@ -190,8 +186,6 @@
                 input.setAttribute('type','text');
                 input.setAttribute('name','url');
                 input.setAttribute('style','width:100%');
-                input.setAttribute('placeholder','请在这里输入图片链接');
-                input.setAttribute('id','inp_url');
 
                 if(!opt.isCrop) {return ;}
 
@@ -433,11 +427,6 @@
     function upload() {
         var id = (Crop.crop && Crop.crop.id) || '';
         var dom = document.getElementById(id);
-        var url=$("#inp_url").val();
-        if(url== undefined|| url=="" || url==null){
-            alert("图片链接不能为空");
-            return;
-        }
         if(!dom) {
             return ;
         }
@@ -460,7 +449,6 @@
         $cropObj.$fileInp.wrap('<form></form>');
         $cropObj.$fileInp.parent()[0].reset();
         $cropObj.$fileInp.unwrap();
-        $("input").attr("value","");
     };
 
     /* 销毁上传裁剪区域 */

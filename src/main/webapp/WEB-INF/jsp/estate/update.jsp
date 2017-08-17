@@ -173,7 +173,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="choosePhotos"></div>
+            <div id="p_choosePhotos"></div>
         </div>
     </div>
     <div class="row">
@@ -219,7 +219,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px">
+            <div id="r_choosePhotos"></div>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -241,20 +243,5 @@
         </div>
     </div>
 </div>
-
-<%--<!-- Modal -->--%>
-<%--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">--%>
-    <%--<div class="modal-dialog" role="document" style="width: auto">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-header">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
-                <%--<h4 class="modal-title" id="myModalLabel">添加图片</h4>--%>
-            <%--</div>--%>
-            <%--<div class="modal-body">--%>
-                <%--<div id="TCrop"></div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
 </body>
 </html>
