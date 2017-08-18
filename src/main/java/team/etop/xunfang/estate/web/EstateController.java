@@ -1,13 +1,17 @@
 package team.etop.xunfang.estate.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.estate.dto.*;
-import team.etop.xunfang.modules.po.Estate;
+import team.etop.xunfang.modules.po.*;
+import team.etop.xunfang.modules.service.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -38,6 +42,17 @@ public class EstateController {
     //楼盘图片保存地址
     @Value("${businessImage.savePath}")
     private String savePath;
+
+    @Autowired
+    EstateServiceGenerate estateServiceGenerate;
+    @Autowired
+    EffectPictureServiceGenerate effectPictureServiceGenerate;
+    @Autowired
+    PrototypeRoomPictureServiceGenerate prototypeRoomPictureServiceGenerate;
+    @Autowired
+    RealEstatePictureServiceGenerate realEstatePictureServiceGenerate;
+    @Autowired
+    SamplePlanningPictureServiceGenerate samplePlanningPictureServiceGenerate;
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
@@ -214,11 +229,16 @@ public class EstateController {
      * @return
      */
     @RequestMapping("/delete")
-    public ModelAndView deleteEstate(@RequestParam("id")long id,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
+    public Msg deleteEstate(@RequestParam("id")long id, @RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
+        Estate estate=estateServiceGenerate.selectById(id);
+        if(estate.getStatus()==1){
+            return Msg.fail("该楼盘以处于无用状态");
+        }
         //通过id句数据库中的对应信息的状态置为1，并存入数据库
+        estate.setStatus(1);
+        estateServiceGenerate.insertOrUpdate(estate);
         //调用queryEstate()方法用以刷新页面
-        this.queryEstate(1);
-        return null;
+        return Msg.success();
     }
 
     @RequestMapping("/update1")
@@ -263,12 +283,134 @@ public class EstateController {
         return  modelAndView;
     }
 
-    @RequestMapping("/add")
-    public ModelAndView addEstate(EstateDto estateDto){
-        Date date=new Date();
-        estateDto.setUpdateTime(date);
-        //存入数据库
+    @RequestMapping(value = "/add",method = RequestMethod.GET)
+    public ModelAndView addEstateView()throws Exception{
         ModelAndView modelAndView=new ModelAndView("/estate/add");
         return modelAndView;
+    }
+
+    @RequestMapping(value = {"/add","/update"},method = RequestMethod.POST)
+    public Msg addEstate(EstateDto estateDto) throws Exception{
+        Estate estate=change(estateDto);
+        List<EffectPictureDto> effectPictureDtoList=estateDto.getEffectPictureDtoList();
+        String effective_photos =saveEffectPicture(effectPictureDtoList);
+        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=estateDto.getPrototypeRoomPictureDtoList();
+        String prototype_room=savePrototypeRoomPicture(prototypeRoomPictureDtoList);
+        List<RealEststePictureDto> realEststePictureDtoList=estateDto.getRealEststePictureDtoList();
+        String live_action=saveRealEststePicture(realEststePictureDtoList);
+        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=estateDto.getSamplePlanningPictureDtoList();
+        String sample_plate=saveSamplePlanningPicture(samplePlanningPictureDtoList);
+        estate.setSamplePlate(sample_plate);
+        estate.setLiveAction(live_action);
+        estate.setPrototypeRoom(prototype_room);
+        estate.setEffectivePhotos(effective_photos);
+        estateServiceGenerate.insertOrUpdate(estate);
+        return Msg.success();
+    }
+
+    public Estate change(EstateDto estateDto) throws Exception{
+        Date date=new Date();
+        long times=date.getTime();
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String d=format.format(times);
+        date=format.parse(d);
+        Estate estate=new Estate();
+        estate.setStatus(0);
+        estate.setVisitTimes((long)0);
+        estate.setMinPrice(estateDto.getMinPrice());
+        estate.setMaxPrice(estateDto.getMaxPrice());
+        estate.setDeveloperQuotes(estateDto.getDeveloperQuotes());
+        estate.setLocation(estateDto.getLocation());
+        estate.setType(estateDto.getType());
+        estate.setHouseType(estateDto.getHouseType());
+        estate.setFeature(estateDto.getFeature());
+        estate.setEstateName(estateDto.getEstateName());
+        estate.setEstateAddress(estateDto.getEstateAddress());
+        estate.setProperty(estateDto.getProperty());
+        estate.setDeveloper(estateDto.getDeveloper());
+        estate.setSaleStatus(estateDto.getSaleStatus());
+        estate.setFirstDelivery(estateDto.getFirstDelivery());
+        estate.setLatestOpening(estateDto.getLatestOpening());
+        estate.setPropertyRights(estateDto.getPropertyRights());
+        estate.setTakeTime(estateDto.getTakeTime());
+        estate.setCompany(estateDto.getCompany());
+        estate.setPropertyCost(estateDto.getPropertyCost());
+        estate.setPowerType(estateDto.getPowerType());
+        estate.setGreenRate(estateDto.getGreenRate());
+        estate.setParkingSpaces(estateDto.getParkingSpaces());
+        estate.setDecoration(estateDto.getDecoration());
+        estate.setEstateInformation(estateDto.getEstateInformation());
+        estate.setCreateTime(date);
+        estate.setPlotRatio(estateDto.getPlotRatio());
+        estate.setArea(estateDto.getArea());
+        return estate;
+    }
+
+    public String saveEffectPicture(List<EffectPictureDto> list ){
+        String ids="";
+        String k="";
+        for(EffectPictureDto e:list){
+            EffectPicture picture=new EffectPicture();
+            picture.setName(e.getName());
+            effectPictureServiceGenerate.insert(picture);
+        }
+        List<EffectPicture> elist=effectPictureServiceGenerate.selectList(null);
+        for(EffectPicture e:elist){
+            ids+=k;
+            ids+=e.getId();
+            k=",";
+        }
+        return ids;
+    }
+
+    public String savePrototypeRoomPicture(List<PrototypeRoomPictureDto> list ){
+        String ids="";
+        String k="";
+        for(PrototypeRoomPictureDto p:list){
+            PrototypeRoomPicture picture=new PrototypeRoomPicture();
+            picture.setName(p.getName());
+            prototypeRoomPictureServiceGenerate.insert(picture);
+        }
+        List<PrototypeRoomPicture> plist=prototypeRoomPictureServiceGenerate.selectList(null);
+        for(PrototypeRoomPicture p:plist){
+            ids+=k;
+            ids+=p.getId();
+            k=",";
+        }
+        return ids;
+    }
+
+    public String saveRealEststePicture(List<RealEststePictureDto> list ){
+        String ids="";
+        String k="";
+        for(RealEststePictureDto r:list){
+            RealEstatePicture picture=new RealEstatePicture();
+            picture.setName(r.getName());
+            realEstatePictureServiceGenerate.insert(picture);
+        }
+        List<RealEstatePicture> rlist=realEstatePictureServiceGenerate.selectList(null);
+        for(RealEstatePicture r:rlist){
+            ids+=k;
+            ids+=r.getId();
+            k=",";
+        }
+        return ids;
+    }
+
+    public String saveSamplePlanningPicture(List<SamplePlanningPictureDto> list ){
+        String ids="";
+        String k="";
+        for(SamplePlanningPictureDto s:list){
+            SamplePlanningPicture picture=new SamplePlanningPicture();
+            picture.setName(s.getName());
+            samplePlanningPictureServiceGenerate.insert(picture);
+        }
+        List<SamplePlanningPicture> slist=samplePlanningPictureServiceGenerate.selectList(null);
+        for(SamplePlanningPicture s:slist){
+            ids+=k;
+            ids+=s.getId();
+            k=",";
+        }
+        return ids;
     }
 }

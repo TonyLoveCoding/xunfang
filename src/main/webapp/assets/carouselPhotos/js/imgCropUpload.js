@@ -21,6 +21,7 @@
         isCrop: true,
         /* 图片上传完成之后的回调，无论是否成功上传 */
         onComplete: function(data) {
+            cancel();
             console.log('upload complete!');
         }
     };
@@ -177,7 +178,7 @@
             input.style.visibility='hidden';
             cropArea.appendChild(img);
             //将input加入inputArea
-            if(document.getElementsByName("url").length<=1){
+            if(document.getElementById("inp_url")==null){
                 inputArea.appendChild(input);
             }
 
@@ -192,7 +193,6 @@
                 input.setAttribute('style','width:100%');
                 input.setAttribute('placeholder','请在这里输入图片链接');
                 input.setAttribute('id','inp_url');
-
                 if(!opt.isCrop) {return ;}
 
                 var cropPreviewImg = img.cloneNode(true);
@@ -460,7 +460,7 @@
         $cropObj.$fileInp.wrap('<form></form>');
         $cropObj.$fileInp.parent()[0].reset();
         $cropObj.$fileInp.unwrap();
-        $("input").attr("value","");
+        $("#inp_url").remove();
     };
 
     /* 销毁上传裁剪区域 */

@@ -68,6 +68,14 @@
             <input type="text" name="developer" value="${EstateDto.developer}">
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">面积：</div>
+        </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="developer" value="${EstateDto.area}">
+        </div>
+    </div>
     <br>
     <%--销售信息模块--%>
     <div class="row">
@@ -237,7 +245,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="p_choosePhotos"></div>
+            <div id="choosePhotos"></div>
         </div>
     </div>
     <div class="row">
@@ -262,7 +270,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px">
+            <div id="choosePhotos"></div>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -284,7 +294,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="r_choosePhotos"></div>
+            <div id="choosePhotos"></div>
         </div>
     </div>
     <div class="row">

@@ -1,11 +1,15 @@
 package team.etop.xunfang.carouselPhotos.dto;
 
+import com.baomidou.mybatisplus.annotations.TableName;
+import team.etop.xunfang.modules.po.CarouselPhotos;
+
 import java.util.Date;
 
 /**
  * Created by asus on 2017/8/9.
  */
-public class CarouselPhotosDto {
+@TableName("carousel_photos")
+public class CarouselPhotosDto extends CarouselPhotos{
     private Long id;
     private String name;
     private String url;
@@ -27,54 +31,6 @@ public class CarouselPhotosDto {
     }
 
     public CarouselPhotosDto() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Date getUpdatetime() {
-        return updatetime;
-    }
-
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
     }
 
     @Override
