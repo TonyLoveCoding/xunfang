@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="/assets/home/search/header.js"></script>
     <link href="/assets/home/search/header.css" rel="stylesheet">
     <link href="/assets/home/search/search.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/home/search/zxf_page.css"/>
+    <script type="text/javascript" src="/assets/home/search/header.js"></script>
+    <script src="/assets/home/search/zxf_page.js" type="text/javascript"></script>
+    <script src="/assets/home/search/search.js" type="text/javascript"></script>
     <title>寻房网</title>
 </head>
 <body>
+<form action="/home/search" method="get" id="form_search">
+    <input id="inp_hid_pn" type="hidden" name="pn" value="${SearchPageMsg.current}">
+    <input id="inp_hid_keyword" type="hidden" name="keyWord" value="${SearchPageMsg.keyWord}">
+    <input id="inp_hid_saleStatus" type="hidden" name="saleStatus" value="${SearchPageMsg.saleStatus}">
+    <input id="inp_hid_location" type="hidden" name="location" value="${SearchPageMsg.location}">
+    <input id="inp_hid_totalPrices" type="hidden" name="totalPrices" value="${SearchPageMsg.totalPrices}">
+    <input id="inp_hid_type" type="hidden" name="type" value="${SearchPageMsg.type}">
+    <input id="inp_hid_houseType" type="hidden" name="houseType" value="${SearchPageMsg.houseType}">
+    <input id="inp_hid_feature" type="hidden" name="feature" value="${SearchPageMsg.feature}">
+    <input id="inp_hid_unitPrice" type="hidden" name="unitPrice" value="${SearchPageMsg.unitPrice}">
+    <input id="inp_hid_area" type="hidden" name="area" value="${SearchPageMsg.area}">
+</form>
 <div class="container-fluid">
     <%--头部导航栏--%>
     <div class="row">
@@ -20,12 +35,12 @@
                         <div class="navbar-header">
                             <a class="navbar-brand" href="#">寻房网</a>
                         </div>
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <div class="collapse navbar-collapse">
                             <form class="navbar-form navbar-left" role="search">
                                 <div class="form-group">
-                                    <input type="text" class="form-control"/>
+                                    <input id="inp_coll_keyword" type="text" class="form-control" value="${SearchPageMsg.keyWord}"/>
                                 </div>
-                                <button type="submit" class="btn btn-danger"><span
+                                <button type="button" class="btn btn-danger" id="btn_coll_keyword"><span
                                         class="glyphicon glyphicon-search"></span> 找房
                                 </button>
                             </form>
@@ -43,9 +58,6 @@
                                 <li>
                                     <a href="#">南沙保利城</a>
                                 </li>
-                                <li>
-                                    <a href="#">富力伯爵山</a>
-                                </li>
                             </ul>
                         </div>
                     </ul>
@@ -61,13 +73,13 @@
                     <a class="navbar-brand" href="#">寻房网</a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse">
 
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control"/>
+                            <input id="inp_nav_keyword" type="text" class="form-control" value="${SearchPageMsg.keyWord}"/>
                         </div>
-                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span> 找房
+                        <button id="btn_nav_keyword" type="button" class="btn btn-danger"><span class="glyphicon glyphicon-search"></span> 找房
                         </button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
@@ -84,12 +96,6 @@
                         </li>
                         <li>
                             <a href="#">南沙保利城</a>
-                        </li>
-                        <li>
-                            <a href="#">富力伯爵山</a>
-                        </li>
-                        <li>
-                            <a href="#">佳兆业城市广场</a>
                         </li>
                     </ul>
                 </div>
@@ -110,21 +116,10 @@
             <div class="sel_item">
                 <div class="head_SearchCondition">位置：</div>
                 <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition">
-                        <li>不限</li>
-                        <li>南沙</li>
-                        <li>黄埔</li>
-                        <li>花都</li>
-                        <li>增城</li>
-                        <li>番禺</li>
-                        <li>白云</li>
-                        <li>天河</li>
-                        <li>荔湾</li>
-                        <li>海珠</li>
-                        <li>从化</li>
-                        <li>越秀</li>
-                        <li>广州</li>
-                        <li>周边</li>
+                    <ul class="ul_item_SearchCondition location">
+                        <c:forEach var="location" items="${locations}">
+                            <li><a href="javascript:void(0);" name="${location.code}" class="a_location">${location.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -134,19 +129,12 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-1">
             <div class="sel_item">
-                <div class="head_SearchCondition">总价：</div>
+                <div class="head_SearchCondition">最低总价：</div>
                 <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition">
-                        <li>不限</li>
-                        <li>小于100万</li>
-                        <li>100-150万</li>
-                        <li>150-200万</li>
-                        <li>200-250万</li>
-                        <li>250-300万</li>
-                        <li>300-500万</li>
-                        <li>500-800万</li>
-                        <li>800-1000万</li>
-                        <li>大于1000万</li>
+                    <ul class="ul_item_SearchCondition total_prices">
+                        <c:forEach var="total_prices" items="${total_pricess}">
+                            <li><a href="javascript:void(0);" name="${total_prices.code}"  class="a_total_prices">${total_prices.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -162,11 +150,10 @@
             <div class="sel_item">
                 <div class="head_SearchCondition">类型：</div>
                 <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition">
-                        <li>不限</li>
-                        <li>住宅</li>
-                        <li>别墅</li>
-                        <li>商业</li>
+                    <ul class="ul_item_SearchCondition type">
+                        <c:forEach var="type" items="${types}">
+                            <li><a href="javascript:void(0);" name="${type.code}" class="a_type">${type.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -178,13 +165,10 @@
             <div class="sel_item">
                 <div class="head_SearchCondition">户型：</div>
                 <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition">
-                        <li>不限</li>
-                        <li>一居</li>
-                        <li>二居</li>
-                        <li>三居</li>
-                        <li>四居</li>
-                        <li>五居及以上</li>
+                    <ul class="ul_item_SearchCondition houseType">
+                        <c:forEach var="houseType" items="${houseTypes}">
+                            <li><a href="javascript:void(0);" name="${houseType.code}" class="a_houseType">${houseType.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -196,14 +180,10 @@
             <div class="sel_item">
                 <div class="head_SearchCondition">特色：</div>
                 <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition">
-                        <li>不限</li>
-                        <li>小户型</li>
-                        <li>临地铁</li>
-                        <li>精装修</li>
-                        <li>现房</li>
-                        <li>自由购</li>
-                        <li>品牌地产</li>
+                    <ul class="ul_item_SearchCondition feature">
+                        <c:forEach var="feature" items="${features}">
+                            <li><a href="javascript:void(0);" name="${feature.code}" class="a_feature">${feature.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -215,15 +195,10 @@
             <div class="sel_item">
                 <div class="head_SearchCondition">单价：</div>
                 <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition">
-                        <li>不限</li>
-                        <li>小于1万</li>
-                        <li>1万-1.5万</li>
-                        <li>1.5万-2万</li>
-                        <li>2万-2.5万</li>
-                        <li>2.5万-3万</li>
-                        <li>3万-4万</li>
-                        <li>大于4万</li>
+                    <ul class="ul_item_SearchCondition unit_price">
+                        <c:forEach var="unit_price" items="${unit_prices}">
+                            <li><a href="javascript:void(0);" name="${unit_price.code}" class="a_unit_price">${unit_price.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -237,16 +212,12 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-1">
             <div class="sel_item">
-                <div class="head_SearchCondition">单价：</div>
+                <div class="head_SearchCondition">面积：</div>
                 <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition">
-                        <li>不限</li>
-                        <li>大于50m²</li>
-                        <li>50m²-80m²</li>
-                        <li>80m²-120m²</li>
-                        <li>120m²-140m²</li>
-                        <li>140m²-160m²</li>
-                        <li>小于160m²</li>
+                    <ul class="ul_item_SearchCondition area">
+                        <c:forEach var="area" items="${areas}">
+                            <li><a href="javascript:void(0);" name="${area.code}"  class="a_area">${area.name}</a></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -258,13 +229,15 @@
     </div>
     <%--中间列表--%>
     <div class="row middle_sel">
-        <div class="col-md-1 col-md-offset-1">
+        <div class="rad_sale col-md-2 col-md-offset-1">
             <div class="radio radio_sall_status">
-                <label><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>在售</label>
+                <label><input type="radio" name="saleRadios" id="optionsRadios1" class="rad_sell" value="onSale">在售</label>
             </div>
-            <div class="radio radio_sall_status"><label style="margin-left:3px"><input type="radio" name="optionsRadios"
-                                                                                       id="optionsRadios2"
-                                                                                       value="option2">待售</label></div>
+            <div class="radio radio_sall_status">
+                <label style="margin-left:3px"><input type="radio" name="saleRadios" class="rad_sell" id="optionsRadios2" value="ForSale">待售</label></div>
+            <div class="radio radio_sall_status">
+                <label><input type="radio" name="saleRadios" id="optionsRadios3" class="rad_sell" value="none">所有</label>
+            </div>
         </div>
         <div class="col-md-2">
             <div class="sortCondition">总价</div>
@@ -273,16 +246,145 @@
             <div class="sortCondition">成交量</div>
         </div>
         <div class="col-md-2">
-            <div class="sortCondition">共找到<span id="sortCondition_sum">1276</span>个符合条件的楼盘</div>
+            <div class="sortCondition">共找到<span id="sortCondition_sum">${SearchPageMsg.foundNum}</span>个符合条件的楼盘</div>
         </div>
     </div>
     <%--分割线--%>
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
-            <div id="line_sortCondition"></div>
+            <div class="line_sortCondition"></div>
+        </div>
+    </div>
+    <%--楼盘列表--%>
+    <c:forEach items="${EstateList}" var="Estate">
+        <div class="row search_list">
+            <div class="col-md-2 col-md-offset-1">
+                <a href="${Estate.estateDetailsURL}">
+                    <img src="http://othgjp7hs.bkt.clouddn.com/17-8-14/91109352.jpg" class="estateThumbnail">
+                </a>
+
+            </div>
+            <div class="col-md-7">
+                <div class="row search_list_detail">
+                    <div class="col-md-12">
+                        <div class="estateName">${Estate.estateName}</div>
+                        <div class="tag-sale"><c:choose><c:when
+                                test="${Estate.saleStatus}">在售</c:when><c:otherwise>待售</c:otherwise></c:choose></div>
+                    </div>
+                </div>
+                <div class="row search_list_detail">
+                    <div class="col-md-12">
+                        <div class="glyphicon glyphicon-map-marker nomral_div"></div>
+                        <div class="estateAdress nomral_div">${Estate.estateAddress}</div>
+                    </div>
+                </div>
+                <div class="row search_list_detail_other">
+                    <div class="col-md-7">
+                        <div class="estateHouseType">${Estate.houseType}</div>
+                    </div>
+                    <div class="col-md-5 min_max_price">
+                        <div class="nomral_div">参考总价:</div>
+                        <div class="estateMinPrice nomral_div">${Estate.minPrice}</div>
+                        <div class="price_sign nomral_div"> ~</div>
+                        <div class="estateMaxPrice nomral_div">${Estate.maxPrice}</div>
+                    </div>
+                </div>
+                <div class="row search_list_detail">
+                    <div class="col-md-7">
+                        <div class="estateSign nomral_div">${Estate.sign}</div>
+                        <div class="estateSign nomral_div">${Estate.sign}</div>
+                        <div class="estateSign nomral_div">${Estate.sign}</div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="nomral_div DeveloperQuotes">开发商报价：</div>
+                        <div class="DeveloperQuotes estateDeveloperQuotes nomral_div">${Estate.developerQuotes}</div>
+                        <div class="nomral_div DeveloperQuotes">元/平米</div>
+                    </div>
+                </div>
+                <div class="row search_list_detail">
+                    <div class="col-md-12">
+                        <div class="nomral_div visitTime">访问次数:</div>
+                        <div class="nomral_div estateVisitTime">${Estate.visitTimes}</div>
+                    </div>
+                </div>
+                <div class="row search_list_detail">
+                    <div class="col-md-12">
+                        <div class="nomral_div visitTime">成交量:</div>
+                        <div class="nomral_div estateVisitTime">${Estate.turnover}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-1">
+                <div class="line_sortCondition"></div>
+            </div>
+        </div>
+    </c:forEach>
+
+
+    <%--分页--%>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="zxf_pagediv"></div>
         </div>
     </div>
 
+    <%--分割线-你可能感兴趣的楼盘--%>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="tip">你可能感兴趣的楼盘</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1" style="margin-bottom: 20px">
+            <div class="line_sortCondition"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <c:forEach items="${RecommendEstate}" var="Recommend">
+            <div class="col-md-2">
+                <div class="RecommendEstate">
+                    <div class="tip_img">
+                        <a href="${Recommend.estateDetailsURL}"> <img
+                                src="http://othgjp7hs.bkt.clouddn.com/17-8-14/91109352.jpg" class="tip_estateThumbnail"></a>
+                    </div>
+
+                    <div class="bg_RecommendEstate">
+                        <div class="title_RecommendEstate">
+                            <h4>
+                                <a href="${Recommend.estateDetailsURL}">${Recommend.estateName}</a>
+                            </h4>
+                        </div>
+                        <div class="price_RecommendEstate">开发商报价：
+                            <div class="inner_price_RecommendEstate nomral_div">${Recommend.developerQuotes}元/平米</div>
+                        </div>
+                        <div class="info_RecommendEstate">楼盘户型：
+                            <div class="inner_info_RecommendEstate nomral_div">${Recommend.houseType}</div>
+                        </div>
+                        <div class="info_RecommendEstate">楼盘地址：
+                            <div class="info_RecommendEstate nomral_div">${Recommend.estateAddress}</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </c:forEach>
+    </div>
 </div>
 </body>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".zxf_pagediv").createPage({
+            pageNum: ${SearchPageMsg.pageNum},//总页码
+            current: ${SearchPageMsg.current},//当前页
+            shownum: ${SearchPageMsg.shownum},//每页显示个数
+            backfun: function (e) {
+                $("#inp_hid_pn").attr("value", e.current);
+                $("#form_search").submit();
+            }
+        });
+    });
+</script>
 </html>

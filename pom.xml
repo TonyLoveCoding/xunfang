@@ -31,17 +31,20 @@
         <ehcache.version>2.10.4</ehcache.version>
         <mybatis-ehcache.version>1.0.0</mybatis-ehcache.version>
         <pagehelper.version>5.0.4</pagehelper.version>
+        <thumbnailator.version>0.4.8</thumbnailator.version>
+        <solr-solrj.version>6.6.0</solr-solrj.version>
+        <log4j-core>2.8.2</log4j-core>
     </properties>
     <dependencies>
         <dependency>
             <groupId>net.coobird</groupId>
             <artifactId>thumbnailator</artifactId>
-            <version>0.4.8</version>
+            <version>${thumbnailator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
-            <version>6.6.0</version>
+            <version>${solr-solrj.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
@@ -146,12 +149,23 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <!--日志-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${log4j-core}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j-api.version}</version>
         </dependency>
-
         <!--springmvc支持-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -179,13 +193,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
-        </dependency>
-        <!--裁剪图片插件-->
-        <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
-        <dependency>
-            <groupId>net.coobird</groupId>
-            <artifactId>thumbnailator</artifactId>
-            <version>0.4.8</version>
         </dependency>
     </dependencies>
     <build>

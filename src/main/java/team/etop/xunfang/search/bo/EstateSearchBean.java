@@ -12,7 +12,6 @@ import java.util.Date;
  */
 public class EstateSearchBean {
     private Long id;
-    private Integer status;
     @TableField("visit_times")
     private Long visitTimes;
     @TableField("min_price")
@@ -31,7 +30,7 @@ public class EstateSearchBean {
     @TableField("estate_address")
     private String estateAddress;
     @TableField("sale_status")
-    private Integer saleStatus;
+    private Boolean saleStatus;
     @TableField("update_time")
     private Date updateTime;
     @TableField("create_time")
@@ -40,6 +39,15 @@ public class EstateSearchBean {
     private String thumbnail;
     private String sign;
     private Long turnover;
+    private String estateDetailsURL;
+
+    public String getEstateDetailsURL() {
+        return estateDetailsURL;
+    }
+
+    public void setEstateDetailsURL(String estateDetailsURL) {
+        this.estateDetailsURL = estateDetailsURL;
+    }
 
     public String getSign() {
         return sign;
@@ -63,14 +71,6 @@ public class EstateSearchBean {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
     }
 
     public Long getVisitTimes() {
@@ -153,11 +153,11 @@ public class EstateSearchBean {
         this.estateAddress = estateAddress;
     }
 
-    public Integer getSaleStatus() {
+    public Boolean getSaleStatus() {
         return saleStatus;
     }
 
-    public void setSaleStatus(Integer saleStatus) {
+    public void setSaleStatus(Boolean saleStatus) {
         this.saleStatus = saleStatus;
     }
 
@@ -197,7 +197,6 @@ public class EstateSearchBean {
     public String toString() {
         return "EstateSearchBean{" +
                 "id=" + id +
-                ", status=" + status +
                 ", visitTimes=" + visitTimes +
                 ", minPrice=" + minPrice +
                 ", maxPrice=" + maxPrice +
