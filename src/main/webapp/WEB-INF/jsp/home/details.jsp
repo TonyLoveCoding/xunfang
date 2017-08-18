@@ -8,6 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,9 +17,20 @@
 
     <script src="/assets/home/index/js/header.js" type="text/javascript"></script>
     <script src="/assets/home/details/js/details.js" type="text/javascript"></script>
+    <script src="/assets/home/lightGallery/js/lightGallery.js" type="text/javascript"></script>
 
     <link rel="stylesheet" href="/assets/home/index/css/header.css">
     <link rel="stylesheet" href="/assets/home/details/css/details.css">
+    <link rel="stylesheet" type="text/css" href="/assets/home/lightGallery/css/lightGallery.css" />
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#auto-loop-1").lightGallery();
+            $("#auto-loop-2").lightGallery();
+            $("#auto-loop-3").lightGallery();
+            $("#auto-loop-4").lightGallery();
+        });
+    </script>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="50">
 
@@ -244,7 +256,8 @@
                                                 <b>楼盘地址：</b>${estate.estateAddress}
                                             </li>
                                             <li>
-                                                <b>最新开盘时间：</b>${estate.latestOpening}
+                                                <b>最新开盘时间：</b>
+                                                <fmt:formatDate value="${estate.latestOpening}" pattern="yyyy年MM月dd日HH点" />
                                             </li>
                                         </ul>
                                     </div>
@@ -327,11 +340,15 @@
                                             </li>
                                             <li>
                                                 <div class="field">最新开盘　</div>
-                                                <div class="value">${estate.latestOpening}</div>
+                                                <div class="value">
+                                                    <fmt:formatDate value="${estate.latestOpening}" pattern="yyyy年MM月dd日HH点" />
+                                                </div>
                                             </li>
                                             <li>
                                                 <div class="field">最早交房　</div>
-                                                <div class="value">${estate.firstDelivery}</div>
+                                                <div class="value">
+                                                    <fmt:formatDate value="${estate.firstDelivery}" pattern="yyyy年MM月dd日HH点" />
+                                                </div>
                                             </li>
                                             <li>
                                                 <div class="field">楼盘户型　</div>
@@ -343,7 +360,9 @@
                                             </li>
                                             <li>
                                                 <div class="field">拿地时间　</div>
-                                                <div class="value">${estate.takeTime}</div>
+                                                <div class="value">
+                                                    <fmt:formatDate value="${estate.takeTime}" pattern="yyyy年MM月dd日HH点" />
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
@@ -394,284 +413,73 @@
                         <div class="row clearfix tab-items">
                             <div class="col-md-12 column" >
                                 <div class="row">
-                                    <div class="col-xs-10 pic-show">
+                                    <div class="col-xs-10">
                                         <h2>效果图（12）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                    <a href="home/details#">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
+                                        <div id="auto-loop-1" class="row gallery">
+                                            <c:forEach begin="0" end="11">
+                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect">
                                                         <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
+                                                        <a href="home/details#">
+                                                            <div class="overlay">
+                                                                <h2>实地蔷薇国际效果图</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
 
-                                        <div class="row" >
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <hr>
 
                                         <h2 id="section-2">样板间（20）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
+                                        <div id="auto-loop-2" class="row">
+                                            <c:forEach begin="0" end="19">
+                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect pic-show">
+                                                        <a href="home/details#">
+                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                            <div class="overlay">
+                                                                <h2>实地蔷薇国际样板间</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
                                         <hr>
 
                                         <h2 id="section-3">环境规划图（1）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际环境规划图</h2>
-                                                        </div>
-                                                    </a>
+                                        <div id="auto-loop-3" class="row">
+                                            <c:forEach begin="0" end="0">
+                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect pic-show">
+                                                        <a href="home/details#">
+                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                            <div class="overlay">
+                                                                <h2>实地蔷薇国际环境规划图</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
-
                                         <hr>
 
                                         <h2 id="section-4">楼盘实景图（21）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
+                                        <div id="auto-loop-4" class="row">
+                                            <c:forEach begin="0" end="20">
+                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect pic-show">
+                                                        <a href="home/details#">
+                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                            <div class="overlay">
+                                                                <h2>实地蔷薇楼盘实景图</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
                                         <hr>
                                     </div>

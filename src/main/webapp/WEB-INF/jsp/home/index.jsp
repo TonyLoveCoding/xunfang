@@ -274,32 +274,32 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <a href="/home/details">
+                                <a href="/home/details/${list.get(0).id}">
                                     <img alt="" src="/assets/home/index/image/default.jpg" />
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        1、实地蔷薇国际
+                                        1、${list.get(0).estateName}
                                     </h3>
                                 </div>
                             </div>
                             <div class="item">
-                                <a href="/home/details">
+                                <a href="/home/details/${list.get(1).id}">
                                     <img alt="" src="/assets/home/index/image/default1.jpg" />
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        2、富力伯爵山
+                                        2、${list.get(1).estateName}
                                     </h3>
                                 </div>
                             </div>
                             <div class="item">
-                                <a href="/home/details">
+                                <a href="/home/details/${list.get(2).id}">
                                     <img alt="" src="/assets/home/index/image/default2.jpg" />
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        3、实地常春藤
+                                        3、${list.get(2).estateName}
                                     </h3>
                                 </div>
                             </div>
