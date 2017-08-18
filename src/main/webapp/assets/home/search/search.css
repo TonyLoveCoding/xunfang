@@ -20,7 +20,7 @@ div{
 	height: 2px;
 
 }
-#line_sortCondition{
+.line_sortCondition{
 	
 	background-color: #eaeaea;;
 	width: 100%;
@@ -183,4 +183,13 @@ padding-top: 5px;
     font-style: normal;
     font-size: 18px;
     font-weight: 700;
+}
+.zxf_pagediv{
+	margin-top: 40px;
+}
+a:link,a:visited,a:hover,a:active {
+	text-decoration: none;
+}
+a:hover{
+	color: #f44336;
 }

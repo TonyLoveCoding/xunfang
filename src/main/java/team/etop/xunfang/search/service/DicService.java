@@ -1,9 +1,5 @@
-package team.etop.xunfang.search.mapper;
+package team.etop.xunfang.search.service;
 
-
-
-
-import org.springframework.stereotype.Component;
 import team.etop.xunfang.modules.po.Dic;
 
 import java.util.List;
@@ -12,9 +8,8 @@ import java.util.List;
  * @version V1.0
  * @Description:
  * @author: TingFeng Zhang
- * @date: 2017/8/15 18:15
+ * @date: 2017/8/18 10:36
  */
-@Component
-public interface DicMapper {
+public interface DicService {
     List<Dic> selectByType(String type);
 }
