@@ -25,8 +25,17 @@ public class SearchPageMsg {
     private String feature;
     private String unitPrice;
     private String area;
+    private String sort;
 
-    public SearchPageMsg(Long pageNum, Long current, Integer shownum, String keyWord, Long foundNum, String saleStatus, String location, String totalPrices, String type, String houseType, String feature, String unitPrice, String area) {
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
+    public SearchPageMsg(Long pageNum, Long current, Integer shownum, String keyWord, Long foundNum, String saleStatus, String location, String totalPrices, String type, String houseType, String feature, String unitPrice, String area, String sort) {
         this.pageNum = pageNum;
         this.current = current;
         this.shownum = shownum;
@@ -40,6 +49,7 @@ public class SearchPageMsg {
         this.feature = feature;
         this.unitPrice = unitPrice;
         this.area = area;
+        this.sort = sort;
     }
 
     public String getLocation() {

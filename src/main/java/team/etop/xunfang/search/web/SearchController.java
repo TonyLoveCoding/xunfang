@@ -47,16 +47,17 @@ public class SearchController {
                                 @RequestParam(value = "houseType",defaultValue = "none")String houseType,
                                 @RequestParam(value = "feature",defaultValue = "none")String feature,
                                 @RequestParam(value = "unitPrice",defaultValue = "none")String unitPrice,
-                                @RequestParam(value = "area",defaultValue = "none")String area) throws Exception {
+                                @RequestParam(value = "area",defaultValue = "none")String area,
+                                @RequestParam(value = "sort",defaultValue = "none")String sort) throws Exception {
         ModelAndView modelAndView=new ModelAndView("/home/search");
-        SearchInfo search = estateSearchService.search(pn,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area);
+        SearchInfo search = estateSearchService.search(pn,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort);
         List<RecommendEstate> RecommendEstate =
                 estateSearchService.getRecommendEstate();
         SearchUtil.AddType(modelAndView,dicService);
         if(search.getEstateSearchBeanList().size()<=0){
-            modelAndView.addObject("SearchPageMsg", new SearchPageMsg(0L,1L,0,keyWord,0L,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area));
+            modelAndView.addObject("SearchPageMsg", new SearchPageMsg(0L,1L,0,keyWord,0L,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort));
         }else{
-            modelAndView.addObject("SearchPageMsg", SearchUtil.GetPage(pn,search.getNumFound(),shownum,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area));
+            modelAndView.addObject("SearchPageMsg", SearchUtil.GetPage(pn,search.getNumFound(),shownum,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort));
         }
         modelAndView.addObject("RecommendEstate",RecommendEstate);
         modelAndView.addObject("EstateList",search.getEstateSearchBeanList());

@@ -97,12 +97,12 @@ public class SearchUtil {
         return solrInputFields;
     }
 
-    public static SearchPageMsg GetPage(Long pn, Long numFound, Integer shownum, String keyWord, String saleStatus, String location, String totalPrices, String type, String houseType, String feature, String unitPrice, String area) {
+    public static SearchPageMsg GetPage(Long pn, Long numFound, Integer shownum, String keyWord, String saleStatus, String location, String totalPrices, String type, String houseType, String feature, String unitPrice, String area,String sort) {
         Long pageNumber = numFound / shownum;
         if (numFound % shownum > 0) {
             pageNumber++;
         }
-        return new SearchPageMsg(pageNumber, pn, shownum, keyWord, numFound, saleStatus, location, totalPrices, type, houseType, feature, unitPrice, area);
+        return new SearchPageMsg(pageNumber, pn, shownum, keyWord, numFound, saleStatus, location, totalPrices, type, houseType, feature, unitPrice, area,sort);
     }
 
     public static void AddType(ModelAndView modelAndView, DicService dicService) throws Exception{

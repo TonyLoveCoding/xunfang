@@ -13,7 +13,7 @@
     <title>寻房网</title>
 </head>
 <body>
-<form action="/home/search" method="get" id="form_search">
+<form action="/home/search" method="GET" id="form_search">
     <input id="inp_hid_pn" type="hidden" name="pn" value="${SearchPageMsg.current}">
     <input id="inp_hid_keyword" type="hidden" name="keyWord" value="${SearchPageMsg.keyWord}">
     <input id="inp_hid_saleStatus" type="hidden" name="saleStatus" value="${SearchPageMsg.saleStatus}">

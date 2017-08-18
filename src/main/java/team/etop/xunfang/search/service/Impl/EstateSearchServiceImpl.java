@@ -56,7 +56,7 @@ public class EstateSearchServiceImpl implements EstateSearchService {
     public SearchInfo search(Long pn, String keyWord, String saleStatus,
                              String location, String totalPrices, String type,
                              String houseType, String feature, String unitPrice,
-                             String area) throws Exception {
+                             String area,String sort) throws Exception {
         SolrQuery solrQuery = new SolrQuery();
         if ("".equals(keyWord)) {
             solrQuery.setQuery("*:*");
@@ -100,6 +100,9 @@ public class EstateSearchServiceImpl implements EstateSearchService {
             String replace = area.replace("infinite", "*").replace("_"," ");
             solrQuery.set("fq", "estate_area:[" + replace+"]");
 
+        }
+        if(!"none".equals(sort)){
+            solrQuery.setSort(sort, SolrQuery.ORDER.desc);
         }
 
         solrQuery.setStart((int) ((pn - 1) * shownum));
