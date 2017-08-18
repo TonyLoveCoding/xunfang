@@ -13,72 +13,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        a {
-            text-decoration: none;
-            out-line: none;
-            color: #ffffff
-        }
-        .userdata ul li a{
-            color: #000000!important;
-        }
-
-        a:hover, a:visited, a:link, a:active {
-            text-decoration: none;
-            out-line: none;
-            color: #ffffff;
-        }
-
-        .roleBtnShow {
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-
-        .vernav {
-            width: 240px!important;
-            left: -10px!important;
-            top: 169px!important;
-        }
-        .ajax_btn{
-            margin-right: 5px;
-        }
-    </style>
-
     <script>
         var ID;
 
-        $(document).on('click','.roleBtn',function(){
-
+        $(document).on('click', '.roleBtn', function () {
             ID = $(this).attr("id");
-//            $("#updateRole").empty();
-
+            $("#updateRole").empty();
 //           alert(ID);
-
             $.ajax({
                 url: "user/getRoleJson",
-                data: "ID="+ ID,
+                data: "ID=" + ID,
                 type: "GET",
-
                 success: function (result) {
-
-
-
-                    if(result.success){
-
+                    if (result.success) {
                         var roleList = result.map.roleJsonList;
-
-//                        $("#updateRole").empty();
-
-
+                        $("#updateRole").empty();
                         $.each(roleList, function (index, item) {
-
 //                            var checkboxString;
-                            var checkboxString = '<input type="checkbox" name="type" value="'+item.role.id+'" ><span>'+item.role.roleName+'</span><br>';
+                            var checkboxString = '<input type="checkbox" name="type" value="' + item.role.id + '" ><span>' + item.role.roleName + '</span><br>';
                             $("#updateRole").append(checkboxString);
-
-
-
-
 //                              alert(item.role.roleName);
 //                                var roleBtn = $("<input>")
 ////                                    .addClass("btn roleBtnShow")
@@ -86,22 +39,77 @@
 //                                    .attr("name","type")
 //                                    .attr("value", item.role.id);
 //                                $("#updateRole").append(roleBtn).append(item.role.roleName+"<br>");
-
                         });
-
-
                     }
-                    else{
-
+                    else {
                     }
-
                 }
             });
+        });
 
+        $(document).on('click', '.findUserRoleBtn', function () {
+            ID = $(this).attr("id");
+            $("#findUserRole").empty();
+//           alert(ID);
+            $.ajax({
+                url: "user/getUserRoleJson",
+                data: "ID=" + ID,
+                type: "GET",
+                success: function (result) {
+                    if (result.success) {
+                        var roleList = result.map.roleJsonList;
+                        $("#findUserRole").empty();
+                        $.each(roleList, function (index, item) {
+//                            var checkboxString;
+                            var roleString= '<span>' + item.role.roleName + '</span><br>';
+                            $("#findUserRole").append(roleString);
+//                              alert(item.role.roleName);
+//                                var roleBtn = $("<input>")
+////                                    .addClass("btn roleBtnShow")
+//                                    .attr("type", "checkbox")
+//                                    .attr("name","type")
+//                                    .attr("value", item.role.id);
+//                                $("#updateRole").append(roleBtn).append(item.role.roleName+"<br>");
+                        });
+                    }
+                    else {
+                    }
+                }
+            });
+        });
 
+        $(document).on('click', '.estateBtn', function () {
+            ID = $(this).attr("id");
+            $("#findEstates").empty();
+//           alert(ID);
+            $.ajax({
+                url: "user/findEstatesList",
+                data: "ID=" + ID,
+                type: "GET",
+                success: function (result) {
+                    if (result.success) {
+                        var estateList = result.map.estateJsonList;
+                        $("#findEstates").empty();
+                        $.each(estateList, function (index, item) {
+//                            var checkboxString;
+                            var estateString= '<span>' + item.estate.estateName + '</span><br>';
+
+                            $("#findEstates").append(estateString);
+//                              alert(item.role.roleName);
+//                                var roleBtn = $("<input>")
+////                                    .addClass("btn roleBtnShow")
+//                                    .attr("type", "checkbox")
+//                                    .attr("name","type")
+//                                    .attr("value", item.role.id);
+//                                $("#updateRole").append(roleBtn).append(item.role.roleName+"<br>");
+                        });
+                    }
+                    else {
+                    }
+                }
+            });
         });
     </script>
-
 
 
 </head>
@@ -207,9 +215,7 @@
 
 
 
-                    <th>
-                        用户类型
-                    </th>
+
                     <th>
                         创建时间
                     </th>
@@ -240,30 +246,31 @@
                         <th>${user.status }</th>
                         <%--<th>${user.estatesRelevance }</th>--%>
                             <%--可做成按钮，进行楼盘管理--%>
-                        <td><a class=" btn btn-info estateBtn" data-target="#findUserRole${user.username}" data-toggle="modal" href="" id="${user.account}">查看用户类型</a></td>
+                        <td><a class=" btn btn-info findUserRoleBtn" data-target="#findUserRole${user.account}" data-toggle="modal" href="" id="${user.account}">查看用户类型</a></td>
                             <%--查看用户类型模态框--%>
 
-                        <div id="findUserRole${user.username}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div id="findUserRole${user.account}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="form-wrap">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-title">
-                                            <h1 class="text-center">查看用户类型</h1>
+                                            <h1 class="text-center">用户类型</h1>
                                         </div>
+                                        <div class="modal-body">
+                                            <form class="form-group" id="findUserRole" name="form"
+                                                  action="/user/findUserRole" method="post">
+                                                <input type="hidden" name="userId" value=${user.id}>
+                                                    <%--<div class="modal-body" id="updateRole">--%>
 
-                                        <form class="form-group" id="form0" name="form00"
-                                              action="" method="post">
-                                            <div class="modal-body" id="1">
-                                                暫未實現
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-primary" type="submit" id="tijiao3">提交
-                                                </button>
-                                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                                            </div>
+                                                    <%--</div>--%>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" type="submit" id="tijia3">提交
+                                                    </button>
+                                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                                </div>
 
-                                        </form>
-
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -271,30 +278,31 @@
 
                             <%--查看用户类型模态框结束--%>
 
-                        <td><a class=" btn btn-info estateBtn" data-target="#findEstatesList${user.username}" data-toggle="modal" href="" id="${user.account}">查看楼盘</a></td>
+                        <td><a class=" btn btn-info estateBtn" data-target="#findEstatesList${user.account}" data-toggle="modal" href="" id="${user.account}">查看楼盘</a></td>
                             <%--查看樓盤模态框--%>
 
-                        <div id="findEstatesList${user.username}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div id="findEstatesList${user.account}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="form-wrap">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-title">
-                                            <h1 class="text-center">查看楼盘</h1>
+                                            <h1 class="text-center">所拥有的楼盘</h1>
                                         </div>
+                                        <div class="modal-body">
+                                            <form class="form-group" id="findEstates" name="form"
+                                                  action="/user/findEstatesList" method="post">
+                                                <input type="hidden" name="userId" value=${user.id}>
+                                                    <%--<div class="modal-body" id="updateRole">--%>
 
-                                        <form class="form-group" id="form00" name="form00"
-                                              action="" method="post">
-                                            <div class="modal-body" id="">
-                                                 暫未實現
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-primary" type="submit" id="tijiao222">提交
-                                                </button>
-                                                <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                                            </div>
+                                                    <%--</div>--%>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" type="submit" id="tijia30">提交
+                                                    </button>
+                                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                                </div>
 
-                                        </form>
-
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

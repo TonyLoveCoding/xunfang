@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import team.etop.xunfang.common.bean.EstateJson;
 import team.etop.xunfang.common.bean.Result;
 import team.etop.xunfang.common.bean.RoleJson;
+import team.etop.xunfang.modules.po.Estate;
 import team.etop.xunfang.modules.po.Role;
 
 import team.etop.xunfang.modules.po.User;
@@ -97,6 +99,86 @@ public class UserController {
         for(int i=0;i<roleJsonList.size();i++){
             System.out.println(roleJsonList.get(i).getRole().getId());
         }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getUserRoleJson")
+    public Result getUserRoleJson(@RequestParam(value = "ID") String ID) throws Exception{
+
+        List<RoleJson> roleJsonList=new ArrayList<>();
+        Role role=new Role();
+        role.setId(Long.parseLong("1"));
+        role.setRoleName("角色1");
+        RoleJson roleJson=new RoleJson();
+        roleJson.setRole(role);
+        Role role2=new Role();
+        role2.setId(Long.parseLong("2"));
+        role2.setRoleName("角色2");
+        RoleJson roleJson2=new RoleJson();
+        roleJson2.setRole(role2);
+        Role role3=new Role();
+        role3.setId(Long.parseLong("3"));
+        role3.setRoleName("角色3");
+        RoleJson roleJson3=new RoleJson();
+        roleJson3.setRole(role3);
+
+
+
+        roleJsonList.add(roleJson);
+        roleJsonList.add(roleJson2);
+        roleJsonList.add(roleJson3);
+        Result result=new Result();
+        result.setSuccess(true);
+        System.out.println("測試");
+        result.add("roleJsonList",roleJsonList);
+        for(int i=0;i<roleJsonList.size();i++){
+            System.out.println(roleJsonList.get(i).getRole().getId());
+        }
+        return result;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/findEstatesList")
+    public Result findEstatesListJson(@RequestParam(value = "ID") String ID) throws Exception{
+        System.out.println("查看楼盘");
+
+
+        Estate estate=new Estate();
+        estate.setId(Long.parseLong("1"));
+        estate.setEstateName("楼盘1");
+
+        EstateJson estateJson=new EstateJson();
+        estateJson.setEstate(estate);
+        Estate estate2=new Estate();
+        estate2.setId(Long.parseLong("2"));
+        estate2.setEstateName("楼盘2");
+
+        EstateJson estateJson2=new EstateJson();
+        estateJson2.setEstate(estate2);
+        Estate estate3=new Estate();
+        estate3.setId(Long.parseLong("3"));
+        estate3.setEstateName("楼盘3");
+
+        EstateJson estateJson3=new EstateJson();
+        estateJson3.setEstate(estate3);
+
+
+       List<EstateJson> estateJsonList=new ArrayList<>();
+       estateJsonList.add(estateJson);
+        estateJsonList.add(estateJson2);
+        estateJsonList.add(estateJson3);
+
+
+
+
+
+        Result result=new Result();
+        result.setSuccess(true);
+        System.out.println("測試");
+        result.add("estateJsonList",estateJsonList);
+
         return result;
     }
 
