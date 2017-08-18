@@ -46,10 +46,14 @@ public class UserController {
         user2.setCreatetime(new Date(2015,3,4,9,10,2));
         user2.setCreatetime(new Date(2015,3,4,9,10,2));
         user2.setStatus(1);
+
+        User user3=new User();
+        user3.setId(Long.parseLong("3"));
+        user3.setAccount("测试3");
         List<User> list=new ArrayList<>();
         list.add(user);
         list.add(user2);
-
+        list.add(user3);
 
        for(int i=0;i<list.size();i++){
            System.out.println(list.get(i).getAccount());
@@ -95,5 +99,19 @@ public class UserController {
         }
         return result;
     }
+
+    @RequestMapping("/updateUserRole")
+    public void updateUserRole(HttpServletRequest request){
+        System.out.println("进入");
+        System.out.println(request.getParameter("roleId"));
+//        System.out.println("获取的角色ID: "+roleId);
+//        System.out.println(request.getParameter("type"));
+        String[] permissions=request.getParameterValues("type");
+        for(int i=0;i<permissions.length;i++){
+            System.out.println("获取的角色ID: "+permissions[i]);
+        }
+    }
+
+
 
 }
