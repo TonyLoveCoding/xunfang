@@ -9,4 +9,3 @@ out
 gen
 target
 /.idea/
-/src/main/resources/properties/dao.properties

@@ -56,7 +56,7 @@ public class EstateSearchServiceImpl implements EstateSearchService {
     public SearchInfo search(Long pn, String keyWord, String saleStatus,
                              String location, String totalPrices, String type,
                              String houseType, String feature, String unitPrice,
-                             String area,String sort) throws Exception {
+                             String area,String sort,String sortType) throws Exception {
         SolrQuery solrQuery = new SolrQuery();
         if ("".equals(keyWord)) {
             solrQuery.setQuery("*:*");
@@ -70,41 +70,39 @@ public class EstateSearchServiceImpl implements EstateSearchService {
         }
 
         if ("onSale".equals(saleStatus)) {
-            solrQuery.set("fq", "estate_sale_status:true");
+            solrQuery.add("fq","estate_sale_status:true");
         } else if ("ForSale".equals(saleStatus)) {
-            solrQuery.set("fq", "estate_sale_status:false");
+            solrQuery.add("fq", "estate_sale_status:false");
         }
 
         if (!"none".equals(location)) {
-            solrQuery.set("fq", "estate_location:" + location);
+            solrQuery.add("fq", "estate_location:" + location);
         }
         if (!"none".equals(totalPrices)) {
             String replace = totalPrices.replace("infinite", "*").replace("_"," ");
-            solrQuery.set("fq", "estate_min_price:["+replace+"]");
+            solrQuery.add("fq", "estate_min_price:["+replace+"]");
         }
         if (!"none".equals(type)) {
-            solrQuery.set("fq", "estate_type:" + type);
+            solrQuery.add("fq", "estate_type:" + type);
         }
         if (!"none".equals(houseType)) {
-            solrQuery.set("fq", "estate_house_type:" + houseType);
+            solrQuery.add("fq", "estate_house_type:" + houseType);
         }
         if (!"none".equals(feature)) {
-            solrQuery.set("fq", "estate_feature:" + feature);
+            solrQuery.add("fq", "estate_feature:" + feature);
         }
         if (!"none".equals(unitPrice)) {
             String replace = unitPrice.replace("infinite", "*").replace("_"," ");
-            solrQuery.set("fq", "estate_developer_quotes:[" + replace+"]");
-            System.out.println( "estate_area:[" + replace+"]");
+            solrQuery.add("fq", "estate_developer_quotes:[" + replace+"]");
         }
         if (!"none".equals(area)) {
             String replace = area.replace("infinite", "*").replace("_"," ");
-            solrQuery.set("fq", "estate_area:[" + replace+"]");
+            solrQuery.add("fq", "estate_area:[" + replace+"]");
 
         }
         if(!"none".equals(sort)){
-            solrQuery.setSort(sort, SolrQuery.ORDER.desc);
+            solrQuery.add("sort",sort+" "+sortType);
         }
-
         solrQuery.setStart((int) ((pn - 1) * shownum));
         solrQuery.setRows(shownum);
         QueryResponse query = solrClient.query(solrQuery);

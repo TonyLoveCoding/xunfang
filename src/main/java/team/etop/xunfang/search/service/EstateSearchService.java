@@ -15,6 +15,6 @@ import java.util.List;
  */
 public interface EstateSearchService {
     void fullUpdate() throws Exception;
-    SearchInfo search(Long pn, String keyWord, String saleStatus,String location,String totalPrices,String type,String houseType,String feature,String unitPrice,String area,String sort) throws Exception;
+    SearchInfo search(Long pn, String keyWord, String saleStatus,String location,String totalPrices,String type,String houseType,String feature,String unitPrice,String area,String sort,String sortType) throws Exception;
     List<RecommendEstate> getRecommendEstate() throws IOException, SolrServerException, Exception;
 }
