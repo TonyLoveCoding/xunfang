@@ -68,6 +68,78 @@
             <input type="text" name="developer" value="${EstateDto.developer}">
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">面积：</div>
+        </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="developer" value="${EstateDto.area}">
+        </div>
+    </div>
+    <br>
+    <%--销售信息模块--%>
+    <div class="row">
+        <div class="col-sm-12" style="padding-left: 0px">
+            <h3>销售信息</h3>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px">
+            <div class="halving_line"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px;padding-right: 0px">
+            <div style="font-size:15px">开发商报价：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.developerQuotes}">
+        </div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">销售状态：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <%--<input type="text" name="saleStatus" value="${EstateDto.saleStatus}">--%>
+            <select name="saleStatus" value="EstateDto.saleStatus">
+                <option value="0" <c:if test="${'0' eq EstateDto.saleStatus}">selected</c:if>>在售</option>
+                <option value="1" <c:if test="${'1' eq EstateDto.saleStatus}">selected</c:if>>待售</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">最新开盘：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.latestOpening}">
+        </div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">最早交房：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.firstDelivery}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px;padding-right: 0px">
+            <div style="font-size:15px">楼盘户型：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.houseType}">
+        </div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">产权年限：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="estateName" value="${EstateDto.propertyRights}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">拿地时间：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <input type="text" name="developer" value="${EstateDto.takeTime}">
+        </div>
+    </div>
     <br>
     <%--小区详情模块--%>
     <div class="row">
@@ -150,7 +222,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="choosePhotos"></div>
+            <div class="choosePhotos" id="e_choosePhotos"></div>
         </div>
     </div>
     <div class="row">
@@ -173,11 +245,8 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="choosePhotos"></div>
+            <div class="choosePhotos" id="p_choosePhotos"></div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -198,7 +267,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px">
+            <div class="choosePhotos" id="s_choosePhotos"></div>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -219,7 +290,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px">
+            <div class="choosePhotos" id="r_choosePhotos"></div>
+        </div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -236,25 +309,10 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <div class="btn-group center-block" role="group" aria-label="...">
                 <a class="btn btn-default center-block" href="" role="button">保存</a>
-                <a class="btn btn-default center-block" href="" role="button" >返回</a>
+                <a class="btn btn-default center-block" href="/estate/query" role="button" >返回</a>
             </div>
         </div>
     </div>
 </div>
-
-<%--<!-- Modal -->--%>
-<%--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">--%>
-    <%--<div class="modal-dialog" role="document" style="width: auto">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-header">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--%>
-                <%--<h4 class="modal-title" id="myModalLabel">添加图片</h4>--%>
-            <%--</div>--%>
-            <%--<div class="modal-body">--%>
-                <%--<div id="TCrop"></div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
 </body>
 </html>
