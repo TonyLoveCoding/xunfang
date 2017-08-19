@@ -65,9 +65,8 @@ public class CarouselPhotosController {
     @RequestMapping("/uplodephotos")
     public Msg uplodePhotos(@RequestParam("files") MultipartFile multipartFile,@RequestParam("cropData")String data,@RequestParam("url")String url) throws Exception{
         System.out.println("进入uplodePhotos方法");
-        List<CarouselPhotos> list = carouselPhotosServiceGenerate.selectList(null);
-        int count=list.size();
-        if(count>=maxNumber){
+        int c=carouselPhotosServiceGenerate.selectCount(null);
+        if(c>=maxNumber){
             return Msg.fail("轮播图片不能多于"+maxNumber+"张");//提示轮播图片不能多于最高上限
         }else {
             String[] datas=data.split("\"|[a-zA-Z]|\\{|\\}|\\:");
@@ -86,14 +85,11 @@ public class CarouselPhotosController {
             String filepath=savePath+name;
             Calendar calendar = Calendar.getInstance(Locale.CHINA);
             Date date=calendar.getTime();
-            System.out.println(date);
             long times=date.getTime();
             SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             format.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
             String d=format.format(times);
-            System.out.println(d);
             date=format.parse(d);
-            System.out.println(date);
             multipartFile.transferTo(new File(filepath));
             Thumbnails.of(filepath).sourceRegion((int)x,(int)y,(int)w,(int)h).size(540,200).keepAspectRatio(false).toFile(filepath);
             CarouselPhotos carouselPhotos=new CarouselPhotos();
@@ -102,22 +98,19 @@ public class CarouselPhotosController {
             carouselPhotos.setStatus(0);
             carouselPhotos.setUrl(url);
             carouselPhotosServiceGenerate.insert(carouselPhotos);
-            System.out.println(carouselPhotos.getCreatetime());
             System.out.println("更新成功");
         }
-        return Msg.success().add("list",list).add("count",count);
+        return Msg.success();
     }
 
     @RequestMapping("/deletephoto")
     public Msg deletePhoto(@RequestParam("id")long id){
-        List<CarouselPhotos> plist=carouselPhotosServiceGenerate.selectList(null);
-        System.out.println(id);
-        int count=plist.size();
-        if(count<=minNumber){
+        int c=carouselPhotosServiceGenerate.selectCount(null);
+        if(c<=minNumber){
             return Msg.fail("轮播图片张数不能少于"+minNumber+"张");//提示轮播图片张数不能少于最低下限
         }else{
-            CarouselPhotos c=carouselPhotosServiceGenerate.selectById(id);
-            File file=new File(savePath+c.getName());
+            CarouselPhotos carouselPhotos=carouselPhotosServiceGenerate.selectById(id);
+            File file=new File(savePath+carouselPhotos.getName());
             file.delete();
             System.out.println("本地文件删除成功");
             carouselPhotosServiceGenerate.deleteById(id);

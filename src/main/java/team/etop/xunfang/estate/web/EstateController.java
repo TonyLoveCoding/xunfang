@@ -1,5 +1,7 @@
 package team.etop.xunfang.estate.web;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.estate.dto.*;
 import team.etop.xunfang.modules.po.*;
 import team.etop.xunfang.modules.service.*;
+import team.etop.xunfang.search.dto.SearchPageMsg;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -32,13 +35,13 @@ public class EstateController {
 
     //当前页数
     @Value("${searchPage.PageSize}")
-    private Long PageSize;
+    private int PageSize;
     //每页显示条数
     @Value("${searchPage.countindex}")
-    private Long countindex;
+    private int countindex;
     //显示的总页数
     @Value("${searchPage.visiblePages}")
-    private Long visiblePages;
+    private int visiblePages;
     //楼盘图片保存地址
     @Value("${businessImage.savePath}")
     private String savePath;
@@ -56,31 +59,30 @@ public class EstateController {
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
-     * @param pageNum
      * @return
      */
-    @RequestMapping("/query")
-    public ModelAndView queryEstate(@RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
-        List<Estate> estateList=new ArrayList<>();
-        PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
-        //从数据库取出
-        for(int i=0;i<13;i++){
-            Estate estate=new Estate();
-            estate.setId((long)i);
-            estate.setEstateName("楼盘名："+i);
-            estate.setStatus(0);
-            estate.setEstateAddress("楼盘地址："+i);
-            estate.setLocation("位置："+i);
-            estate.setType("类型："+i);
-            estate.setHouseType("户型："+i);
-            estate.setMinPrice(i);
-            estate.setMaxPrice(i);
-            estateList.add(estate);
-            System.out.println(estate);
-        }
+    @RequestMapping(value = "/query",method = RequestMethod.GET)
+    public ModelAndView queryEstate(@RequestParam(value = "pn",defaultValue ="1") int current,@RequestParam(value = "keyword",defaultValue = "")String keyword){
         ModelAndView modelAndView=new ModelAndView("/estate/query");
+        modelAndView.addObject("keyword",keyword);
+        keyword="%"+keyword+"%";
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("estate_name","%"+keyword+"%").or().like("estate_address","%"+keyword+"%").or().like("location","%"+keyword+"%")
+                .or().like("type","%"+keyword+"%").or().like("house_type","%"+keyword+"%").orderBy("status");
+        Page<Estate> estatePage=new Page<>();
+        estatePage.setCurrent(current);
+        estatePage.setSize(countindex);
+        estatePage.setAsc(false);
+        estatePage.setOrderByField("update_Time");
+        Page<Estate> page =estateServiceGenerate.selectPage(estatePage,wrapper);
+        //获取分页后的楼盘信息
+        List<Estate> estateList=page.getRecords();
+        //得到总页数
+        int pageNum=page.getPages();
         modelAndView.addObject("estateList",estateList);
-        modelAndView.addObject("pageInfo",pageInfo);
+        modelAndView.addObject("current",current);
+        modelAndView.addObject("pageNum",pageNum);
+        modelAndView.addObject("shownum",countindex);
         return modelAndView;
     }
 
@@ -190,7 +192,7 @@ public class EstateController {
         }
         //将其余的图片模块按照上面的方法存入对应模块
         //调用queryEstate()方法用以刷新页面
-        this.queryEstate(1);
+//        this.queryEstate();
         return  null;
     }
 
@@ -202,9 +204,8 @@ public class EstateController {
      * @return
      */
     @RequestMapping("/search")
-    public ModelAndView searchEstates(@RequestParam("tip")String tip,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
+    public ModelAndView searchEstates(@RequestParam("tip")String tip,@RequestParam(value = "pn",defaultValue ="1")int pageNum){
         List<Estate> estateList=new ArrayList<>();
-        PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
         //从数据库取出符合条件的所有信息
         for(int i=0;i<13;i++){
             Estate estate=new Estate();
@@ -218,7 +219,6 @@ public class EstateController {
         }
         ModelAndView modelAndView=new ModelAndView("/estate/search");
         modelAndView.addObject("estateList",estateList);
-        modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
     }
 
