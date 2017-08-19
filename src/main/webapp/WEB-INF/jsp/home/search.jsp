@@ -73,7 +73,7 @@
         <div class="col-md-12">
             <nav class="navbar navbar-default " role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">寻房网</a>
+                    <a class="navbar-brand" href="/home">寻房网</a>
                 </div>
 
                 <div class="collapse navbar-collapse">
@@ -129,26 +129,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    </div>
-    <%--总价--%>
-    <div class="row">
-        <div class="col-md-7 col-md-offset-1">
-            <div class="sel_item">
-                <div class="head_SearchCondition">最低总价：</div>
-                <div class="item_SearchCondition">
-                    <ul class="ul_item_SearchCondition total_prices">
-                        <c:forEach var="total_prices" items="${total_pricess}">
-                            <li><a href="javascript:void(0);" name="${total_prices.code}"
-                                   class="a_total_prices">${total_prices.name}</a></li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3 div_sel_item">
-            <input type="number" id="inp_total_prices_pre" class="input_sel_item">-<input type="number" id="inp_total_prices_beh" class="input_sel_item">万
-            <button id="btn_total_prices" class="btn_sel_item btn btn-primary">确定</button>
         </div>
     </div>
     <%--类型--%>
@@ -237,6 +217,26 @@
             <button id="btn_aera" class="btn_sel_item btn btn-primary">确定</button>
         </div>
     </div>
+        <%--总价--%>
+        <div class="row">
+            <div class="col-md-7 col-md-offset-1">
+                <div class="sel_item">
+                    <div class="head_SearchCondition">最低总价：</div>
+                    <div class="item_SearchCondition">
+                        <ul class="ul_item_SearchCondition total_prices">
+                            <c:forEach var="total_prices" items="${total_pricess}">
+                                <li><a href="javascript:void(0);" name="${total_prices.code}"
+                                       class="a_total_prices">${total_prices.name}</a></li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 div_sel_item">
+                <input type="number" id="inp_total_prices_pre" class="input_sel_item">-<input type="number" id="inp_total_prices_beh" class="input_sel_item">万
+                <button id="btn_total_prices" class="btn_sel_item btn btn-primary">确定</button>
+            </div>
+        </div>
     <%--中间列表--%>
     <div class="row middle_sel">
         <div class="rad_sale col-md-2 col-md-offset-1">
@@ -284,7 +284,7 @@
             <div class="col-md-7">
                 <div class="row search_list_detail">
                     <div class="col-md-11 col-md-offset-1">
-                        <div class="estateName">${Estate.estateName}</div>
+                        <div class="estateName"><a href="${Estate.estateDetailsURL}">${Estate.estateName}</a></div>
                         <div class="tag-sale"><c:choose><c:when
                                 test="${Estate.saleStatus}">在售</c:when><c:otherwise>待售</c:otherwise></c:choose></div>
                     </div>
