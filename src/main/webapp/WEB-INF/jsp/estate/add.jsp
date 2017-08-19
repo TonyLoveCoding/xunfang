@@ -222,7 +222,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="choosePhotos"></div>
+            <div class="choosePhotos"></div>
         </div>
     </div>
     <div class="row">
@@ -245,7 +245,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="p_choosePhotos"></div>
+            <div class="choosePhotos"></div>
         </div>
     </div>
     <div class="row">
@@ -270,7 +270,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
+        <div class="col-sm-12" style="padding-left: 0px"><div class="choosePhotos"></div></div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -292,7 +292,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div id="r_choosePhotos"></div>
+            <div class="choosePhotos"></div>
         </div>
     </div>
     <div class="row">

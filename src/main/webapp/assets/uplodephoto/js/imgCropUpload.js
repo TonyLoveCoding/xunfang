@@ -56,12 +56,14 @@
         var accept = 'image/' + opt.allowsuf.join(', image/');
         var $ifr = $('<iframe id="uploadIfr" name="uploadIfr" class="crop-hidden"></iframe>');
         var $form = $('<form action="' + opt.url + '" enctype="multipart/form-data" method="post" target="uploadIfr"/>');
+        var $cropType = $('<input id="inp_crop_type" type="hidden" name="type" value="样板间">');
         var $cropDataInp = $('<input type="hidden" name="cropData">');
         var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">添加图片</button></div>');
         var $closewindow=$('<div class="crop-picker-wrap"><button type="button" class="crop-picker" data-dismiss="modal">关闭窗口</button></div>');
         var $urlinput=$('输入图片链接：<input type="text" name="url" style="width: 100%">');
         var $fileInp = $('<input type="file" name="files" id="file" accept="' + accept + '" class="crop-picker-file">');
         $picker.append($fileInp);
+        $form.append($cropType);
         $form.append($cropDataInp).append($picker);
 
         var $cropWrap = $('<div class="crop-wrapper crop-hidden"/>');
@@ -86,7 +88,10 @@
         $cropWrap.append($cropOpe);
         $form.append($cropWrap);
 
-        $("#choosePhotos").append($ifr).append($form);
+        $(".choosePhotos").append($ifr).append($form);
+        // $("#choosePhotos2").append($ifr).append($form);
+        // $("#choosePhotos3").append($ifr).append($form);
+        // $("#choosePhotos4").append($ifr).append($form);
 
         return {
             $ifr: $ifr,

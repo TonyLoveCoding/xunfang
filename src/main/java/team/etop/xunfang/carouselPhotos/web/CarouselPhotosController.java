@@ -20,10 +20,7 @@ import team.etop.xunfang.modules.service.CarouselPhotosServiceGenerate;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 
 /**
@@ -87,7 +84,9 @@ public class CarouselPhotosController {
             GetName getName=new GetName();
             String name=getName.getName(filename);
             String filepath=savePath+name;
-            Date date=new Date();
+            Calendar calendar = Calendar.getInstance(Locale.CHINA);
+            Date date=calendar.getTime();
+            System.out.println(date);
             long times=date.getTime();
             SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             format.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));

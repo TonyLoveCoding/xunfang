@@ -1,4 +1,12 @@
 
+$(document).ready(function () {
+    $(document).on('click','#file',function(){
+        $("#file")
+    });
+
+
+});
+
 function loadData(num) {
     $("#PageCount").val("${pageInfo.total}");
 }
