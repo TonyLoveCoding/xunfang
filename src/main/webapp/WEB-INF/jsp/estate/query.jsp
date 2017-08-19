@@ -6,7 +6,7 @@
     <script src="/assets/jsp/HomePage/homeIndex.js" type="text/javascript"></script>
     <script type="text/javascript">
         function loadData(num) {
-            $("#PageCount").val("${pageInfo.total}");
+            $("#PageCount").val("${pageMsg.total}");
         }
 
         function contirmd() {
@@ -80,11 +80,11 @@
             <ul class="pagination" id="pagination">
             </ul>
             <input type="hidden" id="PageCount" runat="server" />
-            <input type="hidden" id="PageSize" runat="server" value="${pageInfo.pageSize}" />
-            <input type="hidden" id="countindex" runat="server" value="${pageInfo.countindex}"/>
+            <input type="hidden" id="PageSize" runat="server" value="${pageMsg.pageSize}" />
+            <input type="hidden" id="countindex" runat="server" value="${pageMsg.countindex}"/>
             <!--设置最多显示的页码数 可以手动设置 默认为7-->
-            <input type="hidden" id="visiblePages" runat="server" value="${pageInfo.visiblePages}" />
-            <input type="hidden" id="currentPage" runat="server" value="${pageInfo.currentPage}" />
+            <input type="hidden" id="visiblePages" runat="server" value="${pageMsg.visiblePages}" />
+            <input type="hidden" id="currentPage" runat="server" value="${pageMsg.currentPage}" />
         </div>
 
 </div>

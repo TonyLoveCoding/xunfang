@@ -13,10 +13,13 @@ $(document).ready(function () {
             $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
             var pre_height=iframeHeight;
             timer = setInterval(function(){
+                ifm.attr("style","");
                 iframeHeight = $("#iframeMain").contents().find("html").height();
+                ifm.attr("style","height:"+pre_height+"px");
                 if (iframeHeight != pre_height){
                     ifm.attr("style","height:"+iframeHeight+"px");
                     $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+                    pre_height=iframeHeight;
                 }
             },500);
         }

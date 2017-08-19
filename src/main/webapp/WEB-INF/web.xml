@@ -9,6 +9,10 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <!--mvc分发器以及上下文配置文件-->
+<!--    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/assets/Exception/*"</url-pattern>
+    </servlet-mapping>-->
     <servlet>
         <servlet-name>spring</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -88,4 +92,8 @@
 
         </jsp-property-group>
     </jsp-config>
+    <error-page>
+        <exception-type>java.net.ConnectException</exception-type>
+        <location>/ConnectException</location>
+    </error-page>
 </web-app>
