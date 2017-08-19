@@ -56,6 +56,9 @@ public class UserController {
         list.add(user);
         list.add(user2);
         list.add(user3);
+        list.add(user2);
+        list.add(user2);
+        list.add(user2);
 
        for(int i=0;i<list.size();i++){
            System.out.println(list.get(i).getAccount());

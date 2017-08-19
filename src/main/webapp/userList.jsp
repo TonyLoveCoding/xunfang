@@ -260,12 +260,24 @@
                         </div>
 
                     </form>
+                    <div class="Paginator">
+
+                        <ul class="pagination" id="pagination">
+                        </ul>
+                        <input type="hidden" id="PageCount" runat="server" />
+                        <input type="hidden" id="PageSize" runat="server" value="${pageInfo.pageSize}" />
+                        <input type="hidden" id="countindex" runat="server" value="${pageInfo.countindex}"/>
+                        <!--设置最多显示的页码数 可以手动设置 默认为7-->
+                        <input type="hidden" id="visiblePages" runat="server" value="${pageInfo.visiblePages}" />
+                        <input type="hidden" id="currentPage" runat="server" value="${pageInfo.currentPage}" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <%--分配角色模态框结束--%>
+
 
 
 

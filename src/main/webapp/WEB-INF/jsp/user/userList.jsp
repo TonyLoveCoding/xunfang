@@ -13,6 +13,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" type="text/css" href="/assets/home/search/zxf_page.css"/>
+
+    <script src="/assets/home/search/zxf_page.js" type="text/javascript"></script>
+
+
     <script>
         var ID;
 
@@ -444,18 +449,51 @@
 
                     </tr>
                 </c:forEach>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-md-4 colum">
 
-        </div>
+
+
+
+                </tbody>
+
+            </table>
 
     </div>
+
+        <%--分页--%>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="zxf_pagediv"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
 </div>
 
 
+
+
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".zxf_pagediv").createPage({
+            pageNum: 10,//总页码
+            current: 1,//当前页
+            shownum: 10,//每页显示个数
+            <%--pageNum: ${SearchPageMsg.pageNum},//总页码--%>
+            <%--current: ${SearchPageMsg.current},//当前页--%>
+            <%--shownum: ${SearchPageMsg.shownum},//每页显示个数--%>
+            backfun: function (e) {
+                $("#inp_hid_pn").attr("value", e.current);
+                $("#form_search").submit();
+            }
+        });
+    });
+</script>
 
 
 
