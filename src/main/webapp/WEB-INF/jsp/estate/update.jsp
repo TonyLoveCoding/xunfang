@@ -222,7 +222,8 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div class="choosePhotos" id="e_choosePhotos"></div>
+            <%--<div class="choosePhotos" id="e_choosePhotos"></div>--%>
+            <input type="file" value="">
         </div>
     </div>
     <div class="row">

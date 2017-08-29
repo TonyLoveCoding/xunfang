@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Title</title>
@@ -109,7 +110,10 @@
             <div style="font-size:15px">销售状态：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">${EstateDto.saleStatus}</div>
+            <div style="font-size:15px">
+                <c:if test="${EstateDto.saleStatus==0}">在售</c:if>
+                <c:if test="${EstateDto.saleStatus==1}">待售</c:if>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -117,13 +121,17 @@
             <div style="font-size:15px">最新开盘：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">${EstateDto.latestOpening}</div>
+            <div style="font-size:15px">
+                <fmt:formatDate type="time" value="${EstateDto.latestOpening}" pattern="yyyy-MM-dd" />
+            </div>
         </div>
         <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">最早交房：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">${EstateDto.firstDelivery}</div>
+            <div style="font-size:15px">
+                <fmt:formatDate type="time" value="${EstateDto.firstDelivery}" pattern="yyyy-MM-dd" />
+            </div>
         </div>
     </div>
     <div class="row">
@@ -137,7 +145,7 @@
             <div style="font-size:15px">产权年限：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">${EstateDto.propertyRights}</div>
+            <div style="font-size:15px">${EstateDto.propertyRights}年</div>
         </div>
     </div>
     <div class="row">
@@ -145,7 +153,9 @@
             <div style="font-size:15px">拿地时间：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">${EstateDto.takeTime}</div>
+            <div style="font-size:15px">
+                <fmt:formatDate type="time" value="${EstateDto.takeTime}" pattern="yyyy-MM-dd" />
+            </div>
         </div>
     </div>
     <br>
@@ -298,6 +308,7 @@
             </c:forEach>
         </div>
     </div>
+    <br>
 </div>
 </body>
 </html>
