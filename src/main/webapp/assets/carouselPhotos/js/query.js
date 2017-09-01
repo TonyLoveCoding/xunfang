@@ -34,6 +34,7 @@ $(function() {
         /* 图片上传完成之后的回调，无论是否成功上传 */
         onComplete: function(data) {
             console.log('upload complete!');
+            location.href="/carouselPhotos/query";
         }
     });
 });

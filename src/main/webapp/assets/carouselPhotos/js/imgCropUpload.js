@@ -444,7 +444,7 @@
         var form = $.data(dom, 'crop').$cropObj.$form.get(0);
         form.submit();
         cancel();
-        alert("上传成功")
+        alert("上传成功");
     };
 
     /* 取消裁剪 */

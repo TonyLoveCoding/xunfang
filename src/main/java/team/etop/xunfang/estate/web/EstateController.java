@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.common.bean.PageInfo;
@@ -210,12 +211,11 @@ public class EstateController {
     /**
      * 删除楼盘信息
      * @param id
-     * @param pageNum
      * @return
      */
-    @RequestMapping("/delete")
-    public Msg deleteEstate(@RequestParam("id")long id, @RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
-        System.out.println(id);
+    @RequestMapping(value = "/delete",method = RequestMethod.GET)
+    @ResponseBody
+    public Msg deleteEstate(@RequestParam("id")long id){
         Estate estate=estateServiceGenerate.selectById(id);
         if(estate.getStatus()==1){
             return Msg.fail("该楼盘以处于无用状态");
