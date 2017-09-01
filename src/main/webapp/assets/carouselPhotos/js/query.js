@@ -15,7 +15,7 @@ $(function() {
     Crop.init({
         id: 'TCrop',
         /* 上传路径 */
-        url: '/demo/resolveJsonObject',
+        url: '/carouselPhotos/uplodephotos',
         /* 允许上传的图片的后缀 */
         allowsuf: ['jpg', 'jpeg', 'png', 'gif'],
         /* JCrop参数设置 */

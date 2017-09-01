@@ -80,6 +80,10 @@ body {
     position: relative;
     overflow: hidden;
 }
+.crop-input-operate {
+    width: 100%;
+    height: 50px;
+}
 .crop-operate {
     text-align: center;
     margin: 10px 0;

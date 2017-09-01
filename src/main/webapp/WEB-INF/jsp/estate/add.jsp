@@ -222,8 +222,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <%--<div class="choosePhotos" id="e_choosePhotos"></div>--%>
-            <input type="file" value="">
+            <div class="choosePhotos"></div>
         </div>
     </div>
     <div class="row">
@@ -246,8 +245,11 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div class="choosePhotos" id="p_choosePhotos"></div>
+            <div class="choosePhotos"></div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -268,9 +270,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="choosePhotos" id="s_choosePhotos"></div>
-        </div>
+        <div class="col-sm-12" style="padding-left: 0px"><div class="choosePhotos"></div></div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
@@ -292,7 +292,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
-            <div class="choosePhotos" id="r_choosePhotos"></div>
+            <div class="choosePhotos"></div>
         </div>
     </div>
     <div class="row">
@@ -309,7 +309,7 @@
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
             <div class="btn-group center-block" role="group" aria-label="...">
-                <a class="btn btn-default center-block" href="" role="button">保存</a>
+                <a class="btn btn-default center-block" href="/estate/add" role="button">保存</a>
                 <a class="btn btn-default center-block" href="/estate/query" role="button" >返回</a>
             </div>
         </div>

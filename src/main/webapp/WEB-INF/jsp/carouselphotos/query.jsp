@@ -26,6 +26,7 @@
                 return false;
             }
         }
+
     </script>
     <style>
         .photo300{
@@ -61,7 +62,7 @@
     <c:forEach var="photo" items="${list}">
         <div class="row">
             <div class="col-md-9" style="padding-top: 10px">
-                <img src="${photo.name}" class="photo300"><br/>
+                <img src="piccreate/picCreate.jsp?ppath=${photo.name}" class="photo300"><br/>
                 图片链接：${photo.url}
             </div>
             <div class="col-md-3" style="vertical-align: middle;text-align: center">
@@ -78,21 +79,5 @@
     </c:forEach>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document" style="width: auto">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">添加轮播图</h4>
-            </div>
-            <div class="modal-body">
-                输入图片链接：<input type="text" name="url" style="width: 100%">
-                <div id="TCrop"></div>
-            </div>
-
-        </div>
-    </div>
-</div>
 </body>
 </html>
