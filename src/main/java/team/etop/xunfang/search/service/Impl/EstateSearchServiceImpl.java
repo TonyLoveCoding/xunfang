@@ -30,9 +30,9 @@ public class EstateSearchServiceImpl implements EstateSearchService {
 
     @Autowired
     EstateSearchMapper estateSearchMapper;
-
     @Autowired
     SolrClient solrClient;
+
 
     @Value("${server.address}")
     String serverAddress;
@@ -41,16 +41,8 @@ public class EstateSearchServiceImpl implements EstateSearchService {
     Integer shownum;
 
 
-    @Override
-    public void fullUpdate() throws Exception {
-        solrClient.deleteByQuery("*:*");
-//
-//        List<EstateSearchBean> estateSearchBeans = estateSearchMapper.selectAll();
-//        for(EstateSearchBean estateSearchBean:estateSearchBeans){
-//            solrClient.add(SearchUtil.EstateToDoc(estateSearchBean));
-//        }
-        solrClient.commit();
-    }
+
+
 
     @Override
     public SearchInfo search(Long pn, String keyWord, String saleStatus,

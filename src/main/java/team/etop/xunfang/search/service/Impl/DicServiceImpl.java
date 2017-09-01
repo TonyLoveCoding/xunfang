@@ -20,9 +20,13 @@ public class DicServiceImpl implements DicService{
     @Autowired
     DicMapper dicMapper;
 
+    /**
+     * 根据种类获取该字典类型
+     * @param type
+     * @return
+     */
     @Override
     public List<Dic> selectByType(String type) {
-
         return dicMapper.selectByType(type);
     }
 }

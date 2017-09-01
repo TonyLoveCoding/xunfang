@@ -38,7 +38,7 @@
                             <a class="navbar-brand" href="#">寻房网</a>
                         </div>
                         <div class="collapse navbar-collapse">
-                            <form class="navbar-form navbar-left" role="search">
+                            <div class="navbar-form navbar-left" role="search">
                                 <div class="form-group">
                                     <input id="inp_coll_keyword" type="text" class="form-control"
                                            value="${SearchPageMsg.keyWord}"/>
@@ -46,7 +46,7 @@
                                 <button type="button" class="btn btn-danger" id="btn_coll_keyword"><span
                                         class="glyphicon glyphicon-search"></span> 找房
                                 </button>
-                            </form>
+                            </div>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <a href="#"><b>热搜词：</b></a>
@@ -78,7 +78,7 @@
 
                 <div class="collapse navbar-collapse">
 
-                    <form class="navbar-form navbar-left" role="search">
+                    <div class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <input id="inp_nav_keyword" type="text" class="form-control"
                                    value="${SearchPageMsg.keyWord}"/>
@@ -86,9 +86,8 @@
                         <button id="btn_nav_keyword" type="button" class="btn btn-danger"><span
                                 class="glyphicon glyphicon-search"></span> 找房
                         </button>
-                    </form>
+                    </div>
                     <ul class="nav navbar-nav navbar-right">
-
                         <li>
                             <a href="#">热搜词：</a>
                         </li>

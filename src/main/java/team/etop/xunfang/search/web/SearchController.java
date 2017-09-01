@@ -37,6 +37,23 @@ public class SearchController {
     @Value("${search.shownum}")
     Integer shownum;
 
+    /**
+     * 传入条件进行搜索
+     * @param pn
+     * @param keyWord
+     * @param saleStatus
+     * @param location
+     * @param totalPrices
+     * @param type
+     * @param houseType
+     * @param feature
+     * @param unitPrice
+     * @param area
+     * @param sort
+     * @param sortType
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/search",produces="text/html;charset=UTF-8",method = RequestMethod.GET)
     public ModelAndView welcome(@RequestParam(value = "pn",defaultValue = "1") Long pn,
                                 @RequestParam(value = "keyWord",defaultValue = "")String keyWord,

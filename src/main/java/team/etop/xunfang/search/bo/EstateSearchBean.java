@@ -10,7 +10,7 @@ import java.util.Date;
  * @author: TingFeng Zhang
  * @date: 2017/8/13 20:11
  */
-public class EstateSearchBean {
+public class  EstateSearchBean {
     private Long id;
     @TableField("visit_times")
     private Long visitTimes;

@@ -84,6 +84,7 @@ public class SearchUtil {
         solrInputFields.addField("estate_location", estateSearchBean.getLocation());
         solrInputFields.addField("estate_type", estateSearchBean.getType());
         solrInputFields.addField("estate_house_type", estateSearchBean.getHouseType());
+        solrInputFields.addField("estate_area", estateSearchBean.getArea());
         solrInputFields.addField("estate_feature", estateSearchBean.getFeature());
         solrInputFields.addField("estate_name", estateSearchBean.getEstateName());
         solrInputFields.addField("estate_address", estateSearchBean.getEstateAddress());
@@ -93,7 +94,7 @@ public class SearchUtil {
         solrInputFields.addField("estate_sale_status", estateSearchBean.getSaleStatus());
         solrInputFields.addField("estate_sign", estateSearchBean.getSign());
         solrInputFields.addField("estate_turnover", estateSearchBean.getTurnover());
-        solrInputFields.addField("estate_area", estateSearchBean.getArea());
+
         return solrInputFields;
     }
 
