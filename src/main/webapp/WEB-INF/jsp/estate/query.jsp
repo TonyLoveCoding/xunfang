@@ -11,14 +11,40 @@
             $("#PageCount").val("${pageMsg.total}");
         }
 
-        function contirmd() {
+        function contirmd(id) {
             var msg = "您确定要删除吗？"
+            alert(id);
             if (confirm(msg) == true) {
-                return ture;
+                $.ajax({
+                    type:"POST",
+                    url:"/estate/delete?id="+id,
+                    dataType:"text",
+                    error:function (Msg) {
+                        alert(Msg);
+                    },
+                    success:function (Msg) {
+                        LodeData();
+                    }
+                })
             } else {
                 return false;
             }
-        }
+        };
+
+        function LodeData() {
+            $.ajax({
+                type:"GET",
+                url:"/estate/query",
+                data:{"estateList":$("#estateList").value},
+                dataType:"json",
+                error:function (data) {
+                    alert("查询失败");
+                },
+                success:function (data) {
+                    alert("查询成功");
+                }
+            })
+        };
     </script>
 </head>
 <body>
@@ -58,6 +84,7 @@
                 <tbody>
                 <c:forEach items="${estateList}" var="estate">
                     <tr>
+                        <td>${estate.id}</td>
                         <td>${estate.estateName}</td>
                         <td>${estate.estateAddress}</td>
                         <td>${estate.location}</td>
@@ -68,7 +95,7 @@
                         <td>
                             <div class="btn-group center-block" role="group" aria-label="...">
                                 <a class="btn btn-default center-block" href="/estate/selectbyid?id=${estate.id}" role="button">查看</a>
-                                <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
+                                <a class="btn btn-default center-block" href="javasprite:void(0)" role="button" onclick="contirmd(${estate.id})">删除</a>
                             </div>
                         </td>
                     </tr>

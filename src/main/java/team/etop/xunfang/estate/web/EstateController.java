@@ -215,6 +215,7 @@ public class EstateController {
      */
     @RequestMapping("/delete")
     public Msg deleteEstate(@RequestParam("id")long id, @RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
+        System.out.println(id);
         Estate estate=estateServiceGenerate.selectById(id);
         if(estate.getStatus()==1){
             return Msg.fail("该楼盘以处于无用状态");
