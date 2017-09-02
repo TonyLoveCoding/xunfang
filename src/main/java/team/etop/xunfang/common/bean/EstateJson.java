@@ -10,6 +10,7 @@ public class EstateJson {
     public Estate getEstate(){
         return this.estate;
     }
+
     public  void setEstate(Estate estate){
         this.estate=estate;
     }

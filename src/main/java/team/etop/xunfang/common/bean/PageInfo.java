@@ -12,6 +12,9 @@ public class PageInfo {
     private Long visiblePages;
     private Long total;
     private Long currentPage;
+    public PageInfo(){
+
+    }
 
     public PageInfo(Long pageSize, Long countindex, Long visiblePages, Long total, Long currentPage) {
         this.PageSize = pageSize;

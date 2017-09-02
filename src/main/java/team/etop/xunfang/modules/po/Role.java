@@ -17,7 +17,7 @@ public class Role extends Model<Role> {
     private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private String roleName;
+	private String rolename;
 	private String description;
 	private String permissions;
 	private Date updatetime;
@@ -34,11 +34,11 @@ public class Role extends Model<Role> {
 	}
 
 	public String getRoleName() {
-		return roleName;
+		return rolename;
 	}
 
 	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+		this.rolename = roleName;
 	}
 
 	public String getDescription() {
@@ -90,7 +90,7 @@ public class Role extends Model<Role> {
 	public String toString() {
 		return "Role{" +
 			"id=" + id +
-			", roleName=" + roleName +
+			", roleName=" + rolename +
 			", description=" + description +
 			", permissions=" + permissions +
 			", updatetime=" + updatetime +
