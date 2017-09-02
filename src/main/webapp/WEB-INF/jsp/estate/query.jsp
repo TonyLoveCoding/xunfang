@@ -74,7 +74,6 @@
                 <tbody>
                 <c:forEach items="${estateList}" var="estate">
                     <tr>
-                        <td>${estate.id}</td>
                         <td>${estate.estateName}</td>
                         <td>${estate.estateAddress}</td>
                         <td>${estate.location}</td>

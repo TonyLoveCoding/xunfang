@@ -1,5 +1,7 @@
 package team.etop.xunfang.estate.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,9 +28,12 @@ public class EstateDto {
     private String property;//物业类型
     private String developer;//开发商
     private Integer saleStatus;//销售状态
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date firstDelivery;//最早交房
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date latestOpening;//最新开盘
     private String propertyRights;//产权年限
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date takeTime;//拿地时间
     private String company;//物业公司
     private String propertyCost;//物业费用

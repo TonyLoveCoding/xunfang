@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-12" style="padding-left: 0px">
             <div class="btn-group center-block" role="group" aria-label="...">
-                <a class="btn btn-default center-block" href="/estate/update1?id=${EstateDto.id}" role="button" target="_self">修改信息</a>
+                <a class="btn btn-default center-block" href="/estate/update?id=${EstateDto.id}" role="button" target="_self">修改信息</a>
                 <a class="btn btn-default center-block" href="/estate/query" role="button" >返回</a>
             </div>
         </div>

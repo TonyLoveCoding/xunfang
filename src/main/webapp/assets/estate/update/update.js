@@ -1,11 +1,13 @@
+var now = new Date();
+var month = ("0" + (now.getMonth() + 1)).slice(-2);
+var day = ("0" + now.getDate()).slice(-2);
+var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+document.getElementById('latest_open').value=today;
 
-$(document).ready(function () {
-    $(document).on('click','#file',function(){
-        $("#file")
-    });
-
-
-});
+function myfunction() {
+    var x=document.getElementById("latest_open").value;
+    alert(x);
+}
 
 function loadData(num) {
     $("#PageCount").val("${pageInfo.total}");
@@ -18,6 +20,10 @@ function contirmd() {
     } else {
         return false;
     }
+}
+
+function add(p){
+    alert(p);
 }
 
 $(function() {
