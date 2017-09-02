@@ -6,7 +6,7 @@
     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="team.etop.xunfang.search.bo.EstateSearchBean">
+    <resultMap id="BaseResultMap" type="team.etop.xunfang.search.bo.EstateSearchBo">
         <id column="id" property="id"/>
         <result column="visitTimes" property="visit_times"/>
         <result column="minPrice" property="min_price"/>
@@ -18,16 +18,19 @@
         <result column="feature" property="feature"/>
         <result column="estateName" property="estate_name"/>
         <result column="estateAddress" property="estate_address"/>
+        <result column="saleStatus" property="sale_status"/>
         <result column="updateTime" property="update_time"/>
         <result column="createTime" property="create_time"/>
+        <result column="area" property="area"/>
         <result column="thumbnail" property="thumbnail"/>
-        <result column="status" property="status"/>
-        <result column="saleStatus" property="sale_status"/>
+        <result column="sign" property="sign"/>
+        <result column="turnover" property="turnover"/>
+
     </resultMap>
 
     <select id="selectAll" resultMap="BaseResultMap">
         select id,visit_times,min_price,min_price,max_price,developer_quotes,location,
-        type,house_type,feature,estate_name,estate_address,update_time,create_time,thumbnail,status,sale_status from estate
+        type,house_type,feature,estate_name,estate_address,sale_status,update_time,create_time,area,thumbnail,sign,turnover from estate
     </select>
 
 

@@ -10,7 +10,7 @@ import java.util.Date;
  * @author: TingFeng Zhang
  * @date: 2017/8/17 12:24
  */
-public class RecommendEstate {
+public class RecommendEstateBo {
     private Long id;
     @TableField("developer_quotes")
     private Integer developerQuotes;

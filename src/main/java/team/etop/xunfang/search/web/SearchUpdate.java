@@ -3,20 +3,11 @@ package team.etop.xunfang.search.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.Msg;
-import team.etop.xunfang.common.util.SearchUtil;
-import team.etop.xunfang.search.bo.EstateSearchBean;
-import team.etop.xunfang.search.bo.RecommendEstate;
-import team.etop.xunfang.search.bo.SearchInfo;
-import team.etop.xunfang.search.dto.SearchPageMsg;
-import team.etop.xunfang.search.service.EstateSearchService;
+import team.etop.xunfang.search.bo.EstateSearchBo;
 import team.etop.xunfang.search.service.SearchSolrService;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/searchUpdate")
@@ -31,9 +22,14 @@ public class SearchUpdate {
      */
     @ResponseBody
     @RequestMapping(value = "/fullUpdate")
-    public Msg fullUpdate() throws Exception{
-        searchSolrService.fullUpdate();
-        return Msg.success();
+    public Msg fullUpdate(){
+        try {
+            searchSolrService.fullUpdate();
+            return Msg.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            return Msg.fail("索引更新失败！");
+        }
     }
 
     /**
@@ -43,8 +39,8 @@ public class SearchUpdate {
      */
     @ResponseBody
     @RequestMapping(value = "/addEstate")
-    public Msg addEstate(@RequestParam("EstateSearchBean") EstateSearchBean estateSearchBean) throws Exception{
-        searchSolrService.addEstate(estateSearchBean);
+    public Msg addEstate(@RequestParam("EstateSearchBo") EstateSearchBo estateSearchBo) throws Exception{
+        searchSolrService.addEstate(estateSearchBo);
         return Msg.success();
     }
 
@@ -55,8 +51,8 @@ public class SearchUpdate {
      */
     @ResponseBody
     @RequestMapping(value = "/updateEstate")
-    public Msg updateEstate(@RequestParam("EstateSearchBean") EstateSearchBean estateSearchBean) throws Exception{
-        searchSolrService.updateEstate(estateSearchBean);
+    public Msg updateEstate(@RequestParam("EstateSearchBo") EstateSearchBo estateSearchBo) throws Exception{
+        searchSolrService.updateEstate(estateSearchBo);
         return Msg.success();
     }
 

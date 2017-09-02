@@ -10,7 +10,7 @@ import java.util.Date;
  * @author: TingFeng Zhang
  * @date: 2017/8/13 20:11
  */
-public class  EstateSearchBean {
+public class EstateSearchBo {
     private Long id;
     @TableField("visit_times")
     private Long visitTimes;
@@ -195,7 +195,7 @@ public class  EstateSearchBean {
 
     @Override
     public String toString() {
-        return "EstateSearchBean{" +
+        return "EstateSearchBo{" +
                 "id=" + id +
                 ", visitTimes=" + visitTimes +
                 ", minPrice=" + minPrice +
