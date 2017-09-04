@@ -82,8 +82,9 @@
                         <td>${estate.minPrice}</td>
                         <td>${estate.maxPrice}</td>
                         <td>
-                            <div class="btn-group center-block" role="group" aria-label="...">
+                            <div class="btn-group center-block" role="group" aria-label="..." style="display: block;margin-left: auto;margin-right: auto">
                                 <a class="btn btn-default center-block" href="/estate/selectbyid?id=${estate.id}" role="button">查看</a>
+                                <a class="btn btn-default center-block" href="/estate/update?id=${estate.id}" role="button">修改</a>
                                 <a class="btn btn-default center-block" href="javasprite:void(0)" role="button" onclick="contirmd('${estate.id}')">删除</a>
                             </div>
                         </td>

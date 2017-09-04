@@ -33,7 +33,7 @@
                             location.href="/carouselPhotos/query";
                         }
                         if(Msg.code==200){
-                            alert(Msg);
+                            alert(Msg.tip);
                         }
                     }
                 })

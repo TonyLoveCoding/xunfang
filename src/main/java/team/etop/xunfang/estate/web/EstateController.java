@@ -236,7 +236,6 @@ public class EstateController {
         int psize=prototypeRoomPictureDtoList.size();
         int rsize=realEststePictureDtoList.size();
         int ssize=samplePlanningPictureDtoList.size();
-        System.out.println(estateDto);
         ModelAndView modelAndView=new ModelAndView("/estate/update");
         modelAndView.addObject("EstateDto",estateDto);
         modelAndView.addObject("esize",esize);
@@ -307,10 +306,11 @@ public class EstateController {
         estateDto.setProperty(estate.getProperty());
         estateDto.setDeveloper(estate.getDeveloper());
         estateDto.setSaleStatus(estate.getSaleStatus());
-        estateDto.setFirstDelivery(estate.getFirstDelivery());
-        estateDto.setLatestOpening(estate.getLatestOpening());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        estateDto.setFirstDelivery(simpleDateFormat.format(estate.getFirstDelivery()));
+        estateDto.setLatestOpening(simpleDateFormat.format(estate.getLatestOpening()));
         estateDto.setPropertyRights(estate.getPropertyRights());
-        estateDto.setTakeTime(estate.getTakeTime());
+        estateDto.setTakeTime(simpleDateFormat.format(estate.getTakeTime()));
         estateDto.setHouseType(estate.getHouseType());
         estateDto.setCompany(estate.getCompany());
         estateDto.setPropertyCost(estate.getPropertyCost());
@@ -350,10 +350,11 @@ public class EstateController {
         estate.setProperty(estateDto.getProperty());
         estate.setDeveloper(estateDto.getDeveloper());
         estate.setSaleStatus(estateDto.getSaleStatus());
-        estate.setFirstDelivery(estateDto.getFirstDelivery());
-        estate.setLatestOpening(estateDto.getLatestOpening());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        estate.setFirstDelivery(simpleDateFormat.parse(estateDto.getFirstDelivery()));
+        estate.setLatestOpening(simpleDateFormat.parse(estateDto.getLatestOpening()));
         estate.setPropertyRights(estateDto.getPropertyRights());
-        estate.setTakeTime(estateDto.getTakeTime());
+        estate.setTakeTime(simpleDateFormat.parse(estateDto.getTakeTime()));
         estate.setCompany(estateDto.getCompany());
         estate.setPropertyCost(estateDto.getPropertyCost());
         estate.setPowerType(estateDto.getPowerType());

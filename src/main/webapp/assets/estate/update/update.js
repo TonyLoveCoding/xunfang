@@ -1,13 +1,4 @@
-var now = new Date();
-var month = ("0" + (now.getMonth() + 1)).slice(-2);
-var day = ("0" + now.getDate()).slice(-2);
-var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
-document.getElementById('latest_open').value=today;
 
-function myfunction() {
-    var x=document.getElementById("latest_open").value;
-    alert(x);
-}
 
 function loadData(num) {
     $("#PageCount").val("${pageInfo.total}");
@@ -22,10 +13,52 @@ function contirmd() {
     }
 }
 
-function add(p){
-    alert(p);
+// function add(p){
+//     alert(p);
+// }
+function getFileName(o){
+    var pos=o.lastIndexOf("\\");
+    return o.substring(pos+1);
 }
+function getPhotoType() {
+    var child= $(".savePhoto");
+    console.log(child)
+    for(var i=0;i<child.length;i++){
+        (function (i) {
+            $(child[i]).click(function () {
+                console.log(i)
+                console.log($(this).next("input"))
+                $(this).next("input").unbind('change')
+                $(this).next("input").change(function () {
 
+                    var formData = new FormData($("#addfiles")[0]);
+                    // console.log($(this).val())
+                    // console.log(111)
+                    $.ajax({
+                        type:"POST",
+                        url:"/photos/addphotos",
+                        data:{
+                            "num":i,
+                            "formData":formData
+                        },
+                        dataType:"json",
+                        error:function () {
+                            alert("错误1")
+                        },
+                        success:function (Msg) {
+                            if(Msg.code==100){
+                                alert("添加成功");
+                            }
+                            if(Msg.code==200){
+                                alert("错误2");
+                            }
+                        }
+                    })
+                })
+            })
+        })(i)
+    }
+}
 $(function() {
     Crop.init({
         id: 'TCrop',
@@ -52,3 +85,4 @@ $(function() {
         }
     });
 });
+getPhotoType();

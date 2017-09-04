@@ -17,7 +17,7 @@
     <script type="text/javascript" src="assets/uplodephoto/js/jquery.Jcrop.js"></script>
     <script type="text/javascript" src="assets/uplodephoto/js/imgCropUpload.js"></script>
     <link rel="stylesheet" href="assets/estate/update/update.css">
-    <script type="text/javascript" src="assets/estate/update/update.js"></script>
+
 </head>
 <body style="height: auto">
 <div  class="container-fluid">
@@ -111,7 +111,6 @@
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <input type="date" name="latestOpening" value="${EstateDto.latestOpening}" id="latest_open">
-            <button onclick="myfunction()"></button>
         </div>
         <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">最早交房：</div>
@@ -225,16 +224,19 @@
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
             <%--<div class="choosePhotos" id="e_choosePhotos"></div>--%>
-            <label for="file" class="btn btn-default">添加图片</label>
-            <input id="file" type="file" style="display: none" onclick="add('EffectPicture')">
+            <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
+                <input id="file1" name="file1" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple="multiple">
+                <label for="file1" class="btn btn-default savePhoto">添加图片</label>
+
+            </form>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
+                <div class="col-sm-4 saved" style="text-align: center">
                     <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
+                    <a class="btn btn-default center-block" href="javaspri" role="button" onclick="return contirmd()">删除</a>
                 </div>
             </c:forEach>
         </div>
@@ -250,8 +252,12 @@
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
             <%--<div class="choosePhotos" id="p_choosePhotos"></div>--%>
-                <label for="file" class="btn btn-default">添加图片</label>
-                <input id="file" type="file" style="display: none" onclick="add('PrototypeRoomPicture')">
+                <%--<label for="files" class="btn btn-default savePhoto">添加图片</label>--%>
+                <%--<input id="files" type="file" style="display: none" multiple>--%>
+                <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
+                    <label for="file2" class="btn btn-default savePhoto">添加图片</label>
+                    <input id="file2" name="file2" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple>
+                </form>
         </div>
     </div>
     <div class="row">
@@ -275,8 +281,12 @@
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
             <%--<div class="choosePhotos" id="s_choosePhotos"></div>--%>
-                <label for="file" class="btn btn-default">添加图片</label>
-                <input id="file" type="file" style="display: none" onclick="add('SamplePlanningPicture')">
+                <%--<label for="files" class="btn btn-default savePhoto">添加图片</label>--%>
+                <%--<input id="files" type="file" style="display: none" multiple>--%>
+                <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
+                    <label for="file3" class="btn btn-default savePhoto">添加图片</label>
+                    <input id="file3" name="file3" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple>
+                </form>
         </div>
     </div>
     <div class="row">
@@ -300,8 +310,12 @@
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
             <%--<div class="choosePhotos" id="r_choosePhotos"></div>--%>
-                <label for="file" class="btn btn-default">添加图片</label>
-                <input id="file" type="file" style="display: none" onclick="add('RealEststePicture')">
+                <%--<label for="files" class="btn btn-default savePhoto">添加图片</label>--%>
+                <%--<input id="files" type="file" style="display: none" multiple>--%>
+                <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
+                    <label for="file4" class="btn btn-default savePhoto">添加图片</label>
+                    <input id="file4" name="file4" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple>
+                </form>
         </div>
     </div>
     <div class="row">
@@ -324,5 +338,6 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="assets/estate/update/update.js"></script>
 </body>
 </html>
