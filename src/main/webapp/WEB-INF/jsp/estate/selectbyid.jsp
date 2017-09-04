@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-12" style="padding-left: 0px">
             <div class="btn-group center-block" role="group" aria-label="...">
-                <a class="btn btn-default center-block" href="/estate/update1?id=${EstateDto.id}" role="button" target="_self">修改信息</a>
+                <a class="btn btn-default center-block" href="/estate/update?id=${EstateDto.id}" role="button" target="_self">修改信息</a>
                 <a class="btn btn-default center-block" href="/estate/query" role="button" >返回</a>
             </div>
         </div>
@@ -122,7 +122,7 @@
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">
-                <fmt:formatDate type="time" value="${EstateDto.latestOpening}" pattern="yyyy-MM-dd" />
+                ${EstateDto.latestOpening}
             </div>
         </div>
         <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
@@ -130,7 +130,7 @@
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">
-                <fmt:formatDate type="time" value="${EstateDto.firstDelivery}" pattern="yyyy-MM-dd" />
+                ${EstateDto.firstDelivery}
             </div>
         </div>
     </div>
@@ -154,7 +154,7 @@
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">
-                <fmt:formatDate type="time" value="${EstateDto.takeTime}" pattern="yyyy-MM-dd" />
+                ${EstateDto.takeTime}
             </div>
         </div>
     </div>

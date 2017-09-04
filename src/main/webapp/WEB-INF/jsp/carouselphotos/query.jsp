@@ -18,10 +18,25 @@
     <link rel="stylesheet" href="assets/carouselPhotos/css/query.css">
     <script type="text/javascript" src="assets/carouselPhotos/js/query.js"></script>
     <script type="text/javascript">
-        function contirmd() {
+        function contirmd(id) {
             var msg = "您确定要删除吗？"
             if (confirm(msg) == true) {
-                return ture;
+                $.ajax({
+                    type:"GET",
+                    url:"/carouselPhotos/deletephoto?id="+id,
+                    dataType:"json",
+                    error:function () {
+                    },
+                    success:function (Msg) {
+                        if(Msg.code==100){
+                            alert("删除成功");
+                            location.href="/carouselPhotos/query";
+                        }
+                        if(Msg.code==200){
+                            alert(Msg.tip);
+                        }
+                    }
+                })
             } else {
                 return false;
             }
@@ -67,7 +82,7 @@
             </div>
             <div class="col-md-3" style="vertical-align: middle;text-align: center">
                 <div class="btn-group center-block" role="group" aria-label="...">
-                    <a class="btn btn-default center-block" href="/carouselPhotos/deletephoto?id=${photo.id}" role="button" onclick="return contirmd()">删除</a>
+                    <a class="btn btn-default center-block" href="javasprite:void(0)" role="button" onclick="contirmd('${photo.id}')">删除</a>
                 </div>
             </div>
         </div>

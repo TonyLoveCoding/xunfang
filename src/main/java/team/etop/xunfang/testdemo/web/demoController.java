@@ -39,9 +39,10 @@ public class demoController {
     private String savePath;
 
     @RequestMapping("/demo01")
-    public ModelAndView demo01(EstateDto estateDto,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum,HttpServletRequest request)throws Exception{
+    public ModelAndView demo01(EstateDto estateDto,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum,HttpServletRequest request,String date)throws Exception{
         PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
         System.out.println(estateDto);
+        System.out.println(date);
         //创建一个通用的多部分解析器
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         //判断 request 是否有文件上传,即多部分请求

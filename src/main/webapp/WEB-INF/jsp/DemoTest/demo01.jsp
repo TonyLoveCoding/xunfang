@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: asus
@@ -27,98 +28,8 @@
             box-sizing: border-box;
         }
 
-        .crop-picker-wrap {
-            position: relative;
-            width: 100px;
-            height: 30px;
-            overflow: hidden;
-        }
-        .crop-picker {
-            width: 100%;
-            height: 100%;
-            line-height: 1;
-
-            -webkit-appearance: none;
-            margin: 0;
-            border: none;
-            border-radius: 5px;
-            padding: 9px 0;
-            background-color: #1ab2ff;
-
-            color: #fff;
-            cursor: pointer;
-        }
-        .crop-picker-file {
-            position: absolute;
-            top: 0;
-            right: 0;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-            filter: alpha(opacity=0);
-        }
-
-        .crop-wrapper {
-            display: inline-block;
-            min-width: 750px;
-            margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 5px 2px #ccc;
-        }
-
-        .crop-container {
-            font-size: 0;
-        }
-
         .crop-container img[src=""] {
             visibility: hidden;
-        }
-
-        .crop-area-wrapper,
-        .crop-preview-wrapper {
-            display: inline-block;
-            vertical-align: top;
-        }
-        .crop-area-wrapper {
-            width: 500px;
-            height: 400px;
-        }
-        .crop-preview-wrapper {
-            width: 200px;
-            height: 200px;
-            margin-left: 28px;
-            overflow: hidden;
-        }
-        .crop-preview-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .crop-operate {
-            text-align: center;
-            margin: 10px 0;
-        }
-        .crop-save,
-        .crop-cancel {
-            display: inline-block;
-            vertical-align: middle;
-
-            width: 150px;
-            height: 50px;
-            line-height: 50px;
-
-            -webkit-appearance: none;
-            margin: 0 5px;
-            border: none;
-            border-radius: 5px;
-            background-color: #1ab2ff;
-
-            color: #fff;
-            cursor: pointer;
-        }
-        .crop-hidden {
-            display: none;
         }
     </style>
 </head>
@@ -151,6 +62,10 @@
             <tr style="border: hidden">
                 <th>价格：</th>
                 <th><input name="minPrice" value="${estate.minPrice}"></th>
+            </tr>
+            <tr style="border: hidden">
+                <th>日期：</th>
+                <th><input type="date" id="adddate" name="adddate"></th>
             </tr>
         </tbody>
     </table>

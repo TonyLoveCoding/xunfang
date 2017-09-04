@@ -3,6 +3,8 @@ package team.etop.xunfang.modules.po;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.activerecord.Model;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 
 /**
@@ -49,12 +51,15 @@ public class Estate extends Model<Estate> {
 	@TableField("sale_status")
 	private Integer saleStatus;
 	@TableField("first_delivery")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date firstDelivery;
 	@TableField("latest_opening")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date latestOpening;
 	@TableField("property_rights")
 	private String propertyRights;
 	@TableField("take_time")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date takeTime;
 	private String company;
 	@TableField("property_cost")

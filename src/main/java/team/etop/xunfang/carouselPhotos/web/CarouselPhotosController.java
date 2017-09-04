@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.carouselPhotos.dto.CarouselPhotosDto;
@@ -63,6 +64,7 @@ public class CarouselPhotosController {
     }
 
     @RequestMapping("/uplodephotos")
+    @ResponseBody
     public Msg uplodePhotos(@RequestParam("files") MultipartFile multipartFile,@RequestParam("cropData")String data,@RequestParam("url")String url) throws Exception{
         System.out.println("进入uplodePhotos方法");
         int c=carouselPhotosServiceGenerate.selectCount(null);
@@ -104,6 +106,7 @@ public class CarouselPhotosController {
     }
 
     @RequestMapping("/deletephoto")
+    @ResponseBody
     public Msg deletePhoto(@RequestParam("id")long id){
         int c=carouselPhotosServiceGenerate.selectCount(null);
         if(c<=minNumber){
