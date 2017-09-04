@@ -46,6 +46,8 @@ public class EstateController {
     //楼盘图片保存地址
     @Value("${businessImage.savePath}")
     private String savePath;
+    @Value("${businessImage.url}")
+    private String imageUrl;
 
     @Autowired
     EstateServiceGenerate estateServiceGenerate;
@@ -110,7 +112,7 @@ public class EstateController {
             EffectPictureDto effectPictureDto=new EffectPictureDto();
             EffectPicture effectPicture=effectPictureServiceGenerate.selectById(l);
             effectPictureDto.setId(l);
-            effectPictureDto.setName(savePath+effectPicture.getName());
+            effectPictureDto.setName(imageUrl+effectPicture.getName());
             effectPictureDto.setType("EffectPicture");
             effectPictureList.add(effectPictureDto);
         }
@@ -123,7 +125,7 @@ public class EstateController {
             PrototypeRoomPictureDto prototypeRoomPictureDto=new PrototypeRoomPictureDto();
             PrototypeRoomPicture prototypeRoomPicture=prototypeRoomPictureServiceGenerate.selectById(l);
             prototypeRoomPictureDto.setId(l);
-            prototypeRoomPictureDto.setName(savePath+prototypeRoomPicture.getName());
+            prototypeRoomPictureDto.setName(imageUrl+prototypeRoomPicture.getName());
             prototypeRoomPictureDto.setType("PrototypeRoomPicture");
             prototypeRoomPictureDtoList.add(prototypeRoomPictureDto);
         }
@@ -136,7 +138,7 @@ public class EstateController {
             RealEststePictureDto realEststePictureDto=new RealEststePictureDto();
             RealEstatePicture realEstatePicture=realEstatePictureServiceGenerate.selectById(l);
             realEststePictureDto.setId(l);
-            realEststePictureDto.setName(savePath+realEstatePicture.getName());
+            realEststePictureDto.setName(imageUrl+realEstatePicture.getName());
             realEststePictureDto.setType("RealEstatePicture");
             realEststePictureDtoList.add(realEststePictureDto);
         }
@@ -149,7 +151,7 @@ public class EstateController {
             SamplePlanningPictureDto samplePlanningPictureDto=new SamplePlanningPictureDto();
             SamplePlanningPicture samplePlanningPicture=samplePlanningPictureServiceGenerate.selectById(l);
             samplePlanningPictureDto.setId(l);
-            samplePlanningPictureDto.setName(savePath+samplePlanningPicture.getName());
+            samplePlanningPictureDto.setName(imageUrl+samplePlanningPicture.getName());
             samplePlanningPictureDto.setType("SamplePlanningPicture");
             samplePlanningPictureDtoList.add(samplePlanningPictureDto);
         }

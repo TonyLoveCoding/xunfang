@@ -31,8 +31,8 @@ function getPhotoType() {
                 $(this).next("input").unbind('change')
                 $(this).next("input").change(function () {
 
-                    var formData = new FormData($("#addfiles")[0]);
-                    // console.log($(this).val())
+                    var formData = new FormData($("#addfiles")[0].value);
+                    // console.log($(this).next("input").val())
                     // console.log(111)
                     $.ajax({
                         type:"POST",

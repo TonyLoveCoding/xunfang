@@ -59,7 +59,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12"><div id="choosePhotos"></div></div>
+        <div class="col-md-12">
+            <div id="choosePhotos"></div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-9">
@@ -77,7 +79,7 @@
     <c:forEach var="photo" items="${list}">
         <div class="row">
             <div class="col-md-9" style="padding-top: 10px">
-                <img src="piccreate/picCreate.jsp?ppath=${photo.name}" class="photo300"><br/>
+                <img src="${photo.name}" class="photo300"><br/>
                 图片链接：${photo.url}
             </div>
             <div class="col-md-3" style="vertical-align: middle;text-align: center">

@@ -235,7 +235,7 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
                 <div class="col-sm-4 saved" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
+                    <img src="${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="javaspri" role="button" onclick="return contirmd()">删除</a>
                 </div>
             </c:forEach>
@@ -264,7 +264,7 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
                 <div class="col-sm-4" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
+                    <img src="${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
             </c:forEach>
@@ -293,7 +293,7 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
                 <div class="col-sm-4" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
+                    <img src="${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
             </c:forEach>
@@ -322,7 +322,7 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
                 <div class="col-sm-4" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
+                    <img src="${e.name}" class="photo100">
                     <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
                 </div>
             </c:forEach>
