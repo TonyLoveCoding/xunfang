@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.PageInfo;
+import team.etop.xunfang.common.bean.PermissionTree;
 import team.etop.xunfang.common.bean.Result;
+import team.etop.xunfang.modules.po.Permission;
 import team.etop.xunfang.modules.po.Role;
 
 import team.etop.xunfang.modules.po.User;
+import team.etop.xunfang.modules.service.PermissionServiceGenerate;
 import team.etop.xunfang.modules.service.RoleServiceGenerate;
 
 import java.util.List;
@@ -24,6 +28,8 @@ import java.util.List;
 public class RoleController {
     @Autowired
     private RoleServiceGenerate roleServiceGenerate;
+    @Autowired
+    private PermissionServiceGenerate permissionServiceGenerate;
 
 
     @RequestMapping("/roleList")
@@ -157,8 +163,8 @@ public class RoleController {
     @RequestMapping("/updateRole")
     public ModelAndView updateUser(@RequestParam(value = "roleId") Long roleId,
                                    @RequestParam(value = "name")String name,
-                                   @RequestParam(value ="description")String description
-    ) {
+                                   @RequestParam(value ="description")String description ) {
+
 
 
 
@@ -177,4 +183,77 @@ public class RoleController {
         return modelAndView;
 
     }
+    @ResponseBody
+    @RequestMapping("/getTree")
+    public Result getTree(@RequestParam(value="ID") Long ID){
+        System.out.println("ID="+ID);
+        Result result=new Result();
+        List<PermissionTree> ztree=permissionServiceGenerate.getAllZtree(ID);
+        if(ztree.size()!=0){
+            result.setSuccess(true);
+        result.setMsg("Ztree成功");
+        result.add("ztreeMsg",ztree);
+        for (PermissionTree permissionTree:ztree){
+            System.out.println(permissionTree.toString());
+        }}else{
+            result.setMsg("暂无权限可分配");
+            result.setSuccess(false);
+        }
+        return result;
     }
+    @ResponseBody
+    @RequestMapping("/getRoleTree")
+    public Result getRoleTree(@RequestParam(value = "ID")Long ID){
+        System.out.println(ID);
+        Result result=new Result();
+        List<PermissionTree> ztree=permissionServiceGenerate.getTreeByRoleId(ID);
+        if(ztree.size()!=0){
+            result.setSuccess(true);
+        result.setMsg("Ztree成功");
+        result.add("ztreeMsg",ztree);
+        for (PermissionTree permissionTree:ztree){
+            System.out.println(permissionTree.toString());
+        }}else{
+            result.setMsg("该角色无任何权限");
+            result.setSuccess(false);
+        }
+        return result;
+
+    }
+
+    @ResponseBody
+    @RequestMapping("/updateTreeById")
+    public Result updateTreeById(@RequestParam (value = "checkedTree")List<Long> checkedTree ){
+        Result result=new Result();
+        System.out.println(checkedTree.get(0));
+        for(int i=1;i<checkedTree.size();i++){
+            System.out.println(checkedTree.get(i));
+        }
+        Role role=roleServiceGenerate.selectById(checkedTree.get(0));
+        String permissions="";
+        for(int i=1;i<checkedTree.size()-1;i++){
+            permissions+=String.valueOf(checkedTree.get(i))+",";
+        }
+        permissions+=String.valueOf(checkedTree.get(checkedTree.size()-1));
+        System.out.println(role.getPermissions());
+        System.out.println(checkedTree);
+        role.setPermissions(permissions);
+        System.out.println(role.getPermissions());
+        roleServiceGenerate.updateById(role);
+        result.setSuccess(true);
+        result.setMsg("分配权限成功");
+        return result;
+    }
+    @ResponseBody
+    @RequestMapping("/findRoleOne")
+    public Result findRoleOne(@RequestParam(value = "ID")Long ID) throws Exception{
+        Result result=new Result();
+        System.out.println(ID);
+        System.out.println("findUserOne");
+        Role role=roleServiceGenerate.selectById(ID);
+        result.add("role",role);
+        result.setSuccess(true);
+        result.setMsg("成功");
+        return result;
+    }
+}

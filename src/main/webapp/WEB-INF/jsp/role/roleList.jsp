@@ -16,12 +16,16 @@
 
     <link rel="stylesheet" type="text/css" href="/assets/home/search/zxf_page.css"/>
     <link rel="stylesheet" href="assets/user/css/bootstrapValidator.css">
-
+    <link rel="stylesheet" href="assets/user/ztree/css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <script type="text/javascript" src="assets/user/ztree/js/jquery.ztree.core.js"></script>
+    <script src="assets/user/ztree/js/jquery.ztree.excheck.js" type="text/javascript"></script>
     <script src="/assets/home/search/zxf_page.js" type="text/javascript"></script>
+
     <script>
+        var ID;
+
         $(document).on('click', '.deleteRoleBtn', function () {
             ID = $(this).attr("id");
-            alert(ID);
             $("#deleteRole").empty();
 //           alert(ID);
             var deleteRoleString='<h1 class=\"text-center\"> 确认删除？</h1>';
@@ -33,6 +37,40 @@
             $("#deleteRole").append(deleteRoleString);
 
         });
+
+
+        $(document).on('click', '.permissionBtn', function () {
+            ID = $(this).attr("id");
+//            $("#updateRolePermission").empty();
+
+            $.ajax({
+                url: "role/getTree",
+                data: "ID=" + ID,
+                type: "GET",
+                success: function (result) {
+//                    if (result.success) {
+//                        var estateList = result.map.estateJsonList;
+//                        $("#findEstates").empty();
+//                        $.each(estateList, function (index, item) {
+////                            var checkboxString;
+//                            var estateString= '<span>' + item.estate.estateName + '</span><br>';
+//
+//                            $("#findEstates").append(estateString);
+////
+//                        });
+//                    }
+//                    else {
+//                        alert(result.msg+"a");
+//                        var estateString=result.msg;
+//                        alert(estateString);
+//                        $("#findEstates").append(estateString);
+//                    }
+                }
+            });
+        });
+
+
+
         $(document).ready(function () {
 
             <c:if test="${!empty result}">
@@ -45,6 +83,157 @@
             x.click();
             </c:if>
         });
+
+    <%--</script>--%>
+    <%--<script>--%>
+        var setting = {
+            check: {
+                enable: true
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+        var zNodes ;
+
+        $(document).on('click', '.updateRolePermissionBtn', function () {
+            ID = $(this).attr("id");
+//            $("#updateTree").empty();
+
+            $.ajax({
+                url: "role/getTree",
+                data: "ID=" + ID,
+                type: "POST",
+                success: function (result) {
+                    if (result.success) {
+                        zNodes=result.map.ztreeMsg;
+
+                        $.fn.zTree.init($("#updateTree"),setting,zNodes);
+
+
+                    }
+                    else {
+                        $("#updateTree").empty();
+                        var permissionString=result.msg;
+                        alert(permissionString);
+                        $("#updateTree").append(permissionString);
+                }
+                }
+            });
+        });
+        $(document).on('click', '#treeSubmit', function () {
+            var zTree= $.fn.zTree.getZTreeObj("updateTree");
+            var nodes=zTree.getCheckedNodes(true);
+            var checkedTree=new Array();
+            checkedTree.push(ID);
+            for(var i=0;i<nodes.length;i++){
+                checkedTree.push(nodes[i].id);
+            }
+            $.ajax({
+
+                url: "role/updateTreeById",
+                data: "checkedTree="+checkedTree,
+                type: "POST",
+                success: function (result) {
+                    if(result.success){
+
+                    alert(result.msg);
+                    }else{
+
+
+                    }
+
+                }
+            });
+
+//            alert(ID);
+//
+        });
+
+
+        var setting2 = {
+            check: {
+                enable: false
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            }
+        };
+        var zNodes ;
+
+        $(document).on('click', '.getRolePermissionBtn', function () {
+            ID = $(this).attr("id");
+//            $("#updateTree").empty();
+
+            $.ajax({
+                url: "role/getRoleTree",
+                data: "ID=" + ID,
+                type: "POST",
+                success: function (result) {
+                    if (result.success) {
+                        zNodes=result.map.ztreeMsg;
+
+                        $.fn.zTree.init($("#getTree"),setting2,zNodes);
+
+
+                    }
+                    else {
+                        $("#getTree").empty();
+                        var permissionString=result.msg;
+                        alert(permissionString);
+                        $("#getTree").append(permissionString);
+                    }
+                }
+            });
+        });
+        $(document).on('click','.updateRoleBtn',function(){
+            ID = $(this).attr("id");
+//            alert("updateUser");
+            $("#updateRole").empty();
+            $.ajax({
+                url: "role/findRoleOne",
+                data: "ID=" + ID,
+                type: "GET",
+                success: function (result) {
+                    if (result.success) {
+                        var role = result.map.role;
+                       var updateRoleString;
+                        updateRoleString='<input type="hidden" name="roleId" value="'+role.id+'"><br>';
+                        $("#updateRole").append(updateRoleString);
+                        updateRoleString=' <label>角色名：</label>';
+                        $("#updateRole").append(updateRoleString);
+                        updateRoleString='<input type="text" name="name" value="'+role.roleName+'"><br>';
+                        $("#updateRole").append(updateRoleString);
+                        updateRoleString=' <label>角色描述：</label>';
+                        $("#updateRole").append(updateRoleString);
+                        updateRoleString='<textarea class="form-control" rows="3" name="description" value="'+role.description+'"></textarea>';
+                        $("#updateRole").append(updateRoleString);
+
+
+
+
+
+
+
+
+
+
+                    }
+                    else {
+                        alert(result.msg+"a");
+                        var estateString=result.msg;
+                        alert(estateString);
+                        $("#findEstates").append(estateString);
+                    }
+                }
+            });
+        });
+
+
 
     </script>
 
@@ -112,7 +301,7 @@
                         <div class="modal-body">
 
                             <label>角色描述</label>
-                            <input type="text" name="description">
+                            <textarea class="form-control" rows="3"  name="description"></textarea>
                         </div>
 
 
@@ -199,7 +388,7 @@
                         <th>${role.updatetime}</th>
                         <th>${role.status}</th>
 
-                        <td><a class=" btn btn-info estateBtn" data-target="#findPermission" data-toggle="modal" href="" id="${role.id}">查看权限</a></td>
+                        <td><a class=" btn btn-info getRolePermissionBtn" data-target="#findPermission" data-toggle="modal" href="" id="${role.id}">查看权限</a></td>
                             <%--&lt;%&ndash;查看权限模态框&ndash;%&gt;--%>
 
                         <%--<div id="findPermission" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
@@ -230,46 +419,46 @@
 
                             <%--&lt;%&ndash;查看权限模态框结束&ndash;%&gt;--%>
 
-                        <td><a class="btn btn-success" data-target="#update" data-toggle="modal" href="">修改</a></td>
+                        <td><a class="btn btn-success updateRoleBtn" data-target="#update" data-toggle="modal" href="" id="${role.id}">修改</a></td>
 
-                        <%--修改角色模态框--%>
-                        <div id="update" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="form-wrap">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button class="close" data-dismiss="modal">
-                                                <span>&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-title">
-                                            <h1 class="text-center">修改</h1>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-group" id="form3" name="form3" action="/role/updateRole" method="post" novalidate>
+                        <%--&lt;%&ndash;修改角色模态框&ndash;%&gt;--%>
+                        <%--<div id="update" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
+                            <%--<div class="form-wrap">--%>
+                                <%--<div class="modal-dialog">--%>
+                                    <%--<div class="modal-content">--%>
+                                        <%--<div class="modal-header">--%>
+                                            <%--<button class="close" data-dismiss="modal">--%>
+                                                <%--<span>&times;</span>--%>
+                                            <%--</button>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="modal-title">--%>
+                                            <%--<h1 class="text-center">修改</h1>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="modal-body">--%>
+                                            <%--<form class="form-group" id="form3" name="form3" action="/role/updateRole" method="post" novalidate>--%>
 
-                                                <div class="modal-body">
-                                                    <input type="hidden" name="roleId" value=${role.id }>
-                                                    <label>角色名</label>
-                                                    <input type="text" name="name" value=${role.roleName }>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <label>角色描述</label>
-                                                    <input type="text" name="description" value=${role.description }>
-                                                </div>
+                                                <%--<div class="modal-body">--%>
+                                                    <%--<input type="hidden" name="roleId" value=${role.id }>--%>
+                                                    <%--<label>角色名</label>--%>
+                                                    <%--<input type="text" name="name" value=${role.roleName }>--%>
+                                                <%--</div>--%>
+                                                <%--<div class="modal-body">--%>
+                                                    <%--<label>角色描述</label>--%>
+                                                    <%--<input type="text" name="description" value=${role.description }>--%>
+                                                <%--</div>--%>
 
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-primary" type="submit" id="tijiao22">提交</button>
-                                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                                                </div>
+                                                <%--<div class="modal-footer">--%>
+                                                    <%--<button class="btn btn-primary" type="submit" id="tijiao22">提交</button>--%>
+                                                    <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
+                                                <%--</div>--%>
 
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                      <%--修改角色模态框结束--%>
+                                            <%--</form>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                      <%--&lt;%&ndash;修改角色模态框结束&ndash;%&gt;--%>
 
 
 
@@ -309,7 +498,7 @@
                         <%--</div>--%>
                         <%--&lt;%&ndash;删除角色模态框结束&ndash;%&gt;--%>
 
-                        <td><a class="btn btn-info" data-target="#updateRolePermission" id="${role.id}" data-toggle="modal" href="">分配权限</a></td>
+                        <td><a class="btn btn-info updateRolePermissionBtn" data-target="#updateRolePermission" id="${role.id}" data-toggle="modal" href="">分配权限</a></td>
 
                         <%--&lt;%&ndash;分配权限模态框&ndash;%&gt;--%>
                         <%--<div id="updateRolePermission${role.id}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
@@ -345,6 +534,39 @@
                 </c:forEach>
                 </tbody>
             </table>
+
+            <%--修改角色模态框--%>
+            <div id="update" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="form-wrap">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-title">
+                                <h1 class="text-center">修改</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-group" id="form3" name="form3" action="/role/updateRole" method="post" novalidate>
+
+                                    <div class="modal-body" id="updateRole">
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" type="submit" id="tijiao22">提交</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%--修改角色模态框结束--%>
             <%--查看权限模态框--%>
 
             <div id="findPermission" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -357,8 +579,11 @@
 
                             <form class="form-group" id="form00" name="form00"
                                   action="" method="post">
-                                <div class="modal-body" id="">
-                                    暫未實現
+                                <div class="modal-body" >
+                                    <div>
+                                        <ul id="getTree" class="ztree"></ul>
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-primary" type="submit" id="tijiao222">提交
@@ -406,7 +631,7 @@
             </div>
             <%--删除角色模态框结束--%>
             <%--分配权限模态框--%>
-            <div id="updateRolePermission${role.id}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div id="updateRolePermission" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="form-wrap">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -416,11 +641,14 @@
 
                             <form class="form-group" id="form0" name="form0"
                                   action="" method="post">
-                                <div class="modal-body" id="updateRole">
-                                    待完善
+                                <div class="modal-body" >
+                                    <div>
+                                        <ul id="updateTree" class="ztree"></ul>
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-primary" type="submit" id="tijiao223">提交
+                                    <button id="treeSubmit" class="btn btn-primary" type="submit" id="tijiao223">提交
                                     </button>
                                     <button class="btn btn-danger" data-dismiss="modal">取消</button>
                                 </div>
@@ -491,8 +719,10 @@
                 $("#form_search").submit();
             }
         });
+
     });
 </script>
 <script src="assets/js/bootstrapValidator.js"></script>
+
 
 </html>

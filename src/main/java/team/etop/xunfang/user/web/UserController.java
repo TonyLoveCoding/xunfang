@@ -357,6 +357,18 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
         modelAndView.setViewName("/user/userList");
         return modelAndView;
     }
+    @ResponseBody
+    @RequestMapping("/findUserOne")
+    public Result findUserOne(@RequestParam(value = "ID")Long ID) throws Exception{
+        Result result=new Result();
+        System.out.println(ID);
+        System.out.println("findUserOne");
+        User user=userServiceGenerate.selectById(ID);
+        result.add("user",user);
+        result.setSuccess(true);
+        result.setMsg("成功");
+        return result;
+    }
 
 
 

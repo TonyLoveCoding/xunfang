@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/home/search/zxf_page.css"/>
     <link rel="stylesheet" href="assets/user/css/bootstrapValidator.css">
 
+
     <script src="/assets/home/search/zxf_page.js" type="text/javascript"></script>
 
 
@@ -26,11 +27,10 @@
             $("#Mymodal").click(function(){
                 $("#new").modal("show")
             })
-        })
+        });
 
         $(document).on('click', '.roleBtn', function () {
             ID = $(this).attr("id");
-            alert(ID);
             $("#updateRole").empty();
 //           alert(ID);
             $.ajax({
@@ -101,7 +101,6 @@
 
 
                     else {
-                        alert("a");
                         var roleString=result.msg;
                         alert(roleString);
                         $("#findUserRole").append(roleString);
@@ -146,10 +145,55 @@
                 }
             });
         });
+        $(document).on('click','.updateUserBtn',function(){
+            ID = $(this).attr("id");
+//            alert("updateUser");
+            $("#updateUserMsg").empty();
+            $.ajax({
+                url: "user/findUserOne",
+                data: "ID=" + ID,
+                type: "GET",
+                success: function (result) {
+                    if (result.success) {
+                        var user = result.map.user;
+                        var updateUserString='<h3>账号：'+user.account+'</h3>';
+                        $("#updateUserMsg").append(updateUserString);
+                        updateUserString='<input type="hidden" name="userId" value="'+user.id+'"><br>';
+                        $("#updateUserMsg").append(updateUserString);
+                        updateUserString=' <label>昵称：</label>';
+                        $("#updateUserMsg").append(updateUserString);
+                        updateUserString='<input class="form-control" type="text" name="name" value="'+user.username+'"><br>';
+                        $("#updateUserMsg").append(updateUserString);
+                        updateUserString=' <label>密码：</label>';
+                        $("#updateUserMsg").append(updateUserString);
+                        updateUserString='<input class="form-control" type="password" name="password" placeholder="至少6位数字或字母" value="'+user.password+'"><br>';
+                        $("#updateUserMsg").append(updateUserString);
+                        updateUserString='<label>验证密码：</label>';
+                        $("#updateUserMsg").append(updateUserString);
+                        updateUserString='<input class="form-control" type="password" name="checkPwd" autofocus="autofocus" placeholder="至少6位字母或数字" value="'+user.password+'"><br>';
+                        $("#updateUserMsg").append(updateUserString);
+
+
+
+
+
+
+
+
+
+                    }
+                    else {
+                        alert(result.msg+"a");
+                        var estateString=result.msg;
+                        alert(estateString);
+                        $("#findEstates").append(estateString);
+                    }
+                }
+            });
+        });
 
         $(document).on('click', '.deteleUserBtn', function () {
             ID = $(this).attr("id");
-            alert(ID);
             $("#deleteUser").empty();
 //           alert(ID);
             var deteleUserString='<h1 class=\"text-center\"> 确认删除？</h1>';
@@ -349,7 +393,7 @@
 
                 <c:forEach var="user" items="${list}">
 
-                    <tr>
+                    <tr id="${user.id}" class="userClass">
 
                         <th>${user.id }</th>
                         <th>${user.account }</th>
@@ -423,7 +467,7 @@
 
                             <%--&lt;%&ndash;查看樓盤模态框结束&ndash;%&gt;--%>
 
-                        <td><a class="btn btn-success updateUserBtn" data-target="#updateUser" data-toggle="modal" id="${user}">修改</a></td>
+                        <td><a class="btn btn-success updateUserBtn" data-target="#updateUser" data-toggle="modal" id="${user.id}">修改</a></td>
                             <%--<td><a class="btn btn-danger" data-target="#deleteUser" data-toggle="modal" href="" method="post">删除</a></td>--%>
                             <%--<td><a class="btn btn-info" data-target="#updateUserRole" data-toggle="modal"--%>
                             <%--href="">分配角色</a></td>--%>
@@ -432,52 +476,52 @@
 
 
                             <%--修改用户信息模态框--%>
-                        <div id="updateUser" class="modal fade" aria-labelledby="myModalLabel"  aria-hidden="true">
-                            <div class="form-wrap">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button class="close" data-dismiss="modal">
-                                                <span>&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-title">
-                                            <h1 class="text-center">修改</h1>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form class="form-group" id="form5" name="form5" action="/user/updateUser" method="post" novalidate>
-                                                <div class="modal-body">
-                                                    <label>账号:</label>
-                                                    <input type="hidden" name="userId" value=${user.id }>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <label>昵称</label>
-                                                    <input type="text" name="name" value=${user.username }>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <label>密码</label>
-                                                    <input class="form-control" type="password" name="password"
-                                                           autofocus="autofocus" placeholder="至少6位字母或数字"
-                                                           value="${user.password }">
-                                                </div>
-                                                <div class="modal-body">
-                                                    <label>验证密码</label>
-                                                    <input class="form-control" type="password" name="checkPwd"  autofocus="autofocus" placeholder="至少6位字母或数字"               value="${user.password}">
-                                                </div>
+                        <%--<div id="updateUser" class="modal fade" aria-labelledby="myModalLabel"  aria-hidden="true">--%>
+                            <%--<div class="form-wrap">--%>
+                                <%--<div class="modal-dialog">--%>
+                                    <%--<div class="modal-content">--%>
+                                        <%--<div class="modal-header">--%>
+                                            <%--<button class="close" data-dismiss="modal">--%>
+                                                <%--<span>&times;</span>--%>
+                                            <%--</button>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="modal-title">--%>
+                                            <%--<h1 class="text-center">修改</h1>--%>
+                                        <%--</div>--%>
+                                        <%--<div class="modal-body">--%>
+                                            <%--<form class="form-group" id="form5" name="form5" action="/user/updateUser" method="post" novalidate>--%>
+                                                <%--<div class="modal-body">--%>
+                                                    <%--<label>账号:</label>--%>
+                                                    <%--<input type="hidden" name="userId" value=${user.id }>--%>
+                                                <%--</div>--%>
+                                                <%--<div class="modal-body">--%>
+                                                    <%--<label>昵称</label>--%>
+                                                    <%--<input type="text" name="name" value=${user.username }>--%>
+                                                <%--</div>--%>
+                                                <%--<div class="modal-body">--%>
+                                                    <%--<label>密码</label>--%>
+                                                    <%--<input class="form-control" type="password" name="password"--%>
+                                                           <%--autofocus="autofocus" placeholder="至少6位字母或数字"--%>
+                                                           <%--value="${user.password }">--%>
+                                                <%--</div>--%>
+                                                <%--<div class="modal-body">--%>
+                                                    <%--<label>验证密码</label>--%>
+                                                    <%--<input class="form-control" type="password" name="checkPwd"  autofocus="autofocus" placeholder="至少6位字母或数字"               value="${user.password}">--%>
+                                                <%--</div>--%>
 
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-primary" type="submit" id="tijiao22">提交</button>
+                                                <%--<div class="modal-footer">--%>
+                                                    <%--<button class="btn btn-primary" type="submit" id="tijiao22">提交</button>--%>
 
-                                                    <button class="btn btn-danger" data-dismiss="modal">取消</button>
-                                                </div>
+                                                    <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
+                                                <%--</div>--%>
 
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            <%--修改用户模态框结束--%>
+                                            <%--</form>--%>
+                                        <%--</div>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                            <%--&lt;%&ndash;修改用户模态框结束&ndash;%&gt;--%>
 
                         <td><a class="btn btn-danger deteleUserBtn" data-target="#deleteUserById" data-toggle="modal" href="" method="post" id="${user.id}">删除</a></td>
 
@@ -643,6 +687,40 @@
 </div>
 
 <%--查看用户类型模态框结束--%>
+
+       <%--修改用户信息模态框--%>
+       <div id="updateUser" class="modal fade" aria-labelledby="myModalLabel"  aria-hidden="true">
+           <div class="form-wrap">
+               <div class="modal-dialog">
+                   <div class="modal-content">
+                       <div class="modal-header">
+                           <button class="close" data-dismiss="modal">
+                               <span>&times;</span>
+                           </button>
+                       </div>
+                       <div class="modal-title">
+                           <h1 class="text-center">修改</h1>
+                       </div>
+                       <div class="modal-body">
+                           <form class="form-group" id="form5" name="form5" action="/user/updateUser" method="post" novalidate>
+                               <div class="modal-body" id="updateUserMsg">
+
+                               </div>
+
+
+                               <div class="modal-footer">
+                                   <button class="btn btn-primary" type="submit" id="tijiao22">提交</button>
+
+                                   <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                               </div>
+
+                           </form>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <%--修改用户模态框结束--%>
 <%--查看樓盤模态框--%>
 
 <div id="findEstatesList" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -766,7 +844,7 @@
         });
     });
     $(function() {
-        var x = $('#form5').bootstrapValidator({
+        var y = $('#form5').bootstrapValidator({
             message: 'This value is not valid',
             fields: {
 
