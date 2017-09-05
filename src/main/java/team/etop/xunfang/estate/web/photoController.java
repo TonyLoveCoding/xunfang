@@ -1,18 +1,21 @@
 package team.etop.xunfang.estate.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.Msg;
+import team.etop.xunfang.common.change.ChangeType;
+import team.etop.xunfang.estate.dto.*;
+import team.etop.xunfang.modules.po.*;
+import team.etop.xunfang.modules.service.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by asus on 2017/8/10.
@@ -20,7 +23,6 @@ import java.util.Iterator;
 @Controller
 @RequestMapping("/photos")
 public class photoController {
-
 
     @RequestMapping("/addphotos")
     @ResponseBody

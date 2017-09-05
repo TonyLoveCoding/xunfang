@@ -26,13 +26,15 @@ function getPhotoType() {
     for(var i=0;i<child.length;i++){
         (function (i) {
             $(child[i]).click(function () {
-                console.log(i)
-                console.log($(this).next("input"))
-                $(this).next("input").unbind('change')
+                console.log(i);
+                console.log($(this).next("input"));
+                $(this).next("input").unbind('change');
                 $(this).next("input").change(function () {
 
-                    var formData = new FormData($("#addfiles")[0].value);
-                    // console.log($(this).next("input").val())
+                    // var formData = new FormData($(this).next("input").val());
+                    var obj=document.getElementById("form"+i).getElementsByTagName("input");
+                    alert(obj[0].value);
+                    console.log($(this).next("input").val())
                     // console.log(111)
                     $.ajax({
                         type:"POST",

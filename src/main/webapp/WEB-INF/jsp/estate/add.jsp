@@ -206,103 +206,18 @@
             <input type="text" name="estateName" value="${EstateDto.estateInformation}">
         </div>
     </div>
-    <br>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h3>楼盘图片</h3>
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">特色：</div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>效果图（${esize}）</h5>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <textarea name="feature" maxlength="30">${EstateDto.feature}</textarea>
         </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">标签：</div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="choosePhotos"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>样板间（${psize}）</h5>
-        </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="choosePhotos"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div id="choosePhotos"></div></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>环境规划图（${ssize}）</h5>
-        </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px"><div class="choosePhotos"></div></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>楼盘实景图（${rsize}）</h5>
-        </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="choosePhotos"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
-                    <img src="piccreate/picCreate.jsp?ppath=${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <textarea name="feature" maxlength="30">${EstateDto.sign}</textarea>
         </div>
     </div>
     <br>

@@ -25,6 +25,7 @@
         <div class="col-md-12" style="padding-left: 0px">
             <div class="btn-group center-block" role="group" aria-label="...">
                 <a class="btn btn-default center-block" href="/estate/update?id=${EstateDto.id}" role="button" target="_self">修改信息</a>
+                <a class="btn btn-default center-block" href="/estate/upload?id=${EstateDto.id}" role="button" target="_self">修改图片信息</a>
                 <a class="btn btn-default center-block" href="/estate/query" role="button" >返回</a>
             </div>
         </div>
@@ -230,8 +231,14 @@
         <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">特色：</div>
         </div>
-        <div class="col-sm-11" style="padding-left: 0px;padding-top: 10px">
-            ${EstateDto.feature}
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">${EstateDto.feature}</div>
+        </div>
+        <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">标签：</div>
+        </div>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">${EstateDto.sign}</div>
         </div>
     </div>
     <br>

@@ -43,6 +43,8 @@ public class EstateDto {
     private Date createTime;//创建时间
     private Float plotRatio;//容积率
     private Float area;//面积
+    private Integer turnover;//成交量
+    private String sign;//标签
     private List<EffectPictureDto> effectPictureDtoList;
     private List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList;
     private List<RealEststePictureDto> realEststePictureDtoList;
@@ -320,6 +322,22 @@ public class EstateDto {
         this.area = area;
     }
 
+    public Integer getTurnover() {
+        return turnover;
+    }
+
+    public void setTurnover(Integer turnover) {
+        this.turnover = turnover;
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
+    }
+
     public List<EffectPictureDto> getEffectPictureDtoList() {
         return effectPictureDtoList;
     }
@@ -374,10 +392,10 @@ public class EstateDto {
                 ", property='" + property + '\'' +
                 ", developer='" + developer + '\'' +
                 ", saleStatus=" + saleStatus +
-                ", firstDelivery=" + firstDelivery +
-                ", latestOpening=" + latestOpening +
+                ", firstDelivery='" + firstDelivery + '\'' +
+                ", latestOpening='" + latestOpening + '\'' +
                 ", propertyRights='" + propertyRights + '\'' +
-                ", takeTime=" + takeTime +
+                ", takeTime='" + takeTime + '\'' +
                 ", company='" + company + '\'' +
                 ", propertyCost='" + propertyCost + '\'' +
                 ", powerType='" + powerType + '\'' +
@@ -389,6 +407,8 @@ public class EstateDto {
                 ", createTime=" + createTime +
                 ", plotRatio=" + plotRatio +
                 ", area=" + area +
+                ", turnover=" + turnover +
+                ", sign='" + sign + '\'' +
                 ", effectPictureDtoList=" + effectPictureDtoList +
                 ", prototypeRoomPictureDtoList=" + prototypeRoomPictureDtoList +
                 ", realEststePictureDtoList=" + realEststePictureDtoList +

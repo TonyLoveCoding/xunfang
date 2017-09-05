@@ -208,133 +208,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px;padding-top: 10px">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">特色：</div>
         </div>
-        <div class="col-sm-12" style="padding-left: 0px;padding-top: 10px">
-            <%--<input type="text" name="estateName" value="${EstateDto.estateName}">--%>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <textarea name="feature" maxlength="30">${EstateDto.feature}</textarea>
         </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h3>楼盘图片</h3>
+        <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">标签：</div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>效果图（${esize}）</h5>
-        </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <%--<div class="choosePhotos" id="e_choosePhotos"></div>--%>
-            <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
-                <input id="file1" name="file1" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple="multiple">
-                <label for="file1" class="btn btn-default savePhoto">添加图片</label>
-
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
-                <div class="col-sm-4 saved" style="text-align: center">
-                    <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="javaspri" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>样板间（${psize}）</h5>
-        </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <%--<div class="choosePhotos" id="p_choosePhotos"></div>--%>
-                <%--<label for="files" class="btn btn-default savePhoto">添加图片</label>--%>
-                <%--<input id="files" type="file" style="display: none" multiple>--%>
-                <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
-                    <label for="file2" class="btn btn-default savePhoto">添加图片</label>
-                    <input id="file2" name="file2" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple>
-                </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
-                    <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>环境规划图（${ssize}）</h5>
-        </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <%--<div class="choosePhotos" id="s_choosePhotos"></div>--%>
-                <%--<label for="files" class="btn btn-default savePhoto">添加图片</label>--%>
-                <%--<input id="files" type="file" style="display: none" multiple>--%>
-                <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
-                    <label for="file3" class="btn btn-default savePhoto">添加图片</label>
-                    <input id="file3" name="file3" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple>
-                </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
-                    <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <h5>楼盘实景图（${rsize}）</h5>
-        </div>
-        <div class="col-sm-12" style="padding-left: 0px">
-            <div class="halving_line"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <%--<div class="choosePhotos" id="r_choosePhotos"></div>--%>
-                <%--<label for="files" class="btn btn-default savePhoto">添加图片</label>--%>
-                <%--<input id="files" type="file" style="display: none" multiple>--%>
-                <form action="/photos/addphotos" id="addfiles" method="post" enctype="multipart/form-data">
-                    <label for="file4" class="btn btn-default savePhoto">添加图片</label>
-                    <input id="file4" name="file4" type="file" accept="image/gif, image/jpeg, image/png" style="display: none" multiple>
-                </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12" style="padding-left: 0px">
-            <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
-                <div class="col-sm-4" style="text-align: center">
-                    <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="" role="button" onclick="return contirmd()">删除</a>
-                </div>
-            </c:forEach>
+        <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
+            <textarea name="feature" maxlength="30">${EstateDto.sign}</textarea>
         </div>
     </div>
     <br>
