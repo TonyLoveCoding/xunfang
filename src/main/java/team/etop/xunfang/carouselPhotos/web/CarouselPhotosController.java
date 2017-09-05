@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.carouselPhotos.dto.CarouselPhotosDto;
@@ -35,7 +36,7 @@ public class CarouselPhotosController {
     CarouselPhotosServiceGenerate carouselPhotosServiceGenerate;
 
     @Value("${adImage.url}")
-    private String url;
+    private String imageUrl;
     @Value("${adImage.savePath}")
     private String savePath;
     @Value("${adImage.minNumber}")
@@ -52,21 +53,24 @@ public class CarouselPhotosController {
         for(CarouselPhotos p:clist){
             CarouselPhotosDto c=new CarouselPhotosDto();
             c.setUrl(p.getUrl());
-            c.setName(savePath+p.getName());
+            c.setName(imageUrl+p.getName());
             c.setId(p.getId());
             list.add(c);
         }
         ModelAndView modelAndView=new ModelAndView("/carouselphotos/query");
         modelAndView.addObject("list",list);
         modelAndView.addObject("count",count);
+        modelAndView.addObject("maxNumber",maxNumber);
         return modelAndView;
     }
 
     @RequestMapping("/uplodephotos")
+    @ResponseBody
     public Msg uplodePhotos(@RequestParam("files") MultipartFile multipartFile,@RequestParam("cropData")String data,@RequestParam("url")String url) throws Exception{
         System.out.println("进入uplodePhotos方法");
         int c=carouselPhotosServiceGenerate.selectCount(null);
         if(c>=maxNumber){
+            System.out.println("上传失败");
             return Msg.fail("轮播图片不能多于"+maxNumber+"张");//提示轮播图片不能多于最高上限
         }else {
             String[] datas=data.split("\"|[a-zA-Z]|\\{|\\}|\\:");
@@ -83,6 +87,7 @@ public class CarouselPhotosController {
             GetName getName=new GetName();
             String name=getName.getName(filename);
             String filepath=savePath+name;
+            System.out.println(filepath);
             Calendar calendar = Calendar.getInstance(Locale.CHINA);
             Date date=calendar.getTime();
             long times=date.getTime();
@@ -90,7 +95,8 @@ public class CarouselPhotosController {
             format.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
             String d=format.format(times);
             date=format.parse(d);
-            multipartFile.transferTo(new File(filepath));
+            File f=new File(filepath);
+            multipartFile.transferTo(f);
             Thumbnails.of(filepath).sourceRegion((int)x,(int)y,(int)w,(int)h).size(540,200).keepAspectRatio(false).toFile(filepath);
             CarouselPhotos carouselPhotos=new CarouselPhotos();
             carouselPhotos.setName(name);
@@ -99,11 +105,12 @@ public class CarouselPhotosController {
             carouselPhotos.setUrl(url);
             carouselPhotosServiceGenerate.insert(carouselPhotos);
             System.out.println("更新成功");
+            return Msg.success();
         }
-        return Msg.success();
     }
 
     @RequestMapping("/deletephoto")
+    @ResponseBody
     public Msg deletePhoto(@RequestParam("id")long id){
         int c=carouselPhotosServiceGenerate.selectCount(null);
         if(c<=minNumber){

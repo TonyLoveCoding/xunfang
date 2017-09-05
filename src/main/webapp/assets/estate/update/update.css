@@ -115,3 +115,23 @@ body {
     width: 100%;
     height: 2px;
 }
+
+.file-style
+{
+    width:100px;
+    height:50px;
+    background:#0000ff;
+    border-radius: 5px;
+    text-align: center;
+    position:relative;
+}
+
+#file
+{
+    width:100%;
+    height:50px;
+    opacity:0;
+    cursor:pointer;
+    position:absolute;
+}
+
