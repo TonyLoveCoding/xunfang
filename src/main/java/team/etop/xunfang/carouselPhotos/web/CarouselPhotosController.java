@@ -60,6 +60,7 @@ public class CarouselPhotosController {
         ModelAndView modelAndView=new ModelAndView("/carouselphotos/query");
         modelAndView.addObject("list",list);
         modelAndView.addObject("count",count);
+        modelAndView.addObject("maxNumber",maxNumber);
         return modelAndView;
     }
 

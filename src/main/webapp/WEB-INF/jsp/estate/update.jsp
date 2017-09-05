@@ -55,7 +55,7 @@
     </div>
     <div class="row">
         <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">建筑类型：</div>
+            <div style="font-size:15px">*建筑类型：</div>
         </div>
         <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
             <input type="text" name="type" value="${EstateDto.type}">
@@ -121,7 +121,7 @@
     </div>
     <div class="row">
         <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px;padding-right: 0px">
-            <div style="font-size:15px">楼盘户型：</div>
+            <div style="font-size:15px">*楼盘户型：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <input type="text" name="houseType" value="${EstateDto.houseType}">
@@ -187,7 +187,7 @@
             <input type="text" name="powerType" value="${EstateDto.powerType}">
         </div>
         <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">装修情况：</div>
+            <div style="font-size:15px">*装修情况：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <input type="text" name="decoration" value="${EstateDto.decoration}">
@@ -205,6 +205,15 @@
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
             <input type="text" name="estateInformation" value="${EstateDto.estateInformation}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">特色：</div>
+        </div>
+        <div class="col-sm-12" style="padding-left: 0px;padding-top: 10px">
+            <%--<input type="text" name="estateName" value="${EstateDto.estateName}">--%>
+            <textarea name="feature" maxlength="30">${EstateDto.feature}</textarea>
         </div>
     </div>
     <br>

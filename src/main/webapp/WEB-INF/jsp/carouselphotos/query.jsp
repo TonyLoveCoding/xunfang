@@ -42,6 +42,10 @@
             }
         }
 
+        function exceed(maxNumber) {
+            alert("轮播图数量超过规定的"+maxNumber+"张,无法添加");
+        }
+
     </script>
     <style>
         .photo300{
@@ -60,7 +64,16 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div id="choosePhotos"></div>
+            <c:choose>
+                <c:when test="${count eq maxNumber}">
+                    <div class="crop-picker-wrap">
+                        <button class="crop-picker" type="button" onclick="exceed(${maxNumber})">添加图片</button>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div id="choosePhotos"></div>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
     <div class="row">

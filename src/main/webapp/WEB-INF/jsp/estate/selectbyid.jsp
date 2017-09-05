@@ -226,6 +226,14 @@
             <div style="font-size:15px">${EstateDto.estateInformation}</div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">特色：</div>
+        </div>
+        <div class="col-sm-11" style="padding-left: 0px;padding-top: 10px">
+            ${EstateDto.feature}
+        </div>
+    </div>
     <br>
     <div class="row">
         <div class="col-md-12" style="padding-left: 0px">
