@@ -10,6 +10,20 @@ $(document).ready(function(){
         $("#inp_hid_keyword").attr("value",keyWord);
         $("#form_search").submit();
     });
+    $("#inp_nav_keyword").keydown(function (e) {
+        if(e.keyCode == "13") {
+            var keyWord=$("#inp_nav_keyword").val();
+            $("#inp_hid_keyword").attr("value", keyWord);
+            $("#form_search").submit();
+        }
+    });
+    $("#inp_coll_keyword").keydown(function (e) {
+        if(e.keyCode == "13") {
+            var keyWord=$("#inp_coll_keyword").val();
+            $("#inp_hid_keyword").attr("value",keyWord);
+            $("#form_search").submit();
+        }
+    });
     $(".rad_sell").click(function () {
         var saleStatus  = $('input[name="saleRadios"]:checked').val(); //获取被选中Radio的Value值
         $("#inp_hid_saleStatus").attr("value",saleStatus);

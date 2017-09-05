@@ -52,7 +52,7 @@
     overflow: hidden; 
 	}
 	
-	.search-terms-item h3 a,.search-terms-list li a{
+	.search-terms-item h3 b,.search-terms-list li a{
     	color:#fff;
 	}
 	.search-terms-item h3 {
@@ -84,14 +84,28 @@
 		width: 150px;
 		padding-left: 10px;
 	}
+	.condition-cols2 .condition-col{
+		 float: left;
+		 width: 60px;
+		 margin-right: 8px;
+	 }
+	.condition-cols2 .condition-col{
+		  float: left;
+		  width: 60px;
+		  margin-right: 8px;
+	  }
+	.item-type .condition-cols2{
+		width: 270px;
+	}
+
+	.item-type .condition-cols2 .condition-col{
+		padding-left: 30px;
+		width: 110px;
+	}
 	.item-price .condition-cols2{
 		width: 270px;
 	}
-	.condition-cols2 .condition-col{
-		float: left;
-		width: 60px;
-		margin-right: 8px;
-	}
+
 	.item-price .condition-cols2 .condition-col{
 		padding-left: 30px;
 		width: 110px;
