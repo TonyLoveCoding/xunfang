@@ -1,4 +1,7 @@
-$(function(){
+
+$(document).ready(function(){
+    getEstate();
+
     //浮动搜索框的效果设置
     $('.search-terms > .search-terms-item').hover(function(){
         $(this).addClass('hover');
@@ -92,5 +95,44 @@ $(function(){
         $("#inp_hid_keyword").val(keyword);
         $("#form_search").submit();
     }
+
 });
+
+//将推荐楼盘和最新楼盘系列用ajax方式取到数据并在各自的div中呈现
+function getEstate() {
+    $.ajax({
+        url: "/home/getHomeEstateMsg",
+        type: "GET",
+        success: function (data) {
+            if(data.code == 100){
+                var recommendArea = $("#RecommendedEstate_div");
+                showEstates(recommendArea,data.extend.RecommendedEstate);
+                var latestArea = $("#LatestEstate_div");
+                showEstates(latestArea,data.extend.RecommendedEstate);
+            }
+        }
+    });
+}
+
+//
+function showEstates(area, list) {
+    for(var estate in list){
+        var div = $("<div class=\"col-md-3\"></div>");
+            var div2 = $("<div class=\"thumbnail hovereffect img-background\">");
+        var perLink = $("<a href=\"home/details/" + list[estate].id + "\">" +
+                        "<img class=\"img-responsive\" src=\"" + list[estate].estateDetailsURL +"\" alt=\"\">" +
+                        "<div class=\"overlay\"><h2>" + list[estate].estateName + "</h2></div></a>");
+        var perDesc = $("<div class=\"caption\">" +
+                        "<h3><a href=\"home/details/" + list[estate].id + "\">" + list[estate].estateName + "</a></h3>" +
+                        "<p>" + list[estate].location +
+                            " | 建面: " + list[estate].area + " m² | " +
+            list[estate].minPrice +"-"+list[estate].maxPrice+" 万" +"</p></div>");
+        perLink.appendTo(div2);
+        perDesc.appendTo(div2);
+        div2.appendTo(div);
+        div.appendTo(area);
+    }
+}
+
+
 

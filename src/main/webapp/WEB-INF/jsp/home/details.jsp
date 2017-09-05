@@ -17,11 +17,14 @@
 
     <script src="/assets/home/index/js/header.js" type="text/javascript"></script>
     <script src="/assets/home/details/js/details.js" type="text/javascript"></script>
-    <script src="/assets/home/lightGallery/js/lightGallery.js" type="text/javascript"></script>
 
     <link rel="stylesheet" href="/assets/home/index/css/header.css">
     <link rel="stylesheet" href="/assets/home/details/css/details.css">
-    <link rel="stylesheet" type="text/css" href="/assets/home/lightGallery/css/lightGallery.css" />
+
+    <link rel="stylesheet" href="/assets/home/lightGallery/css/lightgallery.min.css">
+    <script src="/assets/home/lightGallery/js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="/assets/home/lightGallery/js/lightgallery-all.js" type="text/javascript"></script>
+    <script src="/assets/home/lightGallery/js/picturefill.min.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -30,91 +33,80 @@
             $("#auto-loop-3").lightGallery();
             $("#auto-loop-4").lightGallery();
         });
+        lightGallery(document.getElementById("#auto-loop-1"));
+        lightGallery(document.getElementById("#auto-loop-2"));
+        lightGallery(document.getElementById("#auto-loop-3"));
+        lightGallery(document.getElementById("#auto-loop-4"));
     </script>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="50">
 
-<div class="header-hover">
-    <div class="header-hover-wrap">
-        <ul class="menu">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="home">寻房网</a>
-            </div>
+<div class="container-fluid">
+    <%--浮动框的设置--%>
+    <div class="header-hover">
+        <div class="header-hover-wrap">
+            <ul class="menu">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home#">寻房网</a>
+                </div>
 
-            <div class="collapse navbar-collapse" >
+                <div class="collapse navbar-collapse" >
 
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" />
-                    </div> <button type="submit" class="btn btn-default"><span class="ico ico-search"></span>找房</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
+                    <div class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input id="search-input-hover" style="width: 400px" type="text" class="form-control"/>
+                        </div>
+                        <button id="search-button-hover" type="submit" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-search"></span>找房
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
 
-                    <li>
-                        <a href="home/details#"><b>热搜词：</b></a>
-                    </li>
-                    <li>
-                        <a href="home/details#">实地蔷薇国际</a>
-                    </li>
+                        <li>
+                            <a href="home#"><b>热搜词：</b></a>
+                        </li>
 
-                    <li>
-                        <a href="home/details#">万科幸福誉</a>
-                    </li>
-                    <li>
-                        <a href="home/details#">南沙保利城</a>
-                    </li>
-                    <li>
-                        <a href="home/details#">富力伯爵山</a>
-                    </li>
-                    <li>
-                        <a href="home/details#">佳兆业城市广场</a>
-                    </li>
-                </ul>
-            </div>
-        </ul>
+                        <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
+                            <li>
+                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </ul>
+        </div>
     </div>
-</div>
 
-<div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <nav class="navbar navbar-default " role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="home">寻房网</a>
+                    <a class="navbar-brand" href="home#">寻房网</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                    <form class="navbar-form navbar-left" role="search">
+                    <div class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" />
-                        </div> <button type="submit" class="btn btn-default"><span class="ico ico-search"></span>找房</button>
-                    </form>
+                            <input id="search-input" style="width: 400px" type="text" class="form-control"  />
+                        </div>
+                        <button id="search-button" class="btn btn-danger" type="button">
+                            <span class="glyphicon glyphicon-search"></span> 找房
+                        </button>
+                    </div>
                     <ul class="nav navbar-nav navbar-right">
-
                         <li>
-                            <a href="home/details#">热搜词：</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">实地蔷薇国际</a>
+                            <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
                         </li>
 
-                        <li>
-                            <a href="home/details#">万科幸福誉</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">南沙保利城</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">富力伯爵山</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">佳兆业城市广场</a>
-                        </li>
+                        <c:forEach begin="0" end="4" items="${RecommendEstate}" var="estate">
+                            <li>
+                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
-
             </nav>
+
             <ul class="breadcrumb">
 
                 <li>
@@ -135,11 +127,11 @@
                     <b  id="section-0">${estate.estateName}</b>
                     <label class="label label-success">
                         <c:if test="${estate.status eq 1}">在售</c:if>
-                        <c:if test="${estate.status eq 0}">不在售</c:if>
+                        <c:if test="${estate.status eq 0}">待售 </c:if>
                     </label>
-                    <label class="label label-default">${estate.sign}</label>
-                    <label class="label label-default">${estate.sign}</label>
-                    <label class="label label-default">${estate.sign}</label>
+                    <label class="label label-success">${estate.sign}</label>
+                    <label class="label label-success">${estate.sign}</label>
+                    <label class="label label-success">${estate.sign}</label>
                 </div>
                 <small>  别名：${estate.estateName}</small>
             </div>
@@ -170,9 +162,9 @@
                                         <li data-slide-to="3" data-target="#Carousel-ID">
                                         </li>
                                     </ol>
-                                    <div class="carousel-inner">
+                                    <div class="carousel-inner full-image">
                                         <div id="item-1" class="item active">
-                                            <img alt="" src="/assets/home/details/image/1-big.jpg" />
+                                            <img alt=""  src="/assets/home/details/image/1-big.jpg" />
                                         </div>
                                         <div id="item-2" class="item">
                                             <img alt="" src="/assets/home/details/image/2-big.jpg" />
@@ -193,7 +185,7 @@
                                 </div>
 
                                 <div class="row" style="padding-top:10px">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-1" class="hovereffect blueBorder">
                                             <img class="img-responsive " src="/assets/home/details/image/1-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="0">
@@ -203,7 +195,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-2" class="hovereffect">
                                             <img class="img-responsive" src="/assets/home/details/image/2-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="1">
@@ -214,7 +206,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-3" class="hovereffect">
                                             <img class="img-responsive" src="/assets/home/details/image/3-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="2">
@@ -226,7 +218,7 @@
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-4" class="hovereffect">
                                             <img class="img-responsive" src="/assets/home/details/image/4-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="3">
@@ -331,7 +323,7 @@
                                                 <div class="field">销售状态　</div>
                                                 <div class="value">
                                                     <c:if test="${estate.status eq 1}">在售</c:if>
-                                                    <c:if test="${estate.status eq 0}">不在售</c:if>
+                                                    <c:if test="${estate.status eq 0}">待售</c:if>
                                                 </div>
                                             </li>
                                             <li>
@@ -417,12 +409,15 @@
                                         <h2>效果图（12）</h2>
                                         <div id="auto-loop-1" class="row gallery">
                                             <c:forEach begin="0" end="11">
-                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                <div class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
+                                                     data-sub-html="<h4>${estate.estateName}</h4>
+                                                     <p>${estate.estateName}效果图</p>"
+                                                     class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
                                                     <div class="hovereffect">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <a href="home/details#">
+                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                        <a href="javascript:void(0);">
                                                             <div class="overlay">
-                                                                <h2>实地蔷薇国际效果图</h2>
+                                                                <h2>${estate.estateName}效果图</h2>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -506,4 +501,40 @@
 </div>
 
 </body>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <h6>Copyright &copy;易拓工作室</h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">关于我们</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">招聘信息</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">服务声明</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">投诉反馈</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6>本网站由易拓工作室制作</h6>
+            </div>
+        </div>
+        <div class="row col-sm-12">
+            <p class="text-center">
+                易拓工作室
+                ©2014-2017 rights reversed.
+            </p>
+        </div>
+    </div>
+</footer>
+
 </html>

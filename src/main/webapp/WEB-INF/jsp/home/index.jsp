@@ -34,43 +34,44 @@
     <input id="inp_hid_area" type="hidden" name="area" value="none">
 </form>
 
-<%--浮动框的设置--%>
-<div class="header-hover">
-    <div class="header-hover-wrap">
-        <ul class="menu">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="home#">寻房网</a>
-            </div>
 
-            <div class="collapse navbar-collapse" >
-
-                <div class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input id="search-input-hover" type="text" class="form-control" />
-                    </div>
-                    <button id="search-button-hover" type="submit" class="btn btn-danger">
-                        <span class="glyphicon glyphicon-search"></span>找房
-                    </button>
+<div class="container-fluid">
+    <%--浮动框的设置--%>
+    <div class="header-hover">
+        <div class="header-hover-wrap">
+            <ul class="menu">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home#">寻房网</a>
                 </div>
-                <ul class="nav navbar-nav navbar-right">
 
-                    <li>
-                        <a href="home#"><b>热搜词：</b></a>
-                    </li>
+                <div class="collapse navbar-collapse" >
 
-                    <c:forEach begin="0" end="4" items="${list}" var="estate">
+                    <div class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input id="search-input-hover" type="text" class="form-control"/>
+                        </div>
+                        <button id="search-button-hover" type="submit" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-search"></span>找房
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+
                         <li>
-                            <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            <a href="home#"><b>热搜词：</b></a>
                         </li>
-                    </c:forEach>
-                </ul>
-            </div>
-        </ul>
+
+                        <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
+                            <li>
+                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </ul>
+        </div>
     </div>
-</div>
 
 
-<div class="container ">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <%--顶部导航栏设置--%>
@@ -80,10 +81,9 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
                     <div class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input id="search-input" type="text" class="form-control" />
+                            <input id="search-input" type="text" class="form-control"  />
                         </div>
                         <button id="search-button" class="btn btn-danger" type="button">
                             <span class="glyphicon glyphicon-search"></span> 找房
@@ -94,175 +94,220 @@
                             <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
                         </li>
 
-                        <c:forEach begin="0" end="4" items="${list}" var="estate">
+                        <c:forEach begin="0" end="4" items="${RecommendEstate}" var="estate">
                             <li>
                                 <a href="home/details/${estate.id}">${estate.estateName}</a>
                             </li>
                         </c:forEach>
                     </ul>
                 </div>
-
             </nav>
             <%--左侧条件搜索的设置--%>
             <div class="row clearfix ">
                 <div class="col-md-3 column">
                     <ul class="list-group search-terms">
-                        <li class="search-terms-item hoverDiv">
-                            <h3><b>区域</b></h3>
+                        <li class="search-terms-item item-location">
+                            <div class="search-terms-title">
+                                <a href="/home/search">位置</a>
+                            </div>
                             <ul class="list-inline search-terms-list select-location">
-                                <li><a href="javascript:void(0);" name="南沙">南沙</a></li>
-                                <li><a href="javascript:void(0);" name="黄埔">黄埔</a></li>
-                                <li><a href="javascript:void(0);" name="花都">花都</a></li>
-                                <li><a href="javascript:void(0);" name="增城">增城</a></li>
+                                <c:forEach var="location" items="${locations}" begin="1" end="4">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${location.code}" >
+                                                ${location.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
 
                             <div class="hoverBlock">
-                                <h3>所有区域</h3>
+                                <h3>所有位置</h3>
                                 <div class="condition-all">
                                     <ul class="condition-col select-location">
-                                        <li><a href="javascript:void(0);" name="none">不限</a></li>
-                                        <li><a href="javascript:void(0);" name="南沙">南沙</a></li>
-                                        <li><a href="javascript:void(0);" name="黄埔">黄埔</a></li>
-                                        <li><a href="javascript:void(0);" name="花都">花都</a></li>
-                                        <li><a href="javascript:void(0);" name="增城">增城</a></li>
-                                        <li><a href="javascript:void(0);" name="番禺">番禺</a></li>
-                                        <li><a href="javascript:void(0);" name="白云">白云</a></li>
-                                        <li><a href="javascript:void(0);" name="天河">天河</a></li>
-                                        <li><a href="javascript:void(0);" name="荔湾">荔湾</a></li>
-                                        <li><a href="javascript:void(0);" name="海珠">海珠</a></li>
-                                        <li><a href="javascript:void(0);" name="从化">从化</a></li>
-                                        <li><a href="javascript:void(0);" name="越秀">越秀</a></li>
-                                        <li><a href="javascript:void(0);" name="广州周边">广州周边</a></li>
+                                        <c:forEach var="location" items="${locations}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${location.code}" >
+                                                        ${location.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
 
                         </li>
 
-
-                        <li class="search-terms-item">
-                            <h3><b>面积</b></h3>
+                        <li class="search-terms-item item-area">
+                            <div class="search-terms-title">
+                                <a href="/home/search">面积</a>
+                            </div>
                             <ul class="list-inline search-terms-list select-area">
-                                <li><a href="javascript:void(0);" name="80_TO_120">80m²-120m²</a></li>
-                                <li><a href="javascript:void(0);" name="120_TO_140">120m²-140m²</a></li>
+                                <c:forEach var="area" items="${areas}" begin="2" end="3">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${area.code}" >
+                                                ${area.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                             <div class="hoverBlock">
                                 <h3>所有面积</h3>
                                 <div class="condition-all">
                                     <ul class="condition-col select-area">
-                                        <li><a href="javascript:void(0);" name="none">不限</a></li>
-                                        <li><a href="javascript:void(0);" name="infinite_TO_50">小于50m²</a>
-                                        <li><a href="javascript:void(0);" name="50_TO_80">50m²-80m²</a></li>
-                                        <li><a href="javascript:void(0);" name="80_TO_120">80m²-120m²</a></li>
-                                        <li><a href="javascript:void(0);" name="120_TO_140">120m²-140m²</a></li>
-                                        <li><a href="javascript:void(0);" name="140_TO_160">140m²-160m²</a></li>
-                                        <li><a href="javascript:void(0);" name="160_TO_infinite">大于160m²</a></li>
+                                        <c:forEach var="area" items="${areas}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${area.code}" >
+                                                        ${area.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
                         </li>
 
                         <li class="search-terms-item item-type">
-                            <h3><b>户型</b></h3>
-                            <ul class="list-inline search-terms-list select-houseType">
-                                <li><a href="javascript:void(0);" name="二居">二居</a></li>
-                                <li><a href="javascript:void(0);" name="三居">三居</a></li>
-                                <li><a href="javascript:void(0);" name="四居">四居</a></li>
-                                <li><a href="javascript:void(0);" name="一居">五居及以上</a></li>
+                            <div class="search-terms-title">
+                                <a href="/home/search">类型</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-type">
+                                <c:forEach var="type" items="${types}" begin="2" end="3">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${type.code}" >
+                                                ${type.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
-                            <ul class="list-inline search-terms-list select-unit-type">
-                                <li><a href="javascript:void(0);" name="住宅">住宅</a></li>
-                                <li><a href="javascript:void(0);" name="别墅">别墅</a></li>
-                                <li><a href="javascript:void(0);" name="商业">商业</a></li>
-                            </ul>
+                            <div class="hoverBlock">
+                                <h3>所有类型</h3>
+                                <div class="condition-all">
+                                    <ul class="condition-col select-type">
+                                        <c:forEach var="type" items="${types}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${type.code}" >
+                                                        ${type.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
 
-                            <div class="hoverBlock condition-cols2">
+                        <li class="search-terms-item item-houseType" >
+                            <div class="search-terms-title">
+                                <a href="/home/search">户型</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-houseType">
+                                <c:forEach var="houseType" items="${houseTypes}" begin="1" end="4">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${houseType.code}" >
+                                                ${houseType.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                            <div class="hoverBlock">
                                 <h3>所有户型</h3>
                                 <div class="condition-all ">
                                     <ul class="condition-col select-houseType">
-                                        <li><b>户型:</b></li>
-                                        <li><a href="javascript:void(0);" name="none">不限</a></li>
-                                        <li><a href="javascript:void(0);" name="一居">一居</a></li>
-                                        <li><a href="javascript:void(0);" name="二居">二居</a></li>
-                                        <li><a href="javascript:void(0);" name="三居">三居</a></li>
-                                        <li><a href="javascript:void(0);" name="四居">四居</a></li>
-                                        <li><a href="javascript:void(0);" name="五居及以上">五居及以上</a></li>
-                                    </ul>
-                                    <ul class="condition-col select-type">
-                                        <li><b>类型:</b></li>
-                                        <li><a href="javascript:void(0);" name="none">不限</a></li>
-                                        <li><a href="javascript:void(0);" name="住宅">住宅</a>
-                                        <li><a href="javascript:void(0);" name="别墅">别墅</a></li>
-                                        <li><a href="javascript:void(0);" name="商业">商业</a></li>
+                                        <c:forEach var="houseType" items="${houseTypes}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${houseType.code}" >
+                                                        ${houseType.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
 
                         </li>
 
-                        <li class="search-terms-item item-price">
-                            <h3><b>价格</b></h3>
+                        <li class="search-terms-item item-unit-price">
+                            <div class="search-terms-title">
+                                <a href="/home/search">单价</a>
+                            </div>
                             <ul class="list-inline search-terms-list select-unit-price">
-                                <li><a href="javascript:void(0);" name="infinite_TO_10000">小于1万/平方米</a></li>
-                                <li><a href="javascript:void(0);" name="10000_TO_15000">1万-1.5万/平方米</a></li>
+                                <c:forEach var="unit_price" items="${unit_prices}" begin="1" end="2">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${unit_price.code}" >
+                                                ${unit_price.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
-                            <ul class="list-inline search-terms-list select-total-prices">
-                                <li><a href="javascript:void(0);" name="100_TO_150">100-150万/套</a></li>
-                                <li><a href="javascript:void(0);" name="150_TO_200">150-200万/套</a></li>
-                            </ul>
-
-                            <div class="hoverBlock condition-cols2">
-                                <h3>所有价格</h3>
+                            <div class="hoverBlock ">
+                                <h3>所有单价</h3>
                                 <div class="condition-all ">
                                     <ul class="condition-col select-unit-price">
-                                        <li><b>单价:</b></li>
-                                        <li><a href="javascript:void(0);" name="none">不限</a></li>
-                                        <li><a href="javascript:void(0);" name="infinite_TO_10000">小于1万</a></li>
-                                        <li><a href="javascript:void(0);" name="10000_TO_15000">1万至1.5万</a></li>
-                                        <li><a href="javascript:void(0);" name="15000_TO_20000">1.5万至2万</a></li>
-                                        <li><a href="javascript:void(0);" name="20000_TO_25000">2万至2.5万</a></li>
-                                        <li><a href="javascript:void(0);" name="25000_TO_30000">2.5万至3万</a></li>
-                                        <li><a href="javascript:void(0);" name="30000_TO_40000">3万至4万</a></li>
-                                        <li><a href="javascript:void(0);" name="40000_TO_infinite">大于4万</a></li>
-
-                                    </ul>
-                                    <ul class="condition-col select-total-prices">
-                                        <li><b>总价:</b></li>
-                                        <li><a href="javascript:void(0);" name="none">不限</a></li>
-                                        <li><a href="javascript:void(0);" name="infinite_TO_100">小于100万</a></li>
-                                        <li><a href="javascript:void(0);" name="100_TO_150">100至150万</a></li>
-                                        <li><a href="javascript:void(0);" name="150_TO_200">150至200万</a></li>
-                                        <li><a href="javascript:void(0);" name="200_TO_250">200至250万</a></li>
-                                        <li><a href="javascript:void(0);" name="250_TO_300">250至300万</a></li>
-                                        <li><a href="javascript:void(0);" name="300_TO_500">300至500万</a></li>
-                                        <li><a href="javascript:void(0);" name="500_TO_800">500至800万</a></li>
-                                        <li><a href="javascript:void(0);" name="800_TO_1000">800至1000万</a></li>
-                                        <li><a href="javascript:void(0);" name="1000_TO_infinite">大于1000万</a></li>
+                                        <c:forEach var="unit_price" items="${unit_prices}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${unit_price.code}" >
+                                                        ${unit_price.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
                         </li>
 
-                        <li class="search-terms-item">
-                            <h3><b>特色房</b></h3>
+                        <li class="search-terms-item item-total-price">
+                            <div class="search-terms-title">
+                                <a href="/home/search">总价</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-total-prices">
+                                <c:forEach var="total_price" items="${total_pricess}" begin="1" end="2">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${total_price.code}" >
+                                                ${total_price.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                            <div class="hoverBlock ">
+                                <h3>所有总价</h3>
+                                <div class="condition-all ">
+                                    <ul class="condition-col select-total-prices">
+                                        <c:forEach var="total_price" items="${total_pricess}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${total_price.code}" >
+                                                        ${total_price.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="search-terms-item item-total-price">
+                            <div class="search-terms-title">
+                                <a href="/home/search">特色房</a>
+                            </div>
                             <ul class="list-inline search-terms-list select-feature">
-                                <li><a href="javascript:void(0);" name="临地铁">临地铁</a></li>
-                                <li><a href="javascript:void(0);" name="精装修">精装修</a></li>
-                                <li><a href="javascript:void(0);" name="现房">现房</a></li>
-                                <li><a href="javascript:void(0);" name="小户型">小户型</a></li>
+                                <c:forEach var="feature" items="${features}" begin="1" end="4">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${feature.code}" >
+                                                ${feature.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
 
                             <div class="hoverBlock">
                                 <h3>所有特色房</h3>
                                 <div class="condition-all">
                                     <ul class="condition-col select-feature">
-                                        <li><a href="javascript:void(0);" name="none">不限</a></li>
-                                        <li><a href="javascript:void(0);" name="临地铁">临地铁</a></li>
-                                        <li><a href="javascript:void(0);" name="精装修">精装修</a></li>
-                                        <li><a href="javascript:void(0);" name="现房">现房</a></li>
-                                        <li><a href="javascript:void(0);" name="小户型">小户型</a></li>
-                                        <li><a href="javascript:void(0);" name="自由购">自由购</a></li>
-                                        <li><a href="javascript:void(0);" name="品牌地产">品牌地产</a></li>
+                                        <c:forEach var="feature" items="${features}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${feature.code}" >
+                                                        ${feature.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
@@ -272,48 +317,54 @@
                     </ul>
                 </div>
                 <%--右侧轮播图的设置--%>
-                <div class="col-md-9 column">
-                    <div class="carousel slide" id="carousel-888301">
+                <div class="col-md-9 column set_carousel">
+                    <div class="carousel slide " id="carousel-index">
                         <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#carousel-888301">
+                            <li class="active" data-slide-to="0" data-target="#carousel-index">
                             </li>
-                            <li data-slide-to="1" data-target="#carousel-888301">
+                            <li data-slide-to="1" data-target="#carousel-index">
                             </li>
-                            <li data-slide-to="2" data-target="#carousel-888301">
+                            <li data-slide-to="2" data-target="#carousel-index">
                             </li>
                         </ol>
-                        <div class="carousel-inner">
+                        <div class="carousel-inner carousel-image">
                             <div class="item active">
-                                <a href="/home/details/${list.get(0).id}">
-                                    <img alt="" src="/assets/home/index/image/default.jpg" />
+                                <a href="/home/details/${RecommendEstate.get(0).id}">
+                                    <img alt="" src="/assets/home/index/image/default.jpg"/>
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        1、${list.get(0).estateName}
+                                        1、${RecommendEstate.get(0).estateName}
                                     </h3>
                                 </div>
                             </div>
                             <div class="item">
-                                <a href="/home/details/${list.get(1).id}">
+                                <a href="/home/details/${RecommendEstate.get(1).id}">
                                     <img alt="" src="/assets/home/index/image/default1.jpg" />
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        2、${list.get(1).estateName}
+                                        2、${RecommendEstate.get(1).estateName}
                                     </h3>
                                 </div>
                             </div>
                             <div class="item">
-                                <a href="/home/details/${list.get(2).id}">
+                                <a href="/home/details/${RecommendEstate.get(2).id}">
                                     <img alt="" src="/assets/home/index/image/default2.jpg" />
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        3、${list.get(2).estateName}
+                                        3、${RecommendEstate.get(2).estateName}
                                     </h3>
                                 </div>
                             </div>
-                        </div> <a class="left carousel-control" href="#carousel-888301" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-888301" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-index" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-index" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -324,33 +375,13 @@
                 <div class="row clearfix">
                     <div class="col-md-12 column">
                         <h3 class="text-center">
-                            本周高性价比楼盘TOP8
+                            <b>本周高性价比楼盘TOP8</b>
                         </h3>
                     </div>
                 </div>
 
-                <div class="row">
-                    <%--从list中取出热门楼盘信息展现，默认数量是8个--%>
-                    <c:forEach begin="0" end="7" items="${list}" var="estate">
-                        <div class="col-md-3">
-                            <div class="thumbnail hovereffect">
-                                <a href="home/details/${estate.id}">
-                                <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                                    <div class="overlay">
-                                        <h2>${estate.estateName}</h2>
-                                    </div>
-                                </a>
-                                <div class="caption">
-                                    <h3>
-                                        <a href="home/details#">${estate.estateName}</a>
-                                    </h3>
-                                    <p>
-                                        ${estate.location} | 建面: ${estate.area} m² | ${estate.minPrice}-${estate.maxPrice} 万
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
+                <%--显示推荐楼盘的区域，具体代码在js文件中用ajxa实现--%>
+                <div id="RecommendedEstate_div" class="row">
                 </div>
             </div>
 
@@ -359,33 +390,13 @@
                 <div class="row clearfix">
                     <div class="col-md-12 column">
                         <h3 class="text-center">
-                            本周最新楼盘TOP8
+                            <b>本周最新楼盘TOP8</b>
                         </h3>
                     </div>
                 </div>
 
-                <div class="row">
-                    <%--从list中取出最新楼盘信息展现，默认数量是8个--%>
-                    <c:forEach begin="8" end="15" items="${list}" var="estate">
-                        <div class="col-md-3">
-                            <div class="thumbnail hovereffect">
-                                <a href="home/details/${estate.id}">
-                                    <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                                    <div class="overlay">
-                                        <h2>${estate.estateName}</h2>
-                                    </div>
-                                </a>
-                                <div class="caption">
-                                    <h3>
-                                        <a href="home/details#">${estate.estateName}</a>
-                                    </h3>
-                                    <p>
-                                            ${estate.location} | 建面: ${estate.area} m² | ${estate.minPrice}-${estate.maxPrice} 万
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
+                <%--显示推荐楼盘的区域，具体代码在js文件中用ajxa实现--%>
+                <div id="LatestEstate_div" class="row">
                 </div>
             </div>
         </div>
@@ -393,4 +404,40 @@
 </div>
 
 </body>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <h6>Copyright &copy;易拓工作室</h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">关于我们</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">招聘信息</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">服务声明</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">投诉反馈</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6>本网站由易拓工作室制作</h6>
+            </div>
+        </div>
+        <div class="row col-sm-12">
+            <p class="text-center">
+                易拓工作室
+                ©2014-2017 rights reversed.
+            </p>
+        </div>
+    </div>
+</footer>
 </html>
