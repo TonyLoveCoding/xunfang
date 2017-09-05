@@ -363,9 +363,9 @@
     </div>
     <div class="row">
         <div class="col-md-1"></div>
-        <c:forEach items="${RecommendEstate}" var="Recommend">
+        <c:forEach items="${RecommendEstateBo}" var="Recommend">
             <div class="col-md-2">
-                <div class="RecommendEstate">
+                <div class="RecommendEstateBo">
                     <div class="tip_img">
                         <a href="${Recommend.estateDetailsURL}"> <img
                                 src="http://othgjp7hs.bkt.clouddn.com/17-8-14/91109352.jpg" class="tip_estateThumbnail"></a>

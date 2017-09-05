@@ -96,4 +96,7 @@
         <exception-type>java.net.ConnectException</exception-type>
         <location>/ConnectException</location>
     </error-page>
+    <welcome-file-list>
+        <welcome-file>/home</welcome-file>
+    </welcome-file-list>
 </web-app>

@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import team.etop.xunfang.common.util.SearchUtil;
-import team.etop.xunfang.search.bo.EstateSearchBean;
-import team.etop.xunfang.search.bo.RecommendEstate;
-import team.etop.xunfang.search.bo.SearchInfo;
+import team.etop.xunfang.search.bo.EstateSearchBo;
+import team.etop.xunfang.search.bo.HomeEstateBo;
+import team.etop.xunfang.search.bo.RecommendEstateBo;
+import team.etop.xunfang.search.bo.SearchInfoBo;
 import team.etop.xunfang.search.mapper.EstateSearchMapper;
 import team.etop.xunfang.search.service.EstateSearchService;
 
@@ -45,10 +46,10 @@ public class EstateSearchServiceImpl implements EstateSearchService {
 
 
     @Override
-    public SearchInfo search(Long pn, String keyWord, String saleStatus,
-                             String location, String totalPrices, String type,
-                             String houseType, String feature, String unitPrice,
-                             String area,String sort,String sortType) throws Exception {
+    public SearchInfoBo search(Long pn, String keyWord, String saleStatus,
+                               String location, String totalPrices, String type,
+                               String houseType, String feature, String unitPrice,
+                               String area, String sort, String sortType) throws Exception {
         SolrQuery solrQuery = new SolrQuery();
         if ("".equals(keyWord)) {
             solrQuery.setQuery("*:*");
@@ -100,27 +101,41 @@ public class EstateSearchServiceImpl implements EstateSearchService {
         QueryResponse query = solrClient.query(solrQuery);
         SolrDocumentList results = query.getResults();
         Map<String, Map<String, List<String>>> highlighting = query.getHighlighting();
-        List<EstateSearchBean> estateSearchBeans = new ArrayList<>();
+        List<EstateSearchBo> estateSearchBos = new ArrayList<>();
         for (SolrDocument document : results) {
-            estateSearchBeans.add(SearchUtil.DocToEstateSearchBean(document, serverAddress, highlighting));
+            estateSearchBos.add(SearchUtil.DocToEstateSearchBean(document, serverAddress, highlighting));
         }
-        return new SearchInfo(estateSearchBeans, results.getNumFound());
+        return new SearchInfoBo(estateSearchBos, results.getNumFound());
     }
 
     @Override
-    public List<RecommendEstate> getRecommendEstate() throws Exception {
+    public List<RecommendEstateBo> getRecommendEstate(Integer start, Integer rows) throws Exception {
         SolrQuery solrQuery = new SolrQuery();
-        solrQuery.setStart(0);
-        solrQuery.setRows(5);
+        solrQuery.setStart(start);
+        solrQuery.setRows(rows);
         solrQuery.setQuery("*:*");
+        
         solrQuery.addSort("estate_visit_times", SolrQuery.ORDER.asc);
-        QueryResponse query = solrClient.query(solrQuery);
-        SolrDocumentList results = query.getResults();
-        List<RecommendEstate> recommendEstates = new ArrayList<>();
-        long numFound = results.getNumFound();
+        SolrDocumentList results = solrClient.query(solrQuery).getResults();
+        List<RecommendEstateBo> recommendEstateBos = new ArrayList<>();
         for (SolrDocument document : results) {
-            recommendEstates.add(SearchUtil.DocToRecommendEstate(document, serverAddress));
+            recommendEstateBos.add(SearchUtil.DocToRecommendEstate(document, serverAddress));
         }
-        return recommendEstates;
+        return recommendEstateBos;
     }
+
+    @Override
+    public List<HomeEstateBo> getHomeEstate(Integer start, Integer rows, String type,SolrQuery.ORDER order) throws Exception {
+        SolrQuery solrQuery = new SolrQuery();
+        solrQuery.setStart(start).setRows(rows).setQuery("*:*");
+        solrQuery.addSort(type, order);
+        SolrDocumentList results = solrClient.query(solrQuery).getResults();
+        List<HomeEstateBo> HomeEstateBoList = new ArrayList<>();
+        for (SolrDocument document : results) {
+            HomeEstateBoList.add(SearchUtil.DocToHomeEstate(document, serverAddress));
+        }
+        return HomeEstateBoList;
+    }
+
+
 }

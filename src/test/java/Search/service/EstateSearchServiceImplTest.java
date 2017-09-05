@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import team.etop.xunfang.search.bo.EstateSearchBean;
+import team.etop.xunfang.search.bo.EstateSearchBo;
 import team.etop.xunfang.search.mapper.EstateSearchMapper;
 
 import java.util.List;
@@ -35,9 +35,9 @@ public class EstateSearchServiceImplTest {
         SolrClient solrClient=new HttpSolrClient.Builder(baseURL).build();
         solrClient.deleteByQuery("*:*");
         solrClient.commit();
-        List<EstateSearchBean> estateSearchBeans = estateSearchMapper.selectAll();
-        for(EstateSearchBean estateSearchBean:estateSearchBeans){
-            System.out.println(estateSearchBean);
+        List<EstateSearchBo> estateSearchBos = estateSearchMapper.selectAll();
+        for(EstateSearchBo estateSearchBo : estateSearchBos){
+            System.out.println(estateSearchBo);
         }
     }
 }

@@ -11,6 +11,17 @@
             $("#PageCount").val("${pageMsg.total}");
         }
 
+        function ask() {
+            var msg="您确定要更新吗？"
+            if(confirm(msg)==true){
+                //跳转
+                alert("跳转");
+            }else{
+                alert("取消");
+                return false;
+            }
+        };
+
         function contirmd(id) {
             var msg = "您确定要删除吗？"
             if (confirm(msg) == true) {
@@ -49,9 +60,10 @@
                 <input id="input_search_keyword" type="text" name="keyword" class="form-control input-md" value="${keyword}"><span id="submit_search" class="input-group-addon btn btn-primary">搜索</span>
             </div>
         </div>
-        <div class="col-md-1 col-md-offset-1">
+        <div class="col-md-3 col-md-offset-1">
             <div class="btn-group center-block" role="group" aria-label="...">
                 <a class="btn btn-default center-block" href="/estate/add" role="button">添加楼盘</a>
+                <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="ask()">更新索引库</a>
             </div>
         </div>
     </div>

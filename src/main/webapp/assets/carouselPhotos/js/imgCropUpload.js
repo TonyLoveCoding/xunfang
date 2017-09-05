@@ -22,6 +22,7 @@
         /* 图片上传完成之后的回调，无论是否成功上传 */
         onComplete: function(data) {
             cancel();
+            // alert(Msg.tip);
             console.log('upload complete!');
         }
     };
@@ -444,7 +445,7 @@
         var form = $.data(dom, 'crop').$cropObj.$form.get(0);
         form.submit();
         cancel();
-        alert("上传成功");
+        // alert(Msg.tip);
     };
 
     /* 取消裁剪 */

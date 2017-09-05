@@ -3,14 +3,6 @@ function loadData(num) {
     $("#PageCount").val("${pageInfo.total}");
 }
 
-function contirmd() {
-    var msg = "您确定要删除吗？"
-    if (confirm(msg) == true) {
-        return ture;
-    } else {
-        return false;
-    }
-}
 $(function() {
     Crop.init({
         id: 'TCrop',
@@ -33,6 +25,7 @@ $(function() {
         isCrop: true,
         /* 图片上传完成之后的回调，无论是否成功上传 */
         onComplete: function(data) {
+            alert(data.toString().substring(19,23));
             console.log('upload complete!');
             location.href="/carouselPhotos/query";
         }

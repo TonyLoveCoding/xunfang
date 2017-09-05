@@ -1,7 +1,7 @@
 package team.etop.xunfang.search.mapper;
 
 import org.springframework.stereotype.Component;
-import team.etop.xunfang.search.bo.EstateSearchBean;
+import team.etop.xunfang.search.bo.EstateSearchBo;
 
 import java.util.List;
 
@@ -13,5 +13,5 @@ import java.util.List;
  */
 @Component
 public interface EstateSearchMapper {
-    List<EstateSearchBean> selectAll();
+    List<EstateSearchBo> selectAll();
 }
