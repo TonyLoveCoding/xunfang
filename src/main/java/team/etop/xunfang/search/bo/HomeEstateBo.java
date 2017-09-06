@@ -1,7 +1,8 @@
 package team.etop.xunfang.search.bo;
 
-import com.baomidou.mybatisplus.annotations.TableField;
-
+/**
+ * 前台主页推荐楼盘、最新楼盘Bo
+ */
 public class HomeEstateBo {
     private Long id;
     private String estateName;

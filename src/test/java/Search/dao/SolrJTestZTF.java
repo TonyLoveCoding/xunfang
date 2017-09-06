@@ -18,7 +18,7 @@ import java.io.IOException;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:solr的测试
  * @author: TingFeng Zhang
  * @date: 2017/8/12 14:55
  */
@@ -39,6 +39,9 @@ public class SolrJTestZTF {
     EstateMapperGenerate estateDao;
 
     @Test
+    /**
+     * 新增文档
+     */
     public void creteDoc() throws IOException, SolrServerException {
         SolrInputDocument solrInputFields=new SolrInputDocument();
         Estate estate = getEstateZTF.returnEstate(dicDao, effectPictureDao);
@@ -64,6 +67,9 @@ public class SolrJTestZTF {
     }
 
     @Test
+    /**
+     * 删除所有文档
+     */
     public  void deleteAllDoc() throws IOException, SolrServerException {
         solrClient.deleteByQuery("*:*");
         solrClient.commit();

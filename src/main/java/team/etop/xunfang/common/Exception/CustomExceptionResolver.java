@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:通用错误处理
  * @author: TingFeng Zhang
  * @date: 2017/8/17 9:15
  */

@@ -2,7 +2,7 @@ package team.etop.xunfang.common.bean;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:前后台分页通用对象
  * @author: TingFeng Zhang
  * @date: 2017/8/8 19:48
  */

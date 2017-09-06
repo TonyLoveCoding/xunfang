@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:前台搜索缩略楼盘对象Bo
  * @author: TingFeng Zhang
  * @date: 2017/8/13 20:11
  */

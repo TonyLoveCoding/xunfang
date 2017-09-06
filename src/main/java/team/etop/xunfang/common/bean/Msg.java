@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:Json传输通用对象
  * @author: TingFeng Zhang
  * @date: 2017/8/8 18:22
  */
