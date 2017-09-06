@@ -24,7 +24,6 @@
 .tabs > li{ 
 	text-align:center;
 	font-size: 20px;
-	width: 600px;
 }
 
 .tabs > li.active > a,
