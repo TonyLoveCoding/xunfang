@@ -9,24 +9,24 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-06
  */
 public class Dic extends Model<Dic> {
 
     private static final long serialVersionUID = 1L;
 
-	private String type;
+	private String id;
 	private String code;
 	private String name;
 	private Integer weight;
 
 
-	public String getType() {
-		return type;
+	public String getId() {
+		return id;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getCode() {
@@ -55,13 +55,13 @@ public class Dic extends Model<Dic> {
 
 	@Override
 	protected Serializable pkVal() {
-		return this.type;
+		return this.id;
 	}
 
 	@Override
 	public String toString() {
 		return "Dic{" +
-			"type=" + type +
+			"id=" + id +
 			", code=" + code +
 			", name=" + name +
 			", weight=" + weight +

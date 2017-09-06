@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-06
  */
 @Service
 public class EffectPictureServiceImplGenerate extends ServiceImpl<EffectPictureMapperGenerate, EffectPicture> implements EffectPictureServiceGenerate {

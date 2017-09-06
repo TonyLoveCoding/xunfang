@@ -1,6 +1,6 @@
 package team.etop.xunfang.modules.mapper;
 
-import team.etop.xunfang.modules.po.RealEstatePicture;
+import team.etop.xunfang.modules.po.HeatSearchWord;
 import team.etop.xunfang.common.bean.SuperMapper;
 
 /**
@@ -11,6 +11,6 @@ import team.etop.xunfang.common.bean.SuperMapper;
  * @author ZTF
  * @since 2017-09-06
  */
-public interface RealEstatePictureMapperGenerate extends SuperMapper<RealEstatePicture> {
+public interface HeatSearchWordMapperGenerate extends SuperMapper<HeatSearchWord> {
 
 }

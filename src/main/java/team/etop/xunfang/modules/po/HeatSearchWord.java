@@ -12,13 +12,13 @@ import java.io.Serializable;
  * @author ZTF
  * @since 2017-09-06
  */
-@TableName("sample_planning_picture")
-public class SamplePlanningPicture extends Model<SamplePlanningPicture> {
+@TableName("heat_search_word")
+public class HeatSearchWord extends Model<HeatSearchWord> {
 
     private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private String name;
+	private String word;
 	private Long weight;
 
 
@@ -30,12 +30,12 @@ public class SamplePlanningPicture extends Model<SamplePlanningPicture> {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getWord() {
+		return word;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setWord(String word) {
+		this.word = word;
 	}
 
 	public Long getWeight() {
@@ -53,9 +53,9 @@ public class SamplePlanningPicture extends Model<SamplePlanningPicture> {
 
 	@Override
 	public String toString() {
-		return "SamplePlanningPicture{" +
+		return "HeatSearchWord{" +
 			"id=" + id +
-			", name=" + name +
+			", word=" + word +
 			", weight=" + weight +
 			"}";
 	}

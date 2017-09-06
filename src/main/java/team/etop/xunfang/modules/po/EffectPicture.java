@@ -10,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-06
  */
 @TableName("effect_picture")
 public class EffectPicture extends Model<EffectPicture> {
@@ -19,6 +19,7 @@ public class EffectPicture extends Model<EffectPicture> {
 
 	private Long id;
 	private String name;
+	private Long weight;
 
 
 	public Long getId() {
@@ -37,6 +38,14 @@ public class EffectPicture extends Model<EffectPicture> {
 		this.name = name;
 	}
 
+	public Long getWeight() {
+		return weight;
+	}
+
+	public void setWeight(Long weight) {
+		this.weight = weight;
+	}
+
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
@@ -47,6 +56,7 @@ public class EffectPicture extends Model<EffectPicture> {
 		return "EffectPicture{" +
 			"id=" + id +
 			", name=" + name +
+			", weight=" + weight +
 			"}";
 	}
 }

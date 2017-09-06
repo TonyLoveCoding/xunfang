@@ -14,7 +14,7 @@ import org.springframework.stereotype.Controller;
  * @since 2017-09-06
  */
 @Controller
-@RequestMapping("/modules/dic")
-public class DicControllerGenerate {
+@RequestMapping("/modules/heatSearchWord")
+public class HeatSearchWordControllerGenerate {
 	
 }

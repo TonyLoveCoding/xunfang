@@ -1,10 +1,7 @@
 package team.etop.xunfang.modules.mapper;
 
-import org.apache.ibatis.annotations.Select;
 import team.etop.xunfang.modules.po.CarouselPhotos;
 import team.etop.xunfang.common.bean.SuperMapper;
-
-import java.util.List;
 
 /**
  * <p>
@@ -12,7 +9,7 @@ import java.util.List;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-06
  */
 public interface CarouselPhotosMapperGenerate extends SuperMapper<CarouselPhotos> {
 
