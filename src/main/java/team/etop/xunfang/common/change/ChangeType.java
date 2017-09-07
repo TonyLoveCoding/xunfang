@@ -50,6 +50,11 @@ public class ChangeType {
         estateDto.setFeature(estate.getFeature());
         estateDto.setTurnover(estate.getTurnover());
         estateDto.setSign(estate.getSign());
+        estateDto.setUpdateTime(estateDto.getUpdateTime());
+        estateDto.setSamplePlate(estate.getSamplePlate());
+        estateDto.setLiveAction(estate.getLiveAction());
+        estateDto.setPrototypeRoom(estate.getPrototypeRoom());
+        estateDto.setEffectivePhotos(estate.getEffectivePhotos());
         return estateDto;
     }
 
@@ -60,8 +65,9 @@ public class ChangeType {
         String d=format.format(times);
         date=format.parse(d);
         Estate estate=new Estate();
-        estate.setStatus(0);
-        estate.setVisitTimes((long)0);
+        estate.setId(estateDto.getId());
+        estate.setStatus(estateDto.getStatus());
+        estate.setVisitTimes(estateDto.getVisitTimes());
         estate.setMinPrice(estateDto.getMinPrice());
         estate.setMaxPrice(estateDto.getMaxPrice());
         estate.setDeveloperQuotes(estateDto.getDeveloperQuotes());
@@ -91,6 +97,11 @@ public class ChangeType {
         estate.setArea(estateDto.getArea());
         estate.setFeature(estateDto.getFeature());
         estate.setSign(estateDto.getSign());
+        estate.setUpdateTime(estateDto.getUpdateTime());
+        estate.setEffectivePhotos(estateDto.getEffectivePhotos());
+        estate.setLiveAction(estateDto.getLiveAction());
+        estate.setSamplePlate(estateDto.getSamplePlate());
+        estate.setPrototypeRoom(estateDto.getPrototypeRoom());
         return estate;
     }
 }

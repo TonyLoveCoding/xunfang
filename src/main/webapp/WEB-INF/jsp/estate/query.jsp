@@ -62,8 +62,8 @@
         </div>
         <div class="col-md-3 col-md-offset-1">
             <div class="btn-group center-block" role="group" aria-label="...">
-                <a class="btn btn-default center-block" href="/estate/add" role="button">添加楼盘</a>
-                <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="ask()">更新索引库</a>
+                <a class="btn btn-default center-block glyphicon glyphicon-plus" href="/estate/add" role="button">添加楼盘</a>
+                <a class="btn btn-default center-block glyphicon glyphicon-pencil" href="javascript:void(0);" role="button" onclick="ask()">更新索引库</a>
             </div>
         </div>
     </div>
@@ -95,10 +95,10 @@
                         <td>${estate.maxPrice}</td>
                         <td>
                             <div class="btn-group center-block" role="group" aria-label="..." style="display: block;margin-left: auto;margin-right: auto">
-                                <a class="btn btn-default center-block" href="/estate/selectbyid?id=${estate.id}" role="button">查看</a>
-                                <a class="btn btn-default center-block" href="/estate/update?id=${estate.id}" role="button">修改</a>
-                                <a class="btn btn-default center-block" href="/estate/upload?id=${estate.id}" role="button">楼盘图片</a>
-                                <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="contirmd('${estate.id}')">删除</a>
+                                <a class="btn btn-default center-block glyphicon glyphicon-list-alt" href="/estate/selectbyid?id=${estate.id}" role="button">查看</a>
+                                <a class="btn btn-default center-block glyphicon glyphicon-erase" href="/estate/update?id=${estate.id}" role="button">修改</a>
+                                <a class="btn btn-default center-block glyphicon glyphicon-picture" href="/estate/upload?id=${estate.id}" role="button">楼盘图片</a>
+                                <a class="btn btn-warning center-block glyphicon glyphicon-trash" href="javascript:void(0);" role="button" onclick="contirmd('${estate.id}')">删除</a>
                             </div>
                         </td>
                     </tr>
@@ -131,7 +131,6 @@
 
         $("#submit_search").click(function () {
             var keyword=$("#input_search_keyword").val();
-            alert(keyword);
             $("#inp_hid_keyword").attr("value", keyword);
             $("#form_search").submit();
         });

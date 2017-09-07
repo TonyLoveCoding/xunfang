@@ -5,19 +5,23 @@ import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.common.change.ChangeType;
+import team.etop.xunfang.common.photos.GetName;
 import team.etop.xunfang.estate.dto.*;
 import team.etop.xunfang.modules.po.*;
 import team.etop.xunfang.modules.service.*;
 import team.etop.xunfang.search.dto.SearchPageMsg;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -209,27 +213,46 @@ public class EstateController {
 
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public ModelAndView addEstateView()throws Exception{
-        ModelAndView modelAndView=new ModelAndView("/estate/update");
+        EstateDto estateDto=new EstateDto();
+        ModelAndView modelAndView=new ModelAndView("/estate/add");
+        modelAndView.addObject("EstateDto",estateDto);
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/add","/update"},method = RequestMethod.POST)
-    public Msg addEstate(EstateDto estateDto) throws Exception{
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public Msg updateEstate(EstateDto estateDto) throws Exception{
         ChangeType changeType=new ChangeType();
         Estate estate=changeType.change(estateDto);
-        List<EffectPictureDto> effectPictureDtoList=estateDto.getEffectPictureDtoList();
-        String effective_photos =saveEffectPicture(effectPictureDtoList);
-        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=estateDto.getPrototypeRoomPictureDtoList();
-        String prototype_room=savePrototypeRoomPicture(prototypeRoomPictureDtoList);
-        List<RealEststePictureDto> realEststePictureDtoList=estateDto.getRealEststePictureDtoList();
-        String live_action=saveRealEststePicture(realEststePictureDtoList);
-        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=estateDto.getSamplePlanningPictureDtoList();
-        String sample_plate=saveSamplePlanningPicture(samplePlanningPictureDtoList);
-        estate.setSamplePlate(sample_plate);
-        estate.setLiveAction(live_action);
-        estate.setPrototypeRoom(prototype_room);
-        estate.setEffectivePhotos(effective_photos);
+//        List<EffectPictureDto> effectPictureDtoList=estateDto.getEffectPictureDtoList();
+//        String effective_photos =saveEffectPicture(effectPictureDtoList);
+//        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=estateDto.getPrototypeRoomPictureDtoList();
+//        String prototype_room=savePrototypeRoomPicture(prototypeRoomPictureDtoList);
+//        List<RealEststePictureDto> realEststePictureDtoList=estateDto.getRealEststePictureDtoList();
+//        String live_action=saveRealEststePicture(realEststePictureDtoList);
+//        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=estateDto.getSamplePlanningPictureDtoList();
+//        String sample_plate=saveSamplePlanningPicture(samplePlanningPictureDtoList);
+//        estate.setSamplePlate(sample_plate);
+//        estate.setLiveAction(live_action);
+//        estate.setPrototypeRoom(prototype_room);
+//        estate.setEffectivePhotos(effective_photos);
         estateServiceGenerate.insertOrUpdate(estate);
+        return Msg.success();
+    }
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public Msg addEstate(EstateDto estateDto) throws Exception{
+        System.out.println(estateDto);
+        ChangeType changeType=new ChangeType();
+        Estate estate=changeType.change(estateDto);
+        estate.setStatus(0);
+        estate.setVisitTimes((long)0);
+        estate.setTurnover(0);
+        estate.setThumbnail("0.jpg");
+        estate.setEffectivePhotos("0");
+        estate.setPrototypeRoom("0");
+        estate.setSamplePlate("0");
+        estate.setLiveAction("0");
+        estateServiceGenerate.insertOrUpdate(estate);
+        System.out.println("添加成功");
         return Msg.success();
     }
 
@@ -309,71 +332,132 @@ public class EstateController {
         return modelAndView;
     }
 
-    public String saveEffectPicture(List<EffectPictureDto> list ){
+    @RequestMapping(value = "/saveEffectPicture",method = RequestMethod.POST)
+    public Msg saveEffectPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id) throws Exception{
+        System.out.println(id);
         String ids="";
         String k="";
-        for(EffectPictureDto e:list){
+        EntityWrapper<EffectPicture> wrapper=new EntityWrapper<>();
+        for(MultipartFile f:multipartFile){
             EffectPicture picture=new EffectPicture();
-            picture.setName(e.getName());
+            GetName getName=new GetName();
+            String name=getName.getName(f.getOriginalFilename());
+            String filepath=savePath+name;
+            File file=new File(filepath);
+            f.transferTo(file);
+            picture.setName(name);
             effectPictureServiceGenerate.insert(picture);
-        }
-        List<EffectPicture> elist=effectPictureServiceGenerate.selectList(null);
-        for(EffectPicture e:elist){
+            wrapper.where("name = {0}",name);
+            picture.setId((Long)effectPictureServiceGenerate.selectObj(wrapper));
             ids+=k;
-            ids+=e.getId();
+            ids+=picture.getId();
             k=",";
         }
-        return ids;
+        Estate estate=estateServiceGenerate.selectById(id);
+        String s=estate.getEffectivePhotos();
+        if(s.length()!=0 || s.equals("0")){
+            ids+=",";
+            ids+=s;
+        }
+        estate.setEffectivePhotos(ids);
+        estateServiceGenerate.insertOrUpdate(estate);
+        System.out.println("完成");
+        return Msg.success();
     }
 
-    public String savePrototypeRoomPicture(List<PrototypeRoomPictureDto> list ){
+    @RequestMapping(value = "/savePrototypeRoomPicture",method = RequestMethod.POST)
+    public Msg savePrototypeRoomPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
         String ids="";
         String k="";
-        for(PrototypeRoomPictureDto p:list){
+        EntityWrapper<PrototypeRoomPicture> wrapper=new EntityWrapper<>();
+        for(MultipartFile f:multipartFile){
             PrototypeRoomPicture picture=new PrototypeRoomPicture();
-            picture.setName(p.getName());
+            GetName getName=new GetName();
+            String name=getName.getName(f.getOriginalFilename());
+            String filepath=savePath+name;
+            File file=new File(filepath);
+            f.transferTo(file);
+            picture.setName(name);
             prototypeRoomPictureServiceGenerate.insert(picture);
-        }
-        List<PrototypeRoomPicture> plist=prototypeRoomPictureServiceGenerate.selectList(null);
-        for(PrototypeRoomPicture p:plist){
+            wrapper.where("name = {0}",name);
+            picture.setId((Long)prototypeRoomPictureServiceGenerate.selectObj(wrapper));
             ids+=k;
-            ids+=p.getId();
+            ids+=picture.getId();
             k=",";
         }
-        return ids;
+        Estate estate=estateServiceGenerate.selectById(id);
+        String s=estate.getEffectivePhotos();
+        if(s.length()!=0 || s.equals("0")){
+            ids+=",";
+            ids+=s;
+        }
+        estate.setPrototypeRoom(ids);
+        estateServiceGenerate.insertOrUpdate(estate);
+        System.out.println("完成");
+        return Msg.success();
     }
 
-    public String saveRealEststePicture(List<RealEststePictureDto> list ){
+    @RequestMapping(value = "/saveRealEststePicture",method = RequestMethod.POST)
+    public Msg saveRealEststePicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
         String ids="";
         String k="";
-        for(RealEststePictureDto r:list){
+        EntityWrapper<RealEstatePicture> wrapper=new EntityWrapper<>();
+        for(MultipartFile f:multipartFile){
             RealEstatePicture picture=new RealEstatePicture();
-            picture.setName(r.getName());
+            GetName getName=new GetName();
+            String name=getName.getName(f.getOriginalFilename());
+            String filepath=savePath+name;
+            File file=new File(filepath);
+            f.transferTo(file);
+            picture.setName(name);
             realEstatePictureServiceGenerate.insert(picture);
-        }
-        List<RealEstatePicture> rlist=realEstatePictureServiceGenerate.selectList(null);
-        for(RealEstatePicture r:rlist){
+            wrapper.where("name = {0}",name);
+            picture.setId((Long)realEstatePictureServiceGenerate.selectObj(wrapper));
             ids+=k;
-            ids+=r.getId();
+            ids+=picture.getId();
             k=",";
         }
-        return ids;
+        Estate estate=estateServiceGenerate.selectById(id);
+        String s=estate.getEffectivePhotos();
+        if(s.length()!=0 || s.equals("0")){
+            ids+=",";
+            ids+=s;
+        }
+        estate.setLiveAction(ids);
+        estateServiceGenerate.insertOrUpdate(estate);
+        System.out.println("完成");
+        return Msg.success();
     }
 
-    public String saveSamplePlanningPicture(List<SamplePlanningPictureDto> list ){
+    @RequestMapping(value = "/saveSamplePlanningPicture",method = RequestMethod.POST)
+    public Msg saveSamplePlanningPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
         String ids="";
         String k="";
-        for(SamplePlanningPictureDto s:list){
+        EntityWrapper<SamplePlanningPicture> wrapper=new EntityWrapper<>();
+        for(MultipartFile f:multipartFile){
             SamplePlanningPicture picture=new SamplePlanningPicture();
-            picture.setName(s.getName());
+            GetName getName=new GetName();
+            String name=getName.getName(f.getOriginalFilename());
+            String filepath=savePath+name;
+            File file=new File(filepath);
+            f.transferTo(file);
+            picture.setName(name);
             samplePlanningPictureServiceGenerate.insert(picture);
-        }
-        List<SamplePlanningPicture> slist=samplePlanningPictureServiceGenerate.selectList(null);
-        for(SamplePlanningPicture s:slist){
+            wrapper.where("name = {0}",name);
+            picture.setId((Long)samplePlanningPictureServiceGenerate.selectObj(wrapper));
             ids+=k;
-            ids+=s.getId();
+            ids+=picture.getId();
             k=",";
         }
-        return ids;
+        Estate estate=estateServiceGenerate.selectById(id);
+        String s=estate.getEffectivePhotos();
+        if(s.length()!=0 || s.equals("0")){
+            ids+=",";
+            ids+=s;
+        }
+        estate.setSamplePlate(ids);
+        estateServiceGenerate.insertOrUpdate(estate);
+        System.out.println("完成");
+        return Msg.success();
     }
 }
