@@ -96,9 +96,14 @@
                 图片链接：${photo.url}
             </div>
             <div class="col-md-3" style="vertical-align: middle;text-align: center">
-                <div class="btn-group center-block" role="group" aria-label="...">
-                    <a class="btn btn-default center-block" href="javasprite:void(0)" role="button" onclick="contirmd('${photo.id}')">删除</a>
+                <div class="btn-group-vertical" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default glyphicon glyphicon-menu-up"></button>
+                    <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="contirmd('${photo.id}')">删除</a>
+                    <button type="button" class="btn btn-default glyphicon glyphicon-menu-down"></button>
                 </div>
+                <%--<div class="btn-group center-block" role="group" aria-label="...">--%>
+                    <%--<a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="contirmd('${photo.id}')">删除</a>--%>
+                <%--</div>--%>
             </div>
         </div>
         <div class="row">

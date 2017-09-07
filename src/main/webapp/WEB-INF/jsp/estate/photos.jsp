@@ -14,10 +14,7 @@
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src="assets/estate/photos/js/jquery-1.7.2.min.js"></script>
-    <%--<script type="text/javascript" src="assets/uplodephoto/js/jquery.Jcrop.js"></script>--%>
-    <%--<script type="text/javascript" src="assets/uplodephoto/js/imgCropUpload.js"></script>--%>
     <link rel="stylesheet" href="assets/estate/photos/css/photos.css">
-
 </head>
 <body style="height: auto">
 <div  class="container-fluid">
@@ -48,7 +45,12 @@
             <c:forEach var="e" items="${EstateDto.effectPictureDtoList}">
                 <div class="col-sm-4 saved" style="text-align: center">
                     <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="return contirmd(${e.id})">删除</a>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-left"></button>
+                        <%--<button class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" onclick="deleteEffectPicture('${e.id}','${EstateDto.id}')">删除</button>--%>
+                        <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deleteEffectPicture('${e.id}','${EstateDto.id}')">删除</a>
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-right"></button>
+                    </div>
                 </div>
             </c:forEach>
         </div>
@@ -75,7 +77,11 @@
             <c:forEach var="e" items="${EstateDto.prototypeRoomPictureDtoList}">
                 <div class="col-sm-4" style="text-align: center">
                     <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="return contirmd(${e.id})">删除</a>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-left"></button>
+                        <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deletePrototypeRoomPicture('${e.id}','${EstateDto.id}')">删除</a>
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-right"></button>
+                    </div>
                 </div>
             </c:forEach>
         </div>
@@ -102,7 +108,11 @@
             <c:forEach var="e" items="${EstateDto.samplePlanningPictureDtoList}">
                 <div class="col-sm-4" style="text-align: center">
                     <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="return contirmd(${e.id})">删除</a>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-left"></button>
+                        <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deleteSamplePlanningPicture('${e.id}','${EstateDto.id}')">删除</a>
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-right"></button>
+                    </div>
                 </div>
             </c:forEach>
         </div>
@@ -129,7 +139,12 @@
             <c:forEach var="e" items="${EstateDto.realEststePictureDtoList}">
                 <div class="col-sm-4" style="text-align: center">
                     <img src="${e.name}" class="photo100">
-                    <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="return contirmd(${e.id})">删除</a>
+
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-left"></button>
+                        <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deleteRealEststePicture('${e.id}','${EstateDto.id}')">删除</a>
+                        <button type="button" class="btn btn-default glyphicon glyphicon-menu-right"></button>
+                    </div>
                 </div>
             </c:forEach>
         </div>

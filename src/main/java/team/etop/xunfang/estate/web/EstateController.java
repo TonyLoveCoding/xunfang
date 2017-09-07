@@ -460,4 +460,120 @@ public class EstateController {
         System.out.println("完成");
         return Msg.success();
     }
+
+    @RequestMapping(value = "/deleteEffectPicture",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg deleteEffectPicture(@RequestParam("id")Long id){
+        EffectPicture picture=effectPictureServiceGenerate.selectById(id);
+        String path=savePath+picture.getName();
+        effectPictureServiceGenerate.deleteById(id);
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("effective_photos","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String s=estate.getEffectivePhotos();
+        String sub=""+id;
+        int i=s.indexOf(sub);
+        if(s.length()==sub.length()){
+            s="0";
+            System.out.println("1:"+s);
+        }else if(i==0){
+            sub=sub+",";
+            s=s.replace(sub,"");
+        }else {
+            sub=","+sub;
+            s=s.replace(sub,"");
+        }
+        estate.setEffectivePhotos(s);
+        estateServiceGenerate.insertOrUpdate(estate);
+        File file=new File(path);
+        file.delete();
+        return Msg.success("删除成功");
+    }
+
+    @RequestMapping(value = "/deletePrototypeRoomPicture",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg deletePrototypeRoomPicture(@RequestParam("id")Long id){
+        PrototypeRoomPicture picture=prototypeRoomPictureServiceGenerate.selectById(id);
+        String path=savePath+picture.getName();
+        prototypeRoomPictureServiceGenerate.deleteById(id);
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("effective_photos","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String s=estate.getPrototypeRoom();
+        String sub=""+id;
+        int i=s.indexOf(sub);
+        if(s.length()==sub.length()){
+            s="0";
+            System.out.println("1:"+s);
+        }else if(i==0){
+            sub=sub+",";
+            s=s.replace(sub,"");
+        }else {
+            sub=","+sub;
+            s=s.replace(sub,"");
+        }
+        estate.setPrototypeRoom(s);
+        estateServiceGenerate.insertOrUpdate(estate);
+        File file=new File(path);
+        file.delete();
+        return Msg.success("删除成功");
+    }
+
+    @RequestMapping(value = "/deleteRealEststePicture",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg deleteRealEststePicture(@RequestParam("id")Long id){
+        RealEstatePicture picture=realEstatePictureServiceGenerate.selectById(id);
+        String path=savePath+picture.getName();
+        realEstatePictureServiceGenerate.deleteById(id);
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("effective_photos","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String s=estate.getLiveAction();
+        String sub=""+id;
+        int i=s.indexOf(sub);
+        if(s.length()==sub.length()){
+            s="0";
+            System.out.println("1:"+s);
+        }else if(i==0){
+            sub=sub+",";
+            s=s.replace(sub,"");
+        }else {
+            sub=","+sub;
+            s=s.replace(sub,"");
+        }
+        estate.setLiveAction(s);
+        estateServiceGenerate.insertOrUpdate(estate);
+        File file=new File(path);
+        file.delete();
+        return Msg.success("删除成功");
+    }
+
+    @RequestMapping(value = "/deleteSamplePlanningPicture",method = RequestMethod.POST)
+    @ResponseBody
+    public Msg deleteSamplePlanningPicture(@RequestParam("id")Long id){
+        SamplePlanningPicture picture=samplePlanningPictureServiceGenerate.selectById(id);
+        String path=savePath+picture.getName();
+        samplePlanningPictureServiceGenerate.deleteById(id);
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("effective_photos","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String s=estate.getSamplePlate();
+        String sub=""+id;
+        int i=s.indexOf(sub);
+        if(s.length()==sub.length()){
+            s="0";
+            System.out.println("1:"+s);
+        }else if(i==0){
+            sub=sub+",";
+            s=s.replace(sub,"");
+        }else {
+            sub=","+sub;
+            s=s.replace(sub,"");
+        }
+        estate.setSamplePlate(s);
+        estateServiceGenerate.insertOrUpdate(estate);
+        File file=new File(path);
+        file.delete();
+        return Msg.success("删除成功");
+    }
 }

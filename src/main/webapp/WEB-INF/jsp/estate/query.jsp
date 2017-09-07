@@ -37,7 +37,7 @@
                             alert("删除成功");
                         }
                         if(Msg.code==200){
-                            alert(Msg);
+                            alert(Msg.tip);
                         }
                     }
                 })
