@@ -36,7 +36,22 @@
 
 .details-header .active{
 	font-size: 20px; 
-}	
+}
+
+.main-info .field{
+	font-size: 22px;
+	color: #888;
+	display:inline;
+}
+.main-info li .value{
+	padding-left: 50px;
+	font-size: 30px;
+	color: #666;
+	display:inline;
+}
+.main-info li .keynote{
+	color: red;
+ }
  
 
 .details-info li .field{
@@ -97,6 +112,10 @@
 
 .pic-show{
 	padding-top: 5px;
+}
+
+#search-input, #search-input-hover{
+	width:400px;
 }
 
 #section-1{

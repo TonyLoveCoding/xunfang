@@ -1,0 +1,15 @@
+.notFoundMessage{
+	padding-top: 50px;
+}
+
+.notFoundMessage h3{
+	color: darkred;
+}
+
+.notFoundMessage p{
+	color: blue;
+}
+
+#search-input, #search-input-hover{
+	width:400px;
+}

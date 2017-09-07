@@ -41,7 +41,9 @@
         <div class="header-hover-wrap">
             <ul class="menu">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="home#">寻房网</a>
+                    <a href="home">
+                        <img style="padding-top: 14px" src="/assets/home/index/image/logo.png">
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" >
@@ -54,10 +56,10 @@
                             <span class="glyphicon glyphicon-search"></span>找房
                         </button>
                     </div>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right"  style="padding-top: 8px">
 
                         <li>
-                            <a href="home#"><b>热搜词：</b></a>
+                            <a href="home"><b>热搜词：</b></a>
                         </li>
 
                         <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
@@ -76,12 +78,12 @@
         <div class="col-md-12 column">
             <%--顶部导航栏设置--%>
             <nav class="navbar navbar-default " role="navigation">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="home#">寻房网</a>
-                </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="navbar-form navbar-left" role="search">
+                        <a href="home">
+                            <img src="/assets/home/index/image/logo.png">
+                        </a>
                         <div class="form-group">
                             <input id="search-input" type="text" class="form-control"  />
                         </div>
@@ -103,7 +105,7 @@
                 </div>
             </nav>
             <%--左侧条件搜索的设置--%>
-            <div class="row clearfix ">
+            <div class="row clearfix">
                 <div class="col-md-3 column">
                     <ul class="list-group search-terms">
                         <li class="search-terms-item item-location">
@@ -283,7 +285,7 @@
                             </div>
                         </li>
 
-                        <li class="search-terms-item item-total-price">
+                        <li class="search-terms-item item-feature">
                             <div class="search-terms-title">
                                 <a href="/home/search">特色房</a>
                             </div>
@@ -317,8 +319,8 @@
                     </ul>
                 </div>
                 <%--右侧轮播图的设置--%>
-                <div class="col-md-9 column set_carousel">
-                    <div class="carousel slide " id="carousel-index">
+                <div class="col-md-9 column">
+                    <div class="carousel slide set_carousel" id="carousel-index">
                         <ol class="carousel-indicators">
                             <li class="active" data-slide-to="0" data-target="#carousel-index">
                             </li>
