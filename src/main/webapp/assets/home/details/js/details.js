@@ -24,20 +24,30 @@ $(function(){
 	  }
 	});
 
-    jQuery.scrollto = function(scrolldom,scrolltime) {
-
-        $(scrolldom).click( function(){
-            var scrolltodom = $(this).attr("date-scroll");
-            $(this).addClass("thisscroll").siblings().removeClass("thisscroll");
+    //主页点击轮播图后滑动到图册的设置
+    $('#toPic1, #toPic2, #toPic3, #toPic4').click(function(){
+        $('#tabs-ID li:eq(2) a').tab('show');
+        var scrollToDom =$(this).attr("data-scroll");
+        setTimeout(function () {
             $('html,body').animate({
-                scrollTop:$(scrolltodom).offset().top},scrolltime
+                scrollTop:$(scrollToDom).offset().top},600
+            );
+        }, 200);
+    });
+
+    //设置滚动到某个dom节点的代码
+    jQuery.scrollToDom = function(scrollDom,scrollTime) {
+        $(scrollDom).click( function(){
+            var scrollToDom = $(this).attr("data-scroll");
+            $(this).addClass("thisScroll").siblings().removeClass("thisScroll");
+            $('html,body').animate({
+                scrollTop:$(scrollToDom).offset().top},scrollTime
             );
             return false;
         });
-
     };
 
-    $.scrollto("#myScrollspy a",600);
-    $.scrollto(".full-image a",600);
+    //为右侧导航栏子节点赋予滚动效果
+    $.scrollToDom("#myScrollspy a",600);
 
 }); 

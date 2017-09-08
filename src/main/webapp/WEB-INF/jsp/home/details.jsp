@@ -39,11 +39,6 @@
         lightGallery(document.getElementById("#auto-loop-2"));
         lightGallery(document.getElementById("#auto-loop-3"));
         lightGallery(document.getElementById("#auto-loop-4"));
-        $(function () {
-            $("#testmao").click(function () {
-                $.scrollTo('#section-1',1000);
-            });
-        });
     </script>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="50">
@@ -94,7 +89,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="navbar-form navbar-left" role="search">
                         <a href="home">
-                            <img src="/assets/home/index/image/logo.png">
+                            <img id="section-0" src="/assets/home/index/image/logo.png">
                         </a>
                         <div class="form-group">
                             <input id="search-input" type="text" class="form-control"  />
@@ -137,8 +132,8 @@
                 </div>
                 <small>  别名：${estate.estateName}</small>
             </div>
-            <div class="tabbable" id="tabs-420817">
-                <ul class="nav nav-tabs tabs" id="section-1">
+            <div class="tabbable" id="tabs-ID">
+                <ul class="nav nav-tabs tabs">
                     <li class="col-md-4 active">
                         <a href="#panel-index" data-toggle="tab">楼盘主页</a>
                     </li>
@@ -150,7 +145,7 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="panel-index">
+                    <div class="tab-pane fade active in" id="panel-index">
                         <div class="row clearfix tab-items">
                             <div class="col-md-6 column">
                                 <div class="carousel slide" id="Carousel-ID">
@@ -166,16 +161,24 @@
                                     </ol>
                                     <div class="carousel-inner full-image">
                                         <div id="item-1" class="item active">
-                                            <img alt=""  src="/assets/home/details/image/1-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic1" data-scroll="#section-1">
+                                                <img alt=""  src="/assets/home/details/image/1-big.jpg" />
+                                            </a>
                                         </div>
                                         <div id="item-2" class="item">
-                                            <img alt="" src="/assets/home/details/image/2-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic2" data-scroll="#section-2">
+                                                <img alt="" src="/assets/home/details/image/2-big.jpg" />
+                                            </a>
                                         </div>
                                         <div id="item-3" class="item">
-                                            <img alt="" src="/assets/home/details/image/3-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic3" data-scroll="#section-3">
+                                                <img alt="" src="/assets/home/details/image/3-big.jpg" />
+                                            </a>
                                         </div>
                                         <div id="item-4" class="item">
-                                            <img alt="" src="/assets/home/details/image/4-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic4" data-scroll="#section-4">
+                                                <img alt="" src="/assets/home/details/image/4-big.jpg" />
+                                            </a>
                                         </div>
                                     </div>
                                     <a class="left carousel-control" href="#Carousel-ID" data-slide="prev">
@@ -218,7 +221,6 @@
                                             </a>
                                         </div>
                                     </div>
-
 
                                     <div class="col-md-2">
                                         <div id="img-4" class="hovereffect">
@@ -302,7 +304,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel-details">
+                    <div class="tab-pane fade" id="panel-details">
                         <div class="row clearfix tab-items">
                             <div class="col-md-12 column">
                                 <div class="list-group details-header">
@@ -428,23 +430,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel-pictures">
+                    <div class="tab-pane fade" id="panel-pictures">
                         <div class="row clearfix tab-items">
                             <div class="col-md-12 column" >
                                 <div class="row">
-
-                                    <div class="col-xs-10">
+                                    <div class="col-xs-10 picture-area">
                                         <a data-toggle="collapse"  href="#auto-loop-1">
                                             <div class="list-group-item active">
-                                                <b>效果图（12）</b>
+                                                <b id="section-1">效果图（12）</b>
                                             </div>
                                         </a>
                                         <div id="auto-loop-1" class="row gallery in">
                                             <c:forEach begin="0" end="11">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
-                                                     data-sub-html="<h4>${estate.estateName}</h4>
-                                                                    <p>${estate.estateName}效果图</p>"
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                        <b>${estate.estateName}</b>
+                                                                        <p>${estate.estateName}效果图</p>
+                                                                    </div>"
                                                      data-src="/assets/home/details/image/1.jpg">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
@@ -469,8 +472,10 @@
                                             <c:forEach begin="0" end="19">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
-                                                     data-sub-html="<h4>${estate.estateName}</h4>
-                                                                    <p>${estate.estateName}样板间</p>"
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                    <b class='fullScreen-font'>${estate.estateName}</b>
+                                                                    <p>${estate.estateName}样板间</p>
+                                                                    </div>"
                                                      data-src="/assets/home/details/image/1.jpg">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
@@ -495,8 +500,10 @@
                                             <c:forEach begin="0" end="0">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
-                                                     data-sub-html="<h4>${estate.estateName}</h4>
-                                                                    <p>${estate.estateName}环境规划图</p>"
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                    <b class='fullScreen-font'>${estate.estateName}</b>
+                                                                    <p>${estate.estateName}环境规划图</p>
+                                                                    </div>"
                                                      data-src="/assets/home/details/image/1.jpg">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
@@ -521,8 +528,10 @@
                                             <c:forEach begin="0" end="20">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
-                                                     data-sub-html="<h4>${estate.estateName}</h4>
-                                                                    <p>${estate.estateName}楼盘实景图</p>"
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                    <b class='fullScreen-font'>${estate.estateName}</b>
+                                                                    <p>${estate.estateName}楼盘实景图</p>
+                                                                    </div>"
                                                      data-src="/assets/home/details/image/1.jpg">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
@@ -541,11 +550,11 @@
 
                                     <div class="col-xs-2" id="myScrollspy">
                                         <ul class="nav nav-tabs nav-stacked affix" data-spy="affix" data-offset-top="100">
-                                            <li><a date-scroll="#section-0" href="javascript:void(0);">全部（54）</a></li>
-                                            <li><a date-scroll="#section-1" href="javascript:void(0);">效果图（12）</a></li>
-                                            <li><a date-scroll="#section-2" href="javascript:void(0);">样板间（20）</a></li>
-                                            <li><a date-scroll="#section-3" href="javascript:void(0);">环境规划图（1）</a></li>
-                                            <li><a date-scroll="#section-4" href="javascript:void(0);">楼盘实景图（21）</a></li>
+                                            <li><a data-scroll="#section-0" href="javascript:void(0);">全部（54）</a></li>
+                                            <li><a data-scroll="#section-1" href="javascript:void(0);">效果图（12）</a></li>
+                                            <li><a data-scroll="#section-2" href="javascript:void(0);">样板间（20）</a></li>
+                                            <li><a data-scroll="#section-3" href="javascript:void(0);">环境规划图（1）</a></li>
+                                            <li><a data-scroll="#section-4" href="javascript:void(0);">楼盘实景图（21）</a></li>
                                         </ul>
                                     </div>
 
