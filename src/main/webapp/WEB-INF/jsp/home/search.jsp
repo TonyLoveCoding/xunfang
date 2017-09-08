@@ -49,18 +49,13 @@
                             </div>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="#"><b>热搜词：</b></a>
+                                    <a href="javascript:void(0);"><b>热搜词：</b></a>
                                 </li>
+                                <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
                                 <li>
-                                    <a href="#">实地蔷薇国际</a>
+                                    <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
                                 </li>
-
-                                <li>
-                                    <a href="#">万科幸福誉</a>
-                                </li>
-                                <li>
-                                    <a href="#">南沙保利城</a>
-                                </li>
+                                </c:forEach>
                             </ul>
                         </div>
                     </ul>
@@ -89,18 +84,13 @@
                     </div>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">热搜词：</a>
+                            <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
                         </li>
-                        <li>
-                            <a href="#">实地蔷薇国际</a>
-                        </li>
-
-                        <li>
-                            <a href="#">万科幸福誉</a>
-                        </li>
-                        <li>
-                            <a href="#">南沙保利城</a>
-                        </li>
+                        <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
+                            <li>
+                                <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
 

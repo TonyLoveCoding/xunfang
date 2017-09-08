@@ -7,7 +7,7 @@ import java.util.Map;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:搜索界面传输用DTO
  * @author: TingFeng Zhang
  * @date: 2017/8/17 15:38
  */

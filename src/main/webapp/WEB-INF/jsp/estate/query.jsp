@@ -11,19 +11,34 @@
             $("#PageCount").val("${pageMsg.total}");
         }
 
+        function ask() {
+            var msg="您确定要更新吗？"
+            if(confirm(msg)==true){
+                //跳转
+                alert("跳转");
+            }else{
+                alert("取消");
+                return false;
+            }
+        };
+
         function contirmd(id) {
             var msg = "您确定要删除吗？"
-            alert(id);
             if (confirm(msg) == true) {
                 $.ajax({
-                    type:"POST",
+                    type:"GET",
                     url:"/estate/delete?id="+id,
-                    dataType:"text",
-                    error:function (Msg) {
-                        alert(Msg);
+                    dataType:"json",
+                    error:function () {
                     },
                     success:function (Msg) {
-                        LodeData();
+                        if(Msg.code==100){
+                            location.href="/estate/query";
+                            alert("删除成功");
+                        }
+                        if(Msg.code==200){
+                            alert(Msg);
+                        }
                     }
                 })
             } else {
@@ -31,20 +46,6 @@
             }
         };
 
-        function LodeData() {
-            $.ajax({
-                type:"GET",
-                url:"/estate/query",
-                data:{"estateList":$("#estateList").value},
-                dataType:"json",
-                error:function (data) {
-                    alert("查询失败");
-                },
-                success:function (data) {
-                    alert("查询成功");
-                }
-            })
-        };
     </script>
 </head>
 <body>
@@ -59,9 +60,10 @@
                 <input id="input_search_keyword" type="text" name="keyword" class="form-control input-md" value="${keyword}"><span id="submit_search" class="input-group-addon btn btn-primary">搜索</span>
             </div>
         </div>
-        <div class="col-md-1 col-md-offset-1">
+        <div class="col-md-3 col-md-offset-1">
             <div class="btn-group center-block" role="group" aria-label="...">
                 <a class="btn btn-default center-block" href="/estate/add" role="button">添加楼盘</a>
+                <a class="btn btn-default center-block" href="javascript:void(0);" role="button" onclick="ask()">更新索引库</a>
             </div>
         </div>
     </div>
@@ -84,7 +86,6 @@
                 <tbody>
                 <c:forEach items="${estateList}" var="estate">
                     <tr>
-                        <td>${estate.id}</td>
                         <td>${estate.estateName}</td>
                         <td>${estate.estateAddress}</td>
                         <td>${estate.location}</td>
@@ -93,9 +94,10 @@
                         <td>${estate.minPrice}</td>
                         <td>${estate.maxPrice}</td>
                         <td>
-                            <div class="btn-group center-block" role="group" aria-label="...">
+                            <div class="btn-group center-block" role="group" aria-label="..." style="display: block;margin-left: auto;margin-right: auto">
                                 <a class="btn btn-default center-block" href="/estate/selectbyid?id=${estate.id}" role="button">查看</a>
-                                <a class="btn btn-default center-block" href="javasprite:void(0)" role="button" onclick="contirmd(${estate.id})">删除</a>
+                                <a class="btn btn-default center-block" href="/estate/update?id=${estate.id}" role="button">修改</a>
+                                <a class="btn btn-default center-block" href="javasprite:void(0)" role="button" onclick="contirmd('${estate.id}')">删除</a>
                             </div>
                         </td>
                     </tr>

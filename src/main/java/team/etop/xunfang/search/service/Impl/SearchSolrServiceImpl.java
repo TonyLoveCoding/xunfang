@@ -24,6 +24,10 @@ public class SearchSolrServiceImpl implements SearchSolrService{
     @Value("${solr.fullUpdateURL}")
     String fullUpdateURL;
 
+    /**
+     * 全量更新
+     * @throws Exception
+     */
     @Override
     public void fullUpdate() throws Exception {
             //创建一个URL对象
@@ -54,24 +58,26 @@ public class SearchSolrServiceImpl implements SearchSolrService{
                 while ((i = isr.read()) != -1) {
                     strResult = strResult + (char) i;
                 }
-                //System.out.println(strResult.toString());
                 isr.close();
             }
     }
 
-
+    /**
+     * 增加(更新)楼盘-在索引中创建新文档
+     * @param estateSearchBo
+     * @throws Exception
+     */
     @Override
     public void addEstate(EstateSearchBo estateSearchBo) throws Exception {
         solrClient.add(SearchUtil.EstateToDoc(estateSearchBo));
         solrClient.commit();
     }
 
-    @Override
-    public void updateEstate(EstateSearchBo estateSearchBo) throws Exception {
-        solrClient.add(SearchUtil.EstateToDoc(estateSearchBo));
-        solrClient.commit();
-    }
-
+    /**
+     * 删除楼盘-在索引中删除文档
+     * @param id
+     * @throws Exception
+     */
     @Override
     public void deleteEstate(Long id) throws Exception {
         solrClient.deleteByQuery("id:"+id);

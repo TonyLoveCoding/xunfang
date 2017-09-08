@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.common.util.SearchUtil;
+import team.etop.xunfang.heatWord.dto.HeatWord;
+import team.etop.xunfang.heatWord.service.HeatWordService;
+import team.etop.xunfang.modules.po.HeatSearchWord;
 import team.etop.xunfang.search.bo.HomeEstateBo;
 import team.etop.xunfang.search.bo.RecommendEstateBo;
 import team.etop.xunfang.search.bo.SearchInfoBo;
@@ -22,7 +25,7 @@ import java.util.List;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:索引数据APIController
  * @author: TingFeng Zhang
  * @date: 2017/8/9 8:46
  */
@@ -36,25 +39,29 @@ public class SearchController {
     @Autowired
     EstateSearchService estateSearchService;
 
+    @Autowired
+    HeatWordService heatWordService;
+
     @Value("${search.shownum}")
     Integer shownum;
 
     /**
-     * 传入条件进行搜索
-     * @param pn
-     * @param keyWord
-     * @param saleStatus
-     * @param location
-     * @param totalPrices
-     * @param type
-     * @param houseType
-     * @param feature
-     * @param unitPrice
-     * @param area
-     * @param sort
-     * @param sortType
-     * @return
-     * @throws Exception
+     * @Author: TingFeng Zhang
+     * @Description 传入条件进行搜索
+     * @param pn 页码
+     * @param keyWord 关键词
+     * @param saleStatus 销售情况
+     * @param location  位置
+     * @param totalPrices  总价
+     * @param type 类型
+     * @param houseType 户型
+     * @param feature 特色
+     * @param unitPrice 单价
+     * @param area 面积
+     * @param sort 排序条件
+     * @param sortType 排序条件-正反序
+     * @return ModelAndView
+     * @Date 2017/9/7 10:07
      */
     @RequestMapping(value = "/search",produces="text/html;charset=UTF-8",method = RequestMethod.GET)
     public ModelAndView search(@RequestParam(value = "pn",defaultValue = "1") Long pn,
@@ -69,22 +76,35 @@ public class SearchController {
                                 @RequestParam(value = "area",defaultValue = "none")String area,
                                 @RequestParam(value = "sort",defaultValue = "none")String sort,
                                 @RequestParam(value = "sortType",defaultValue = "none")String sortType) throws Exception {
-        ModelAndView modelAndView=new ModelAndView("/home/search");
-        SearchInfoBo search = estateSearchService.search(pn,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort,sortType);
-        List<RecommendEstateBo> RecommendEstateBo =
-                estateSearchService.getRecommendEstate(0,5);
-        SearchUtil.AddType(modelAndView,dicService);
-        if(search.getEstateSearchBoList().size()<=0){
-            modelAndView.addObject("SearchPageMsg", new SearchPageMsg(0L,1L,0,keyWord,0L,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort,sortType));
-        }else{
-            modelAndView.addObject("SearchPageMsg", SearchUtil.GetPage(pn,search.getNumFound(),shownum,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort,sortType));
+        try {
+            ModelAndView modelAndView=new ModelAndView("/home/search");
+            SearchInfoBo search = estateSearchService.search(pn,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort,sortType);
+            List<RecommendEstateBo> RecommendEstateBo =
+                    estateSearchService.getRecommendEstate(0,5);
+            SearchUtil.AddType(modelAndView,dicService);
+            if(search.getEstateSearchBoList().size()<=0){
+                modelAndView.addObject("SearchPageMsg", new SearchPageMsg(0L,1L,0,keyWord,0L,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort,sortType));
+            }else{
+                modelAndView.addObject("SearchPageMsg", SearchUtil.GetPage(pn,search.getNumFound(),shownum,keyWord,saleStatus,location,totalPrices,type,houseType,feature,unitPrice,area,sort,sortType));
+            }
+            List<HeatWord> heatSearchWordList = heatWordService.getHeatSearchWordList();
+
+            modelAndView.addObject("RecommendEstateBo", RecommendEstateBo);
+            modelAndView.addObject("EstateList",search.getEstateSearchBoList());
+            modelAndView.addObject("heatSearchWordList",heatSearchWordList);
+            return modelAndView;
+        }catch (Exception e){
+            //打日志
+            throw e;
         }
-        modelAndView.addObject("RecommendEstateBo", RecommendEstateBo);
-        modelAndView.addObject("EstateList",search.getEstateSearchBoList());
-        return modelAndView;
     }
 
 
+    /**
+     * @Author: TingFeng Zhang
+     * @Description 得到搜索界面推荐楼盘
+     * @Date 2017/9/7 10:09
+     */
     @RequestMapping("/getHomeEstateMsg")
     @ResponseBody
     public Msg getHomeEstateJson(){

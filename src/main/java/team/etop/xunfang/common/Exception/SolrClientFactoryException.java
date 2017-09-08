@@ -2,7 +2,7 @@ package team.etop.xunfang.common.Exception;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:Solr客户端错误
  * @author: TingFeng Zhang
  * @date: 2017/8/16 16:01
  */

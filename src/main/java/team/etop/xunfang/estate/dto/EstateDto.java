@@ -1,5 +1,7 @@
 package team.etop.xunfang.estate.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -26,10 +28,10 @@ public class EstateDto {
     private String property;//物业类型
     private String developer;//开发商
     private Integer saleStatus;//销售状态
-    private Date firstDelivery;//最早交房
-    private Date latestOpening;//最新开盘
+    private String firstDelivery;//最早交房
+    private String latestOpening;//最新开盘
     private String propertyRights;//产权年限
-    private Date takeTime;//拿地时间
+    private String takeTime;//拿地时间
     private String company;//物业公司
     private String propertyCost;//物业费用
     private String powerType;//水电燃气
@@ -198,19 +200,19 @@ public class EstateDto {
         this.saleStatus = saleStatus;
     }
 
-    public Date getFirstDelivery() {
+    public String getFirstDelivery() {
         return firstDelivery;
     }
 
-    public void setFirstDelivery(Date firstDelivery) {
+    public void setFirstDelivery(String firstDelivery) {
         this.firstDelivery = firstDelivery;
     }
 
-    public Date getLatestOpening() {
+    public String getLatestOpening() {
         return latestOpening;
     }
 
-    public void setLatestOpening(Date latestOpening) {
+    public void setLatestOpening(String latestOpening) {
         this.latestOpening = latestOpening;
     }
 
@@ -222,11 +224,11 @@ public class EstateDto {
         this.propertyRights = propertyRights;
     }
 
-    public Date getTakeTime() {
+    public String getTakeTime() {
         return takeTime;
     }
 
-    public void setTakeTime(Date takeTime) {
+    public void setTakeTime(String takeTime) {
         this.takeTime = takeTime;
     }
 
