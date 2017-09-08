@@ -185,10 +185,10 @@ public class RoleController {
     }
     @ResponseBody
     @RequestMapping("/getTree")
-    public Result getTree(@RequestParam(value="ID") Long ID){
-        System.out.println("ID="+ID);
+    public Result getTree(){
+
         Result result=new Result();
-        List<PermissionTree> ztree=permissionServiceGenerate.getAllZtree(ID);
+        List<PermissionTree> ztree=permissionServiceGenerate.getAllZtree();
         if(ztree.size()!=0){
             result.setSuccess(true);
         result.setMsg("Ztree成功");

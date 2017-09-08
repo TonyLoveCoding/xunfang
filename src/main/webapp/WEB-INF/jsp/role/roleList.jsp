@@ -39,35 +39,35 @@
         });
 
 
-        $(document).on('click', '.permissionBtn', function () {
-            ID = $(this).attr("id");
-//            $("#updateRolePermission").empty();
-
-            $.ajax({
-                url: "role/getTree",
-                data: "ID=" + ID,
-                type: "GET",
-                success: function (result) {
-//                    if (result.success) {
-//                        var estateList = result.map.estateJsonList;
-//                        $("#findEstates").empty();
-//                        $.each(estateList, function (index, item) {
-////                            var checkboxString;
-//                            var estateString= '<span>' + item.estate.estateName + '</span><br>';
+//        $(document).on('click', '.permissionBtn', function () {
+//            ID = $(this).attr("id");
+////            $("#updateRolePermission").empty();
 //
-//                            $("#findEstates").append(estateString);
+//            $.ajax({
+//                url: "role/getTree",
+//                data: "ID=" + ID,
+//                type: "GET",
+//                success: function (result) {
+////                    if (result.success) {
+////                        var estateList = result.map.estateJsonList;
+////                        $("#findEstates").empty();
+////                        $.each(estateList, function (index, item) {
+//////                            var checkboxString;
+////                            var estateString= '<span>' + item.estate.estateName + '</span><br>';
 ////
-//                        });
-//                    }
-//                    else {
-//                        alert(result.msg+"a");
-//                        var estateString=result.msg;
-//                        alert(estateString);
-//                        $("#findEstates").append(estateString);
-//                    }
-                }
-            });
-        });
+////                            $("#findEstates").append(estateString);
+//////
+////                        });
+////                    }
+////                    else {
+////                        alert(result.msg+"a");
+////                        var estateString=result.msg;
+////                        alert(estateString);
+////                        $("#findEstates").append(estateString);
+////                    }
+//                }
+//            });
+//        });
 
 
 
@@ -206,22 +206,12 @@
                         $("#updateRole").append(updateRoleString);
                         updateRoleString=' <label>角色名：</label>';
                         $("#updateRole").append(updateRoleString);
-                        updateRoleString='<input type="text" name="name" value="'+role.roleName+'"><br>';
+                        updateRoleString='<input class="form-control" type="text" name="name" value="'+role.roleName+'"><br>';
                         $("#updateRole").append(updateRoleString);
                         updateRoleString=' <label>角色描述：</label>';
                         $("#updateRole").append(updateRoleString);
                         updateRoleString='<textarea class="form-control" rows="3" name="description" value="'+role.description+'"></textarea>';
                         $("#updateRole").append(updateRoleString);
-
-
-
-
-
-
-
-
-
-
                     }
                     else {
                         alert(result.msg+"a");
@@ -296,7 +286,7 @@
                         <div class="modal-body">
 
                             <label>角色名</label>
-                            <input type="text" name="name" >
+                            <input class="form-control" type="text" name="name" >
                         </div>
                         <div class="modal-body">
 

@@ -7,21 +7,21 @@ import team.etop.xunfang.modules.po.Permission;
  * Created by ZYZ on 2017/8/24
  */
 public class PermissionTree {
-    Long  id;
+    String  id;
     Long pId;
     String name;
     Boolean checked;
     Boolean open;
 
     public void setPermissionTree(Permission permission){
-        this.id=permission.getId();
+        this.id=String.valueOf(permission.getId());
         this.pId=permission.getParentId();
         this.name=permission.getName();
         this.open=false;
         this.checked=false;
     }
     public void setPermissionMenu(Permission permission){
-        this.id=permission.getId();
+        this.id=String.valueOf(permission.getId());
         this.pId=permission.getParentId();
         this.name=permission.getName();
         this.checked=null;
@@ -66,12 +66,12 @@ public class PermissionTree {
 
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.id = String.valueOf(id);
     }
 
     @Override

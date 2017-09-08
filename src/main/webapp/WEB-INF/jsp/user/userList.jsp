@@ -318,21 +318,21 @@
                     <form class="form-group" id="form2" name="form2" action="/user/addUser" method="post" novalidate>
                         <div class="modal-body">
                             <label>账号</label>
-                            <input type="text" name="account" >
+                            <input class="form-control" type="text" name="account" >
                         </div>
                         <div class="modal-body">
                             <label>昵称</label>
-                            <input type="text" name="name" >
+                            <input class="form-control" type="text" name="name" >
                         </div>
 
                         <div class="modal-body">
                             <label>密码</label>
-                            <input type="password" name="password" autofocus="autofocus" placeholder="至少6位字母或数字"
+                            <input class="form-control" type="password" name="password" autofocus="autofocus" placeholder="至少6位字母或数字"
                                   >
                         </div>
                         <div class="modal-body">
                             <label>验证密码</label>
-                            <input type="password" name="checkPwd" autofocus="autofocus" placeholder="至少6位字母或数字"
+                            <input class="form-control" type="password" name="checkPwd" autofocus="autofocus" placeholder="至少6位字母或数字"
                                   >
                         </div>
 
