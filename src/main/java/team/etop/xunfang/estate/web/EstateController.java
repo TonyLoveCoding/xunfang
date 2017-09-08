@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -163,10 +164,26 @@ public class EstateController {
         }
         estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
 
-        int esize=effectPictureList.size();
-        int psize=prototypeRoomPictureDtoList.size();
-        int rsize=realEststePictureDtoList.size();
-        int ssize=samplePlanningPictureDtoList.size();
+//        int esize=effectPictureList.size();
+//        int psize=prototypeRoomPictureDtoList.size();
+//        int rsize=realEststePictureDtoList.size();
+//        int ssize=samplePlanningPictureDtoList.size();
+        int esize=0;
+        int psize=0;
+        int rsize=0;
+        int ssize=0;
+        if(!effectPictureList.get(0).getName().equals(imageUrl+"0.jpg") || effectPictureList.size()!=1){
+            esize=effectPictureList.size();
+        }
+        if(!prototypeRoomPictureDtoList.get(0).getName().equals(imageUrl+"0.jpg") || prototypeRoomPictureDtoList.size()!=1){
+            psize=prototypeRoomPictureDtoList.size();
+        }
+        if(!realEststePictureDtoList.get(0).getName().equals(imageUrl+"0.jpg") || realEststePictureDtoList.size()!=1){
+            rsize=realEststePictureDtoList.size();
+        }
+        if(!samplePlanningPictureDtoList.get(0).getName().equals(imageUrl+"0.jpg") || samplePlanningPictureDtoList.size()!=1){
+            ssize=samplePlanningPictureDtoList.size();
+        }
         ModelAndView modelAndView=new ModelAndView("/estate/selectbyid");
         modelAndView.addObject("EstateDto",estateDto);
         modelAndView.addObject("esize",esize);
@@ -319,10 +336,22 @@ public class EstateController {
         }
         estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
 
-        int esize=effectPictureList.size();
-        int psize=prototypeRoomPictureDtoList.size();
-        int rsize=realEststePictureDtoList.size();
-        int ssize=samplePlanningPictureDtoList.size();
+        int esize=0;
+        int psize=0;
+        int rsize=0;
+        int ssize=0;
+        if(!effectPictureList.get(0).getName().equals(imageUrl+"0.jpg") || effectPictureList.size()!=1){
+            esize=effectPictureList.size();
+        }
+        if(!prototypeRoomPictureDtoList.get(0).getName().equals(imageUrl+"0.jpg") || prototypeRoomPictureDtoList.size()!=1){
+            psize=prototypeRoomPictureDtoList.size();
+        }
+        if(!realEststePictureDtoList.get(0).getName().equals(imageUrl+"0.jpg") || realEststePictureDtoList.size()!=1){
+            rsize=realEststePictureDtoList.size();
+        }
+        if(!samplePlanningPictureDtoList.get(0).getName().equals(imageUrl+"0.jpg") || samplePlanningPictureDtoList.size()!=1){
+            ssize=samplePlanningPictureDtoList.size();
+        }
         ModelAndView modelAndView=new ModelAndView("/estate/photos");
         modelAndView.addObject("EstateDto",estateDto);
         modelAndView.addObject("esize",esize);
@@ -355,9 +384,8 @@ public class EstateController {
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getEffectivePhotos();
-        if(s.length()!=0 || s.equals("0")){
-            ids+=",";
-            ids+=s;
+        if(s.length()!=0 && (!s.equals("0"))){
+            ids=s+","+ids;
         }
         estate.setEffectivePhotos(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -386,10 +414,9 @@ public class EstateController {
             k=",";
         }
         Estate estate=estateServiceGenerate.selectById(id);
-        String s=estate.getEffectivePhotos();
-        if(s.length()!=0 || s.equals("0")){
-            ids+=",";
-            ids+=s;
+        String s=estate.getPrototypeRoom();
+        if(s.length()!=0 && !s.equals("0")){
+            ids=s+","+ids;
         }
         estate.setPrototypeRoom(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -418,10 +445,9 @@ public class EstateController {
             k=",";
         }
         Estate estate=estateServiceGenerate.selectById(id);
-        String s=estate.getEffectivePhotos();
-        if(s.length()!=0 || s.equals("0")){
-            ids+=",";
-            ids+=s;
+        String s=estate.getLiveAction();
+        if(s.length()!=0 && !s.equals("0")){
+            ids=s+","+ids;
         }
         estate.setLiveAction(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -450,10 +476,9 @@ public class EstateController {
             k=",";
         }
         Estate estate=estateServiceGenerate.selectById(id);
-        String s=estate.getEffectivePhotos();
-        if(s.length()!=0 || s.equals("0")){
-            ids+=",";
-            ids+=s;
+        String s=estate.getSamplePlate();
+        if(s.length()!=0 && !s.equals("0")){
+            ids=s+","+ids;
         }
         estate.setSamplePlate(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -575,5 +600,169 @@ public class EstateController {
         File file=new File(path);
         file.delete();
         return Msg.success("删除成功");
+    }
+
+    @RequestMapping("/moveEffectPicture")
+    @ResponseBody
+    public Msg moveEffectPicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("effective_photos","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String[] string=estate.getEffectivePhotos().split(",");
+        List<String> list=new ArrayList(Arrays.asList(string));
+        int i=list.indexOf(""+id);
+        switch (direction){
+            case -1:
+                if(i==0){
+                    return Msg.success("无法往前移动");
+                }else {
+                    String s=list.get((i-1));
+                    list.set((i-1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+            case 1:
+                if(i==list.size()){
+                    return Msg.success("无法往后移动");
+                }else {
+                    String s=list.get((i+1));
+                    list.set((i+1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+        }
+        String effectivePhotos="";
+        String k="";
+        for(String o:list){
+            effectivePhotos+=k;
+            effectivePhotos+=o;
+            k=",";
+        }
+        estate.setEffectivePhotos(effectivePhotos);
+        estateServiceGenerate.insertOrUpdate(estate);
+        return Msg.success();
+    }
+
+    @RequestMapping("/movePrototypeRoomPicture")
+    @ResponseBody
+    public Msg movePrototypeRoomPicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("prototype_room","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String[] string=estate.getPrototypeRoom().split(",");
+        List<String> list=new ArrayList(Arrays.asList(string));
+        int i=list.indexOf(""+id);
+        switch (direction){
+            case -1:
+                if(i==0){
+                    return Msg.success("无法往前移动");
+                }else {
+                    String s=list.get((i-1));
+                    list.set((i-1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+            case 1:
+                if(i==list.size()){
+                    return Msg.success("无法往后移动");
+                }else {
+                    String s=list.get((i+1));
+                    list.set((i+1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+        }
+        String prototypeRoom ="";
+        String k="";
+        for(String o:list){
+            prototypeRoom+=k;
+            prototypeRoom+=o;
+            k=",";
+        }
+        estate.setPrototypeRoom(prototypeRoom);
+        estateServiceGenerate.insertOrUpdate(estate);
+        return Msg.success();
+    }
+
+    @RequestMapping("/moveRealEststePicture")
+    @ResponseBody
+    public Msg moveRealEststePicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("live_action","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String[] string=estate.getLiveAction().split(",");
+        List<String> list=new ArrayList(Arrays.asList(string));
+        int i=list.indexOf(""+id);
+        switch (direction){
+            case -1:
+                if(i==0){
+                    return Msg.success("无法往前移动");
+                }else {
+                    String s=list.get((i-1));
+                    list.set((i-1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+            case 1:
+                if((i+1)==list.size()){
+                    return Msg.success("无法往后移动");
+                }else {
+                    String s=list.get((i+1));
+                    list.set((i+1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+        }
+        String realEststePicture="";
+        String k="";
+        for(String o:list){
+            realEststePicture+=k;
+            realEststePicture+=o;
+            k=",";
+        }
+        estate.setLiveAction(realEststePicture);
+        estateServiceGenerate.insertOrUpdate(estate);
+        return Msg.success();
+    }
+
+    @RequestMapping("/moveSamplePlanningPicture")
+    @ResponseBody
+    public Msg moveSamplePlanningPicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
+        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
+        wrapper.like("sample_plate","%"+id+"%");
+        Estate estate=estateServiceGenerate.selectOne(wrapper);
+        String[] string=estate.getSamplePlate().split(",");
+        List<String> list=new ArrayList(Arrays.asList(string));
+        int i=list.indexOf(""+id);
+        switch (direction){
+            case -1:
+                if(i==0){
+                    return Msg.success("无法往前移动");
+                }else {
+                    String s=list.get((i-1));
+                    list.set((i-1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+            case 1:
+                if(i==list.size()){
+                    return Msg.success("无法往后移动");
+                }else {
+                    String s=list.get((i+1));
+                    list.set((i+1),list.get(i));
+                    list.set(i,s);
+                }
+                break;
+        }
+        String samplePlanningPicture="";
+        String k="";
+        for(String o:list){
+            samplePlanningPicture+=k;
+            samplePlanningPicture+=o;
+            k=",";
+        }
+        estate.setSamplePlate(samplePlanningPicture);
+        estateServiceGenerate.insertOrUpdate(estate);
+        return Msg.success();
     }
 }

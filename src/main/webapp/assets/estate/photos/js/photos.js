@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
+
     $(".inp_photos").change(function (){
         // var id=$(this).prev().val();
+        alert($(".inp_photos").val());
         var type=1;
         $(this).parent().submit();
     });
@@ -81,5 +83,57 @@ function deleteSamplePlanningPicture(pid,eid) {
     } else {
         return false;
     }
+}
+
+function moveEffectPicture(id,direction) {
+    $.ajax({
+        type:"get",
+        url:"/estate/moveEffectPicture",
+        data:{"id":id,"direction":direction},
+        dataType:"json",
+        success:function (Msg) {
+            alert(Msg.tip);
+            location.reload();
+        }
+    })
+}
+
+function movePrototypeRoomPicture(id,direction) {
+    $.ajax({
+        type:"get",
+        url:"/estate/movePrototypeRoomPicture",
+        data:{"id":id,"direction":direction},
+        dataType:"json",
+        success:function (Msg) {
+            alert(Msg.tip);
+            location.reload();
+        }
+    })
+}
+
+function moveRealEststePicture(id,direction) {
+    $.ajax({
+        type:"get",
+        url:"/estate/moveRealEststePicture",
+        data:{"id":id,"direction":direction},
+        dataType:"json",
+        success:function (Msg) {
+            alert(Msg.tip);
+            location.reload();
+        }
+    })
+}
+
+function moveSamplePlanningPicture(id,direction) {
+    $.ajax({
+        type:"get",
+        url:"/estate/moveSamplePlanningPicture",
+        data:{"id":id,"direction":direction},
+        dataType:"json",
+        success:function (Msg) {
+            alert(Msg.tip);
+            location.reload();
+        }
+    })
 }
 
