@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-06
+ * @since 2017-09-08
  */
 @Controller
 @RequestMapping("/modules/carouselPhotos")

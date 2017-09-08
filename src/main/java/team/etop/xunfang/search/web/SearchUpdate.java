@@ -9,6 +9,12 @@ import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.search.bo.EstateSearchBo;
 import team.etop.xunfang.search.service.SearchSolrService;
 
+/**
+ * @version V1.0
+ * @Description:索引服务器维护Controller
+ * @author: TingFeng Zhang
+ * @date: 2017/8/9 8:46
+ */
 @Controller
 @RequestMapping("/searchUpdate")
 public class SearchUpdate {

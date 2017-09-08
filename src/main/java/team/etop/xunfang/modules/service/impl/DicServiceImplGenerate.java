@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-06
+ * @since 2017-09-08
  */
 @Service
 public class DicServiceImplGenerate extends ServiceImpl<DicMapperGenerate, Dic> implements DicServiceGenerate {

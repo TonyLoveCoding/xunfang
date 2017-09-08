@@ -1,5 +1,10 @@
 $(document).ready(function(){
     init();
+    $(".a_heatWord").click(function () {
+        var keyWord=this.innerHTML;
+        $("#inp_hid_keyword").attr("value", keyWord);
+        $("#form_search").submit();
+    });
     $("#btn_coll_keyword").click(function () {
         var keyWord=$("#inp_coll_keyword").val();
         $("#inp_hid_keyword").attr("value", keyWord);

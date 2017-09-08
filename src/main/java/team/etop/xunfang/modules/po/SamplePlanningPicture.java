@@ -10,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-06
+ * @since 2017-09-08
  */
 @TableName("sample_planning_picture")
 public class SamplePlanningPicture extends Model<SamplePlanningPicture> {

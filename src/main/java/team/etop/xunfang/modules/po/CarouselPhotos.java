@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-06
+ * @since 2017-09-08
  */
 @TableName("carousel_photos")
 public class CarouselPhotos extends Model<CarouselPhotos> {

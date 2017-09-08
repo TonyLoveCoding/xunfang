@@ -37,12 +37,17 @@ public class HomeController {
 
     @RequestMapping
     public ModelAndView initHomeIndex() throws Exception{
-        List<RecommendEstateBo> RecommendEstate = estateSearchService.getRecommendEstate(0,4);
+        try {
+            List<RecommendEstateBo> RecommendEstate = estateSearchService.getRecommendEstate(0,4);
+            ModelAndView mav = new ModelAndView("/home/index");
+            mav.addObject("RecommendEstate",RecommendEstate);
+            SearchUtil.AddType(mav,dicService);
+            return mav;
+        }catch (Exception e){
+            e.printStackTrace();
+            throw e;
+        }
 
-        ModelAndView mav = new ModelAndView("/home/index");
-        mav.addObject("RecommendEstate",RecommendEstate);
-        SearchUtil.AddType(mav,dicService);
-        return mav;
     }
 
     @RequestMapping("/details/{id}")

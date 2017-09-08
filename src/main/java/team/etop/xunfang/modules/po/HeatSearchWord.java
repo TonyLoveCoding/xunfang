@@ -10,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-06
+ * @since 2017-09-08
  */
 @TableName("heat_search_word")
 public class HeatSearchWord extends Model<HeatSearchWord> {
@@ -43,6 +43,12 @@ public class HeatSearchWord extends Model<HeatSearchWord> {
 	}
 
 	public void setWeight(Long weight) {
+		this.weight = weight;
+	}
+
+	public HeatSearchWord(Long id, String word, Long weight) {
+		this.id = id;
+		this.word = word;
 		this.weight = weight;
 	}
 
