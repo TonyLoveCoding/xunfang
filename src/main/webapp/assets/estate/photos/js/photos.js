@@ -3,7 +3,6 @@ $(document).ready(function () {
 
     $(".inp_photos").change(function (){
         // var id=$(this).prev().val();
-        alert($(".inp_photos").val());
         var type=1;
         $(this).parent().submit();
     });
@@ -92,8 +91,8 @@ function moveEffectPicture(id,direction) {
         data:{"id":id,"direction":direction},
         dataType:"json",
         success:function (Msg) {
-            alert(Msg.tip);
             location.reload();
+            alert(Msg.msg);
         }
     })
 }
@@ -105,8 +104,8 @@ function movePrototypeRoomPicture(id,direction) {
         data:{"id":id,"direction":direction},
         dataType:"json",
         success:function (Msg) {
-            alert(Msg.tip);
             location.reload();
+            alert(Msg.msg);
         }
     })
 }
@@ -118,8 +117,8 @@ function moveRealEststePicture(id,direction) {
         data:{"id":id,"direction":direction},
         dataType:"json",
         success:function (Msg) {
-            alert(Msg.tip);
             location.reload();
+            alert(Msg.msg);
         }
     })
 }
@@ -131,8 +130,8 @@ function moveSamplePlanningPicture(id,direction) {
         data:{"id":id,"direction":direction},
         dataType:"json",
         success:function (Msg) {
-            alert(Msg.tip);
             location.reload();
+            alert(Msg.msg);
         }
     })
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.common.change.ChangeType;
@@ -22,6 +23,8 @@ import team.etop.xunfang.estate.dto.*;
 import team.etop.xunfang.modules.po.*;
 import team.etop.xunfang.modules.service.*;
 import team.etop.xunfang.search.dto.SearchPageMsg;
+import team.etop.xunfang.search.mapper.DicMapper;
+import team.etop.xunfang.search.service.DicService;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -69,6 +72,8 @@ public class EstateController {
     SamplePlanningPictureServiceGenerate samplePlanningPictureServiceGenerate;
     @Autowired
     DicServiceGenerate dicServiceGenerate;
+    @Autowired
+    DicService dicService;
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
@@ -168,10 +173,6 @@ public class EstateController {
         }
         estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
 
-//        int esize=effectPictureList.size();
-//        int psize=prototypeRoomPictureDtoList.size();
-//        int rsize=realEststePictureDtoList.size();
-//        int ssize=samplePlanningPictureDtoList.size();
         int esize=0;
         int psize=0;
         int rsize=0;
@@ -208,23 +209,22 @@ public class EstateController {
         ChangeType changeType=new ChangeType();
         EstateDto estateDto=changeType.change(estate);
 
-        EntityWrapper<Dic> locationEntityWrapper=new EntityWrapper<>();
-        locationEntityWrapper.where("id = {0}","location");
-        List<Dic> dic_location=dicServiceGenerate.selectList(locationEntityWrapper);
+//        EntityWrapper<Dic> locationEntityWrapper=new EntityWrapper<>();
+//        locationEntityWrapper.where("id = {0}","location");
+        List<Dic> dic_location=dicService.selectByType("location");
 
-        EntityWrapper<Dic> featureEntityWrapper=new EntityWrapper<>();
-        featureEntityWrapper.where("id = {0}","feature");
-        List<Dic> dic_feature=dicServiceGenerate.selectList(featureEntityWrapper);
+//        EntityWrapper<Dic> featureEntityWrapper=new EntityWrapper<>();
+//        featureEntityWrapper.where("id = {0}","feature");
+        List<Dic> dic_feature=dicService.selectByType("feature");
 
-        EntityWrapper<Dic> houseTypeEntityWrapper=new EntityWrapper<>();
-        houseTypeEntityWrapper.where("id = {0}","houseType");
-        List<Dic> dic_houseType=dicServiceGenerate.selectList(houseTypeEntityWrapper);
+//        EntityWrapper<Dic> houseTypeEntityWrapper=new EntityWrapper<>();
+//        houseTypeEntityWrapper.where("id = {0}","houseType");
+        List<Dic> dic_houseType=dicService.selectByType("houseType");
 
 
-        EntityWrapper<Dic> typeEntityWrapper=new EntityWrapper<>();
-        typeEntityWrapper.where("id = {0}","type");
-        List<Dic> dic_type=dicServiceGenerate.selectList(typeEntityWrapper);
-
+//        EntityWrapper<Dic> typeEntityWrapper=new EntityWrapper<>();
+//        typeEntityWrapper.where("id = {0}","type");
+        List<Dic> dic_type=dicService.selectByType("type");
 
         ModelAndView modelAndView=new ModelAndView("/estate/update");
         modelAndView.addObject("EstateDto",estateDto);
@@ -390,7 +390,7 @@ public class EstateController {
     }
 
     @RequestMapping(value = "/saveEffectPicture",method = RequestMethod.POST)
-    public Msg saveEffectPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id) throws Exception{
+    public ModelAndView saveEffectPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id) throws Exception{
         System.out.println(id);
         String ids="";
         String k="";
@@ -418,11 +418,12 @@ public class EstateController {
         estate.setEffectivePhotos(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
-        return Msg.success();
+
+        return upload(id);
     }
 
     @RequestMapping(value = "/savePrototypeRoomPicture",method = RequestMethod.POST)
-    public Msg savePrototypeRoomPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
+    public ModelAndView savePrototypeRoomPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
         String ids="";
         String k="";
         EntityWrapper<PrototypeRoomPicture> wrapper=new EntityWrapper<>();
@@ -449,11 +450,12 @@ public class EstateController {
         estate.setPrototypeRoom(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
-        return Msg.success();
+//        return Msg.success();
+        return upload(id);
     }
 
     @RequestMapping(value = "/saveRealEststePicture",method = RequestMethod.POST)
-    public Msg saveRealEststePicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
+    public ModelAndView saveRealEststePicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
         String ids="";
         String k="";
         EntityWrapper<RealEstatePicture> wrapper=new EntityWrapper<>();
@@ -480,11 +482,12 @@ public class EstateController {
         estate.setLiveAction(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
-        return Msg.success();
+//        return Msg.success();
+        return upload(id);
     }
 
     @RequestMapping(value = "/saveSamplePlanningPicture",method = RequestMethod.POST)
-    public Msg saveSamplePlanningPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
+    public ModelAndView saveSamplePlanningPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
         String ids="";
         String k="";
         EntityWrapper<SamplePlanningPicture> wrapper=new EntityWrapper<>();
@@ -511,7 +514,8 @@ public class EstateController {
         estate.setSamplePlate(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
-        return Msg.success();
+//        return Msg.success();
+        return upload(id);
     }
 
     @RequestMapping(value = "/deleteEffectPicture",method = RequestMethod.POST)
@@ -528,7 +532,6 @@ public class EstateController {
         int i=s.indexOf(sub);
         if(s.length()==sub.length()){
             s="0";
-            System.out.println("1:"+s);
         }else if(i==0){
             sub=sub+",";
             s=s.replace(sub,"");
@@ -550,14 +553,13 @@ public class EstateController {
         String path=savePath+picture.getName();
         prototypeRoomPictureServiceGenerate.deleteById(id);
         EntityWrapper<Estate> wrapper=new EntityWrapper<>();
-        wrapper.like("effective_photos","%"+id+"%");
+        wrapper.like("prototype_room","%"+id+"%");
         Estate estate=estateServiceGenerate.selectOne(wrapper);
         String s=estate.getPrototypeRoom();
         String sub=""+id;
         int i=s.indexOf(sub);
         if(s.length()==sub.length()){
             s="0";
-            System.out.println("1:"+s);
         }else if(i==0){
             sub=sub+",";
             s=s.replace(sub,"");
@@ -579,14 +581,13 @@ public class EstateController {
         String path=savePath+picture.getName();
         realEstatePictureServiceGenerate.deleteById(id);
         EntityWrapper<Estate> wrapper=new EntityWrapper<>();
-        wrapper.like("effective_photos","%"+id+"%");
+        wrapper.like("live_action","%"+id+"%");
         Estate estate=estateServiceGenerate.selectOne(wrapper);
         String s=estate.getLiveAction();
         String sub=""+id;
         int i=s.indexOf(sub);
         if(s.length()==sub.length()){
             s="0";
-            System.out.println("1:"+s);
         }else if(i==0){
             sub=sub+",";
             s=s.replace(sub,"");
@@ -608,14 +609,13 @@ public class EstateController {
         String path=savePath+picture.getName();
         samplePlanningPictureServiceGenerate.deleteById(id);
         EntityWrapper<Estate> wrapper=new EntityWrapper<>();
-        wrapper.like("effective_photos","%"+id+"%");
+        wrapper.like("sample_plate","%"+id+"%");
         Estate estate=estateServiceGenerate.selectOne(wrapper);
         String s=estate.getSamplePlate();
         String sub=""+id;
         int i=s.indexOf(sub);
         if(s.length()==sub.length()){
             s="0";
-            System.out.println("1:"+s);
         }else if(i==0){
             sub=sub+",";
             s=s.replace(sub,"");
