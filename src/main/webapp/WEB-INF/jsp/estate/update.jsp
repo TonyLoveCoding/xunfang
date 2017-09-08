@@ -22,6 +22,10 @@
         <div class="row">
             <div class="col-sm-12" style="padding-left: 0px">
                 <h3>基本信息</h3>
+                ${dic_location}
+                ${dic_feature}
+                ${dic_houseType}
+                <%--${dic_type}--%>
             </div>
             <div class="col-sm-12" style="padding-left: 0px">
                 <div class="halving_line"></div>
@@ -45,10 +49,10 @@
         </div>
         <div class="row">
             <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">位置：</div>
+                <div style="font-size:15px">*位置：</div>
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="location" value="${EstateDto.location}">
+                <input type="text" name="location" value="${EstateDto.location}">单
             </div>
         </div>
         <div class="row">
@@ -64,7 +68,7 @@
                 <div style="font-size:15px">*建筑类型：</div>
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="type" value="${EstateDto.type}">
+                <input type="text" name="type" value="${EstateDto.type}">单
             </div>
         </div>
         <div class="row">
@@ -120,7 +124,6 @@
                 <div style="font-size:15px">销售状态：</div>
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <%--<input type="text" name="saleStatus" value="${EstateDto.saleStatus}">--%>
                 <select name="saleStatus" value="EstateDto.saleStatus">
                     <option value="0" <c:if test="${'0' eq EstateDto.saleStatus}">selected</c:if>>在售</option>
                     <option value="1" <c:if test="${'1' eq EstateDto.saleStatus}">selected</c:if>>待售</option>
@@ -146,7 +149,7 @@
                 <div style="font-size:15px">*楼盘户型：</div>
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <input type="text" name="houseType" value="${EstateDto.houseType}">
+                <input type="text" name="houseType" value="${EstateDto.houseType}">多
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
                 <div style="font-size:15px">产权年限：</div>
@@ -209,7 +212,7 @@
                 <input type="text" name="powerType" value="${EstateDto.powerType}">
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">*装修情况：</div>
+                <div style="font-size:15px">装修情况：</div>
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <input type="text" name="decoration" value="${EstateDto.decoration}">
@@ -231,10 +234,10 @@
         </div>
         <div class="row">
             <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
-                <div style="font-size:15px">特色：</div>
+                <div style="font-size:15px">*特色：</div>
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <textarea name="feature" maxlength="30">${EstateDto.feature}</textarea>
+                <textarea name="feature" maxlength="30">${EstateDto.feature}</textarea>多
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
                 <div style="font-size:15px">标签：</div>

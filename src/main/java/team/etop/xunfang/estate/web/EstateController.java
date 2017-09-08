@@ -1,6 +1,7 @@
 package team.etop.xunfang.estate.web;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.common.change.ChangeType;
+import team.etop.xunfang.common.obtain.ObtainDic;
 import team.etop.xunfang.common.photos.GetName;
 import team.etop.xunfang.estate.dto.*;
 import team.etop.xunfang.modules.po.*;
@@ -65,6 +67,8 @@ public class EstateController {
     RealEstatePictureServiceGenerate realEstatePictureServiceGenerate;
     @Autowired
     SamplePlanningPictureServiceGenerate samplePlanningPictureServiceGenerate;
+    @Autowired
+    DicServiceGenerate dicServiceGenerate;
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
@@ -203,8 +207,31 @@ public class EstateController {
         Estate estate=estateServiceGenerate.selectById(id);
         ChangeType changeType=new ChangeType();
         EstateDto estateDto=changeType.change(estate);
+
+        EntityWrapper<Dic> locationEntityWrapper=new EntityWrapper<>();
+        locationEntityWrapper.where("id = {0}","location");
+        List<Dic> dic_location=dicServiceGenerate.selectList(locationEntityWrapper);
+
+        EntityWrapper<Dic> featureEntityWrapper=new EntityWrapper<>();
+        featureEntityWrapper.where("id = {0}","feature");
+        List<Dic> dic_feature=dicServiceGenerate.selectList(featureEntityWrapper);
+
+        EntityWrapper<Dic> houseTypeEntityWrapper=new EntityWrapper<>();
+        houseTypeEntityWrapper.where("id = {0}","houseType");
+        List<Dic> dic_houseType=dicServiceGenerate.selectList(houseTypeEntityWrapper);
+
+
+        EntityWrapper<Dic> typeEntityWrapper=new EntityWrapper<>();
+        typeEntityWrapper.where("id = {0}","type");
+        List<Dic> dic_type=dicServiceGenerate.selectList(typeEntityWrapper);
+
+
         ModelAndView modelAndView=new ModelAndView("/estate/update");
         modelAndView.addObject("EstateDto",estateDto);
+        modelAndView.addObject("dic_location",dic_location);
+        modelAndView.addObject("dic_feature",dic_feature);
+        modelAndView.addObject("dic_houseType",dic_houseType);
+        modelAndView.addObject("dic_type",dic_type);
         return modelAndView;
     }
 
@@ -231,8 +258,21 @@ public class EstateController {
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public ModelAndView addEstateView()throws Exception{
         EstateDto estateDto=new EstateDto();
+        ObtainDic obtainDic=new ObtainDic();
+
+        List<Dic> dic_location=obtainDic.obtainLocation("location");
+
+        List<Dic> dic_feature=obtainDic.obtainFeature("feature");
+
+        List<Dic> dic_houseType=obtainDic.obtainHouseType("houseType");
+
+        List<Dic> dic_type=obtainDic.obtainType("type");
         ModelAndView modelAndView=new ModelAndView("/estate/add");
         modelAndView.addObject("EstateDto",estateDto);
+        modelAndView.addObject("dic_location",dic_location);
+        modelAndView.addObject("dic_feature",dic_feature);
+        modelAndView.addObject("dic_houseType",dic_houseType);
+        modelAndView.addObject("dic_type",dic_type);
         return modelAndView;
     }
 
@@ -240,18 +280,6 @@ public class EstateController {
     public Msg updateEstate(EstateDto estateDto) throws Exception{
         ChangeType changeType=new ChangeType();
         Estate estate=changeType.change(estateDto);
-//        List<EffectPictureDto> effectPictureDtoList=estateDto.getEffectPictureDtoList();
-//        String effective_photos =saveEffectPicture(effectPictureDtoList);
-//        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=estateDto.getPrototypeRoomPictureDtoList();
-//        String prototype_room=savePrototypeRoomPicture(prototypeRoomPictureDtoList);
-//        List<RealEststePictureDto> realEststePictureDtoList=estateDto.getRealEststePictureDtoList();
-//        String live_action=saveRealEststePicture(realEststePictureDtoList);
-//        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=estateDto.getSamplePlanningPictureDtoList();
-//        String sample_plate=saveSamplePlanningPicture(samplePlanningPictureDtoList);
-//        estate.setSamplePlate(sample_plate);
-//        estate.setLiveAction(live_action);
-//        estate.setPrototypeRoom(prototype_room);
-//        estate.setEffectivePhotos(effective_photos);
         estateServiceGenerate.insertOrUpdate(estate);
         return Msg.success();
     }
