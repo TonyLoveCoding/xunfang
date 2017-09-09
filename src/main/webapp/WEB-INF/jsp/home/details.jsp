@@ -8,6 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,90 +20,93 @@
 
     <link rel="stylesheet" href="/assets/home/index/css/header.css">
     <link rel="stylesheet" href="/assets/home/details/css/details.css">
+
+    <link rel="stylesheet" href="/assets/home/lightGallery/css/lightgallery.min.css">
+    <script src="/assets/home/lightGallery/js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="/assets/home/lightGallery/js/lightgallery-all.js" type="text/javascript"></script>
+    <script src="/assets/home/lightGallery/js/picturefill.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#auto-loop-1").lightGallery();
+            $("#auto-loop-2").lightGallery();
+            $("#auto-loop-3").lightGallery();
+            $("#auto-loop-4").lightGallery();
+        });
+        lightGallery(document.getElementById("#auto-loop-1"));
+        lightGallery(document.getElementById("#auto-loop-2"));
+        lightGallery(document.getElementById("#auto-loop-3"));
+        lightGallery(document.getElementById("#auto-loop-4"));
+    </script>
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="50">
 
-<div class="header-hover">
-    <div class="header-hover-wrap">
-        <ul class="menu">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="home">寻房网</a>
-            </div>
+<div class="container-fluid">
+    <%--浮动框的设置--%>
+    <div class="header-hover">
+        <div class="header-hover-wrap">
+            <ul class="menu">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home#">寻房网</a>
+                </div>
 
-            <div class="collapse navbar-collapse" >
+                <div class="collapse navbar-collapse" >
 
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" />
-                    </div> <button type="submit" class="btn btn-default"><span class="ico ico-search"></span>找房</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
+                    <div class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input id="search-input-hover" style="width: 400px" type="text" class="form-control"/>
+                        </div>
+                        <button id="search-button-hover" type="submit" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-search"></span>找房
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
 
-                    <li>
-                        <a href="home/details#"><b>热搜词：</b></a>
-                    </li>
-                    <li>
-                        <a href="home/details#">实地蔷薇国际</a>
-                    </li>
+                        <li>
+                            <a href="home#"><b>热搜词：</b></a>
+                        </li>
 
-                    <li>
-                        <a href="home/details#">万科幸福誉</a>
-                    </li>
-                    <li>
-                        <a href="home/details#">南沙保利城</a>
-                    </li>
-                    <li>
-                        <a href="home/details#">富力伯爵山</a>
-                    </li>
-                    <li>
-                        <a href="home/details#">佳兆业城市广场</a>
-                    </li>
-                </ul>
-            </div>
-        </ul>
+                        <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
+                            <li>
+                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </ul>
+        </div>
     </div>
-</div>
 
-<div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <nav class="navbar navbar-default " role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="home">寻房网</a>
+                    <a class="navbar-brand" href="home#">寻房网</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-                    <form class="navbar-form navbar-left" role="search">
+                    <div class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" />
-                        </div> <button type="submit" class="btn btn-default"><span class="ico ico-search"></span>找房</button>
-                    </form>
+                            <input id="search-input" style="width: 400px" type="text" class="form-control"  />
+                        </div>
+                        <button id="search-button" class="btn btn-danger" type="button">
+                            <span class="glyphicon glyphicon-search"></span> 找房
+                        </button>
+                    </div>
                     <ul class="nav navbar-nav navbar-right">
-
                         <li>
-                            <a href="home/details#">热搜词：</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">实地蔷薇国际</a>
+                            <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
                         </li>
 
-                        <li>
-                            <a href="home/details#">万科幸福誉</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">南沙保利城</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">富力伯爵山</a>
-                        </li>
-                        <li>
-                            <a href="home/details#">佳兆业城市广场</a>
-                        </li>
+                        <c:forEach begin="0" end="4" items="${RecommendEstate}" var="estate">
+                            <li>
+                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
-
             </nav>
+
             <ul class="breadcrumb">
 
                 <li>
@@ -115,18 +119,21 @@
                     <a href="home/details#">增城楼盘</a>
                 </li>
                 <li class="active">
-                    实地蔷薇国际
+                    ${estate.estateName}
                 </li>
             </ul>
             <div class="page-header">
                 <div class="details-title">
-                    <b  id="section-0">实地蔷薇国际</b>
-                    <label class="label label-success">在售</label>
-                    <label class="label label-default">改善宜居</label>
-                    <label class="label label-default">紧邻地铁</label>
-                    <label class="label label-default">环境优质</label>
+                    <b  id="section-0">${estate.estateName}</b>
+                    <label class="label label-success">
+                        <c:if test="${estate.status eq 1}">在售</c:if>
+                        <c:if test="${estate.status eq 0}">待售 </c:if>
+                    </label>
+                    <label class="label label-success">${estate.sign}</label>
+                    <label class="label label-success">${estate.sign}</label>
+                    <label class="label label-success">${estate.sign}</label>
                 </div>
-                <small>  别名：蔷薇国际,实地蔷薇花园 </small>
+                <small>  别名：${estate.estateName}</small>
             </div>
             <div class="tabbable" id="tabs-420817">
                 <ul class="nav nav-tabs tabs" id="section-1">
@@ -155,9 +162,9 @@
                                         <li data-slide-to="3" data-target="#Carousel-ID">
                                         </li>
                                     </ol>
-                                    <div class="carousel-inner">
+                                    <div class="carousel-inner full-image">
                                         <div id="item-1" class="item active">
-                                            <img alt="" src="/assets/home/details/image/1-big.jpg" />
+                                            <img alt=""  src="/assets/home/details/image/1-big.jpg" />
                                         </div>
                                         <div id="item-2" class="item">
                                             <img alt="" src="/assets/home/details/image/2-big.jpg" />
@@ -178,7 +185,7 @@
                                 </div>
 
                                 <div class="row" style="padding-top:10px">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-1" class="hovereffect blueBorder">
                                             <img class="img-responsive " src="/assets/home/details/image/1-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="0">
@@ -188,7 +195,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-2" class="hovereffect">
                                             <img class="img-responsive" src="/assets/home/details/image/2-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="1">
@@ -199,7 +206,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-3" class="hovereffect">
                                             <img class="img-responsive" src="/assets/home/details/image/3-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="2">
@@ -211,7 +218,7 @@
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div id="img-4" class="hovereffect">
                                             <img class="img-responsive" src="/assets/home/details/image/4-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="3">
@@ -229,19 +236,20 @@
                                     <div class="list-group-item">
                                         <ul class="index-info">
                                             <li>
-                                                <b>开发商报价：</b><font color="#CC0000">18,500元/平米</font>
+                                                <b>开发商报价：</b><font color="#CC0000">${estate.developerQuotes}元/平米</font>
                                             </li>
                                             <li>
-                                                <b>参考总价：</b>157-216万
+                                                <b>参考总价：</b>${estate.minPrice}-${estate.maxPrice}万
                                             </li>
                                             <li>
-                                                <b>楼盘户型：</b>三居(3)，四居(2)
+                                                <b>楼盘户型：</b>${estate.houseType}
                                             </li>
                                             <li>
-                                                <b>楼盘地址：</b>增城 - 三联村蕉冚地段（逸翠山庄旁边）
+                                                <b>楼盘地址：</b>${estate.estateAddress}
                                             </li>
                                             <li>
-                                                <b>最新开盘时间：</b>2017-05-07
+                                                <b>最新开盘时间：</b>
+                                                <fmt:formatDate value="${estate.latestOpening}" pattern="yyyy年MM月dd日HH点" />
                                             </li>
                                         </ul>
                                     </div>
@@ -251,10 +259,10 @@
                                         </h3>
                                         <ul class="index-info">
                                             <li>
-                                                智能生活住所
+                                                ${estate.sign}生活住所
                                             </li>
                                             <li>
-                                                一日狂销百套，广州东最火爆楼盘—实地·蔷薇国际！
+                                                一日狂销${estate.turnover}套，${estate.location}最火爆楼盘—${estate.estateName}！
                                             </li>
                                         </ul>
                                     </div>
@@ -278,15 +286,15 @@
                                         <ul class="index-info details-info">
                                             <li>
                                                 <div class="field">楼盘名称　</div>
-                                                <div class="value">实地蔷薇国际</div>
+                                                <div class="value">${estate.estateName}</div>
                                             </li>
                                             <li>
                                                 <div class="field">楼盘地址　</div>
-                                                <div class="value">实地蔷薇国际位于三联村蕉冚地段（逸翠山庄旁边）</div>
+                                                <div class="value">${estate.estateName}位于${estate.estateAddress}</div>
                                             </li>
                                             <li>
                                                 <div class="field">物业类型　</div>
-                                                <div class="value">住宅</div>
+                                                <div class="value">${estate.property}</div>
                                             </li>
                                             <li>
                                                 <div class="field">建筑类型　</div>
@@ -298,7 +306,7 @@
                                             </li>
                                             <li>
                                                 <div class="field">开发商　　</div>
-                                                <div class="value">广东誉丰地产发展有限公司</div>
+                                                <div class="value">${estate.developer}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -309,11 +317,14 @@
                                         <ul class="index-info details-info">
                                             <li>
                                                 <div class="field">开发商报价</div>
-                                                <div class="value">18,500元/平米</div>
+                                                <div class="value">${estate.developerQuotes}元/平米</div>
                                             </li>
                                             <li>
                                                 <div class="field">销售状态　</div>
-                                                <div class="value">在售</div>
+                                                <div class="value">
+                                                    <c:if test="${estate.status eq 1}">在售</c:if>
+                                                    <c:if test="${estate.status eq 0}">待售</c:if>
+                                                </div>
                                             </li>
                                             <li>
                                                 <div class="field">优惠信息　</div>
@@ -321,23 +332,29 @@
                                             </li>
                                             <li>
                                                 <div class="field">最新开盘　</div>
-                                                <div class="value">2017-05-07</div>
+                                                <div class="value">
+                                                    <fmt:formatDate value="${estate.latestOpening}" pattern="yyyy年MM月dd日HH点" />
+                                                </div>
                                             </li>
                                             <li>
                                                 <div class="field">最早交房　</div>
-                                                <div class="value">楼盘户型</div>
+                                                <div class="value">
+                                                    <fmt:formatDate value="${estate.firstDelivery}" pattern="yyyy年MM月dd日HH点" />
+                                                </div>
                                             </li>
                                             <li>
                                                 <div class="field">楼盘户型　</div>
-                                                <div class="value">三居(3)，四居(2)</div>
+                                                <div class="value">${estate.houseType}</div>
                                             </li>
                                             <li>
                                                 <div class="field">产权年限　</div>
-                                                <div class="value">70年</div>
+                                                <div class="value">${estate.propertyRights}</div>
                                             </li>
                                             <li>
                                                 <div class="field">拿地时间　</div>
-                                                <div class="value">暂无</div>
+                                                <div class="value">
+                                                    <fmt:formatDate value="${estate.takeTime}" pattern="yyyy年MM月dd日HH点" />
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
@@ -348,35 +365,35 @@
                                         <ul class="index-info details-info">
                                             <li>
                                                 <div class="field">物业公司　</div>
-                                                <div class="value">广东实地物业管理有限公司</div>
+                                                <div class="value">${estate.company}</div>
                                             </li>
                                             <li>
                                                 <div class="field">物业费用　</div>
-                                                <div class="value">2.8元/m²/月</div>
+                                                <div class="value">${estate.propertyCost}元/m²/月</div>
                                             </li>
                                             <li>
                                                 <div class="field">水电燃气　</div>
-                                                <div class="value">民水民电有燃气</div>
+                                                <div class="value">${estate.powerType}</div>
                                             </li>
                                             <li>
                                                 <div class="field">绿化率　　</div>
-                                                <div class="value">30%</div>
+                                                <div class="value">${estate.greenRate}%</div>
                                             </li>
                                             <li>
                                                 <div class="field">车位情况　</div>
-                                                <div class="value">暂无</div>
+                                                <div class="value">${estate.parkingSpaces}</div>
                                             </li>
                                             <li>
                                                 <div class="field">容积率　　</div>
-                                                <div class="value">3.0</div>
+                                                <div class="value">${estate.plotRatio}</div>
                                             </li>
                                             <li>
                                                 <div class="field">装修状况　</div>
-                                                <div class="value">精装修</div>
+                                                <div class="value">${estate.decoration}</div>
                                             </li>
                                             <li>
                                                 <div class="field">楼栋信息　</div>
-                                                <div class="value">项目共24栋楼，3844户</div>
+                                                <div class="value">${estate.estateInformation}</div>
                                             </li>
                                         </ul>
                                     </div>
@@ -388,295 +405,87 @@
                         <div class="row clearfix tab-items">
                             <div class="col-md-12 column" >
                                 <div class="row">
-                                    <div class="col-xs-10 pic-show">
+                                    <div class="col-xs-10">
                                         <h2>效果图（12）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                    <a href="home/details#">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
+                                        <div id="auto-loop-1" class="row gallery">
+                                            <c:forEach begin="0" end="11">
+                                                <div class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
+                                                     data-sub-html="<h4>${estate.estateName}</h4>
+                                                     <p>${estate.estateName}效果图</p>"
+                                                     class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect">
+                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                        <a href="javascript:void(0);">
+                                                            <div class="overlay">
+                                                                <h2>${estate.estateName}效果图</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
 
-                                        <div class="row" >
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际效果图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <hr>
 
                                         <h2 id="section-2">样板间（20）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
+                                        <div id="auto-loop-2" class="row">
+                                            <c:forEach begin="0" end="19">
+                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect pic-show">
+                                                        <a href="home/details#">
+                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                            <div class="overlay">
+                                                                <h2>实地蔷薇国际样板间</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际样板间</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
                                         <hr>
 
                                         <h2 id="section-3">环境规划图（1）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇国际环境规划图</h2>
-                                                        </div>
-                                                    </a>
+                                        <div id="auto-loop-3" class="row">
+                                            <c:forEach begin="0" end="0">
+                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect pic-show">
+                                                        <a href="home/details#">
+                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                            <div class="overlay">
+                                                                <h2>实地蔷薇国际环境规划图</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
-
                                         <hr>
 
                                         <h2 id="section-4">楼盘实景图（21）</h2>
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
+                                        <div id="auto-loop-4" class="row">
+                                            <c:forEach begin="0" end="20">
+                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect pic-show">
+                                                        <a href="home/details#">
+                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                            <div class="overlay">
+                                                                <h2>实地蔷薇楼盘实景图</h2>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="hovereffect">
-                                                    <a href="home/details#">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
-                                                        <div class="overlay">
-                                                            <h2>实地蔷薇楼盘实景图</h2>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            </c:forEach>
                                         </div>
                                         <hr>
                                     </div>
 
                                     <div class="col-xs-2" id="myScrollspy">
                                         <ul class="nav nav-tabs nav-stacked affix" data-spy="affix" data-offset-top="100">
-                                            <li><a href="home/details#section-0">全部（54）</a></li>
-                                            <li><a href="home/details#section-1">效果图（12）</a></li>
-                                            <li><a href="home/details#section-2">样板间（20）</a></li>
-                                            <li><a href="home/details#section-3">环境规划图（1）</a></li>
-                                            <li><a href="home/details#section-4">楼盘实景图（21）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-0">全部（54）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-1">效果图（12）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-2">样板间（20）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-3">环境规划图（1）</a></li>
+                                            <li><a href="home/details/${estate.id}#section-4">楼盘实景图（21）</a></li>
                                         </ul>
                                     </div>
 
@@ -692,4 +501,40 @@
 </div>
 
 </body>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <h6>Copyright &copy;易拓工作室</h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">关于我们</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">招聘信息</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">服务声明</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">投诉反馈</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6>本网站由易拓工作室制作</h6>
+            </div>
+        </div>
+        <div class="row col-sm-12">
+            <p class="text-center">
+                易拓工作室
+                ©2014-2017 rights reversed.
+            </p>
+        </div>
+    </div>
+</footer>
+
 </html>

@@ -11,7 +11,7 @@ import java.util.List;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-08
  */
 public interface UserServiceGenerate extends IService<User> {
     List<User> selectByName(String name);

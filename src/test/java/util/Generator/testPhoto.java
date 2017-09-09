@@ -14,8 +14,12 @@ import java.io.IOException;
  * @date: 2017/8/11 16:05
  */
 public class testPhoto {
+    /**
+     * 测试图片裁剪
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
-
         Thumbnails.of("D://1.png").sourceRegion(1,1,300,300).scale(1,1).toFile("D://2.png");
     }
 

@@ -2,8 +2,6 @@
 <beans
         xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-        xmlns:tx="http://www.springframework.org/schema/tx"
         xmlns:context="http://www.springframework.org/schema/context"
         xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
@@ -13,6 +11,11 @@
     <!-- 配置事务管理器 -->
     <bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="SolrClientFactory" class="team.etop.xunfang.search.factory.SolrClientFactory"/>
+    <bean id="solrClient" factory-bean="SolrClientFactory" factory-method="getSolrClientInstance">
+        <constructor-arg value="${solr.baseURL}"></constructor-arg>
     </bean>
 
     <!--&lt;!&ndash; 事务采用全注解方式 &ndash;&gt;-->

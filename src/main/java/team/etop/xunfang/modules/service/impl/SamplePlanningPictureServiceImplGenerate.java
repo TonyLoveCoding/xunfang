@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-08
  */
 @Service
 public class SamplePlanningPictureServiceImplGenerate extends ServiceImpl<SamplePlanningPictureMapperGenerate, SamplePlanningPicture> implements SamplePlanningPictureServiceGenerate {

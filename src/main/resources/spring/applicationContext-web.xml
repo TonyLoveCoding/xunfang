@@ -14,6 +14,7 @@
     <!-- 允许对静态资源文件的访问 -->
     <mvc:default-servlet-handler/>
 
+
     <!-- 配置视图解析器 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -22,7 +23,7 @@
     </bean>
 
      <!--自动扫描的包名-->
-    <context:component-scan base-package="team.etop.xunfang.*.web"/>
-    <!--自动扫描的包名-->
-    <context:component-scan base-package="team.etop.xunfang.shiro.web"/>
+    <context:component-scan base-package="team.etop.xunfang.*.web team.etop.xunfang.common.Exception"/>
+    <!-- 全局异常处理  自定义实现spring的全局异常解析器HandlerExceptionResolver -->
+    <bean id="exceptionResolver" class="team.etop.xunfang.common.Exception.CustomExceptionResolver"></bean>
 </beans>
