@@ -8,6 +8,6 @@
 
     <!--参数文件存放目录，该目录为web工程发布时目录-->
     <context:property-placeholder location="classpath:properties/*.properties"/>
-    <!--此时为相对路径-->
+    <!--&lt;!&ndash;此时为相对路径&ndash;&gt;-->
     <import resource="applicationContext-*.xml"/>
 </beans>

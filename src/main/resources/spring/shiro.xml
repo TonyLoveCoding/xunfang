@@ -15,7 +15,7 @@
    2.1 需要加入 ehcache 的 jar 包及配置文件.
    -->
     <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-    <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
+        <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
     </bean>
     <bean id="authenticator"
           class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
@@ -27,7 +27,7 @@
     3. 配置 Realm
     3.1 直接配置实现了 org.apache.shiro.realm.Realm 接口的 bean
     -->
-    <bean id="jdbcRealm" class="team.etop.xunfang.shiro.realms.ShiroRealm">
+    <bean id="jdbcRealm" class="team.etop.xunfang.shiro.web.ShiroRealm">
         <!--密码加密暂时不用-->
         <!--<property name="credentialsMatcher">-->
         <!--<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
@@ -50,7 +50,7 @@
     </bean>
     <!--
     6. 配置 ShiroFilter.
-    6.1 id 必须和 web.xml 文件中配置的 DelegatingFilterProxy 的 <filter-name> 一致.
+    6.1 id 必须和 Resolver.xml 文件中配置的 DelegatingFilterProxy 的 <filter-name> 一致.
                       若不一致, 则会抛出: NoSuchBeanDefinitionException. 因为 Shiro 会来 IOC 容器中查找和 <filter-name> 名字对应的 filter bean.
     -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -59,15 +59,17 @@
         <!--<property name="unauthorizedUrl" value=" /user/getUsers"/>-->
         <property name="filterChainDefinitions">
             <value>
-                /** = anon
+                /index=anon
+                /jsp/login/logn=anon
+                /jsp/user**=authc
             </value>
         </property>
     </bean>
-    <!-- 配置一个 bean, 该 bean 实际上是一个 Map. 通过实例工厂方法的方式 -->
+     <!--配置一个 bean, 该 bean 实际上是一个 Map. 通过实例工厂方法的方式 -->
     <!--<bean id="filterChainDefinitionMap"-->
     <!--factory-bean="filterChainDefinitionMapBuilder" factory-method="buildFilterChainDefinitionMap"></bean>-->
 
     <!--<bean id="filterChainDefinitionMapBuilder"-->
     <!--class="cn.etop.rbac.common.shiro.factory.FilterChainDefinitionMapBuilder"></bean>-->
-    <!--&lt;!&ndash;       以上为Shiro配置        &ndash;&gt;-->
+    <!--       以上为Shiro配置        -->
 </beans>

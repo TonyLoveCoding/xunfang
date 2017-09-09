@@ -23,4 +23,6 @@
 
      <!--自动扫描的包名-->
     <context:component-scan base-package="team.etop.xunfang.*.web"/>
+    <!--自动扫描的包名-->
+    <context:component-scan base-package="team.etop.xunfang.shiro.web"/>
 </beans>

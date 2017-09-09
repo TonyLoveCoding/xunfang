@@ -1,4 +1,4 @@
-package team.etop.xunfang.shiro.realms;
+package team.etop.xunfang.shiro.web;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.apache.shiro.authc.*;
@@ -7,7 +7,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import team.etop.xunfang.modules.po.Permission;
 import team.etop.xunfang.modules.po.Role;
 import team.etop.xunfang.modules.po.User;
@@ -15,7 +15,7 @@ import team.etop.xunfang.modules.service.PermissionServiceGenerate;
 import team.etop.xunfang.modules.service.RoleServiceGenerate;
 import team.etop.xunfang.modules.service.UserServiceGenerate;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,10 +26,11 @@ import java.util.Set;
  * @author: TingFeng Zhang
  * @date: 2017/8/4 0:12
  */
-@Component
+@Controller
 public class ShiroRealm extends AuthorizingRealm {
+
     @Autowired
-    UserServiceGenerate userServiceGenerate;
+    private UserServiceGenerate userServiceGenerate;
     @Autowired
     RoleServiceGenerate roleServiceGenerate;
     @Autowired
@@ -77,25 +78,28 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken token=(UsernamePasswordToken) authenticationToken;
+        System.out.println("测试");
+        System.out.println(userServiceGenerate.toString());
 
-        EntityWrapper<User> wrapper=new EntityWrapper<>();
-        wrapper.eq("status",1);
-        try {
-            System.out.println("realm:"+token.getUsername());
-            List<User> list=userServiceGenerate.selectList(wrapper);
-            System.out.println(list.toString());
-            User user=list.get(0);
-            System.out.println(user.getAccount()+",,"+user.getPassword());
-               if(user.getPassword().equals(token.getPassword())) {
-                   AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), this.getName());
-                   System.out.println(token.getUsername());
-                   return authenticationInfo;
-               }
-
-
-        }catch (Exception e){
-
-        }
+        List<User> list=userServiceGenerate.selectByName("admin");
+        System.out.println("3");
+        System.out.println(list.get(0));
+//        try {
+//            System.out.println("realm:"+token.getUsername());
+//            List<User> list=userServiceGenerate.selectList(wrapper);
+//            System.out.println(list.toString());
+//            User user=list.get(0);
+//            System.out.println(user.getAccount()+",,"+user.getPassword());
+//               if(user.getPassword().equals(token.getPassword())) {
+//                   AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), this.getName());
+//                   System.out.println(token.getUsername());
+//                   return authenticationInfo;
+//               }
+//
+//
+//        }catch (Exception e){
+//
+//        }
 
 
 
