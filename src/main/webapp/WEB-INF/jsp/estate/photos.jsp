@@ -35,7 +35,7 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <form action="/estate/saveEffectPicture" method="post" enctype="multipart/form-data">
                 <input type="text" name="id" value="${EstateDto.id}" hidden>
-                <input id="file1" class="inp_photos" name="files" type="file" style="display: none" accept="image/gif, image/jpeg, image/png">
+                <input id="file1" class="inp_photos" name="files" type="file" style="display: none" accept="image/gif, image/jpeg, image/png, image/jpg">
                 <label for="file1" class="btn btn-default savePhoto">添加图片</label>
             </form>
         </div>

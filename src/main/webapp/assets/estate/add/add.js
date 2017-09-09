@@ -8,8 +8,8 @@ function update(form) {
 
     for(var i=0;i<form.elements.length-2;i++){
         if(form.elements[i].value=="" && form.elements[i].tagName!="BUTTON"){
-            alert("不能为空");
             form.elements[i].focus();
+            alert("不能为空");
             return false;
         }
     }

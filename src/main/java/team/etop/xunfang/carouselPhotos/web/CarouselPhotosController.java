@@ -1,6 +1,7 @@
 package team.etop.xunfang.carouselPhotos.web;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -46,7 +47,15 @@ public class CarouselPhotosController {
 
     @RequestMapping("/query")
     public ModelAndView query(){
-        List<CarouselPhotos> clist=carouselPhotosServiceGenerate.selectList(null);
+        EntityWrapper<CarouselPhotos> carouselPhotosEntityWrapper=new EntityWrapper<>();
+        carouselPhotosEntityWrapper.isNotNull("name").orderBy("weight");
+//        carouselPhotosEntityWrapper.orderBy("weight");
+//        Page<CarouselPhotos> photosPage=new Page<>();
+//        photosPage.setAsc(true);
+//        photosPage.setOrderByField("weight");
+//        Page<CarouselPhotos> page=carouselPhotosServiceGenerate.selectPage(photosPage,carouselPhotosEntityWrapper);
+//        List<CarouselPhotos> clist=page.getRecords();
+        List<CarouselPhotos> clist=carouselPhotosServiceGenerate.selectList(carouselPhotosEntityWrapper);
         int count=clist.size();//定义一个count记录当前轮播图片数量
         //到数据库查询轮播图
         List<CarouselPhotosDto> list=new ArrayList<>();
@@ -55,6 +64,7 @@ public class CarouselPhotosController {
             c.setUrl(p.getUrl());
             c.setName(imageUrl+p.getName());
             c.setId(p.getId());
+            c.setWeight(p.getWeight());
             list.add(c);
         }
         ModelAndView modelAndView=new ModelAndView("/carouselphotos/query");
@@ -103,6 +113,7 @@ public class CarouselPhotosController {
             carouselPhotos.setCreatetime(date);
             carouselPhotos.setStatus(0);
             carouselPhotos.setUrl(url);
+            carouselPhotos.setWeight(System.currentTimeMillis());
             carouselPhotosServiceGenerate.insert(carouselPhotos);
             System.out.println("更新成功");
             return Msg.success();
@@ -124,6 +135,59 @@ public class CarouselPhotosController {
             System.out.println("数据库记录删除成功");
             //从数据库删除与该id对应的图片及记录
             return Msg.success();
+        }
+    }
+
+    @RequestMapping("/movePhoto")
+    @ResponseBody
+    public Msg movePhoto(@RequestParam("id")long id,@RequestParam("direction")int direction){
+        EntityWrapper<CarouselPhotos> carouselPhotosEntityWrapper=new EntityWrapper<>();
+        carouselPhotosEntityWrapper.isNotNull("name").orderBy("weight");
+        List<CarouselPhotos> list=carouselPhotosServiceGenerate.selectList(carouselPhotosEntityWrapper);
+        int i=0;
+        for(CarouselPhotos c:list){
+            if(i>= list.size()){
+                return Msg.fail("图片不存在");
+            }else {
+                if(c.getId()==id){
+                    break;
+                }else {
+                    i++;
+                }
+            }
+        }
+        switch (direction){
+            case -1:
+                if(i==0){
+                    return Msg.success("无法往前移动");
+                }else {
+                    CarouselPhotos c1=list.get((i-1));
+                    CarouselPhotos c2=list.get(i);
+                    long weight=c1.getWeight();
+                    c1.setWeight(c2.getWeight());
+                    c2.setWeight(weight);
+                    list.set((i-1),c1);
+                    list.set(i,c2);
+                }
+                break;
+            case 1:
+                if((i+1)==list.size()){
+                    return Msg.success("无法向后移动");
+                }else {
+                    CarouselPhotos c1=list.get((i+1));
+                    CarouselPhotos c2=list.get(i);
+                    long weight=c1.getWeight();
+                    c1.setWeight(c2.getWeight());
+                    c2.setWeight(weight);
+                    list.set((i+1),c1);
+                    list.set(i,c2);
+                }
+                break;
+        }
+        if(carouselPhotosServiceGenerate.insertOrUpdateBatch(list)){
+            return Msg.success("操作成功");
+        }else {
+            return Msg.fail("操作失败");
         }
     }
 }

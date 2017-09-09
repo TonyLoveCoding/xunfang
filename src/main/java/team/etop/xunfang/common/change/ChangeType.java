@@ -4,6 +4,7 @@ import team.etop.xunfang.estate.dto.EstateDto;
 import team.etop.xunfang.modules.po.Estate;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,6 +29,8 @@ public class ChangeType {
         estateDto.setDeveloper(estate.getDeveloper());
         estateDto.setSaleStatus(estate.getSaleStatus());
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        String date=simpleDateFormat.format(estate.getFirstDelivery());
+        System.out.println(date);
         estateDto.setFirstDelivery(simpleDateFormat.format(estate.getFirstDelivery()));
         estateDto.setLatestOpening(simpleDateFormat.format(estate.getLatestOpening()));
         estateDto.setPropertyRights(estate.getPropertyRights());

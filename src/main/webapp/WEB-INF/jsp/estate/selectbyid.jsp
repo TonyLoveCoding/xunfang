@@ -58,6 +58,14 @@
     </div>
     <div class="row">
         <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">位置：</div>
+        </div>
+        <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">${EstateDto.location}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">物业类型：</div>
         </div>
         <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
@@ -86,6 +94,22 @@
         </div>
         <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
             ${EstateDto.area}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">最高价：</div>
+        </div>
+        <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">${EstateDto.maxPrice}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">最低价：</div>
+        </div>
+        <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
+            <div style="font-size:15px">${EstateDto.minPrice}</div>
         </div>
     </div>
     <br>

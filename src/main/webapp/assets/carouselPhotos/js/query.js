@@ -31,3 +31,16 @@ $(function() {
         }
     });
 });
+
+function movePhoto(id,direction) {
+    $.ajax({
+        type:"get",
+        url:"/carouselPhotos/movePhoto",
+        data:{"id":id,"direction":direction},
+        dataType:"json",
+        success:function (Msg) {
+            location.reload();
+            alert(Msg.tip);
+        }
+    })
+}

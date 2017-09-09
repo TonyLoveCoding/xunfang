@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 楼盘管理Controller
@@ -72,8 +73,6 @@ public class EstateController {
     SamplePlanningPictureServiceGenerate samplePlanningPictureServiceGenerate;
     @Autowired
     DicServiceGenerate dicServiceGenerate;
-    @Autowired
-    DicService dicService;
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
@@ -209,22 +208,21 @@ public class EstateController {
         ChangeType changeType=new ChangeType();
         EstateDto estateDto=changeType.change(estate);
 
-//        EntityWrapper<Dic> locationEntityWrapper=new EntityWrapper<>();
-//        locationEntityWrapper.where("id = {0}","location");
-        List<Dic> dic_location=dicService.selectByType("location");
+        EntityWrapper<Dic> locationWrapper=new EntityWrapper<>();
+        locationWrapper.where("type = {0}","location").orderBy("weight",false);
+        List<Dic> dic_location=dicServiceGenerate.selectList(locationWrapper);
 
-//        EntityWrapper<Dic> featureEntityWrapper=new EntityWrapper<>();
-//        featureEntityWrapper.where("id = {0}","feature");
-        List<Dic> dic_feature=dicService.selectByType("feature");
+        EntityWrapper<Dic> featureWrapper=new EntityWrapper<>();
+        featureWrapper.where("type = {0}","feature").orderBy("weight",false);
+        List<Dic> dic_feature=dicServiceGenerate.selectList(featureWrapper);
 
-//        EntityWrapper<Dic> houseTypeEntityWrapper=new EntityWrapper<>();
-//        houseTypeEntityWrapper.where("id = {0}","houseType");
-        List<Dic> dic_houseType=dicService.selectByType("houseType");
+        EntityWrapper<Dic> houseTypeWrapper=new EntityWrapper<>();
+        houseTypeWrapper.where("type = {0}","houseType").orderBy("weight",false);
+        List<Dic> dic_houseType=dicServiceGenerate.selectList(houseTypeWrapper);
 
-
-//        EntityWrapper<Dic> typeEntityWrapper=new EntityWrapper<>();
-//        typeEntityWrapper.where("id = {0}","type");
-        List<Dic> dic_type=dicService.selectByType("type");
+        EntityWrapper<Dic> typeWrapper=new EntityWrapper<>();
+        typeWrapper.where("type = {0}","type").orderBy("weight",false);
+        List<Dic> dic_type=dicServiceGenerate.selectList(typeWrapper);
 
         ModelAndView modelAndView=new ModelAndView("/estate/update");
         modelAndView.addObject("EstateDto",estateDto);
@@ -258,15 +256,23 @@ public class EstateController {
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public ModelAndView addEstateView()throws Exception{
         EstateDto estateDto=new EstateDto();
-        ObtainDic obtainDic=new ObtainDic();
 
-        List<Dic> dic_location=obtainDic.obtainLocation("location");
+        EntityWrapper<Dic> locationWrapper=new EntityWrapper<>();
+        locationWrapper.where("type = {0}","location").orderBy("weight",false);
+        List<Dic> dic_location=dicServiceGenerate.selectList(locationWrapper);
 
-        List<Dic> dic_feature=obtainDic.obtainFeature("feature");
+        EntityWrapper<Dic> featureWrapper=new EntityWrapper<>();
+        featureWrapper.where("type = {0}","feature").orderBy("weight",false);
+        List<Dic> dic_feature=dicServiceGenerate.selectList(featureWrapper);
 
-        List<Dic> dic_houseType=obtainDic.obtainHouseType("houseType");
+        EntityWrapper<Dic> houseTypeWrapper=new EntityWrapper<>();
+        houseTypeWrapper.where("type = {0}","houseType").orderBy("weight",false);
+        List<Dic> dic_houseType=dicServiceGenerate.selectList(houseTypeWrapper);
 
-        List<Dic> dic_type=obtainDic.obtainType("type");
+        EntityWrapper<Dic> typeWrapper=new EntityWrapper<>();
+        typeWrapper.where("type = {0}","type").orderBy("weight",false);
+        List<Dic> dic_type=dicServiceGenerate.selectList(typeWrapper);
+
         ModelAndView modelAndView=new ModelAndView("/estate/add");
         modelAndView.addObject("EstateDto",estateDto);
         modelAndView.addObject("dic_location",dic_location);
@@ -277,15 +283,16 @@ public class EstateController {
     }
 
     @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public Msg updateEstate(EstateDto estateDto) throws Exception{
+    public ModelAndView updateEstate(EstateDto estateDto) throws Exception{
         ChangeType changeType=new ChangeType();
         Estate estate=changeType.change(estateDto);
         estateServiceGenerate.insertOrUpdate(estate);
-        return Msg.success();
+        return queryEstate(1,"");
     }
+
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public Msg addEstate(EstateDto estateDto) throws Exception{
-        System.out.println(estateDto);
+    public ModelAndView addEstate(EstateDto estateDto) throws Exception{
+//        System.out.println(estateDto);
         ChangeType changeType=new ChangeType();
         Estate estate=changeType.change(estateDto);
         estate.setStatus(0);
@@ -298,7 +305,7 @@ public class EstateController {
         estate.setLiveAction("0");
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("添加成功");
-        return Msg.success();
+        return queryEstate(1,"");
     }
 
     @RequestMapping(value = "/upload",method = RequestMethod.GET)
@@ -403,6 +410,7 @@ public class EstateController {
             File file=new File(filepath);
             f.transferTo(file);
             picture.setName(name);
+            picture.setWeight(ThreadLocalRandom.current().nextLong());
             effectPictureServiceGenerate.insert(picture);
             wrapper.where("name = {0}",name);
             picture.setId((Long)effectPictureServiceGenerate.selectObj(wrapper));
@@ -435,6 +443,7 @@ public class EstateController {
             File file=new File(filepath);
             f.transferTo(file);
             picture.setName(name);
+            picture.setWeight(ThreadLocalRandom.current().nextLong());
             prototypeRoomPictureServiceGenerate.insert(picture);
             wrapper.where("name = {0}",name);
             picture.setId((Long)prototypeRoomPictureServiceGenerate.selectObj(wrapper));
@@ -467,6 +476,7 @@ public class EstateController {
             File file=new File(filepath);
             f.transferTo(file);
             picture.setName(name);
+            picture.setWeight(ThreadLocalRandom.current().nextLong());
             realEstatePictureServiceGenerate.insert(picture);
             wrapper.where("name = {0}",name);
             picture.setId((Long)realEstatePictureServiceGenerate.selectObj(wrapper));
@@ -499,6 +509,7 @@ public class EstateController {
             File file=new File(filepath);
             f.transferTo(file);
             picture.setName(name);
+            picture.setWeight(ThreadLocalRandom.current().nextLong());
             samplePlanningPictureServiceGenerate.insert(picture);
             wrapper.where("name = {0}",name);
             picture.setId((Long)samplePlanningPictureServiceGenerate.selectObj(wrapper));
