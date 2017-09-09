@@ -29,7 +29,7 @@ public class PermissionServiceImplGenerate extends ServiceImpl<PermissionMapperG
    PermissionServiceGenerate permissionServiceGenerate;
    @Autowired
     RoleServiceGenerate roleServiceGenerate;
-    public List<PermissionTree> getAllZtree(Long id){
+    public List<PermissionTree> getAllZtree(){
         EntityWrapper<Permission> wrapper=new EntityWrapper<>();
         wrapper.eq("status",1);
         List<Permission> permissions=permissionServiceGenerate.selectList(wrapper);

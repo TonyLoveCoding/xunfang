@@ -1,5 +1,4 @@
 package team.etop.xunfang.modules.mapper;
-
 import team.etop.xunfang.modules.po.Role;
 import team.etop.xunfang.common.bean.SuperMapper;
 

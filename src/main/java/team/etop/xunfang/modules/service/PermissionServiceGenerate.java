@@ -15,7 +15,7 @@ import java.util.List;
  * @since 2017-08-15
  */
 public interface PermissionServiceGenerate extends IService<Permission> {
-    public List<PermissionTree> getAllZtree(Long id);
+    public List<PermissionTree> getAllZtree();
     public List<PermissionTree> getTreeByRoleId(Long id);
 
 

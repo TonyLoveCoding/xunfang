@@ -77,6 +77,8 @@
                     $("#permissionMsg").empty();
                     var item=result.map.item;
 
+                    alert(item.createtime);
+
                     var xx='/Date('+item.updatetime+')/';
                     var jsonDate=new Date(parseInt( xx.substring(6,xx.length-2)));
                      xx='/Date('+item.createtime+')/';
