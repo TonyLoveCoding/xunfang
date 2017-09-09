@@ -79,7 +79,7 @@ public class ShiroRealm extends AuthorizingRealm {
         UsernamePasswordToken token=(UsernamePasswordToken) authenticationToken;
 
         EntityWrapper<User> wrapper=new EntityWrapper<>();
-        wrapper.eq("status",1);
+        wrapper.eq("account",token.getUsername());
         try {
             System.out.println("realm:"+token.getUsername());
             List<User> list=userServiceGenerate.selectList(wrapper);
