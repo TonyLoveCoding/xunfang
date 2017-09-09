@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import team.etop.xunfang.search.bo.EstateSearchBean;
+import team.etop.xunfang.search.bo.EstateSearchBo;
 import team.etop.xunfang.search.mapper.EstateSearchMapper;
 
 import java.util.List;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:楼盘搜索服务测试
  * @author: TingFeng Zhang
  * @date: 2017/8/13 23:43
  */
@@ -25,19 +25,21 @@ public class EstateSearchServiceImplTest {
     @Autowired
     EstateSearchMapper estateSearchMapper;
 
-
-
     @Value("${solr.baseURL}")
     String baseURL;
 
+    /**
+     * 测试全量更新是否正常
+     * @throws Exception
+     */
     @Test
     public void testFullUpdate() throws Exception {
         SolrClient solrClient=new HttpSolrClient.Builder(baseURL).build();
         solrClient.deleteByQuery("*:*");
         solrClient.commit();
-        List<EstateSearchBean> estateSearchBeans = estateSearchMapper.selectAll();
-        for(EstateSearchBean estateSearchBean:estateSearchBeans){
-            System.out.println(estateSearchBean);
+        List<EstateSearchBo> estateSearchBos = estateSearchMapper.selectAll();
+        for(EstateSearchBo estateSearchBo : estateSearchBos){
+            System.out.println(estateSearchBo);
         }
     }
 }

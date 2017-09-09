@@ -10,7 +10,7 @@ import team.etop.xunfang.modules.po.Permission;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-08
  */
 public interface PermissionMapperGenerate extends SuperMapper<Permission> {
 

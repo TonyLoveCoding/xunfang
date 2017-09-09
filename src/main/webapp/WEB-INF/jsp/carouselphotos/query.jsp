@@ -14,22 +14,42 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src="assets/uplodephoto/js/jquery-1.8.3.js"></script>
     <script type="text/javascript" src="assets/uplodephoto/js/jquery.Jcrop.js"></script>
-    <script type="text/javascript" src="assets/uplodephoto/js/imgCropUpload.js"></script>
-    <link rel="stylesheet" href="assets/estate/update/update.css">
-    <script type="text/javascript" src="assets/estate/update/update.js"></script>
+    <script type="text/javascript" src="assets/carouselPhotos/js/imgCropUpload.js"></script>
+    <link rel="stylesheet" href="assets/carouselPhotos/css/query.css">
+    <script type="text/javascript" src="assets/carouselPhotos/js/query.js"></script>
     <script type="text/javascript">
-        function contirmd() {
+        function contirmd(id) {
             var msg = "您确定要删除吗？"
             if (confirm(msg) == true) {
-                return ture;
+                $.ajax({
+                    type:"GET",
+                    url:"/carouselPhotos/deletephoto?id="+id,
+                    dataType:"json",
+                    error:function () {
+                    },
+                    success:function (Msg) {
+                        if(Msg.code==100){
+                            alert("删除成功");
+                            location.href="/carouselPhotos/query";
+                        }
+                        if(Msg.code==200){
+                            alert(Msg.tip);
+                        }
+                    }
+                })
             } else {
                 return false;
             }
         }
+
+        function exceed(maxNumber) {
+            alert("轮播图数量超过规定的"+maxNumber+"张,无法添加");
+        }
+
     </script>
     <style>
         .photo300{
-            width: 800px;
+            width: 810px;
             height: 300px;
         }
     </style>
@@ -43,7 +63,18 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12"><div id="choosePhotos"></div></div>
+        <div class="col-md-12">
+            <c:choose>
+                <c:when test="${count eq maxNumber}">
+                    <div class="crop-picker-wrap">
+                        <button class="crop-picker" type="button" onclick="exceed(${maxNumber})">添加图片</button>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div id="choosePhotos"></div>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-9">
@@ -66,7 +97,7 @@
             </div>
             <div class="col-md-3" style="vertical-align: middle;text-align: center">
                 <div class="btn-group center-block" role="group" aria-label="...">
-                    <a class="btn btn-default center-block" href="/carouselPhotos/deletephoto?id=${photo.id}" role="button" onclick="return contirmd()">删除</a>
+                    <a class="btn btn-default center-block" href="javasprite:void(0)" role="button" onclick="contirmd('${photo.id}')">删除</a>
                 </div>
             </div>
         </div>
@@ -76,48 +107,7 @@
             </div>
         </div>
     </c:forEach>
-    <%--<table class="table">--%>
-        <%--<thead>--%>
-            <%--<th>图片</th>--%>
-            <%--<th>操作</th>--%>
-        <%--</thead>--%>
-        <%--<tbody>--%>
-            <%--<c:forEach var="photo" items="${list}">--%>
-                <%--<tr>--%>
-                    <%--<td>--%>
-                        <%--<img src="${photo.name}" class="photo300"><br/>--%>
-                        <%--图片链接：${photo.url}--%>
-                    <%--</td>--%>
-                    <%--<td style="vertical-align: middle">--%>
-                        <%--<div class="btn-group center-block" role="group" aria-label="...">--%>
-                            <%--<a class="btn btn-default center-block" href="/carouselPhotos/deletephoto?id=${photo.id}" role="button" onclick="return contirmd()">删除</a>--%>
-                        <%--</div>--%>
-                    <%--</td>--%>
-                <%--</tr>--%>
-                <%--<br/>--%>
-            <%--</c:forEach>--%>
-        <%--</tbody>--%>
-    <%--</table>--%>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document" style="width: auto">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">添加轮播图</h4>
-            </div>
-            <div class="modal-body">
-                输入图片链接：<input type="text" name="url" style="width: 100%">
-                <div id="TCrop"></div>
-            </div>
-            <%--<div class="modal-footer">--%>
-                <%--<button type="button" class="btn btn-default crop-cancel" data-dismiss="modal">关闭</button>--%>
-                <%--<button type="submit" class="btn btn-primary crop-save"onclick="">保存</button>--%>
-            <%--</div>--%>
-        </div>
-    </div>
-</div>
 </body>
 </html>

@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:后台属性菜单对象
  * @author: TingFeng Zhang
  * @date: 2017/8/9 14:17
  */

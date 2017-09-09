@@ -56,11 +56,14 @@
         var accept = 'image/' + opt.allowsuf.join(', image/');
         var $ifr = $('<iframe id="uploadIfr" name="uploadIfr" class="crop-hidden"></iframe>');
         var $form = $('<form action="' + opt.url + '" enctype="multipart/form-data" method="post" target="uploadIfr"/>');
+        var $cropType = $('<input id="inp_crop_type" type="hidden" name="type" value="样板间">');
         var $cropDataInp = $('<input type="hidden" name="cropData">');
         var $picker = $('<div class="crop-picker-wrap"><button class="crop-picker" type="button">添加图片</button></div>');
-        var $closewindow=$('<div class="crop-picker-wrap"><button type="button" class="crop-picker" data-dismiss="modal">关闭窗口</button></div>')
+        var $closewindow=$('<div class="crop-picker-wrap"><button type="button" class="crop-picker" data-dismiss="modal">关闭窗口</button></div>');
+        var $urlinput=$('输入图片链接：<input type="text" name="url" style="width: 100%">');
         var $fileInp = $('<input type="file" name="files" id="file" accept="' + accept + '" class="crop-picker-file">');
         $picker.append($fileInp);
+        $form.append($cropType);
         $form.append($cropDataInp).append($picker);
 
         var $cropWrap = $('<div class="crop-wrapper crop-hidden"/>');
@@ -85,7 +88,10 @@
         $cropWrap.append($cropOpe);
         $form.append($cropWrap);
 
-        $("#choosePhotos").append($ifr).append($form);
+        $(".choosePhotos").append($ifr).append($form);
+        // $("#choosePhotos2").append($ifr).append($form);
+        // $("#choosePhotos3").append($ifr).append($form);
+        // $("#choosePhotos4").append($ifr).append($form);
 
         return {
             $ifr: $ifr,
@@ -159,19 +165,32 @@
     /* 主要裁剪流程 */
     function _crop($cropObj, fileInp) {
         var cropArea = $cropObj.$cropArea.get(0);
+        var cropContainer=$cropObj.$cropWrap.get(0);
         var cropPreview = $cropObj.$cropPreview.get(0);
         var opt = _getOpt();
         var jcropOpt = opt.cropParam;
         cropArea.innerHTML = '';
         if(fileInp.files && fileInp.files[0]) {
             var img = document.createElement('img');
+
+            //创建一个input的element
+            var input=document.createElement('input');
             img.style.visibility = 'hidden';
+            //先设置为不可见
+            input.style.visibility='hidden';
             cropArea.appendChild(img);
+            //将input加入containter
+
 
             img.onload = function() {
                 /* 在图片加载完成之后便可以获取原图的大小，根据原图大小和预览区域大小获取图片的缩放比例以及原图在预览时所展现的大小 */
                 var scaleOpt = _getScale(cropArea.clientWidth, cropArea.clientHeight, img.offsetWidth, img.offsetHeight);
                 img.setAttribute('style', 'position: absolute;visibility: visible;width: ' + scaleOpt.w + 'px;height: ' + scaleOpt.h + 'px');
+
+                //设置input属性
+                input.setAttribute('type','text');
+                input.setAttribute('name','url');
+                input.setAttribute('style','width:100%');
 
                 if(!opt.isCrop) {return ;}
 
@@ -419,7 +438,8 @@
         var form = $.data(dom, 'crop').$cropObj.$form.get(0);
         form.submit();
         cancel();
-        alert("上传成功")
+        alert("上传成功");
+        location.href="/carouselPhotos/query";
     };
 
     /* 取消裁剪 */

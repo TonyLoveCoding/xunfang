@@ -1,0 +1,198 @@
+body{
+	font-size: 12px;
+	font-family: "Hiragino Sans GB","微软雅黑","Microsoft YaHei",SimHei,Tahoma,"宋体b8b体",SimSun,sans-serif;
+	color: #333;
+	background: #fff;
+}
+div{
+
+}
+#btn_AllEstate{
+	padding: 0 52px;
+	font-size: 16px;
+	height: 36px;
+	line-height: 36px;
+}
+#line_AllEstate{
+	
+	background-color: #0074c1;
+	width: 100%;
+	height: 2px;
+
+}
+.line_sortCondition{
+	background-color: #eaeaea;;
+	width: 100%;
+	height: 2px;
+	margin-top: 5px;
+}
+.head_SearchCondition{
+	display:inline;
+	font-weight:900;
+}
+.item_SearchCondition{
+display:inline;
+}
+.ul_item_SearchCondition{
+	padding-left: 0px;
+	display:inline;
+	   list-style: none;
+	   width: 100%;
+}
+.ul_item_SearchCondition li{
+	display:inline;
+	padding-left: 5px;
+}
+.sel_item{
+	padding-top: 10px;
+}
+.input_sel_item{
+	display:inline;
+	width: 60px;
+}
+.btn_sel_item{
+	margin-left: 10px;
+    width: 48px;
+    height: 20px;
+        text-align: center;
+    line-height: 20px;
+    padding: 0px 0px;
+    font-size: 12px;
+}
+.div_sel_item{
+padding-top: 5px;
+}
+.radio_sall_status{
+	display:inline;
+}
+.middle_sel{
+	margin-top: 10px;
+}
+.sortCondition{
+	margin-top: 10px;
+	display:inline;
+	padding-left: 5px;
+}
+#sortCondition_sum{
+	font-weight: 700;
+    font-size: 14px;
+    color: #e85045;
+}
+.estateThumbnail{
+	width: 260px;
+    height: 180px;
+    vertical-align: top;
+    border: 0;
+}
+.search_list{
+	padding: 25px 0;
+}
+.search_list_detail{
+	margin-left: 1px;
+	margin-bottom: 10px;
+}
+.search_list_detail_other{
+		margin-left: 1px;
+}
+.estateName{
+	 font-size: 20px;
+    font-weight: 700;
+    color: #363d40;
+    display:inline;
+}
+.tag-sale{
+	color: #73b5e8;
+    font-weight: 400;
+    height: 16px;
+    line-height: 17px;
+    padding: 0 9px;
+    border: 1px solid #73b5e8;
+    border-radius: 8px;
+    width: 100%;
+    margin-left: 10px;
+    display:inline;
+}
+.estateAdress{
+
+	font-size: 14px;
+}
+.nomral_div{
+	display:inline;
+	width: 100%;
+}
+.estateMinPrice,.price_sign,.estateMaxPrice{
+	font-size: 24px;
+    font-weight: 700;
+    color: #e85045;
+   
+}
+.min_max_price{
+	 top:-12px;
+}
+.estateSign{
+	line-height: 21px;
+    background-color: #48b3e2;
+    border-color: #48b3e2;
+    color: #fff;
+        padding: 3px 10px;
+        margin-right:10px; 
+}
+.estateHouseType{
+	padding-top: 5px;
+
+}
+.DeveloperQuotes{
+	    color: #888;
+    font-size: 14px;
+}
+.visitTime{
+	color: #888;
+}
+.estateVisitTime{
+	font-weight: 700;
+    color: #e85045;
+}
+.pagination li a{
+	margin-left:15px;
+}
+.tip{
+	font-size: 25px;
+	font-weight: 700;
+}
+.tip_estateThumbnail{
+	    width: 224px;
+    height: 160px;
+}
+.RecommendEstate .title_RecommendEstate h4 a{
+    text-decoration: none;
+        color: #363d40;
+        font-weight: 700;
+}
+.bg_RecommendEstate{
+	background: #f8f8f8;
+	 width: 224px;
+	 padding: 10px;
+}
+.price_RecommendEstate,.info_RecommendEstate{
+	color: #888;
+	margin-bottom: 5px;
+}
+.inner_price_RecommendEstate{
+	color: #f44336;
+    font-style: normal;
+    font-size: 18px;
+    font-weight: 700;
+}
+.zxf_pagediv{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+a:link,a:visited,a:hover,a:active {
+	text-decoration: none;
+}
+a:hover{
+	color: #f44336;
+}
+.estateArea{
+	color: #f44336;
+}

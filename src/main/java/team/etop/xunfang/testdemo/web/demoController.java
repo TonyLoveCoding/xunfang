@@ -39,9 +39,10 @@ public class demoController {
     private String savePath;
 
     @RequestMapping("/demo01")
-    public ModelAndView demo01(EstateDto estateDto,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum,HttpServletRequest request)throws Exception{
+    public ModelAndView demo01(EstateDto estateDto,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum,HttpServletRequest request,String date)throws Exception{
         PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
         System.out.println(estateDto);
+        System.out.println(date);
         //创建一个通用的多部分解析器
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
         //判断 request 是否有文件上传,即多部分请求
@@ -77,8 +78,9 @@ public class demoController {
 
     @RequestMapping("/resolveJsonObject")
     @ResponseBody
-    public void resolveJsonObject(@RequestParam("files") MultipartFile multipartFile,@RequestParam("cropData")String data)throws Exception{
+    public void resolveJsonObject(@RequestParam("files") MultipartFile multipartFile,@RequestParam("cropData")String data,@RequestParam("url")String url)throws Exception{
         System.out.println(data);
+        System.out.println(url);
         String[] datas=data.split("\"|[a-zA-Z]|\\{|\\}|\\:");
         String str="";
         for(String d:datas){
@@ -91,7 +93,7 @@ public class demoController {
         float h=Float.parseFloat(strings[3]);
         System.out.println(multipartFile.getOriginalFilename());
         String filepath=savePath+multipartFile.getOriginalFilename();
-        //multipartFile.transferTo(new File(filepath));
+        multipartFile.transferTo(new File(filepath));
         Thumbnails.of(filepath).sourceRegion((int)x,(int)y,(int)w,(int)h).size(300,300).keepAspectRatio(false).toFile(savePath+multipartFile.getOriginalFilename());
         System.out.println("上传完成");
     }

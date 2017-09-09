@@ -11,6 +11,9 @@ import org.junit.Test;
 public class CustomGenerator{
 
     @Test
+    /**
+     * 根据数据库生成相应mapper
+     */
     public void testGenerator() throws InterruptedException {
         AutoGenerator mpg = new AutoGenerator();
 
