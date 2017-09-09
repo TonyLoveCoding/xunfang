@@ -21,7 +21,7 @@ import java.util.List;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-08
+ * @since 2017-08-15
  */
 @Service
 public class PermissionServiceImplGenerate extends ServiceImpl<PermissionMapperGenerate, Permission> implements PermissionServiceGenerate {

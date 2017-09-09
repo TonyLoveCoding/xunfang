@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-08
+ * @since 2017-08-15
  */
 @TableName("carousel_photos")
 public class CarouselPhotos extends Model<CarouselPhotos> {
@@ -26,7 +26,6 @@ public class CarouselPhotos extends Model<CarouselPhotos> {
 	private Integer status;
 	private Date updatetime;
 	private Date createtime;
-	private Long weight;
 
 
 	public Long getId() {
@@ -77,14 +76,6 @@ public class CarouselPhotos extends Model<CarouselPhotos> {
 		this.createtime = createtime;
 	}
 
-	public Long getWeight() {
-		return weight;
-	}
-
-	public void setWeight(Long weight) {
-		this.weight = weight;
-	}
-
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
@@ -99,7 +90,6 @@ public class CarouselPhotos extends Model<CarouselPhotos> {
 			", status=" + status +
 			", updatetime=" + updatetime +
 			", createtime=" + createtime +
-			", weight=" + weight +
 			"}";
 	}
 }

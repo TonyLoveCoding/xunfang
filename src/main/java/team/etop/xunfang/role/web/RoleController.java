@@ -2,6 +2,7 @@ package team.etop.xunfang.role.web;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import com.mysql.cj.jdbc.Blob;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import team.etop.xunfang.modules.po.User;
 import team.etop.xunfang.modules.service.PermissionServiceGenerate;
 import team.etop.xunfang.modules.service.RoleServiceGenerate;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -53,6 +55,16 @@ public class RoleController {
 
 
         List<Role> list = page.getRecords();
+        Role role=list.get(2);
+
+
+        try {
+            System.out.println(role.getDescription());
+            String test = new String(role.getDescription().getBytes("utf-8"));
+            System.out.println(test);
+        }catch (Exception e){
+
+        }
 
 
         modelAndView.addObject("list", list);

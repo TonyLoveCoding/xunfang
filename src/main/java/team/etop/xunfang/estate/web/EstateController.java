@@ -1,21 +1,13 @@
 package team.etop.xunfang.estate.web;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.plugins.Page;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.common.bean.PageInfo;
 import team.etop.xunfang.estate.dto.*;
-import team.etop.xunfang.modules.po.*;
-import team.etop.xunfang.modules.service.*;
-import team.etop.xunfang.search.dto.SearchPageMsg;
+import team.etop.xunfang.modules.po.Estate;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -36,56 +28,44 @@ public class EstateController {
 
     //当前页数
     @Value("${searchPage.PageSize}")
-    private int PageSize;
+    private Long PageSize;
     //每页显示条数
     @Value("${searchPage.countindex}")
-    private int countindex;
+    private Long countindex;
     //显示的总页数
     @Value("${searchPage.visiblePages}")
-    private int visiblePages;
+    private Long visiblePages;
     //楼盘图片保存地址
     @Value("${businessImage.savePath}")
     private String savePath;
-    @Value("${businessImage.url}")
-    private String imageUrl;
-
-    @Autowired
-    EstateServiceGenerate estateServiceGenerate;
-    @Autowired
-    EffectPictureServiceGenerate effectPictureServiceGenerate;
-    @Autowired
-    PrototypeRoomPictureServiceGenerate prototypeRoomPictureServiceGenerate;
-    @Autowired
-    RealEstatePictureServiceGenerate realEstatePictureServiceGenerate;
-    @Autowired
-    SamplePlanningPictureServiceGenerate samplePlanningPictureServiceGenerate;
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
+     * @param pageNum
      * @return
      */
-    @RequestMapping(value = "/query",method = RequestMethod.GET)
-    public ModelAndView queryEstate(@RequestParam(value = "pn",defaultValue ="1") int current,@RequestParam(value = "keyword",defaultValue = "")String keyword){
+    @RequestMapping("/query")
+    public ModelAndView queryEstate(@RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
+        List<Estate> estateList=new ArrayList<>();
+        PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
+        //从数据库取出
+        for(int i=0;i<13;i++){
+            Estate estate=new Estate();
+            estate.setId((long)i);
+            estate.setEstateName("楼盘名："+i);
+            estate.setStatus(0);
+            estate.setEstateAddress("楼盘地址："+i);
+            estate.setLocation("位置："+i);
+            estate.setType("类型："+i);
+            estate.setHouseType("户型："+i);
+            estate.setMinPrice(i);
+            estate.setMaxPrice(i);
+            estateList.add(estate);
+            System.out.println(estate);
+        }
         ModelAndView modelAndView=new ModelAndView("/estate/query");
-        modelAndView.addObject("keyword",keyword);
-        keyword="%"+keyword+"%";
-        EntityWrapper<Estate> wrapper=new EntityWrapper<>();
-        wrapper.like("estate_name","%"+keyword+"%").or().like("estate_address","%"+keyword+"%").or().like("location","%"+keyword+"%")
-                .or().like("type","%"+keyword+"%").or().like("house_type","%"+keyword+"%").orderBy("status");
-        Page<Estate> estatePage=new Page<>();
-        estatePage.setCurrent(current);
-        estatePage.setSize(countindex);
-        estatePage.setAsc(false);
-        estatePage.setOrderByField("update_Time");
-        Page<Estate> page =estateServiceGenerate.selectPage(estatePage,wrapper);
-        //获取分页后的楼盘信息
-        List<Estate> estateList=page.getRecords();
-        //得到总页数
-        int pageNum=page.getPages();
         modelAndView.addObject("estateList",estateList);
-        modelAndView.addObject("current",current);
-        modelAndView.addObject("pageNum",pageNum);
-        modelAndView.addObject("shownum",countindex);
+        modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
     }
 
@@ -95,68 +75,66 @@ public class EstateController {
      * @return
      */
     @RequestMapping("/selectbyid")
-    public ModelAndView selectEstateById(@RequestParam("id")long id) throws Exception{
+    public ModelAndView selectEstateById(@RequestParam("id")long id){
         //根据id从数据库取出对应楼盘信息,必须存放在EstateDto中
-        Estate estate=estateServiceGenerate.selectById(id);
-        EstateDto estateDto=change(estate);
+        System.out.println(id);
+        EstateDto estateDto=new EstateDto();
         List<EffectPictureDto> effectPictureList=new ArrayList<>();
         List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=new ArrayList<>();
         List<RealEststePictureDto> realEststePictureDtoList=new ArrayList<>();
         List<SamplePlanningPictureDto> samplePlanningPictureDtoList=new ArrayList<>();
+        estateDto.setId(id);
+        estateDto.setStatus(0);
+        estateDto.setEstateName("楼盘名称");
+        estateDto.setGreenRate((float)70);
+        estateDto.setStatus(0);
+        estateDto.setPropertyRights("70年");
+        estateDto.setVisitTimes(id);
+        estateDto.setMinPrice(123);
+        estateDto.setMaxPrice(123);
+        Date date=new Date();
+        DateFormat dateFormat=DateFormat.getDateTimeInstance();
+        String datetime=dateFormat.format(date);
+        try{
+            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            date=simpleDateFormat.parse(datetime);
+            estateDto.setCreateTime(date);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
         //图片需要先拆分原本的字符串，通过long l = Long.parseLong([String]);语句得到的id进行查询图片
-
-        //通过拆分字符串，并将其转化为long类型来查询数据库，获得效果图的url，id
-        String[] string=estateDto.getEffectivePhotos().split(",");
-        for(String str:string){
-            long l=Long.parseLong(str);
+        for(int i=0;i<7;i++){
             EffectPictureDto effectPictureDto=new EffectPictureDto();
-            EffectPicture effectPicture=effectPictureServiceGenerate.selectById(l);
-            effectPictureDto.setId(l);
-            effectPictureDto.setName(imageUrl+effectPicture.getName());
-            effectPictureDto.setType("EffectPicture");
+            effectPictureDto.setName("1.png");
+            String effectpicture=savePath+effectPictureDto.getName();
+            effectPictureDto.setName(effectpicture);
             effectPictureList.add(effectPictureDto);
+            estateDto.setEffectPictureDtoList(effectPictureList);
         }
-        estateDto.setEffectPictureDtoList(effectPictureList);
-
-        //通过拆分字符串，并将其转化为long类型来查询数据库，获得样板间图的url，id
-        String[] PrototypeRoomPictures=estateDto.getPrototypeRoom().split(",");
-        for(String str:PrototypeRoomPictures){
-            long l=Long.parseLong(str);
+        for(int i=0;i<3;i++){
             PrototypeRoomPictureDto prototypeRoomPictureDto=new PrototypeRoomPictureDto();
-            PrototypeRoomPicture prototypeRoomPicture=prototypeRoomPictureServiceGenerate.selectById(l);
-            prototypeRoomPictureDto.setId(l);
-            prototypeRoomPictureDto.setName(imageUrl+prototypeRoomPicture.getName());
-            prototypeRoomPictureDto.setType("PrototypeRoomPicture");
+            prototypeRoomPictureDto.setName("1.png");
+            String prototypeRoomPicture=savePath+prototypeRoomPictureDto.getName();
+            prototypeRoomPictureDto.setName(prototypeRoomPicture);
             prototypeRoomPictureDtoList.add(prototypeRoomPictureDto);
+            estateDto.setPrototypeRoomPictureDtoList(prototypeRoomPictureDtoList);
         }
-        estateDto.setPrototypeRoomPictureDtoList(prototypeRoomPictureDtoList);
-
-        //通过拆分字符串，并将其转化为long类型来查询数据库，获得实景图的url，id
-        String[] RealEststePictures=estateDto.getLiveAction().split(",");
-        for(String str:RealEststePictures){
-            long l=Long.parseLong(str);
+        for(int i=0;i<2;i++){
             RealEststePictureDto realEststePictureDto=new RealEststePictureDto();
-            RealEstatePicture realEstatePicture=realEstatePictureServiceGenerate.selectById(l);
-            realEststePictureDto.setId(l);
-            realEststePictureDto.setName(imageUrl+realEstatePicture.getName());
-            realEststePictureDto.setType("RealEstatePicture");
+            realEststePictureDto.setName("1.png");
+            String realEststepicture=savePath+realEststePictureDto.getName();
+            realEststePictureDto.setName(realEststepicture);
             realEststePictureDtoList.add(realEststePictureDto);
+            estateDto.setRealEststePictureDtoList(realEststePictureDtoList);
         }
-        estateDto.setRealEststePictureDtoList(realEststePictureDtoList);
-
-        //通过拆分字符串，并将其转化为long类型来查询数据库，获得样板规划图的url，id
-        String[] SamplePlanningPictures=estateDto.getSamplePlate().split(",");
-        for(String str:SamplePlanningPictures){
-            long l=Long.parseLong(str);
+        for(int i=0;i<1;i++){
             SamplePlanningPictureDto samplePlanningPictureDto=new SamplePlanningPictureDto();
-            SamplePlanningPicture samplePlanningPicture=samplePlanningPictureServiceGenerate.selectById(l);
-            samplePlanningPictureDto.setId(l);
-            samplePlanningPictureDto.setName(imageUrl+samplePlanningPicture.getName());
-            samplePlanningPictureDto.setType("SamplePlanningPicture");
+            samplePlanningPictureDto.setName("1.png");
+            String samplePlanningpicture=savePath+samplePlanningPictureDto.getName();
+            samplePlanningPictureDto.setName(samplePlanningpicture);
             samplePlanningPictureDtoList.add(samplePlanningPictureDto);
+            estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
         }
-        estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
-
         int esize=effectPictureList.size();
         int psize=prototypeRoomPictureDtoList.size();
         int rsize=realEststePictureDtoList.size();
@@ -175,268 +153,113 @@ public class EstateController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/update",method = RequestMethod.GET)
-    public ModelAndView updateEstate(@RequestParam("id")long id) throws Exception{
-        Estate estate=estateServiceGenerate.selectById(id);
-        EstateDto estateDto=change(estate);
-        List<EffectPictureDto> effectPictureList=new ArrayList<>();
-        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=new ArrayList<>();
-        List<RealEststePictureDto> realEststePictureDtoList=new ArrayList<>();
-        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=new ArrayList<>();
-        String[] string=estateDto.getEffectivePhotos().split(",");
-        for(String str:string){
-            long l=Long.parseLong(str);
-            EffectPictureDto effectPictureDto=new EffectPictureDto();
-            EffectPicture effectPicture=effectPictureServiceGenerate.selectById(l);
-            effectPictureDto.setId(l);
-            effectPictureDto.setName(imageUrl+effectPicture.getName());
-            effectPictureDto.setType("EffectPicture");
-            effectPictureList.add(effectPictureDto);
+    @RequestMapping("/update")
+    public ModelAndView updateEstate(@RequestParam("id")long id){
+        Date date=new Date();
+        EstateDto estateDto=new EstateDto();
+        DateFormat dateFormat=DateFormat.getDateTimeInstance();
+        String datetime=dateFormat.format(date);
+        try{
+            SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            date=simpleDateFormat.parse(datetime);
+            estateDto.setCreateTime(date);
+        }catch (ParseException e){
+            e.printStackTrace();
         }
-        estateDto.setEffectPictureDtoList(effectPictureList);
-
-        //通过拆分字符串，并将其转化为long类型来查询数据库，获得样板间图的url，id
-        String[] PrototypeRoomPictures=estateDto.getPrototypeRoom().split(",");
-        for(String str:PrototypeRoomPictures){
-            long l=Long.parseLong(str);
-            PrototypeRoomPictureDto prototypeRoomPictureDto=new PrototypeRoomPictureDto();
-            PrototypeRoomPicture prototypeRoomPicture=prototypeRoomPictureServiceGenerate.selectById(l);
-            prototypeRoomPictureDto.setId(l);
-            prototypeRoomPictureDto.setName(imageUrl+prototypeRoomPicture.getName());
-            prototypeRoomPictureDto.setType("PrototypeRoomPicture");
-            prototypeRoomPictureDtoList.add(prototypeRoomPictureDto);
+        List<EffectPictureDto> effectPictureDtoList=estateDto.getEffectPictureDtoList();
+        for(EffectPictureDto e:effectPictureDtoList){
+            e.setName("7867759.jpg");
+            String effectpicture="http://othgjp7hs.bkt.clouddn.com/17-8-9/"+e.getName();
+            e.setName(effectpicture);
+            //将e存入对应的数据库
         }
-        estateDto.setPrototypeRoomPictureDtoList(prototypeRoomPictureDtoList);
+        //将其余的图片模块按照上面的方法存入对应模块
+        //调用queryEstate()方法用以刷新页面
+        this.queryEstate(1);
+        return  null;
+    }
 
-        //通过拆分字符串，并将其转化为long类型来查询数据库，获得实景图的url，id
-        String[] RealEststePictures=estateDto.getLiveAction().split(",");
-        for(String str:RealEststePictures){
-            long l=Long.parseLong(str);
-            RealEststePictureDto realEststePictureDto=new RealEststePictureDto();
-            RealEstatePicture realEstatePicture=realEstatePictureServiceGenerate.selectById(l);
-            realEststePictureDto.setId(l);
-            realEststePictureDto.setName(imageUrl+realEstatePicture.getName());
-            realEststePictureDto.setType("RealEstatePicture");
-            realEststePictureDtoList.add(realEststePictureDto);
+    /**
+     * 搜索楼盘信息
+     * 需要用到mp的模糊查找
+     * @param tip
+     * @param pageNum
+     * @return
+     */
+    @RequestMapping("/search")
+    public ModelAndView searchEstates(@RequestParam("tip")String tip,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
+        List<Estate> estateList=new ArrayList<>();
+        PageInfo pageInfo = new PageInfo(PageSize, countindex, visiblePages, PageSize * visiblePages, 1L);
+        //从数据库取出符合条件的所有信息
+        for(int i=0;i<13;i++){
+            Estate estate=new Estate();
+            estate.setEstateName("楼盘名："+i);
+            estate.setStatus(0);
+            estate.setEstateAddress("楼盘地址："+i);
+            estate.setLocation("位置："+i);
+            estate.setType("类型："+i);
+            estate.setHouseType("户型："+i);
+            estateList.add(estate);
         }
-        estateDto.setRealEststePictureDtoList(realEststePictureDtoList);
-
-        //通过拆分字符串，并将其转化为long类型来查询数据库，获得样板规划图的url，id
-        String[] SamplePlanningPictures=estateDto.getSamplePlate().split(",");
-        for(String str:SamplePlanningPictures){
-            long l=Long.parseLong(str);
-            SamplePlanningPictureDto samplePlanningPictureDto=new SamplePlanningPictureDto();
-            SamplePlanningPicture samplePlanningPicture=samplePlanningPictureServiceGenerate.selectById(l);
-            samplePlanningPictureDto.setId(l);
-            samplePlanningPictureDto.setName(imageUrl+samplePlanningPicture.getName());
-            samplePlanningPictureDto.setType("SamplePlanningPicture");
-            samplePlanningPictureDtoList.add(samplePlanningPictureDto);
-        }
-        estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
-
-        int esize=effectPictureList.size();
-        int psize=prototypeRoomPictureDtoList.size();
-        int rsize=realEststePictureDtoList.size();
-        int ssize=samplePlanningPictureDtoList.size();
-        ModelAndView modelAndView=new ModelAndView("/estate/update");
-        modelAndView.addObject("EstateDto",estateDto);
-        modelAndView.addObject("esize",esize);
-        modelAndView.addObject("psize",psize);
-        modelAndView.addObject("rsize",rsize);
-        modelAndView.addObject("ssize",ssize);
+        ModelAndView modelAndView=new ModelAndView("/estate/search");
+        modelAndView.addObject("estateList",estateList);
+        modelAndView.addObject("pageInfo",pageInfo);
         return modelAndView;
     }
 
     /**
      * 删除楼盘信息
      * @param id
+     * @param pageNum
      * @return
      */
-    @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    @ResponseBody
-    public Msg deleteEstate(@RequestParam("id")long id){
-        Estate estate=estateServiceGenerate.selectById(id);
-        if(estate.getStatus()==1){
-            return Msg.fail("该楼盘以处于无用状态");
-        }
+    @RequestMapping("/delete")
+    public ModelAndView deleteEstate(@RequestParam("id")long id,@RequestParam(value = "pn",defaultValue ="1")Integer pageNum){
         //通过id句数据库中的对应信息的状态置为1，并存入数据库
-        estate.setStatus(1);
-        estateServiceGenerate.insertOrUpdate(estate);
         //调用queryEstate()方法用以刷新页面
-        return Msg.success();
+        this.queryEstate(1);
+        return null;
     }
 
-
-    @RequestMapping(value = "/add",method = RequestMethod.GET)
-    public ModelAndView addEstateView()throws Exception{
-        ModelAndView modelAndView=new ModelAndView("/estate/add");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = {"/add","/update"},method = RequestMethod.POST)
-    public Msg addEstate(EstateDto estateDto) throws Exception{
-        Estate estate=change(estateDto);
-        List<EffectPictureDto> effectPictureDtoList=estateDto.getEffectPictureDtoList();
-        String effective_photos =saveEffectPicture(effectPictureDtoList);
-        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=estateDto.getPrototypeRoomPictureDtoList();
-        String prototype_room=savePrototypeRoomPicture(prototypeRoomPictureDtoList);
-        List<RealEststePictureDto> realEststePictureDtoList=estateDto.getRealEststePictureDtoList();
-        String live_action=saveRealEststePicture(realEststePictureDtoList);
-        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=estateDto.getSamplePlanningPictureDtoList();
-        String sample_plate=saveSamplePlanningPicture(samplePlanningPictureDtoList);
-        estate.setSamplePlate(sample_plate);
-        estate.setLiveAction(live_action);
-        estate.setPrototypeRoom(prototype_room);
-        estate.setEffectivePhotos(effective_photos);
-        estateServiceGenerate.insertOrUpdate(estate);
-        return Msg.success();
-    }
-
-    public EstateDto change(Estate estate) throws Exception{
+    @RequestMapping("/update1")
+    public ModelAndView updateEstatedemo(@RequestParam("id")long id){
+        List<EffectPictureDto> effectPictureList=new ArrayList<>();
+        List<PrototypeRoomPictureDto> prototypeRoomPictureDtoList=new ArrayList<>();
+        List<RealEststePictureDto> realEststePictureDtoList=new ArrayList<>();
+        List<SamplePlanningPictureDto> samplePlanningPictureDtoList=new ArrayList<>();
+//        System.out.println("楼盘id"+id);
         EstateDto estateDto=new EstateDto();
-        estateDto.setId(estate.getId());
-        estateDto.setStatus(estate.getStatus());
-        estateDto.setVisitTimes(estate.getVisitTimes());
-        estateDto.setMinPrice(estate.getMinPrice());
-        estateDto.setMaxPrice(estate.getMaxPrice());
-        estateDto.setDeveloperQuotes(estate.getDeveloperQuotes());
-        estateDto.setLocation(estate.getLocation());
-        estateDto.setType(estate.getType());
-        estateDto.setFeature(estate.getFeature());
-        estateDto.setEstateName(estate.getEstateName());
-        estateDto.setEstateAddress(estate.getEstateAddress());
-        estateDto.setProperty(estate.getProperty());
-        estateDto.setDeveloper(estate.getDeveloper());
-        estateDto.setSaleStatus(estate.getSaleStatus());
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        estateDto.setFirstDelivery(simpleDateFormat.format(estate.getFirstDelivery()));
-        estateDto.setLatestOpening(simpleDateFormat.format(estate.getLatestOpening()));
-        estateDto.setPropertyRights(estate.getPropertyRights());
-        estateDto.setTakeTime(simpleDateFormat.format(estate.getTakeTime()));
-        estateDto.setHouseType(estate.getHouseType());
-        estateDto.setCompany(estate.getCompany());
-        estateDto.setPropertyCost(estate.getPropertyCost());
-        estateDto.setPowerType(estate.getPowerType());
-        estateDto.setGreenRate(estate.getGreenRate());
-        estateDto.setParkingSpaces(estate.getParkingSpaces());
-        estateDto.setDecoration(estate.getDecoration());
-        estateDto.setEstateInformation(estate.getEstateInformation());
-        estateDto.setCreateTime(estate.getCreateTime());
-        estateDto.setPlotRatio(estate.getPlotRatio());
-        estateDto.setArea(estate.getArea());
-        estateDto.setEffectivePhotos(estate.getEffectivePhotos());
-        estateDto.setPrototypeRoom(estate.getPrototypeRoom());
-        estateDto.setSamplePlate(estate.getSamplePlate());
-        estateDto.setLiveAction(estate.getLiveAction());
-        estateDto.setFeature(estate.getFeature());
-        return estateDto;
-    }
-
-    public Estate change(EstateDto estateDto) throws Exception{
-        Date date=new Date();
-        long times=date.getTime();
-        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String d=format.format(times);
-        date=format.parse(d);
-        Estate estate=new Estate();
-        estate.setStatus(0);
-        estate.setVisitTimes((long)0);
-        estate.setMinPrice(estateDto.getMinPrice());
-        estate.setMaxPrice(estateDto.getMaxPrice());
-        estate.setDeveloperQuotes(estateDto.getDeveloperQuotes());
-        estate.setLocation(estateDto.getLocation());
-        estate.setType(estateDto.getType());
-        estate.setHouseType(estateDto.getHouseType());
-        estate.setFeature(estateDto.getFeature());
-        estate.setEstateName(estateDto.getEstateName());
-        estate.setEstateAddress(estateDto.getEstateAddress());
-        estate.setProperty(estateDto.getProperty());
-        estate.setDeveloper(estateDto.getDeveloper());
-        estate.setSaleStatus(estateDto.getSaleStatus());
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        estate.setFirstDelivery(simpleDateFormat.parse(estateDto.getFirstDelivery()));
-        estate.setLatestOpening(simpleDateFormat.parse(estateDto.getLatestOpening()));
-        estate.setPropertyRights(estateDto.getPropertyRights());
-        estate.setTakeTime(simpleDateFormat.parse(estateDto.getTakeTime()));
-        estate.setCompany(estateDto.getCompany());
-        estate.setPropertyCost(estateDto.getPropertyCost());
-        estate.setPowerType(estateDto.getPowerType());
-        estate.setGreenRate(estateDto.getGreenRate());
-        estate.setParkingSpaces(estateDto.getParkingSpaces());
-        estate.setDecoration(estateDto.getDecoration());
-        estate.setEstateInformation(estateDto.getEstateInformation());
-        estate.setCreateTime(date);
-        estate.setPlotRatio(estateDto.getPlotRatio());
-        estate.setArea(estateDto.getArea());
-        estate.setFeature(estateDto.getFeature());
-        return estate;
-    }
-
-    public String saveEffectPicture(List<EffectPictureDto> list ){
-        String ids="";
-        String k="";
-        for(EffectPictureDto e:list){
-            EffectPicture picture=new EffectPicture();
-            picture.setName(e.getName());
-            effectPictureServiceGenerate.insert(picture);
+        estateDto.setId(id);
+        estateDto.setStatus(0);
+        estateDto.setEstateName("楼盘名称");
+        estateDto.setGreenRate((float)70);
+        estateDto.setStatus(0);
+        estateDto.setPropertyRights("70年");
+        estateDto.setVisitTimes(id);
+        estateDto.setMinPrice(123);
+        estateDto.setMaxPrice(123);
+//        System.out.println(estateDto);
+        for(int i=0;i<7;i++){
+            EffectPictureDto effectPictureDto=new EffectPictureDto();
+            effectPictureDto.setName("1.png");
+            String effectpicture=savePath+effectPictureDto.getName();
+            effectPictureDto.setName(effectpicture);
+            effectPictureList.add(effectPictureDto);
+            estateDto.setEffectPictureDtoList(effectPictureList);
         }
-        List<EffectPicture> elist=effectPictureServiceGenerate.selectList(null);
-        for(EffectPicture e:elist){
-            ids+=k;
-            ids+=e.getId();
-            k=",";
-        }
-        return ids;
-    }
-
-    public String savePrototypeRoomPicture(List<PrototypeRoomPictureDto> list ){
-        String ids="";
-        String k="";
-        for(PrototypeRoomPictureDto p:list){
-            PrototypeRoomPicture picture=new PrototypeRoomPicture();
-            picture.setName(p.getName());
-            prototypeRoomPictureServiceGenerate.insert(picture);
-        }
-        List<PrototypeRoomPicture> plist=prototypeRoomPictureServiceGenerate.selectList(null);
-        for(PrototypeRoomPicture p:plist){
-            ids+=k;
-            ids+=p.getId();
-            k=",";
-        }
-        return ids;
-    }
-
-    public String saveRealEststePicture(List<RealEststePictureDto> list ){
-        String ids="";
-        String k="";
-        for(RealEststePictureDto r:list){
-            RealEstatePicture picture=new RealEstatePicture();
-            picture.setName(r.getName());
-            realEstatePictureServiceGenerate.insert(picture);
-        }
-        List<RealEstatePicture> rlist=realEstatePictureServiceGenerate.selectList(null);
-        for(RealEstatePicture r:rlist){
-            ids+=k;
-            ids+=r.getId();
-            k=",";
-        }
-        return ids;
-    }
-
-    public String saveSamplePlanningPicture(List<SamplePlanningPictureDto> list ){
-        String ids="";
-        String k="";
-        for(SamplePlanningPictureDto s:list){
-            SamplePlanningPicture picture=new SamplePlanningPicture();
-            picture.setName(s.getName());
-            samplePlanningPictureServiceGenerate.insert(picture);
-        }
-        List<SamplePlanningPicture> slist=samplePlanningPictureServiceGenerate.selectList(null);
-        for(SamplePlanningPicture s:slist){
-            ids+=k;
-            ids+=s.getId();
-            k=",";
-        }
-        return ids;
+        int esize=effectPictureList.size();
+        ModelAndView modelAndView=new ModelAndView("/estate/update");
+        int psize=prototypeRoomPictureDtoList.size();
+        int rsize=realEststePictureDtoList.size();
+        int ssize=samplePlanningPictureDtoList.size();
+        estateDto.setPrototypeRoomPictureDtoList(prototypeRoomPictureDtoList);
+        estateDto.setRealEststePictureDtoList(realEststePictureDtoList);
+        estateDto.setSamplePlanningPictureDtoList(samplePlanningPictureDtoList);
+        modelAndView.addObject("psize",psize);
+        modelAndView.addObject("rsize",rsize);
+        modelAndView.addObject("ssize",ssize);
+        modelAndView.addObject("EstateDto",estateDto);
+        modelAndView.addObject("esize",esize);
+        return  modelAndView;
     }
 }

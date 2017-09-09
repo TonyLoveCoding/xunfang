@@ -49,7 +49,7 @@ public class MainController {
 //        menuDtoList.add(new MenuDto(8L,"权限删除",6L,""));
         menuDtoList.add(new MenuDto(9L,"轮播图管理",3L,"/carouselPhotos/query"));
         menuDtoList.add(new MenuDto(10L,"楼盘管理",3L,"/estate/query"));
-        menuDtoList.add(new MenuDto(11L,"热搜词管理",3L,"/heatWord"));
+
         for (MenuDto test : menuDtoList) {
             Tree<MenuDto> tree = new Tree<MenuDto>();
             tree.setId(test.getId().toString());

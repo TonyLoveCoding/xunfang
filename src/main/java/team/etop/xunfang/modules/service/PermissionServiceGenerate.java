@@ -12,7 +12,7 @@ import java.util.List;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-08
+ * @since 2017-08-15
  */
 public interface PermissionServiceGenerate extends IService<Permission> {
     public List<PermissionTree> getAllZtree();

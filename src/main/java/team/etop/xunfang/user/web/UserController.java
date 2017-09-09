@@ -3,6 +3,7 @@ package team.etop.xunfang.user.web;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 
+import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,8 +49,7 @@ public class UserController{
                                        @RequestParam(value = "status",defaultValue = "1")Integer status) {
 
         ModelAndView modelAndView = new ModelAndView();
-  List<User> list5=userServiceGenerate.selectByName("admin");
-        System.out.println(list5.get(0));
+
         EntityWrapper<User> wrapper=new EntityWrapper<>();
         wrapper.eq("status",1);
         Page<User> userPage=new Page<>();

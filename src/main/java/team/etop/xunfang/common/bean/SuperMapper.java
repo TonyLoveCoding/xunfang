@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
  * @version V1.0
- * @Description:通用Mapper方法
+ * @Description:
  * @author: TingFeng Zhang
  * @date: 2017/8/3 20:32
  */

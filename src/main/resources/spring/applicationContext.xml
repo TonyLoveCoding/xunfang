@@ -8,12 +8,7 @@
 
     <!--参数文件存放目录，该目录为web工程发布时目录-->
     <context:property-placeholder location="classpath:properties/*.properties"/>
-    <!--&lt;!&ndash;此时为相对路径&ndash;&gt;-->
-    <!--<import resource="applicationContext-*.xml"/>-->
-    <import resource="applicationContext-web.xml"/>
-    <import resource="applicationContext-dao.xml"/>
-    <import resource="applicationContext-service.xml"/>
-
-
-
+    <!--此时为相对路径-->
+    <import resource="applicationContext-*.xml"/>
+    <import resource="shiro.xml"/>
 </beans>

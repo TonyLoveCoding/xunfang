@@ -9,7 +9,7 @@ import team.etop.xunfang.common.bean.SuperMapper;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-08
+ * @since 2017-08-15
  */
 public interface CarouselPhotosMapperGenerate extends SuperMapper<CarouselPhotos> {
 
