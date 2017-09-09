@@ -3,6 +3,7 @@ package team.etop.xunfang.search.mapper;
 
 
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 import team.etop.xunfang.modules.po.Dic;
 
@@ -14,7 +15,7 @@ import java.util.List;
  * @author: TingFeng Zhang
  * @date: 2017/8/15 18:15
  */
-@Component
+@Mapper
 public interface DicMapper {
     List<Dic> selectByType(String type);
 }

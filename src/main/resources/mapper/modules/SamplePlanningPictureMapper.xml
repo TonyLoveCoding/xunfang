@@ -9,11 +9,12 @@
 	<resultMap id="BaseResultMap" type="team.etop.xunfang.modules.po.SamplePlanningPicture">
 		<id column="id" property="id" />
 		<result column="name" property="name" />
+		<result column="weight" property="weight" />
 	</resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name
+        id, name, weight
     </sql>
 
 </mapper>

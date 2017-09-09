@@ -14,7 +14,7 @@ import java.util.*;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:工具类-搜索模块
  * @author: TingFeng Zhang
  * @date: 2017/8/14 0:00
  */

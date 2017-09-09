@@ -35,6 +35,9 @@ public class insertDateZTF {
     @Autowired
     EstateMapperGenerate estateMapper;
 
+    /**
+     * 插入数据用，默认10000条
+     */
     @Test
     public void insertData(){
         for(int i=0;i<10000;i++){

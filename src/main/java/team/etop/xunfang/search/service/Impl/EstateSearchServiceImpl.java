@@ -41,10 +41,23 @@ public class EstateSearchServiceImpl implements EstateSearchService {
     @Value("${search.shownum}")
     Integer shownum;
 
-
-
-
-
+    /**
+     * 搜索层：传入搜索条件进行搜索
+     * @param pn 页码
+     * @param keyWord 关键词
+     * @param saleStatus 销售情况
+     * @param location  位置
+     * @param totalPrices  总价
+     * @param type 类型
+     * @param houseType 户型
+     * @param feature 特色
+     * @param unitPrice 单价
+     * @param area 面积
+     * @param sort 排序条件
+     * @param sortType 排序条件-正反序
+     * @return SearchInfoBo
+     * @throws Exception
+     */
     @Override
     public SearchInfoBo search(Long pn, String keyWord, String saleStatus,
                                String location, String totalPrices, String type,
@@ -108,6 +121,13 @@ public class EstateSearchServiceImpl implements EstateSearchService {
         return new SearchInfoBo(estateSearchBos, results.getNumFound());
     }
 
+    /**
+     * 得到搜索界面推荐楼盘
+     * @param start
+     * @param rows
+     * @return
+     * @throws Exception
+     */
     @Override
     public List<RecommendEstateBo> getRecommendEstate(Integer start, Integer rows) throws Exception {
         SolrQuery solrQuery = new SolrQuery();
@@ -124,6 +144,15 @@ public class EstateSearchServiceImpl implements EstateSearchService {
         return recommendEstateBos;
     }
 
+    /**
+     * 得到主页推荐楼盘、最新楼盘
+     * @param start
+     * @param rows
+     * @param type
+     * @param order
+     * @return
+     * @throws Exception
+     */
     @Override
     public List<HomeEstateBo> getHomeEstate(Integer start, Integer rows, String type,SolrQuery.ORDER order) throws Exception {
         SolrQuery solrQuery = new SolrQuery();

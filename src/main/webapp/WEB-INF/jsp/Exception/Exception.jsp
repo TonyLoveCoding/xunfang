@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>错误界面</title>
+    <link href="/assets/Exception/style.css" rel="stylesheet">
 </head>
 <body>
-<h1>暂时无法访问，请稍后请尝试！！！</h1>
+<div id="errorContainer"><img src="/assets/Exception/404.gif"></div>
+
 </body>
 </html>

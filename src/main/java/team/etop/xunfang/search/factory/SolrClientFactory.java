@@ -6,11 +6,10 @@ import team.etop.xunfang.common.Exception.SolrClientFactoryException;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:Solr客户端对象工厂
  * @author: TingFeng Zhang
  * @date: 2017/8/16 15:55
  */
-
 public class SolrClientFactory {
     public SolrClient getSolrClientInstance(String baseURL) throws SolrClientFactoryException {
         if(!"".equals(baseURL)&&baseURL!=null){

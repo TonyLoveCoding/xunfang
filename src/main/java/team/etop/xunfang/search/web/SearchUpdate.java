@@ -9,6 +9,12 @@ import team.etop.xunfang.common.bean.Msg;
 import team.etop.xunfang.search.bo.EstateSearchBo;
 import team.etop.xunfang.search.service.SearchSolrService;
 
+/**
+ * @version V1.0
+ * @Description:索引服务器维护Controller
+ * @author: TingFeng Zhang
+ * @date: 2017/8/9 8:46
+ */
 @Controller
 @RequestMapping("/searchUpdate")
 public class SearchUpdate {
@@ -40,8 +46,14 @@ public class SearchUpdate {
     @ResponseBody
     @RequestMapping(value = "/addEstate")
     public Msg addEstate(@RequestParam("EstateSearchBo") EstateSearchBo estateSearchBo) throws Exception{
-        searchSolrService.addEstate(estateSearchBo);
-        return Msg.success();
+        try {
+            searchSolrService.addEstate(estateSearchBo);
+            return Msg.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            return Msg.fail(estateSearchBo.getId()+":索引更新失败！");
+        }
+
     }
 
     /**
@@ -52,8 +64,14 @@ public class SearchUpdate {
     @ResponseBody
     @RequestMapping(value = "/updateEstate")
     public Msg updateEstate(@RequestParam("EstateSearchBo") EstateSearchBo estateSearchBo) throws Exception{
-        searchSolrService.updateEstate(estateSearchBo);
-        return Msg.success();
+        try {
+            searchSolrService.addEstate(estateSearchBo);
+            return Msg.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            return Msg.fail(estateSearchBo.getId()+":索引修改失败！");
+        }
+
     }
 
 
@@ -65,8 +83,14 @@ public class SearchUpdate {
     @ResponseBody
     @RequestMapping(value = "/deleteEstate")
     public Msg deleteEstate(@RequestParam("id") Long id) throws Exception{
-        searchSolrService.deleteEstate(id);
-        return Msg.success();
+        try {
+            searchSolrService.deleteEstate(id);
+            return Msg.success();
+        }catch (Exception e){
+            e.printStackTrace();
+            return Msg.fail(id+":索引修改失败！");
+        }
+
     }
 
 

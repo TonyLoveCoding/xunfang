@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @version V1.0
- * @Description:
+ * @Description:楼盘搜索服务测试
  * @author: TingFeng Zhang
  * @date: 2017/8/13 23:43
  */
@@ -25,11 +25,13 @@ public class EstateSearchServiceImplTest {
     @Autowired
     EstateSearchMapper estateSearchMapper;
 
-
-
     @Value("${solr.baseURL}")
     String baseURL;
 
+    /**
+     * 测试全量更新是否正常
+     * @throws Exception
+     */
     @Test
     public void testFullUpdate() throws Exception {
         SolrClient solrClient=new HttpSolrClient.Builder(baseURL).build();
