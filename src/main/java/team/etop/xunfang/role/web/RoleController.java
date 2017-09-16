@@ -3,6 +3,7 @@ package team.etop.xunfang.role.web;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.mysql.cj.jdbc.Blob;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class RoleController {
     private PermissionServiceGenerate permissionServiceGenerate;
 
 
+    @RequiresPermissions("role/roleList")
     @RequestMapping("/roleList")
     public ModelAndView getRoleList(@RequestParam(value = "pn", defaultValue = "1") int pageNum,
                                     @RequestParam(value = "status", defaultValue = "1") Integer status) {
@@ -55,16 +57,7 @@ public class RoleController {
 
 
         List<Role> list = page.getRecords();
-        Role role=list.get(2);
 
-
-        try {
-            System.out.println(role.getDescription());
-            String test = new String(role.getDescription().getBytes("utf-8"));
-            System.out.println(test);
-        }catch (Exception e){
-
-        }
 
 
         modelAndView.addObject("list", list);
@@ -98,6 +91,7 @@ public class RoleController {
         return modelAndView;
     }
 
+    @RequiresPermissions("role/addRole")
     @RequestMapping("/addRole")
     public ModelAndView addUser(@RequestParam(value = "name") String name,
                                 @RequestParam(value = "description") String description
@@ -122,6 +116,7 @@ public class RoleController {
         return modelAndView;
     }
 
+    @RequiresPermissions("role/deleteRole")
     @RequestMapping("/deleteRole")
     public ModelAndView deleteRole(@RequestParam(value = "roleId") Long roleId) {
         Result result = new Result();
@@ -138,6 +133,7 @@ public class RoleController {
         return modelAndView;
     }
 
+    @RequiresPermissions("role/findRole")
     @RequestMapping("/findRoleByName")
     public ModelAndView findUser(@RequestParam(value = "pn", defaultValue = "1") int pageNum,
                                  @RequestParam(value = "name") String name
@@ -172,10 +168,12 @@ public class RoleController {
 
 
     }
+    @RequiresPermissions("role/updateRole")
     @RequestMapping("/updateRole")
     public ModelAndView updateUser(@RequestParam(value = "roleId") Long roleId,
                                    @RequestParam(value = "name")String name,
                                    @RequestParam(value ="description")String description ) {
+        System.out.println(roleId+"   "+name+"   "+description);
 
 
 
@@ -195,6 +193,8 @@ public class RoleController {
         return modelAndView;
 
     }
+
+
     @ResponseBody
     @RequestMapping("/getTree")
     public Result getTree(){
@@ -215,6 +215,7 @@ public class RoleController {
     }
     @ResponseBody
     @RequestMapping("/getRoleTree")
+    @RequiresPermissions("role/getRoleTree")
     public Result getRoleTree(@RequestParam(value = "ID")Long ID){
         System.out.println(ID);
         Result result=new Result();
@@ -235,6 +236,7 @@ public class RoleController {
 
     @ResponseBody
     @RequestMapping("/updateTreeById")
+    @RequiresPermissions("role/updateRolePermission")
     public Result updateTreeById(@RequestParam (value = "checkedTree")List<Long> checkedTree ){
         Result result=new Result();
         System.out.println(checkedTree.get(0));

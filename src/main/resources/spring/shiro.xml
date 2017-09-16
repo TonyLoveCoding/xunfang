@@ -43,8 +43,7 @@
     <!--
     5. 启用 IOC 容器中使用 shiro 的注解. 但必须在配置了 LifecycleBeanPostProcessor 之后才可以使用.
     -->
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
-          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor"/>
     <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
         <property name="securityManager" ref="securityManager"/>
     </bean>
@@ -55,13 +54,18 @@
     -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <!--<property name="loginUrl" value=" /user/getUsers"/>-->
+        <property name="loginUrl" value="/login"/>
+        <!--<property name="unauthorizedUrl" value="/login"/>-->
+
         <!--<property name="unauthorizedUrl" value=" /user/getUsers"/>-->
         <property name="filterChainDefinitions">
             <value>
                 /** = anon
+
             </value>
         </property>
+
+
     </bean>
     <!-- 配置一个 bean, 该 bean 实际上是一个 Map. 通过实例工厂方法的方式 -->
     <!--<bean id="filterChainDefinitionMap"-->

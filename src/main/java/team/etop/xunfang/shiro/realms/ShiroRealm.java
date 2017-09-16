@@ -1,11 +1,14 @@
 package team.etop.xunfang.shiro.realms;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import team.etop.xunfang.modules.po.Permission;
@@ -15,7 +18,7 @@ import team.etop.xunfang.modules.service.PermissionServiceGenerate;
 import team.etop.xunfang.modules.service.RoleServiceGenerate;
 import team.etop.xunfang.modules.service.UserServiceGenerate;
 
-import javax.jws.soap.SOAPBinding;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,30 +48,35 @@ public class ShiroRealm extends AuthorizingRealm {
         EntityWrapper<Role> wrapper=new EntityWrapper<>();
         wrapper.eq("status",1);
 
-        List<Role> roles=roleServiceGenerate.selectList(wrapper);
-
         EntityWrapper<Permission> wrapper1=new EntityWrapper<>();
         wrapper.eq("status",1);
         List<Permission> permissions=permissionServiceGenerate.selectList(wrapper1);
 
         EntityWrapper<User> wrapper2=new EntityWrapper<>();
-        wrapper.eq("account",account);
+        System.out.println(account);
+        wrapper2.eq("account",account);
         User user=userServiceGenerate.selectOne(wrapper2);
-        String rolesRelevance=user.getRolesRelevance();
-         String [] roleList=rolesRelevance.split(",");
-         for(int i=0;i<roleList.length;i++){
-             Role role=roleServiceGenerate.selectById(Long.parseLong(roleList[i]));
-             String [] permissionList=role.getPermissions().split(",");
-             for(String permisionID:permissionList){
-                 permissionIds.add(Long.parseLong(permisionID));
-             }
-         }
+        System.out.println(user.toString());
+        String rolesRelevance;
+        rolesRelevance=user.getRolesRelevance();
+        if(!rolesRelevance.isEmpty()) {
+            String[] roleList = rolesRelevance.split(",");
+            for (int i = 0; i < roleList.length; i++) {
+                Role role = roleServiceGenerate.selectById(Long.parseLong(roleList[i]));
+                String[] permissionList = role.getPermissions().split(",");
+                for (String permisionID : permissionList) {
+                    permissionIds.add(Long.parseLong(permisionID));
+                }
+            }
 
-         for(Permission permission:permissions){
-             if(permissionIds.contains(permission.getId())){
-                 authorizationInfo.addStringPermission(permission.getUrl());
-             }
-         }
+            for (Permission permission : permissions) {
+                if (permissionIds.contains(permission.getId())) {
+                    authorizationInfo.addStringPermission(permission.getUrl());
+                }
+            }
+        }else{
+            System.out.println("无权限");
+        }
 
         return authorizationInfo;
 
@@ -80,26 +88,29 @@ public class ShiroRealm extends AuthorizingRealm {
 
         EntityWrapper<User> wrapper=new EntityWrapper<>();
         wrapper.eq("account",token.getUsername());
-        try {
-            System.out.println("realm:"+token.getUsername());
-            List<User> list=userServiceGenerate.selectList(wrapper);
-            System.out.println(list.get(0));
-            User user=list.get(0);
-            System.out.println(user.getAccount()+",,"+user.getPassword());
-               if(user.getPassword().equals(token.getPassword())) {
-                   AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(token.getUsername(), token.getPassword(), this.getName());
-                   System.out.println(token.getUsername());
+
+             User user= null;
+             user=userServiceGenerate.selectOne(wrapper);
+        System.out.println(user==null);
+            if(user!=null){
+
+
+                   AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getUsername());
+                   this.setSession("currentUser",user);
                    return authenticationInfo;
-               }
+               }else{
+                return  null;
 
+            }
 
-        }catch (Exception e){
-
+    }
+    private void setSession(Object key,Object value){
+        Subject currentUser= SecurityUtils.getSubject();
+        if(currentUser!=null){
+           Session session=currentUser.getSession();
+            if(session!=null){
+                session.setAttribute(key,value);
+            }
         }
-
-
-
-
-        return  null;
     }
 }

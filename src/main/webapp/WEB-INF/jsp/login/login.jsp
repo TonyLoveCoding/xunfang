@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--
@@ -15,6 +14,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！确保支持响应式布局 -->
+    <title>Bootstrap</title>
+    <!-- Jquery -->
+    <script src="/assets/jquery/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <!-- Bootstrap -->
+    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
 </head >
 
 <body >
@@ -27,11 +34,11 @@
         </div>
         <div class="col-md-4 column  form-box">
             <h3 class="cursive-font text-center">权限系统</h3>
-            <form class="form-horizontal"  action="/login/login" method="POST">
+            <form class="form-horizontal"  action="/login/login" method="post">
                 <div class="form-group">
                     <label for="id" class="col-sm-2 control-label">账号</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="id" name="account" placeholder="输入你的账户1"/>
+                        <input type="text" class="form-control" id="id" name="account" placeholder="输入你的账户"/>
                     </div>
                 </div>
                 <div class="form-group" method="post">

@@ -3,6 +3,7 @@ package team.etop.xunfang.user.web;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import team.etop.xunfang.common.bean.EstateJson;
-import team.etop.xunfang.common.bean.PageInfo;
-import team.etop.xunfang.common.bean.Result;
-import team.etop.xunfang.common.bean.RoleJson;
+import team.etop.xunfang.common.bean.*;
 import team.etop.xunfang.modules.po.Estate;
 import team.etop.xunfang.modules.po.Role;
 
@@ -44,6 +42,7 @@ public class UserController{
     @Autowired
     private EstateServiceGenerate estateServiceGenerate;
 
+    @RequiresPermissions("user/userList")
     @RequestMapping("/userList")
     public ModelAndView userManagement(@RequestParam(value = "pn",defaultValue ="1")int pageNum,
                                        @RequestParam(value = "status",defaultValue = "1")Integer status) {
@@ -103,7 +102,7 @@ public class UserController{
     }
 
 
-
+@RequiresPermissions("user/addUser")
 @RequestMapping("/addUser")
 public ModelAndView addUser(@RequestParam(value ="account") String account,
                              @RequestParam(value = "name") String name,
@@ -135,7 +134,7 @@ public ModelAndView addUser(@RequestParam(value ="account") String account,
     return modelAndView;
 }
 
-
+@RequiresPermissions("user/deleteUser")
 @RequestMapping("/deleteUser")
 public ModelAndView deleteUser(@RequestParam(value = "userId")Long userId){
     Result result=new Result();
@@ -150,6 +149,7 @@ public ModelAndView deleteUser(@RequestParam(value = "userId")Long userId){
 
     return  modelAndView;
 }
+@RequiresPermissions("user/updateUser")
 @RequestMapping("/updateUser")
 public ModelAndView updateUser(@RequestParam(value="userId")Long userId,
                          @RequestParam(value = "name")String name,
@@ -159,6 +159,7 @@ public ModelAndView updateUser(@RequestParam(value="userId")Long userId,
     System.out.println(userId+","+name+","+password+","+checkPwd);
 
     Result result=new Result();
+    System.out.println("userID："+userId);
     User user=userServiceGenerate.selectById(userId);
     System.out.println(user.toString());
     user.setUsername(name);
@@ -177,6 +178,7 @@ public ModelAndView updateUser(@RequestParam(value="userId")Long userId,
     return modelAndView;
 }
 
+@RequiresPermissions("user/findUser")
 @RequestMapping("/findUser")
 public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pageNum,
                              @RequestParam(value = "name")String name,
@@ -250,6 +252,7 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
 
     @ResponseBody
     @RequestMapping("/getUserRoleJson")
+    @RequiresPermissions("user/findUserRole")
     public Result getUserRoleJson(@RequestParam(value = "ID") Long ID) throws Exception{
 
           Result result =new Result();
@@ -292,12 +295,16 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
 
     @ResponseBody
     @RequestMapping("/findEstatesList")
+    @RequiresPermissions("user/findEstatesList")
     public Result findEstatesListJson(@RequestParam(value = "ID") Long ID) throws Exception{
         Result result =new Result();
-        System.out.println(ID);
+        System.out.println("2    "+ID);
         User user=userServiceGenerate.selectById(ID);
+        String estateString;
 
-        String estateString=user.getEstatesRelevance();
+       estateString=user.getEstatesRelevance();
+        System.out.println(user.getEstatesRelevance());
+        System.out.println(user.toString());
 
         if(estateString==null){
             System.out.println("该用户无楼盘");
@@ -332,6 +339,7 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
     }
 
     @RequestMapping("/updateUserRole")
+    @RequiresPermissions("user/updateUserRole")
     public ModelAndView updateUserRole(HttpServletRequest request){
         System.out.println("进入");
         System.out.println(request.getParameter("userId"));
@@ -366,7 +374,8 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
         System.out.println(ID);
         System.out.println("findUserOne");
         User user=userServiceGenerate.selectById(ID);
-        result.add("user",user);
+        UserJson userJson=new UserJson(user);
+        result.add("user",userJson);
         result.setSuccess(true);
         result.setMsg("成功");
         return result;

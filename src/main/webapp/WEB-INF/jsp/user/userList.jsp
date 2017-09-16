@@ -1,4 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: ZYZ
@@ -81,7 +83,6 @@
                 type: "GET",
                 success: function (result) {
                     if (result.success) {
-                       alert(result.msg);
                         var roleList = result.map.roleJsonList;
                         $("#findUserRole").empty();
 
@@ -137,9 +138,7 @@
                         });
                     }
                     else {
-                        alert(result.msg+"a");
                         var estateString=result.msg;
-                        alert(estateString);
                         $("#findEstates").append(estateString);
                     }
                 }
@@ -155,6 +154,7 @@
                 type: "GET",
                 success: function (result) {
                     if (result.success) {
+
                         var user = result.map.user;
                         var updateUserString='<h3>账号：'+user.account+'</h3>';
                         $("#updateUserMsg").append(updateUserString);
@@ -183,9 +183,7 @@
 
                     }
                     else {
-                        alert(result.msg+"a");
                         var estateString=result.msg;
-                        alert(estateString);
                         $("#findEstates").append(estateString);
                     }
                 }
@@ -197,10 +195,8 @@
             $("#deleteUser").empty();
 //           alert(ID);
             var deteleUserString='<h1 class=\"text-center\"> 确认删除？</h1>';
-            alert(deteleUserString);
             $("#deleteUser").append(deteleUserString);
             var deteleUserString='<input type="hidden" name="userId" value="'+ID+'">';
-            alert(deteleUserString);
             $("#deleteUser").append(deteleUserString);
 
         });
@@ -246,7 +242,7 @@
                 <thead>
                 <tr>
 
-
+                      <shiro:hasPermission name="user/findUser">
                     <form class="form-search" method="post" action="/user/findUser" name="form1">
                         <input class="input-medium search-query" type="text" name="name"/>
                         <input type="radio" name ="condition" value="0" checked> 按账号查找
@@ -254,7 +250,10 @@
 
                         <button type="submit" class="btn btn-success">查找用户</button>
                     </form>
+                      </shiro:hasPermission>
+                    <shiro:hasPermission name="user/addUser">
                     <a class="btn btn-info" data-target="#addUser" data-toggle="modal" href="">添加用户</a>
+                    </shiro:hasPermission>
 
                 </tr>
 
@@ -403,7 +402,9 @@
                         <th>${user.status }</th>
                         <%--<th>${user.estatesRelevance }</th>--%>
                             <%--可做成按钮，进行楼盘管理--%>
+                        <shiro:hasPermission name="user/findUserRole">
                         <td><a class=" btn btn-info findUserRoleBtn" data-target="#findUserRoleModel" data-toggle="modal" href="" id="${user.id}">查看用户类型</a></td>
+                        </shiro:hasPermission>
                             <%--&lt;%&ndash;查看用户角色类型模态框&ndash;%&gt;--%>
 
                         <%--<div id="findUserRole" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
@@ -434,8 +435,9 @@
                         <%--</div>--%>
 
                             <%--&lt;%&ndash;查看用户类型模态框结束&ndash;%&gt;--%>
-
+                        <shiro:hasPermission name="user/findEstatesList">
                         <td><a class=" btn btn-info estateBtn" data-target="#findEstatesList" data-toggle="modal" href="" id="${user.id}">查看楼盘</a></td>
+                        </shiro:hasPermission>
                             <%--&lt;%&ndash;查看樓盤模态框&ndash;%&gt;--%>
 
                         <%--<div id="findEstatesList" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
@@ -467,7 +469,10 @@
 
                             <%--&lt;%&ndash;查看樓盤模态框结束&ndash;%&gt;--%>
 
+                        <shiro:hasPermission name="user/updateUser">
+
                         <td><a class="btn btn-success updateUserBtn" data-target="#updateUser" data-toggle="modal" id="${user.id}">修改</a></td>
+                        </shiro:hasPermission>
                             <%--<td><a class="btn btn-danger" data-target="#deleteUser" data-toggle="modal" href="" method="post">删除</a></td>--%>
                             <%--<td><a class="btn btn-info" data-target="#updateUserRole" data-toggle="modal"--%>
                             <%--href="">分配角色</a></td>--%>
@@ -522,9 +527,9 @@
                             <%--</div>--%>
                         <%--</div>--%>
                             <%--&lt;%&ndash;修改用户模态框结束&ndash;%&gt;--%>
-
+                       <shiro:hasPermission name="user/deleteUser">
                         <td><a class="btn btn-danger deteleUserBtn" data-target="#deleteUserById" data-toggle="modal" href="" method="post" id="${user.id}">删除</a></td>
-
+                       </shiro:hasPermission>
                             <%--&lt;%&ndash;删除用户模态框&ndash;%&gt;--%>
                         <%--<div id="deleteUser${user.account}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
                             <%--<div class="form-wrap">--%>
@@ -556,9 +561,9 @@
                         <%--</div>--%>
                             <%--&lt;%&ndash;删除用户模态框结束&ndash;%&gt;--%>
 
-
+                        <shiro:hasPermission name="user/updateUserRole">
                         <td><a class=" btn btn-info roleBtn" data-target="#updateUserRole" data-toggle="modal" href="" id="${user.id}" value="${user}">分配角色</a></td>
-
+                        </shiro:hasPermission>
                             <%--&lt;%&ndash;分配角色模态框&ndash;%&gt;--%>
                         <%--<div id="updateUserRole" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
                             <%--<div class="form-wrap">--%>
@@ -805,13 +810,13 @@
                         notEmpty: {
                             message: '账号不能为空'
                         },
-                        remote: {
-                            url: 'user/accountCheck',
-                            message: '用户已存在',
-                            delay: 5000,
-                            type: 'POST',
-                            dataType: 'json'
-                        }
+//                        remote: {
+//                            url: 'user/accountCheck',
+//                            message: '用户已存在',
+//                            delay: 5000,
+//                            type: 'POST',
+//                            dataType: 'json'
+//                        }
                     }
                 },
                 name: {
@@ -847,7 +852,6 @@
         var y = $('#form5').bootstrapValidator({
             message: 'This value is not valid',
             fields: {
-
                 name: {
                     validators: {
                         notEmpty: {

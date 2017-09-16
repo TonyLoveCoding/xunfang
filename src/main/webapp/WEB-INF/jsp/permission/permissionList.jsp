@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
 
 <head>
@@ -146,7 +147,6 @@
         var confirmVal=false;
         if(confirmFlag){
             var ID = treeNode.id;
-            alert(ID);
             $.ajax({
                 async: false,
                 data: "ID=" + ID,
@@ -176,7 +176,6 @@
     }
 
     function beforeRename(treeId, treeNode, newName) {//更新节点名称数据之前的事件回调函数，并且根据返回值确定是否允许更改名称的操作
-        alert(newName);
         if (newName.length == 0) {
               alert("请输入名称.");
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
@@ -192,7 +191,6 @@
 //        var data={id:treeNode.id,pid:treeNode.pId,name:treeNode.name};
         var ID = new Array();
         ID.push(treeNode.id);
-
         ID.push(treeNode.pId);
         ID.push(treeNode.name);
         alert(treeNode.id);
@@ -220,7 +218,9 @@
 
     var newCount = 1;
 
+
     function addHoverDom(treeId, treeNode) {//用于当鼠标移动到节点上时，显示用户自定义控件
+        <shiro:hasPermission name="permission/addPermission">
         var sObj = $("#" + treeNode.tId + "_span");
         if (treeNode.editNameFlag || $("#addBtn_"+treeNode.tId).length>0) return;
         var addStr = "<span class='button add' id='addBtn_" + treeNode.tId
@@ -228,6 +228,7 @@
         sObj.after(addStr);
 
         var btn = $("#addBtn_"+treeNode.tId);
+        </shiro:hasPermission>
 
         if (btn) btn.bind("click", function(){
             var zTree = $.fn.zTree.getZTreeObj("treeDemo");
@@ -258,8 +259,10 @@
             return false;
         });
     }
+
     function setRemoveBtn(treeId, treeNode) {//父分类去掉删除功能
-        return !treeNode.isParent;}
+        return !treeNode.isParent;
+    }
 
     function removeHoverDom(treeId, treeNode) {
         $("#addBtn_"+treeNode.tId).unbind().remove();

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
 <head>
     <title>Title</title>
@@ -29,11 +30,9 @@
             $("#deleteRole").empty();
 //           alert(ID);
             var deleteRoleString='<h1 class=\"text-center\"> 确认删除？</h1>';
-            alert(deleteRoleString);
             $("#deleteRole").append(deleteRoleString);
 
             var deleteRoleString='<input type="hidden" name="roleId" value="'+ID+'">';
-            alert(deleteRoleString);
             $("#deleteRole").append(deleteRoleString);
 
         });
@@ -184,7 +183,6 @@
                     else {
                         $("#getTree").empty();
                         var permissionString=result.msg;
-                        alert(permissionString);
                         $("#getTree").append(permissionString);
                     }
                 }
@@ -214,9 +212,7 @@
                         $("#updateRole").append(updateRoleString);
                     }
                     else {
-                        alert(result.msg+"a");
                         var estateString=result.msg;
-                        alert(estateString);
                         $("#findEstates").append(estateString);
                     }
                 }
@@ -248,13 +244,16 @@
                 <thead>
                 <tr>
 
-
+                  <shiro:hasPermission name="role/findRole">
                     <form class="form-search" method="post" action="/role/findRoleByName" >
                         <input class="input-medium search-query" type="text" name="name"/>
 
                         <button type="submit" class="btn">查找角色</button>
                     </form>
+                  </shiro:hasPermission>
+                    <shiro:hasPermission name="role/addRole">
                     <a class="btn btn-success" data-target="#addRole" data-toggle="modal" href="">添加角色</a>
+                    </shiro:hasPermission>
 
 
                 </tr>
@@ -378,7 +377,10 @@
                         <th>${role.updatetime}</th>
                         <th>${role.status}</th>
 
+                        <shiro:hasPermission name="role/getRoleTree">
+
                         <td><a class=" btn btn-info getRolePermissionBtn" data-target="#findPermission" data-toggle="modal" href="" id="${role.id}">查看权限</a></td>
+                        </shiro:hasPermission>
                             <%--&lt;%&ndash;查看权限模态框&ndash;%&gt;--%>
 
                         <%--<div id="findPermission" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
@@ -408,9 +410,10 @@
                         <%--</div>--%>
 
                             <%--&lt;%&ndash;查看权限模态框结束&ndash;%&gt;--%>
+                        <shiro:hasPermission name="role/updateRole">
 
                         <td><a class="btn btn-success updateRoleBtn" data-target="#update" data-toggle="modal" href="" id="${role.id}">修改</a></td>
-
+                        </shiro:hasPermission>
                         <%--&lt;%&ndash;修改角色模态框&ndash;%&gt;--%>
                         <%--<div id="update" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
                             <%--<div class="form-wrap">--%>
@@ -451,9 +454,9 @@
                       <%--&lt;%&ndash;修改角色模态框结束&ndash;%&gt;--%>
 
 
-
+                       <shiro:hasPermission name="role/deleteRole">
                         <td><a class="btn btn-danger deleteRoleBtn" data-target="#deleteRoleById" data-toggle="modal" id ="${role.id}" href="" method="post">删除</a></td>
-
+                        </shiro:hasPermission>
                         <%--&lt;%&ndash;删除角色模态框&ndash;%&gt;--%>
                         <%--<div id="deleteRole" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
                             <%--<div class="form-wrap">--%>
@@ -488,8 +491,10 @@
                         <%--</div>--%>
                         <%--&lt;%&ndash;删除角色模态框结束&ndash;%&gt;--%>
 
-                        <td><a class="btn btn-info updateRolePermissionBtn" data-target="#updateRolePermission" id="${role.id}" data-toggle="modal" href="">分配权限</a></td>
+                        <shiro:hasPermission name="role/updateRolePermission">
 
+                        <td><a class="btn btn-info updateRolePermissionBtn" data-target="#updateRolePermission" id="${role.id}" data-toggle="modal" href="">分配权限</a></td>
+                        </shiro:hasPermission>
                         <%--&lt;%&ndash;分配权限模态框&ndash;%&gt;--%>
                         <%--<div id="updateRolePermission${role.id}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
                             <%--<div class="form-wrap">--%>

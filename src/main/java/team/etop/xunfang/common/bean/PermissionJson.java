@@ -8,6 +8,8 @@ import java.util.Date;
 
 /**
  * Created by ZYZ on 2017/9/8
+ * In order to resolve data type mismatch
+
  */
 public class PermissionJson {
     private String id;

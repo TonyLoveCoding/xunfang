@@ -1,6 +1,7 @@
 package team.etop.xunfang.permission.web;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +29,7 @@ public class PermissionController {
     @Autowired
     private PermissionServiceGenerate permissionServiceGenerate;
 
+    @RequiresPermissions("permission/permissionList")
     @RequestMapping("/permissionList")
     public ModelAndView getPermissionList(HttpServletRequest request){
         ModelAndView modelAndView=new ModelAndView();
@@ -53,6 +55,7 @@ public class PermissionController {
 
     @ResponseBody
     @RequestMapping("/deletePermission")
+    @RequiresPermissions("permission/deletePermission")
     public Result deletePermission(@RequestParam(value="ID")Long ID){
         Result result=new Result();
         System.out.println("删除的ID:"+ID);
@@ -63,6 +66,7 @@ public class PermissionController {
     }
     @ResponseBody
     @RequestMapping("/updatePermissionName")
+    @RequiresPermissions("permission/updatePermissionName")
     public Result permissionReName (@RequestParam(value = "ID")List<String> ID)throws Exception{
         Result result=new Result();
        for(int i=0;i<ID.size();i++){
@@ -120,6 +124,7 @@ public class PermissionController {
     }
     @ResponseBody
     @RequestMapping("/getPermissionMsg")
+    @RequiresPermissions("permission/getPermissionMsg")
     public Result getPermissionMsg(@RequestParam(value = "ID")Long ID){
         Result result=new Result();
         Permission permission1=permissionServiceGenerate.selectById(ID);
@@ -131,6 +136,7 @@ public class PermissionController {
         return  result;
     }
     @RequestMapping("/updatePermission")
+    @RequiresPermissions("permission/updatePermission")
     public ModelAndView updatePermission(@RequestParam(value="permissionId")Long Id,
                                          @RequestParam(value="name")String name,
                                          @RequestParam(value="description")String description,
