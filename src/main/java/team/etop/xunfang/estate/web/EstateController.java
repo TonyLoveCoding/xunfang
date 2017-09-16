@@ -292,9 +292,8 @@ public class EstateController {
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public ModelAndView addEstate(EstateDto estateDto) throws Exception{
-//        System.out.println(estateDto);
         ChangeType changeType=new ChangeType();
-        Estate estate=changeType.change(estateDto);
+        Estate estate=changeType.Add_Change(estateDto);
         estate.setStatus(0);
         estate.setVisitTimes((long)0);
         estate.setTurnover(0);

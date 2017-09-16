@@ -1,5 +1,6 @@
 package team.etop.xunfang.common.change;
 
+import team.etop.xunfang.common.modifyTime.ModifyTime;
 import team.etop.xunfang.estate.dto.EstateDto;
 import team.etop.xunfang.modules.po.Estate;
 
@@ -29,8 +30,6 @@ public class ChangeType {
         estateDto.setDeveloper(estate.getDeveloper());
         estateDto.setSaleStatus(estate.getSaleStatus());
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        String date=simpleDateFormat.format(estate.getFirstDelivery());
-        System.out.println(date);
         estateDto.setFirstDelivery(simpleDateFormat.format(estate.getFirstDelivery()));
         estateDto.setLatestOpening(simpleDateFormat.format(estate.getLatestOpening()));
         estateDto.setPropertyRights(estate.getPropertyRights());
@@ -61,12 +60,25 @@ public class ChangeType {
         return estateDto;
     }
 
-    public Estate change(EstateDto estateDto) throws Exception{
+    public Estate Add_Change(EstateDto estateDto) throws Exception{
+        Estate estate=change(estateDto);
         Date date=new Date();
         long times=date.getTime();
         SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        times=(times + 8 * 60 * 60 * 1000);
         String d=format.format(times);
         date=format.parse(d);
+        estate.setCreateTime(date);
+        return estate;
+    }
+
+    public Estate change(EstateDto estateDto) throws Exception{
+//        Date date=new Date();
+//        long times=date.getTime();
+//        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        times=(times + 8 * 60 * 60 * 1000);
+//        String d=format.format(times);
+//        date=format.parse(d);
         Estate estate=new Estate();
         estate.setId(estateDto.getId());
         estate.setStatus(estateDto.getStatus());
@@ -83,11 +95,11 @@ public class ChangeType {
         estate.setProperty(estateDto.getProperty());
         estate.setDeveloper(estateDto.getDeveloper());
         estate.setSaleStatus(estateDto.getSaleStatus());
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        estate.setFirstDelivery(simpleDateFormat.parse(estateDto.getFirstDelivery()));
-        estate.setLatestOpening(simpleDateFormat.parse(estateDto.getLatestOpening()));
+//        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        estate.setFirstDelivery(new ModifyTime().modify(estateDto.getFirstDelivery()));
+        estate.setLatestOpening(new ModifyTime().modify(estateDto.getLatestOpening()));
         estate.setPropertyRights(estateDto.getPropertyRights());
-        estate.setTakeTime(simpleDateFormat.parse(estateDto.getTakeTime()));
+        estate.setTakeTime(new ModifyTime().modify(estateDto.getTakeTime()));
         estate.setCompany(estateDto.getCompany());
         estate.setPropertyCost(estateDto.getPropertyCost());
         estate.setPowerType(estateDto.getPowerType());
@@ -95,7 +107,6 @@ public class ChangeType {
         estate.setParkingSpaces(estateDto.getParkingSpaces());
         estate.setDecoration(estateDto.getDecoration());
         estate.setEstateInformation(estateDto.getEstateInformation());
-        estate.setCreateTime(date);
         estate.setPlotRatio(estateDto.getPlotRatio());
         estate.setArea(estateDto.getArea());
         estate.setFeature(estateDto.getFeature());

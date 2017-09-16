@@ -13,7 +13,8 @@
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src="assets/uplodephoto/js/jquery-1.8.3.js"></script>
-    <link rel="stylesheet" href="assets/estate/update/update.css">
+    <link rel="stylesheet" href="assets/estate/update/css/update.css">
+    <link rel="stylesheet" href="assets/estate/update/css/bootstrapValidator.css">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
@@ -22,6 +23,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
     <script src="assets/estate/update/update.js"></script>
+    <script src="assets/js/bootstrapValidator.js"></script>
 
 </head>
 <body style="height: auto">
