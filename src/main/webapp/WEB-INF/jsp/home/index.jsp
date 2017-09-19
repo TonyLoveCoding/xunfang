@@ -19,241 +19,297 @@
     <link rel="stylesheet" href="/assets/home/index/css/header.css">
 </head>
 <body>
-<div class="header-hover">
-    <div class="header-hover-wrap">
-        <ul class="menu">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="home#">寻房网</a>
-            </div>
 
-            <div class="collapse navbar-collapse" >
+<%--条件搜索的提交表单--%>
+<form action="/home/search" method="get" id="form_search">
+    <input id="inp_hid_pn" type="hidden" name="pn" value="1">
+    <input id="inp_hid_keyword" type="hidden" name="keyWord" value="">
+    <input id="inp_hid_saleStatus" type="hidden" name="saleStatus" value="none">
+    <input id="inp_hid_location" type="hidden" name="location" value="none">
+    <input id="inp_hid_totalPrices" type="hidden" name="totalPrices" value="none">
+    <input id="inp_hid_type" type="hidden" name="type" value="none">
+    <input id="inp_hid_houseType" type="hidden" name="houseType" value="none">
+    <input id="inp_hid_feature" type="hidden" name="feature" value="none">
+    <input id="inp_hid_unitPrice" type="hidden" name="unitPrice" value="none">
+    <input id="inp_hid_area" type="hidden" name="area" value="none">
+</form>
 
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" />
-                    </div> <button type="submit" class="btn btn-default"><span class="ico ico-search"></span>找房</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
 
-                    <li>
-                        <a href="home#"><b>热搜词：</b></a>
-                    </li>
-                    <li>
-                        <a href="home#">实地蔷薇国际</a>
-                    </li>
-
-                    <li>
-                        <a href="home#">万科幸福誉</a>
-                    </li>
-                    <li>
-                        <a href="home#">南沙保利城</a>
-                    </li>
-                    <li>
-                        <a href="home#">富力伯爵山</a>
-                    </li>
-                    <li>
-                        <a href="home#">佳兆业城市广场</a>
-                    </li>
-                </ul>
-            </div>
-        </ul>
-    </div>
-</div>
-
-<div class="container ">
-    <div class="row clearfix">
-        <div class="col-md-12 column">
-            <nav class="navbar navbar-default " role="navigation">
+<div class="container-fluid">
+    <%--浮动框的设置--%>
+    <div class="header-hover">
+        <div class="header-hover-wrap">
+            <ul class="menu">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="home#">寻房网</a>
+                    <a href="home">
+                        <img style="padding-top: 14px" src="/assets/home/index/image/logo.png">
+                    </a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="collapse navbar-collapse" >
 
-                    <form class="navbar-form navbar-left" role="search">
+                    <div class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" />
-                        </div> <button type="submit" class="btn btn-default"><span class="ico ico-search"></span>找房</button>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
+                            <input id="search-input-hover" type="text" class="form-control"/>
+                        </div>
+                        <button id="search-button-hover" type="submit" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-search"></span>找房
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right"  style="padding-top: 8px">
 
                         <li>
-                            <a href="home#">热搜词：</a>
-                        </li>
-                        <li>
-                            <a href="home#">实地蔷薇国际</a>
+                            <a href="home"><b>热搜词：</b></a>
                         </li>
 
-                        <li>
-                            <a href="home#">万科幸福誉</a>
-                        </li>
-                        <li>
-                            <a href="home#">南沙保利城</a>
-                        </li>
-                        <li>
-                            <a href="home#">富力伯爵山</a>
-                        </li>
-                        <li>
-                            <a href="home#">佳兆业城市广场</a>
-                        </li>
+                        <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
+                            <li>
+                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
+            </ul>
+        </div>
+    </div>
 
+
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <%--顶部导航栏设置--%>
+            <nav class="navbar navbar-default " role="navigation">
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="navbar-form navbar-left" role="search">
+                        <a href="home">
+                            <img src="/assets/home/index/image/logo.png">
+                        </a>
+                        <div class="form-group">
+                            <input id="search-input" type="text" class="form-control"  />
+                        </div>
+                        <button id="search-button" class="btn btn-danger" type="button">
+                            <span class="glyphicon glyphicon-search"></span> 找房
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
+                        </li>
+
+                        <c:forEach begin="0" end="4" items="${RecommendEstate}" var="estate">
+                            <li>
+                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
             </nav>
-            <div class="row clearfix ">
+            <%--左侧条件搜索的设置--%>
+            <div class="row clearfix">
                 <div class="col-md-3 column">
                     <ul class="list-group search-terms">
-                        <li class="search-terms-item hoverDiv">
-                            <h3><a href="home#">区域</a></h3>
-                            <ul class="list-inline search-terms-list">
-                                <li><a href="home#">南沙</a></li>
-                                <li><a href="home#">黄埔</a></li>
-                                <li><a href="home#">花都</a></li>
-                                <li><a href="home#">增城</a></li>
+                        <li class="search-terms-item item-location">
+                            <div class="search-terms-title">
+                                <a href="/home/search">位置</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-location">
+                                <c:forEach var="location" items="${locations}" begin="1" end="4">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${location.code}" >
+                                                ${location.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
 
                             <div class="hoverBlock">
-                                <h3>所有区域</h3>
+                                <h3>所有位置</h3>
                                 <div class="condition-all">
-                                    <ul class="condition-col">
-                                        <a href="home#">不限</a>
-                                        <li><a href="home#">南沙</a></li>
-                                        <li><a href="home#">黄埔</a></li>
-                                        <li><a href="home#">花都</a></li>
-                                        <li><a href="home#">增城</a></li>
-                                        <li><a href="home#">番禺</a></li>
-                                        <li><a href="home#">白云</a></li>
-                                        <li><a href="home#">天河</a></li>
-                                        <li><a href="home#">荔湾</a></li>
-                                        <li><a href="home#">海珠</a></li>
-                                        <li><a href="home#">从化</a></li>
-                                        <li><a href="home#">越秀</a></li>
-                                        <li><a href="home#">广州周边</a></li>
+                                    <ul class="condition-col select-location">
+                                        <c:forEach var="location" items="${locations}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${location.code}" >
+                                                        ${location.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
 
                         </li>
 
-
-                        <li class="search-terms-item">
-                            <h3><a href="home#">地铁房</a></h3>
-                            <ul class="list-inline search-terms-list">
-                                <li><a href="home#">1号线</a></li>
-                                <li><a href="home#">3号线</a></li>
-                                <li><a href="home#">5号线</a></li>
-                                <li><a href="home#">APM线</a></li>
+                        <li class="search-terms-item item-area">
+                            <div class="search-terms-title">
+                                <a href="/home/search">面积</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-area">
+                                <c:forEach var="area" items="${areas}" begin="2" end="3">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${area.code}" >
+                                                ${area.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                             <div class="hoverBlock">
-                                <h3>所有地铁线路</h3>
+                                <h3>所有面积</h3>
                                 <div class="condition-all">
-                                    <ul class="condition-col">
-                                        <a href="home#">不限</a>
-                                        <li><a href="home#">1号线</a></li>
-                                        <li><a href="home#">2号线</a></li>
-                                        <li><a href="home#">3号线</a></li>
-                                        <li><a href="home#">4号线</a></li>
-                                        <li><a href="home#">5号线</a></li>
-                                        <li><a href="home#">6号线</a></li>
-                                        <li><a href="home#">7号线</a></li>
-                                        <li><a href="home#">8号线</a></li>
-                                        <li><a href="home#">APM线</a></li>
-                                        <li><a href="home#">广佛线</a></li>
+                                    <ul class="condition-col select-area">
+                                        <c:forEach var="area" items="${areas}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${area.code}" >
+                                                        ${area.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
-
                         </li>
 
-                        <li class="search-terms-item">
-                            <h3><a href="home#">户型</a></h3>
-                            <ul class="list-inline search-terms-list">
-                                <li><a href="home#">一居</a></li>
-                                <li><a href="home#">二居</a></li>
-                                <li><a href="home#">三居</a></li>
-                                <li><a href="home#">四居</a></li>
+                        <li class="search-terms-item item-type">
+                            <div class="search-terms-title">
+                                <a href="/home/search">类型</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-type">
+                                <c:forEach var="type" items="${types}" begin="2" end="3">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${type.code}" >
+                                                ${type.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
+                            <div class="hoverBlock">
+                                <h3>所有类型</h3>
+                                <div class="condition-all">
+                                    <ul class="condition-col select-type">
+                                        <c:forEach var="type" items="${types}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${type.code}" >
+                                                        ${type.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
 
+                        <li class="search-terms-item item-houseType" >
+                            <div class="search-terms-title">
+                                <a href="/home/search">户型</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-houseType">
+                                <c:forEach var="houseType" items="${houseTypes}" begin="1" end="4">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${houseType.code}" >
+                                                ${houseType.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
                             <div class="hoverBlock">
                                 <h3>所有户型</h3>
-                                <div class="condition-all">
-                                    <ul class="condition-col">
-                                        <a href="home#">不限</a>
-                                        <li><a href="home#">一居</a></li>
-                                        <li><a href="home#">二居</a></li>
-                                        <li><a href="home#">三居</a></li>
-                                        <li><a href="home#">四居</a></li>
-                                        <li><a href="home#">五居及以上</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </li>
-
-                        <li class="search-terms-item item-price">
-                            <h3><a href="home#">价格</a></h3>
-                            <ul class="list-inline search-terms-list">
-                                <li><a href="home#"><1万/平方米</a></li>
-                                <li><a href="home#">1万-1万/平方米</a></li>
-                                <li><a href="home#">100-150万/套</a></li>
-                                <li><a href="home#">150-200万/套</a></li>
-                            </ul>
-
-                            <div class="hoverBlock condition-cols2">
-                                <h3>所有价格</h3>
                                 <div class="condition-all ">
-                                    <ul class="condition-col">
-                                        <li><b>单价:</b></li>
-                                        <a href="home#">不限</a>
-                                        <li><a href="home#"><1万</a></li>
-                                        <li><a href="home#">1万-1.5万</a></li>
-                                        <li><a href="home#">1.5万-2万</a></li>
-                                        <li><a href="home#">2万-2.5万</a></li>
-                                        <li><a href="home#">2.5万-3万</a></li>
-                                        <li><a href="home#">3万-4万</a></li>
-                                        <li><a href="home#">> 4万</a></li>
-
+                                    <ul class="condition-col select-houseType">
+                                        <c:forEach var="houseType" items="${houseTypes}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${houseType.code}" >
+                                                        ${houseType.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
-                                    <ul class="condition-col">
-                                        <li><b>总价:</b></li>
-                                        <a href="home#">不限</a>
-                                        <li><a href="home#"><100万</a></li>
-                                        <li><a href="home#">100-150万</a></li>
-                                        <li><a href="home#">150-200万</a></li>
-                                        <li><a href="home#">200-250万</a></li>
-                                        <li><a href="home#">250-300万</a></li>
-                                        <li><a href="home#">300-500万</a></li>
-                                        <li><a href="home#">500-800万</a></li>
-                                        <li><a href="home#">800-1000万</a></li>
-                                        <li><a href="home#">>1000万</a></li>
-                                    </ul>
-
                                 </div>
-
                             </div>
 
                         </li>
 
-                        <li class="search-terms-item">
-                            <h3><a href="home#">特色房</a></h3>
-                            <ul class="list-inline search-terms-list">
-                                <li><a href="home#">临地铁</a></li>
-                                <li><a href="home#">精装修</a></li>
-                                <li><a href="home#">现房</a></li>
-                                <li><a href="home#">小户型</a></li>
+                        <li class="search-terms-item item-unit-price">
+                            <div class="search-terms-title">
+                                <a href="/home/search">单价</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-unit-price">
+                                <c:forEach var="unit_price" items="${unit_prices}" begin="1" end="2">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${unit_price.code}" >
+                                                ${unit_price.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                            <div class="hoverBlock ">
+                                <h3>所有单价</h3>
+                                <div class="condition-all ">
+                                    <ul class="condition-col select-unit-price">
+                                        <c:forEach var="unit_price" items="${unit_prices}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${unit_price.code}" >
+                                                        ${unit_price.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="search-terms-item item-total-price">
+                            <div class="search-terms-title">
+                                <a href="/home/search">总价</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-total-prices">
+                                <c:forEach var="total_price" items="${total_pricess}" begin="1" end="2">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${total_price.code}" >
+                                                ${total_price.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                            <div class="hoverBlock ">
+                                <h3>所有总价</h3>
+                                <div class="condition-all ">
+                                    <ul class="condition-col select-total-prices">
+                                        <c:forEach var="total_price" items="${total_pricess}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${total_price.code}" >
+                                                        ${total_price.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="search-terms-item item-feature">
+                            <div class="search-terms-title">
+                                <a href="/home/search">特色房</a>
+                            </div>
+                            <ul class="list-inline search-terms-list select-feature">
+                                <c:forEach var="feature" items="${features}" begin="1" end="4">
+                                    <li>
+                                        <a href="javascript:void(0);" name="${feature.code}" >
+                                                ${feature.name}
+                                        </a>
+                                    </li>
+                                </c:forEach>
                             </ul>
 
                             <div class="hoverBlock">
                                 <h3>所有特色房</h3>
                                 <div class="condition-all">
-                                    <ul class="condition-col">
-                                        <a href="home#">不限</a>
-                                        <li><a href="home#">临地铁</a></li>
-                                        <li><a href="home#">精装修</a></li>
-                                        <li><a href="home#">现房</a></li>
-                                        <li><a href="home#">小户型</a></li>
-                                        <li><a href="home#">自由购</a></li>
-                                        <li><a href="home#">品牌地产</a></li>
+                                    <ul class="condition-col select-feature">
+                                        <c:forEach var="feature" items="${features}">
+                                            <li>
+                                                <a href="javascript:void(0);" name="${feature.code}" >
+                                                        ${feature.name}
+                                                </a>
+                                            </li>
+                                        </c:forEach>
                                     </ul>
                                 </div>
                             </div>
@@ -262,371 +318,87 @@
 
                     </ul>
                 </div>
+                <%--右侧轮播图的设置--%>
                 <div class="col-md-9 column">
-                    <div class="carousel slide" id="carousel-888301">
+                    <div class="carousel slide set_carousel" id="carousel-index">
                         <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#carousel-888301">
+                            <li class="active" data-slide-to="0" data-target="#carousel-index">
                             </li>
-                            <li data-slide-to="1" data-target="#carousel-888301">
+                            <li data-slide-to="1" data-target="#carousel-index">
                             </li>
-                            <li data-slide-to="2" data-target="#carousel-888301">
+                            <li data-slide-to="2" data-target="#carousel-index">
                             </li>
                         </ol>
-                        <div class="carousel-inner">
+                        <div class="carousel-inner carousel-image">
                             <div class="item active">
-                                <a href="/home/details">
-                                    <img alt="" src="/assets/home/index/image/default.jpg" />
+                                <a href="/home/details/${RecommendEstate.get(0).id}">
+                                    <img alt="" src="/assets/home/index/image/default.jpg"/>
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        1、实地蔷薇国际
+                                        1、${RecommendEstate.get(0).estateName}
                                     </h3>
                                 </div>
                             </div>
                             <div class="item">
-                                <a href="/home/details">
+                                <a href="/home/details/${RecommendEstate.get(1).id}">
                                     <img alt="" src="/assets/home/index/image/default1.jpg" />
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        2、富力伯爵山
+                                        2、${RecommendEstate.get(1).estateName}
                                     </h3>
                                 </div>
                             </div>
                             <div class="item">
-                                <a href="/home/details">
+                                <a href="/home/details/${RecommendEstate.get(2).id}">
                                     <img alt="" src="/assets/home/index/image/default2.jpg" />
                                 </a>
                                 <div class="carousel-caption carousel-title">
                                     <h3>
-                                        3、实地常春藤
+                                        3、${RecommendEstate.get(2).estateName}
                                     </h3>
                                 </div>
                             </div>
-                        </div> <a class="left carousel-control" href="#carousel-888301" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-888301" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                        </div>
+                        <a class="left carousel-control" href="#carousel-index" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-index" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
                     </div>
                 </div>
             </div>
 
+            <%--热门楼盘的设置--%>
             <div class="hot_bg">
 
                 <div class="row clearfix">
                     <div class="col-md-12 column">
                         <h3 class="text-center">
-                            本周高性价比楼盘TOP8
+                            <b>本周高性价比楼盘TOP8</b>
                         </h3>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <%--显示推荐楼盘的区域，具体代码在js文件中用ajxa实现--%>
+                <div id="RecommendedEstate_div" class="row">
                 </div>
             </div>
 
-
+            <%--最新楼盘的设置--%>
             <div class="hot_bg">
                 <div class="row clearfix">
                     <div class="col-md-12 column">
                         <h3 class="text-center">
-                            本周最新楼盘TOP8
+                            <b>本周最新楼盘TOP8</b>
                         </h3>
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="thumbnail hovereffect">
-                            <img class="img-responsive" src="/assets/home/index/image/example1.jpg" alt="">
-                            <a href="home/details">
-                                <div class="overlay">
-                                    <h2>实地蔷薇国际</h2>
-                                </div>
-                            </a>
-                            <div class="caption">
-                                <h3>
-                                    <a href="home/details">实地蔷薇国际</a>
-                                </h3>
-                                <p>
-                                    增城 | 建面: 85-117 m² | 157-216 万
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                <%--显示推荐楼盘的区域，具体代码在js文件中用ajxa实现--%>
+                <div id="LatestEstate_div" class="row">
                 </div>
             </div>
         </div>
@@ -634,4 +406,40 @@
 </div>
 
 </body>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <h6>Copyright &copy;易拓工作室</h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">关于我们</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">招聘信息</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">服务声明</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6><a href="javascript:void(0);">投诉反馈</a></h6>
+            </div>
+
+            <div class="col-sm-2">
+                <h6>本网站由易拓工作室制作</h6>
+            </div>
+        </div>
+        <div class="row col-sm-12">
+            <p class="text-center">
+                易拓工作室
+                ©2014-2017 rights reversed.
+            </p>
+        </div>
+    </div>
+</footer>
 </html>
