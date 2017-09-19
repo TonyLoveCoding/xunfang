@@ -96,7 +96,6 @@ $(document).ready(function(){
         $("#form_search").submit();
     }
 
-
 });
 
 //将推荐楼盘和最新楼盘系列用ajax方式取到数据并在各自的div中呈现

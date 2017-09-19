@@ -1,0 +1,69 @@
+	.header-hover {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background: #edeff1;
+		z-index: 101;
+	}
+	
+	.header-hover-wrap {
+		width: 1200px;
+		margin: 0 auto;
+		height: 50px;
+		line-height: 50px;
+		padding: 8px 0;
+	}  
+	
+	.header-hover .menu {
+		padding: 0 10px;
+	}
+	.menu li {
+		list-style-type:none;
+		font-size: 20px;
+		float: left;
+		margin-left: 1px; 
+	}
+	.menu li a{ 
+		color: #000;
+	}
+	.menu li a:hover {
+		text-decoration: none;
+		color: #0075c1;
+	}
+	
+	.header-hover .search {
+		float: left;
+		margin: 0 0 0 0;
+	}
+	.header-hover .search .ipt {
+		width: 180px;
+		height: 28px;
+		line-height: 28px;
+	}
+	.header-hover .search .btn{
+		height: 30px;
+		line-height: 30px;
+	}
+	.header-hover .hot-phone {
+		margin-right: 20px;
+	}
+	.header-hover .btn-reg {
+		height: 30px;
+		line-height: 30px;
+		margin-top: 5px;
+		border-radius: 2px;
+	}
+	.header-hover .disabled, .header-hover .disabled:hover {
+		color: #fff;
+		cursor: default;
+		background: #999;
+	}
+	.header-hover .online-ask .ico-server {
+		margin-top: 12px;
+	}
+	.header-hover .search .ico-search {
+		float: left;
+		margin: 8px 6px 0 0;
+	}

@@ -10,14 +10,14 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-08-15
+ * @since 2017-09-08
  */
 public class Role extends Model<Role> {
 
     private static final long serialVersionUID = 1L;
 
 	private Long id;
-	private String rolename;
+	private String roleName;
 	private String description;
 	private String permissions;
 	private Date updatetime;
@@ -34,11 +34,11 @@ public class Role extends Model<Role> {
 	}
 
 	public String getRoleName() {
-		return rolename;
+		return roleName;
 	}
 
 	public void setRoleName(String roleName) {
-		this.rolename = roleName;
+		this.roleName = roleName;
 	}
 
 	public String getDescription() {
@@ -90,7 +90,7 @@ public class Role extends Model<Role> {
 	public String toString() {
 		return "Role{" +
 			"id=" + id +
-			", roleName=" + rolename +
+			", roleName=" + roleName +
 			", description=" + description +
 			", permissions=" + permissions +
 			", updatetime=" + updatetime +

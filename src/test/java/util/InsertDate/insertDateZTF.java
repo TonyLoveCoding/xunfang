@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
 import team.etop.xunfang.modules.mapper.EstateMapperGenerate;
 import team.etop.xunfang.modules.po.Estate;
-import team.etop.xunfang.search.mapper.Search_DicMapper;
-import util.EstateUtil.getEstate;
+import team.etop.xunfang.search.mapper.DicMapper;
+import util.EstateUtil.getEstateZTF;
 
 import java.util.List;
 
@@ -24,10 +24,10 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/applicationContext.xml"})
-public class insertDate {
+public class insertDateZTF {
 
     @Autowired
-    Search_DicMapper search_DicMapper;
+    DicMapper search_DicMapper;
 
     @Autowired
     EffectPictureMapperGenerate effectPictureMapper;
@@ -35,16 +35,14 @@ public class insertDate {
     @Autowired
     EstateMapperGenerate estateMapper;
 
+    /**
+     * 插入数据用，默认10000条
+     */
     @Test
     public void insertData(){
-        for(int i=0;i<119;i++){
-            estateMapper.insert(getEstate.returnEstate(search_DicMapper,effectPictureMapper));
+        for(int i=0;i<10000;i++){
+            estateMapper.insert(getEstateZTF.returnEstate(search_DicMapper,effectPictureMapper));
         }
-        List<Estate> estates = estateMapper.selectList(null);
-        for(Estate estate:estates){
-            System.out.println(estate);
-        }
-
 
     }
 

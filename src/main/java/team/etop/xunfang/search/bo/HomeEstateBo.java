@@ -1,13 +1,9 @@
 package team.etop.xunfang.search.bo;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-
 /**
  * 前台主页推荐楼盘、最新楼盘Bo
  */
 public class HomeEstateBo {
-    @JsonSerialize(using=ToStringSerializer.class)
     private Long id;
     private String estateName;
     private String location;
