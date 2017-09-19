@@ -140,9 +140,10 @@
 
 .set_carousel{
 	/*padding-left: 0px;*/
-	/*height: 570px;*/
-	/*width: 1410px;*/
+	height: 560px;
+	width: 1400px;
 }
+
 
 /*首页特色图片浮动效果*/
 .hovereffect {
