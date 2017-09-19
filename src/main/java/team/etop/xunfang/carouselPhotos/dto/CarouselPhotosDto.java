@@ -10,6 +10,7 @@ public class CarouselPhotosDto {
     private String name;
     private String url;
     private Integer status;
+    private Long weight;
     private Date updatetime;
     private Date createtime;
 
@@ -75,6 +76,16 @@ public class CarouselPhotosDto {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+
+    @Override
+    public Long getWeight() {
+        return weight;
+    }
+
+    @Override
+    public void setWeight(Long weight) {
+        this.weight = weight;
     }
 
     @Override

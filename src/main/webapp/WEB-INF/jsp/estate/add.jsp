@@ -13,8 +13,8 @@
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src="assets/uplodephoto/js/jquery-1.8.3.js"></script>
-    <link rel="stylesheet" href="assets/estate/update/css/update.css">
-    <link rel="stylesheet" href="assets/estate/update/css/bootstrapValidator.css">
+    <link rel="stylesheet" href="assets/estate/add/css/add.css">
+    <link rel="stylesheet" href="assets/estate/add/css/bootstrapValidator.css">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
@@ -22,13 +22,13 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
-    <script src="assets/estate/update/update.js"></script>
+    <script src="assets/estate/add/add.js"></script>
     <script src="assets/js/bootstrapValidator.js"></script>
 
 </head>
 <body style="height: auto">
 <div  class="container-fluid">
-    <form id="form1" name="in_form" action="/estate/update" method="post" onsubmit="return update(this)">
+    <form id="form1" action="/estate/add" method="post" onsubmit="return update(this)">
         <div class="row">
             <div class="col-sm-12" style="padding-left: 0px">
                 <h3>基本信息</h3>
@@ -43,7 +43,7 @@
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="estateName" type="text" class="form-control" name="estateName" value="${EstateDto.estateName}" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="estateName" value="${EstateDto.estateName}" aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="estateAddress" type="text" class="form-control" name="estateAddress" value="${EstateDto.estateAddress}" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="estateAddress" value="${EstateDto.estateAddress}" aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
@@ -61,9 +61,9 @@
             <div class="col-sm-1" style="padding-left: 0px;padding-top: 10px">
                 <div style="font-size:15px">位置：</div>
             </div>
-            <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
+            <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
                 <div class="btn-group">
-                    <select id="location" name="location" value="${EstateDto.location}" class="btn btn-default dropdown-toggle">
+                    <select name="location" value="${EstateDto.location}" class="btn btn-default dropdown-toggle">
                         <c:forEach var="dl" items="${dic_location}">
                             <option value="${dl.name}" <c:if test="${dl.name.equals(EstateDto.location)}">selected</c:if>>${dl.name}</option>
                         </c:forEach>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="property" type="text" class="form-control" name="property" value="${EstateDto.property}" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" name="property" value="${EstateDto.property}" aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
                 <div class="btn-group">
-                    <select id="type" name="type" value="${EstateDto.type}" class="btn btn-default dropdown-toggle">
+                    <select name="type" value="${EstateDto.type}" class="btn btn-default dropdown-toggle">
                         <c:forEach var="dt" items="${dic_type}">
                             <option value="${dt.name}" <c:if test="${dt.name.equals(EstateDto.type)}">selected</c:if>>${dt.name}</option>
                         </c:forEach>
@@ -101,7 +101,7 @@
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="developer" type="text" class="form-control" name="developer" value="${EstateDto.developer}">
+                    <input type="text" class="form-control" name="developer" value="${EstateDto.developer}">
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="area" type="text" class="form-control" name="area" value="${EstateDto.area}">
+                    <input type="text" class="form-control" name="area" value="${EstateDto.area}">
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="maxPrice" type="text" class="form-control" name="maxPrice" value="${EstateDto.maxPrice}">
+                    <input type="text" class="form-control" name="maxPrice" value="${EstateDto.maxPrice}">
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
             </div>
             <div class="col-sm-7" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="minPrice" type="text" class="form-control" name="minPrice" value="${EstateDto.minPrice}">
+                    <input type="text" class="form-control" name="minPrice" value="${EstateDto.minPrice}">
                 </div>
             </div>
         </div>
@@ -151,7 +151,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="developerQuotes" type="text" class="form-control" name="developerQuotes" value="${EstateDto.developerQuotes}">
+                    <input type="text" class="form-control" name="developerQuotes" value="${EstateDto.developerQuotes}">
                 </div>
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
@@ -169,7 +169,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="propertyRights" type="text" class="form-control" name="propertyRights" value="${EstateDto.propertyRights}">
+                    <input type="text" class="form-control" name="propertyRights" value="${EstateDto.propertyRights}">
                 </div>
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
@@ -206,7 +206,7 @@
                 <div style="font-size:15px">销售状态：</div>
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <select id="saleStatus" name="saleStatus" value="${EstateDto.saleStatus}" class="selectpicker form-control" data-live-search="false">
+                <select name="saleStatus" value="${EstateDto.saleStatus}" class="selectpicker form-control" data-live-search="false">
                     <option value="0" <c:if test="${'0' eq EstateDto.saleStatus}">selected</c:if>>在售</option>
                     <option value="1" <c:if test="${'1' eq EstateDto.saleStatus}">selected</c:if>>待售</option>
                 </select>
@@ -228,7 +228,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="company" type="text" class="form-control" name="company" value="${EstateDto.company}">
+                    <input type="text" class="form-control" name="company" value="${EstateDto.company}">
                 </div>
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
@@ -236,7 +236,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="parkingSpaces" type="text" class="form-control" name="parkingSpaces" value="${EstateDto.parkingSpaces}">
+                    <input type="text" class="form-control" name="parkingSpaces" value="${EstateDto.parkingSpaces}">
                 </div>
             </div>
         </div>
@@ -246,7 +246,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="propertyCost" type="text" class="form-control" name="propertyCost" value="${EstateDto.propertyCost}">
+                    <input type="text" class="form-control" name="propertyCost" value="${EstateDto.propertyCost}">
                 </div>
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
@@ -254,7 +254,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="plotRatio" type="text" class="form-control" name="plotRatio" value="${EstateDto.plotRatio}">
+                    <input type="text" class="form-control" name="plotRatio" value="${EstateDto.plotRatio}">
                 </div>
             </div>
         </div>
@@ -264,7 +264,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="powerType" type="text" class="form-control" name="powerType" value="${EstateDto.powerType}">
+                    <input type="text" class="form-control" name="powerType" value="${EstateDto.powerType}">
                 </div>
             </div>
             <div class="col-sm-1 col-sm-offset-1" style="padding-left: 0px;padding-top: 10px">
@@ -272,7 +272,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="decoration" type="text" class="form-control" name="decoration" value="${EstateDto.decoration}">
+                    <input type="text" class="form-control" name="decoration" value="${EstateDto.decoration}">
                 </div>
             </div>
         </div>
@@ -282,7 +282,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="greenRate" type="text" class="form-control" name="greenRate" value="${EstateDto.greenRate}">
+                    <input type="text" class="form-control" name="greenRate" value="${EstateDto.greenRate}">
                     <span class="input-group-addon" id="basic-addon1">%</span>
                 </div>
             </div>
@@ -291,7 +291,7 @@
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <div class="input-group">
-                    <input id="estateInformation" type="text" class="form-control" name="estateInformation" value="${EstateDto.estateInformation}" >
+                    <input type="text" class="form-control" name="estateInformation" value="${EstateDto.estateInformation}" >
                 </div>
             </div>
         </div>
@@ -310,18 +310,9 @@
                 <div style="font-size:15px">标签：</div>
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <textarea id="sign" name="sign" maxlength="30" class="form-control">${EstateDto.sign}</textarea>
+                <textarea name="sign" maxlength="30" class="form-control">${EstateDto.sign}</textarea>
             </div>
         </div>
-        <input type="text" name="id" value="${EstateDto.id}" hidden>
-        <input type="text" name="status" value="${EstateDto.status}" hidden>
-        <input type="text" name="visitTimes" value="${EstateDto.visitTimes}" hidden>
-        <input type="text" name="turnover" value="${EstateDto.turnover}" hidden>
-        <input type="text" name="effectivePhotos" value="${EstateDto.effectivePhotos}" hidden>
-        <input type="text" name="samplePlate" value="${EstateDto.samplePlate}" hidden>
-        <input type="text" name="prototypeRoom" value="${EstateDto.prototypeRoom}" hidden>
-        <input type="text" name="liveAction" value="${EstateDto.liveAction}" hidden>
-        <input type="text" name="createTime" value="${EstateDto.createTime}" hidden>
         <br>
         <div class="row">
             <div class="col-sm-12" style="padding-left: 0px">
