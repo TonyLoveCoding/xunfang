@@ -8,12 +8,12 @@ import java.util.Map;
  * Created by ZYZ on 2017/8/10
  */
 public class Result implements Serializable{
-    public static final int SUCCESS = 1;
-    public static final int FAILURE = -1;
+//    public static final int SUCCESS = 1;
+//    public static final int FAILURE = -1;
 
     private static final long serialVersionUID = 5576237395711742681L;
 
-    private boolean success = false;
+    private  boolean success = false;
 
     private String msg = "";
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-08
+ * @since 2017-08-15
  */
 @Service
 public class CarouselPhotosServiceImplGenerate extends ServiceImpl<CarouselPhotosMapperGenerate, CarouselPhotos> implements CarouselPhotosServiceGenerate {

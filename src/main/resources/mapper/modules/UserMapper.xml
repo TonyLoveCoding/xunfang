@@ -22,5 +22,4 @@
     <sql id="Base_Column_List">
         id, account, password, username, estates_relevance AS estatesRelevance, roles_relevance AS rolesRelevance, updatetime, createtime, status
     </sql>
-
 </mapper>

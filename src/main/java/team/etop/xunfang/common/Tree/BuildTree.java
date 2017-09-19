@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * @version V1.0
- * @Description:构造后台菜单树
+ * @Description:
  * @author: TingFeng Zhang
  * @date: 2017/8/9 14:18
  */

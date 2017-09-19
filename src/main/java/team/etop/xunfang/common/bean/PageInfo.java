@@ -2,7 +2,7 @@ package team.etop.xunfang.common.bean;
 
 /**
  * @version V1.0
- * @Description:前后台分页通用对象
+ * @Description:
  * @author: TingFeng Zhang
  * @date: 2017/8/8 19:48
  */
@@ -12,6 +12,9 @@ public class PageInfo {
     private Long visiblePages;
     private Long total;
     private Long currentPage;
+    public PageInfo(){
+
+    }
 
     public PageInfo(Long pageSize, Long countindex, Long visiblePages, Long total, Long currentPage) {
         this.PageSize = pageSize;

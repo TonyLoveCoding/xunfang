@@ -10,7 +10,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author ZTF
- * @since 2017-09-08
+ * @since 2017-08-15
  */
 @TableName("real_estate_picture")
 public class RealEstatePicture extends Model<RealEstatePicture> {
@@ -19,7 +19,6 @@ public class RealEstatePicture extends Model<RealEstatePicture> {
 
 	private Long id;
 	private String name;
-	private Long weight;
 
 
 	public Long getId() {
@@ -38,14 +37,6 @@ public class RealEstatePicture extends Model<RealEstatePicture> {
 		this.name = name;
 	}
 
-	public Long getWeight() {
-		return weight;
-	}
-
-	public void setWeight(Long weight) {
-		this.weight = weight;
-	}
-
 	@Override
 	protected Serializable pkVal() {
 		return this.id;
@@ -56,7 +47,6 @@ public class RealEstatePicture extends Model<RealEstatePicture> {
 		return "RealEstatePicture{" +
 			"id=" + id +
 			", name=" + name +
-			", weight=" + weight +
 			"}";
 	}
 }

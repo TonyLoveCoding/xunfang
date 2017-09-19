@@ -38,7 +38,7 @@
                             <a class="navbar-brand" href="#">寻房网</a>
                         </div>
                         <div class="collapse navbar-collapse">
-                            <div class="navbar-form navbar-left" role="search">
+                            <form class="navbar-form navbar-left" role="search">
                                 <div class="form-group">
                                     <input id="inp_coll_keyword" type="text" class="form-control"
                                            value="${SearchPageMsg.keyWord}"/>
@@ -46,16 +46,21 @@
                                 <button type="button" class="btn btn-danger" id="btn_coll_keyword"><span
                                         class="glyphicon glyphicon-search"></span> 找房
                                 </button>
-                            </div>
+                            </form>
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="javascript:void(0);"><b>热搜词：</b></a>
+                                    <a href="#"><b>热搜词：</b></a>
                                 </li>
-                                <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
                                 <li>
-                                    <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
+                                    <a href="#">实地蔷薇国际</a>
                                 </li>
-                                </c:forEach>
+
+                                <li>
+                                    <a href="#">万科幸福誉</a>
+                                </li>
+                                <li>
+                                    <a href="#">南沙保利城</a>
+                                </li>
                             </ul>
                         </div>
                     </ul>
@@ -68,12 +73,12 @@
         <div class="col-md-12">
             <nav class="navbar navbar-default " role="navigation">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">寻房网</a>
+                    <a class="navbar-brand" href="#">寻房网</a>
                 </div>
 
                 <div class="collapse navbar-collapse">
 
-                    <div class="navbar-form navbar-left" role="search">
+                    <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <input id="inp_nav_keyword" type="text" class="form-control"
                                    value="${SearchPageMsg.keyWord}"/>
@@ -81,16 +86,22 @@
                         <button id="btn_nav_keyword" type="button" class="btn btn-danger"><span
                                 class="glyphicon glyphicon-search"></span> 找房
                         </button>
-                    </div>
+                    </form>
                     <ul class="nav navbar-nav navbar-right">
+
                         <li>
-                            <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
+                            <a href="#">热搜词：</a>
                         </li>
-                        <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
-                            <li>
-                                <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
-                            </li>
-                        </c:forEach>
+                        <li>
+                            <a href="#">实地蔷薇国际</a>
+                        </li>
+
+                        <li>
+                            <a href="#">万科幸福誉</a>
+                        </li>
+                        <li>
+                            <a href="#">南沙保利城</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -118,6 +129,26 @@
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+    <%--总价--%>
+    <div class="row">
+        <div class="col-md-7 col-md-offset-1">
+            <div class="sel_item">
+                <div class="head_SearchCondition">最低总价：</div>
+                <div class="item_SearchCondition">
+                    <ul class="ul_item_SearchCondition total_prices">
+                        <c:forEach var="total_prices" items="${total_pricess}">
+                            <li><a href="javascript:void(0);" name="${total_prices.code}"
+                                   class="a_total_prices">${total_prices.name}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 div_sel_item">
+            <input type="number" id="inp_total_prices_pre" class="input_sel_item">-<input type="number" id="inp_total_prices_beh" class="input_sel_item">万
+            <button id="btn_total_prices" class="btn_sel_item btn btn-primary">确定</button>
         </div>
     </div>
     <%--类型--%>
@@ -206,26 +237,6 @@
             <button id="btn_aera" class="btn_sel_item btn btn-primary">确定</button>
         </div>
     </div>
-        <%--总价--%>
-        <div class="row">
-            <div class="col-md-7 col-md-offset-1">
-                <div class="sel_item">
-                    <div class="head_SearchCondition">最低总价：</div>
-                    <div class="item_SearchCondition">
-                        <ul class="ul_item_SearchCondition total_prices">
-                            <c:forEach var="total_prices" items="${total_pricess}">
-                                <li><a href="javascript:void(0);" name="${total_prices.code}"
-                                       class="a_total_prices">${total_prices.name}</a></li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 div_sel_item">
-                <input type="number" id="inp_total_prices_pre" class="input_sel_item">-<input type="number" id="inp_total_prices_beh" class="input_sel_item">万
-                <button id="btn_total_prices" class="btn_sel_item btn btn-primary">确定</button>
-            </div>
-        </div>
     <%--中间列表--%>
     <div class="row middle_sel">
         <div class="rad_sale col-md-2 col-md-offset-1">
@@ -273,7 +284,7 @@
             <div class="col-md-7">
                 <div class="row search_list_detail">
                     <div class="col-md-11 col-md-offset-1">
-                        <div class="estateName"><a href="${Estate.estateDetailsURL}">${Estate.estateName}</a></div>
+                        <div class="estateName">${Estate.estateName}</div>
                         <div class="tag-sale"><c:choose><c:when
                                 test="${Estate.saleStatus}">在售</c:when><c:otherwise>待售</c:otherwise></c:choose></div>
                     </div>
@@ -353,9 +364,9 @@
     </div>
     <div class="row">
         <div class="col-md-1"></div>
-        <c:forEach items="${RecommendEstateBo}" var="Recommend">
+        <c:forEach items="${RecommendEstate}" var="Recommend">
             <div class="col-md-2">
-                <div class="RecommendEstateBo">
+                <div class="RecommendEstate">
                     <div class="tip_img">
                         <a href="${Recommend.estateDetailsURL}"> <img
                                 src="http://othgjp7hs.bkt.clouddn.com/17-8-14/91109352.jpg" class="tip_estateThumbnail"></a>

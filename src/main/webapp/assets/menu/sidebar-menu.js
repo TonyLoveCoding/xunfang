@@ -3,25 +3,19 @@ $(document).ready(function () {
     var frm =$("#iframeMain");
     var url;
     $(frm).load(function(){
-        var ifm= $("#iframeMain");
-        ifm.attr("style","");
-        $(".main-sidebar").attr("style","");
         if(url!=""){
             var ifm= $("#iframeMain");
             var iframeHeight = $("#iframeMain").contents().find("html").height();
             ifm.attr("style","height:"+iframeHeight+"px");
             $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
             var pre_height=iframeHeight;
-            timer = setInterval(function(){
-                ifm.attr("style","");
-                iframeHeight = $("#iframeMain").contents().find("html").height();
-                ifm.attr("style","height:"+pre_height+"px");
-                if (iframeHeight != pre_height){
-                    ifm.attr("style","height:"+iframeHeight+"px");
-                    $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
-                    pre_height=iframeHeight;
-                }
-            },500);
+            // timer = setInterval(function(){
+            //     iframeHeight = $("#iframeMain").contents().find("html").height();
+            //     if (iframeHeight != pre_height){
+            //         ifm.attr("style","height:"+iframeHeight+"px");
+            //         $(".main-sidebar").attr("style","height:"+iframeHeight+"px");
+            //     }
+            // },500);
         }
     });
     $("#iframeMain").contents().find("body").resize(function () {
