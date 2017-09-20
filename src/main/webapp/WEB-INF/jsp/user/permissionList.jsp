@@ -12,17 +12,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 
-    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/home/search/zxf_page.css"/>
 
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="assets/jquery/query-3.2.1..min.js"></script>
+    <script src="/assets/home/search/zxf_page.js" type="text/javascript"></script>
 
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -30,9 +24,9 @@
 <%--查找框--%>
 <div class="container-fluid">
     <div class="row clearfix">
-        <div class="col-md-10 column">
+        <div class="col-md-12 column">
         </div>
-        <div class="col-md-10 column">
+        <div class="col-md-12 column">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -100,9 +94,9 @@
 
 <div class="container-fluid">
     <div class="row clearfix">
-        <div class="col-md-10 column">
+        <div class="col-md-12 column">
         </div>
-        <div class="col-md-10 column">
+        <div class="col-md-12 column">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -230,7 +224,34 @@
         </div>
     </div>
 </div>
+<%--分页--%>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="zxf_pagediv"></div>
+    </div>
+</div>
+</div>
+
 
 
 </body>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".zxf_pagediv").createPage({
+            pageNum: 10,//总页码
+            current: 1,//当前页
+            shownum: 10,//每页显示个数
+            <%--pageNum: ${SearchPageMsg.pageNum},//总页码--%>
+            <%--current: ${SearchPageMsg.current},//当前页--%>
+            <%--shownum: ${SearchPageMsg.shownum},//每页显示个数--%>
+            backfun: function (e) {
+                $("#inp_hid_pn").attr("value", e.current);
+                $("#form_search").submit();
+            }
+        });
+    });
+</script>
+
 </html>

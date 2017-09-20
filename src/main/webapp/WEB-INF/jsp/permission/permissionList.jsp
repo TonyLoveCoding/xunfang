@@ -78,10 +78,6 @@
                     $("#permissionMsg").empty();
                     var item=result.map.item;
 
-                    var xx='/Date('+item.updatetime+')/';
-                    var jsonDate=new Date(parseInt( xx.substring(6,xx.length-2)));
-                     xx='/Date('+item.createtime+')/';
-                    var jsonDate2=new Date(parseInt( xx.substring(6,xx.length-2)));
 
                    var permisiionString='<input class="form-control" type="hidden" name="permissionId" value="'+item.id+'">';
                    $("#permissionMsg").append(permisiionString);
@@ -108,12 +104,12 @@
                     $("#permissionMsg").append(permisiionString);
                     permisiionString='<label>创建时间:<label>';
                     $("#permissionMsg").append(permisiionString);
-                    permisiionString= '<label>'+jsonDate+'</label><br>';
+                    permisiionString= '<label>'+item.createtime+'</label><br>';
                     $("#permissionMsg").append(permisiionString);
 
                     permisiionString='<label>最后更新时间:<label>';
                     $("#permissionMsg").append(permisiionString);
-                    permisiionString= '<label>'+jsonDate2+'</label><br>';
+                    permisiionString= '<label>'+item.updatetime+'</label><br>';
                     $("#permissionMsg").append(permisiionString);
                     permisiionString='<button type="submit" class="btn btn-primary" >确认修改</button>';
                     $("#permissionMsg").append(permisiionString);

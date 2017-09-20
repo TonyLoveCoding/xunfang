@@ -7,6 +7,15 @@ import team.etop.xunfang.modules.po.Role;
  */
 public class RoleJson {
     Role role;
+    Boolean exist;
+
+    public Boolean getExist() {
+        return exist;
+    }
+
+    public void setExist(Boolean exist) {
+        this.exist = exist;
+    }
 
     public Role getRole() {
         return role;

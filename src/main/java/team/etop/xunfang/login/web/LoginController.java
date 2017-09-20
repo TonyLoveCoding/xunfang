@@ -18,6 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/login")
 public class LoginController {
 
+    @RequestMapping()
+    public ModelAndView loginIndex(){
+        return new ModelAndView("/login/login");
+    }
+
+
     @RequestMapping(value="/login")
     public ModelAndView login(@RequestParam(value = "account")String account,
                               @RequestParam(value = "password")String password){

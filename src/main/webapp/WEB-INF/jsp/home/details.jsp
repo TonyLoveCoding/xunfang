@@ -26,12 +26,14 @@
     <script src="/assets/home/lightGallery/js/lightgallery-all.js" type="text/javascript"></script>
     <script src="/assets/home/lightGallery/js/picturefill.min.js" type="text/javascript"></script>
 
+
     <script type="text/javascript">
         $(document).ready(function() {
             $("#auto-loop-1").lightGallery();
             $("#auto-loop-2").lightGallery();
             $("#auto-loop-3").lightGallery();
             $("#auto-loop-4").lightGallery();
+
         });
         lightGallery(document.getElementById("#auto-loop-1"));
         lightGallery(document.getElementById("#auto-loop-2"));
@@ -47,23 +49,25 @@
         <div class="header-hover-wrap">
             <ul class="menu">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="home#">寻房网</a>
+                    <a href="home">
+                        <img style="padding-top: 14px" src="/assets/home/index/image/logo.png">
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" >
 
                     <div class="navbar-form navbar-left" role="search">
                         <div class="form-group">
-                            <input id="search-input-hover" style="width: 400px" type="text" class="form-control"/>
+                            <input id="search-input-hover" type="text" class="form-control"/>
                         </div>
                         <button id="search-button-hover" type="submit" class="btn btn-danger">
                             <span class="glyphicon glyphicon-search"></span>找房
                         </button>
                     </div>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right"  style="padding-top: 8px">
 
                         <li>
-                            <a href="home#"><b>热搜词：</b></a>
+                            <a href="home"><b>热搜词：</b></a>
                         </li>
 
                         <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
@@ -79,15 +83,16 @@
 
     <div class="row clearfix">
         <div class="col-md-12 column">
+            <%--顶部导航栏设置--%>
             <nav class="navbar navbar-default " role="navigation">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="home#">寻房网</a>
-                </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="navbar-form navbar-left" role="search">
+                        <a href="home">
+                            <img id="section-0" src="/assets/home/index/image/logo.png">
+                        </a>
                         <div class="form-group">
-                            <input id="search-input" style="width: 400px" type="text" class="form-control"  />
+                            <input id="search-input" type="text" class="form-control"  />
                         </div>
                         <button id="search-button" class="btn btn-danger" type="button">
                             <span class="glyphicon glyphicon-search"></span> 找房
@@ -112,48 +117,40 @@
                 <li>
                     <a href="home">寻房网</a>
                 </li>
-                <li>
-                    <a href="home/details#">广州楼盘</a>
-                </li>
-                <li>
-                    <a href="home/details#">增城楼盘</a>
-                </li>
                 <li class="active">
                     ${estate.estateName}
                 </li>
             </ul>
             <div class="page-header">
                 <div class="details-title">
-                    <b  id="section-0">${estate.estateName}</b>
+                    <b>${estate.estateName}</b>
                     <label class="label label-success">
                         <c:if test="${estate.status eq 1}">在售</c:if>
                         <c:if test="${estate.status eq 0}">待售 </c:if>
                     </label>
                     <label class="label label-success">${estate.sign}</label>
-                    <label class="label label-success">${estate.sign}</label>
-                    <label class="label label-success">${estate.sign}</label>
                 </div>
                 <small>  别名：${estate.estateName}</small>
             </div>
-            <div class="tabbable" id="tabs-420817">
-                <ul class="nav nav-tabs tabs" id="section-1">
-                    <li class="active">
+            <div class="tabbable" id="tabs-ID">
+                <ul class="nav nav-tabs tabs">
+                    <li class="col-md-4 active">
                         <a href="#panel-index" data-toggle="tab">楼盘主页</a>
                     </li>
-                    <li>
+                    <li class="col-md-4">
                         <a href="#panel-details" data-toggle="tab">楼盘详情</a>
                     </li>
-                    <li>
+                    <li class="col-md-4">
                         <a href="#panel-pictures" data-toggle="tab">楼盘图册</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="panel-index">
+                    <div class="tab-pane fade active in" id="panel-index">
                         <div class="row clearfix tab-items">
                             <div class="col-md-6 column">
                                 <div class="carousel slide" id="Carousel-ID">
                                     <ol class="carousel-indicators">
-                                        <li class="active" data-slide-to="0" data-target="#Carousel-ID">
+                                        <li data-slide-to="0" data-target="#Carousel-ID" class="active">
                                         </li>
                                         <li data-slide-to="1" data-target="#Carousel-ID">
                                         </li>
@@ -164,16 +161,24 @@
                                     </ol>
                                     <div class="carousel-inner full-image">
                                         <div id="item-1" class="item active">
-                                            <img alt=""  src="/assets/home/details/image/1-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic1" data-scroll="#section-1">
+                                                <img alt=""  src="/assets/home/details/image/1-big.jpg" />
+                                            </a>
                                         </div>
                                         <div id="item-2" class="item">
-                                            <img alt="" src="/assets/home/details/image/2-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic2" data-scroll="#section-2">
+                                                <img alt="" src="/assets/home/details/image/2-big.jpg" />
+                                            </a>
                                         </div>
                                         <div id="item-3" class="item">
-                                            <img alt="" src="/assets/home/details/image/3-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic3" data-scroll="#section-3">
+                                                <img alt="" src="/assets/home/details/image/3-big.jpg" />
+                                            </a>
                                         </div>
                                         <div id="item-4" class="item">
-                                            <img alt="" src="/assets/home/details/image/4-big.jpg" />
+                                            <a href="javascript:void(0);" id="toPic4" data-scroll="#section-4">
+                                                <img alt="" src="/assets/home/details/image/4-big.jpg" />
+                                            </a>
                                         </div>
                                     </div>
                                     <a class="left carousel-control" href="#Carousel-ID" data-slide="prev">
@@ -185,7 +190,7 @@
                                 </div>
 
                                 <div class="row" style="padding-top:10px">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 col-md-offset-2">
                                         <div id="img-1" class="hovereffect blueBorder">
                                             <img class="img-responsive " src="/assets/home/details/image/1-small.jpg" alt="">
                                             <a href="#Carousel-ID" data-slide-to="0">
@@ -217,7 +222,6 @@
                                         </div>
                                     </div>
 
-
                                     <div class="col-md-2">
                                         <div id="img-4" class="hovereffect">
                                             <img class="img-responsive" src="/assets/home/details/image/4-small.jpg" alt="">
@@ -232,50 +236,75 @@
 
                             </div>
                             <div class="col-md-6 column">
-                                <div class="list-group">
+                                <div class="list-group main-info">
+                                    <div class="list-group-item active">
+                                        主要信息
+                                    </div>
                                     <div class="list-group-item">
                                         <ul class="index-info">
                                             <li>
-                                                <b>开发商报价：</b><font color="#CC0000">${estate.developerQuotes}元/平米</font>
+                                                <div class="field">开发商报价：　</div>
+                                                <div class="value keynote">${estate.developerQuotes}元/平方米</div>
                                             </li>
                                             <li>
-                                                <b>参考总价：</b>${estate.minPrice}-${estate.maxPrice}万
+                                                <div class="field">参考总价：　　</div>
+                                                <div class="value">${estate.minPrice}-${estate.maxPrice}万</div>
                                             </li>
                                             <li>
-                                                <b>楼盘户型：</b>${estate.houseType}
+                                                <div class="field">楼盘面积：　　</div>
+                                                <div class="value">${estate.area}平方米</div>
                                             </li>
                                             <li>
-                                                <b>楼盘地址：</b>${estate.estateAddress}
+                                                <div class="field">楼盘户型：　　</div>
+                                                <div class="value">${estate.houseType}</div>
                                             </li>
                                             <li>
-                                                <b>最新开盘时间：</b>
-                                                <fmt:formatDate value="${estate.latestOpening}" pattern="yyyy年MM月dd日HH点" />
+                                                <div class="field">楼盘地址：　　</div>
+                                                <div class="value">${estate.estateAddress}</div>
+                                            </li>
+                                            <li>
+                                                <div class="field">物业公司：　　</div>
+                                                <div class="value">${estate.company}</div>
+                                            </li>
+                                            <li>
+                                                <div class="field">最新开盘时间：</div>
+                                                <div class="value">
+                                                    <fmt:formatDate value="${estate.latestOpening}"
+                                                                    pattern="yyyy年MM月dd日HH点" /></div>
                                             </li>
                                         </ul>
                                     </div>
+
+                                    <div class="list-group-item active">
+                                        最新动态
+                                    </div>
                                     <div class="list-group-item">
-                                        <h3 class="list-group-item-heading">
-                                            最新动态
-                                        </h3>
                                         <ul class="index-info">
                                             <li>
                                                 ${estate.sign}生活住所
                                             </li>
                                             <li>
-                                                一日狂销${estate.turnover}套，${estate.location}最火爆楼盘—${estate.estateName}！
+                                                一日狂销${estate.turnover}套，
+                                                ${estate.location}最火爆楼盘—${estate.estateName}！
                                             </li>
                                         </ul>
                                     </div>
+                                    <div class="list-group-item active">
+                                        联系方式
+                                    </div>
                                     <div class="list-group-item">
-                                        <h3 class="list-group-item-heading">
-                                            资讯热线：400-057-6213
-                                        </h3>
+                                        <ul class="index-info">
+                                            <li>
+                                                <div class="field">资讯热线：　</div>
+                                                <div class="value keynote">400-057-6213</div>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel-details">
+                    <div class="tab-pane fade" id="panel-details">
                         <div class="row clearfix tab-items">
                             <div class="col-md-12 column">
                                 <div class="list-group details-header">
@@ -401,20 +430,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane" id="panel-pictures">
+                    <div class="tab-pane fade" id="panel-pictures">
                         <div class="row clearfix tab-items">
                             <div class="col-md-12 column" >
                                 <div class="row">
-                                    <div class="col-xs-10">
-                                        <h2>效果图（12）</h2>
-                                        <div id="auto-loop-1" class="row gallery">
+                                    <div class="col-xs-10 picture-area">
+                                        <a data-toggle="collapse"  href="#auto-loop-1">
+                                            <div class="list-group-item active">
+                                                <b id="section-1">效果图（12）</b>
+                                            </div>
+                                        </a>
+                                        <div id="auto-loop-1" class="row gallery in">
                                             <c:forEach begin="0" end="11">
-                                                <div class="col-xs-6 col-sm-4 col-md-3" data-responsive="img/1-375.jpg 375, img/1-480.jpg 480, img/1.jpg 800"
-                                                     data-sub-html="<h4>${estate.estateName}</h4>
-                                                     <p>${estate.estateName}效果图</p>"
-                                                     class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
+                                                <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
+                                                     data-responsive=""
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                        <b>${estate.estateName}</b>
+                                                                        <p>${estate.estateName}效果图</p>
+                                                                    </div>"
+                                                     data-src="/assets/home/details/image/1.jpg">
                                                     <div class="hovereffect">
-                                                        <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                        <img class="img-responsive"
+                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
                                                         <a href="javascript:void(0);">
                                                             <div class="overlay">
                                                                 <h2>${estate.estateName}效果图</h2>
@@ -424,18 +461,28 @@
                                                 </div>
                                             </c:forEach>
                                         </div>
-
                                         <hr>
 
-                                        <h2 id="section-2">样板间（20）</h2>
-                                        <div id="auto-loop-2" class="row">
+                                        <a data-toggle="collapse"  href="#auto-loop-2">
+                                            <div class="list-group-item active">
+                                                <b id="section-2">样板间（20）</b>
+                                            </div>
+                                        </a>
+                                        <div id="auto-loop-2" class="row gallery in">
                                             <c:forEach begin="0" end="19">
-                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
-                                                    <div class="hovereffect pic-show">
-                                                        <a href="home/details#">
-                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
+                                                     data-responsive=""
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                    <b class='fullScreen-font'>${estate.estateName}</b>
+                                                                    <p>${estate.estateName}样板间</p>
+                                                                    </div>"
+                                                     data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect">
+                                                        <img class="img-responsive"
+                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                        <a href="javascript:void(0);">
                                                             <div class="overlay">
-                                                                <h2>实地蔷薇国际样板间</h2>
+                                                                <h2>${estate.estateName}样板间</h2>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -444,15 +491,26 @@
                                         </div>
                                         <hr>
 
-                                        <h2 id="section-3">环境规划图（1）</h2>
-                                        <div id="auto-loop-3" class="row">
+                                        <a data-toggle="collapse"  href="#auto-loop-3">
+                                            <div class="list-group-item active">
+                                                <b id="section-3">环境规划图（1）</b>
+                                            </div>
+                                        </a>
+                                        <div id="auto-loop-3" class="row gallery in">
                                             <c:forEach begin="0" end="0">
-                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
-                                                    <div class="hovereffect pic-show">
-                                                        <a href="home/details#">
-                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
+                                                     data-responsive=""
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                    <b class='fullScreen-font'>${estate.estateName}</b>
+                                                                    <p>${estate.estateName}环境规划图</p>
+                                                                    </div>"
+                                                     data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect">
+                                                        <img class="img-responsive"
+                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                        <a href="javascript:void(0);">
                                                             <div class="overlay">
-                                                                <h2>实地蔷薇国际环境规划图</h2>
+                                                                <h2>${estate.estateName}环境规划图</h2>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -461,15 +519,26 @@
                                         </div>
                                         <hr>
 
-                                        <h2 id="section-4">楼盘实景图（21）</h2>
-                                        <div id="auto-loop-4" class="row">
+                                        <a data-toggle="collapse"  href="#auto-loop-4">
+                                            <div class="list-group-item active">
+                                                <b id="section-4">楼盘实景图（21）</b>
+                                            </div>
+                                        </a>
+                                        <div id="auto-loop-4" class="row gallery ">
                                             <c:forEach begin="0" end="20">
-                                                <div class="col-md-3 pic-show" data-src="/assets/home/details/image/1.jpg">
-                                                    <div class="hovereffect pic-show">
-                                                        <a href="home/details#">
-                                                            <img class="img-responsive" src="/assets/home/details/image/example1.jpg" alt="">
+                                                <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
+                                                     data-responsive=""
+                                                     data-sub-html="<div class='fullScreen-font'>
+                                                                    <b class='fullScreen-font'>${estate.estateName}</b>
+                                                                    <p>${estate.estateName}楼盘实景图</p>
+                                                                    </div>"
+                                                     data-src="/assets/home/details/image/1.jpg">
+                                                    <div class="hovereffect">
+                                                        <img class="img-responsive"
+                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                        <a href="javascript:void(0);">
                                                             <div class="overlay">
-                                                                <h2>实地蔷薇楼盘实景图</h2>
+                                                                <h2>${estate.estateName}楼盘实景图</h2>
                                                             </div>
                                                         </a>
                                                     </div>
@@ -481,11 +550,11 @@
 
                                     <div class="col-xs-2" id="myScrollspy">
                                         <ul class="nav nav-tabs nav-stacked affix" data-spy="affix" data-offset-top="100">
-                                            <li><a href="home/details/${estate.id}#section-0">全部（54）</a></li>
-                                            <li><a href="home/details/${estate.id}#section-1">效果图（12）</a></li>
-                                            <li><a href="home/details/${estate.id}#section-2">样板间（20）</a></li>
-                                            <li><a href="home/details/${estate.id}#section-3">环境规划图（1）</a></li>
-                                            <li><a href="home/details/${estate.id}#section-4">楼盘实景图（21）</a></li>
+                                            <li><a data-scroll="#section-0" href="javascript:void(0);">全部（54）</a></li>
+                                            <li><a data-scroll="#section-1" href="javascript:void(0);">效果图（12）</a></li>
+                                            <li><a data-scroll="#section-2" href="javascript:void(0);">样板间（20）</a></li>
+                                            <li><a data-scroll="#section-3" href="javascript:void(0);">环境规划图（1）</a></li>
+                                            <li><a data-scroll="#section-4" href="javascript:void(0);">楼盘实景图（21）</a></li>
                                         </ul>
                                     </div>
 

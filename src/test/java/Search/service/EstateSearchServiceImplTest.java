@@ -37,7 +37,6 @@ public class EstateSearchServiceImplTest {
         SolrClient solrClient=new HttpSolrClient.Builder(baseURL).build();
         solrClient.deleteByQuery("*:*");
         solrClient.commit();
-        System.out.println("测试");
         List<EstateSearchBo> estateSearchBos = estateSearchMapper.selectAll();
         for(EstateSearchBo estateSearchBo : estateSearchBos){
             System.out.println(estateSearchBo);
