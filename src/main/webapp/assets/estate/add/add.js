@@ -9,8 +9,27 @@ function update(form) {
     for(var i=0;i<form.elements.length-2;i++){
         if(form.elements[i].value=="" && form.elements[i].tagName!="BUTTON"){
             form.elements[i].focus();
-            alert("不能为空");
+            alert("所有信息不能为空");
             return false;
+        }else if(form.elements[i].value!="" && form.elements[i].tagName!="BUTTON"){
+            if(form.elements[i].name=="maxPrice" || form.elements[i].name=="minPrice" || form.elements[i].name=="developerQuotes"
+                || form.elements[i].name=="saleStatus"){
+                var integer=/^[1-9]\d*|0$/;
+                alert(form.elements[i].value);
+                if(!integer.test(form.elements[i].value)){
+                    form.elements[i].focus();
+                    alert(form.elements[i].name+"存在非法字段填充");
+                    return false;
+                }
+            }else if(form.elements[i].name=="plotRatio" || form.elements[i].name=="area" || form.elements[i].name=="greenRate"){
+                var reg1=/^[1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0$/;
+                var reg2=/^[1-9]\d*|0$/;
+                if(!reg1.test(form.elements[i].value) && !reg2.test(form.elements[i].value)){
+                    form.elements[i].focus();
+                    alert(form.elements[i].name+"存在非法字段填充");
+                    return false;
+                }
+            }
         }
     }
     return true;
