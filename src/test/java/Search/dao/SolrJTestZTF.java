@@ -8,8 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
-import team.etop.xunfang.modules.mapper.EstateMapperGenerate;
+import team.etop.xunfang.modules.mapper.*;
 import team.etop.xunfang.modules.po.Estate;
 import team.etop.xunfang.search.mapper.DicMapper;
 import util.EstateUtil.getEstateZTF;
@@ -38,13 +37,23 @@ public class SolrJTestZTF {
     @Autowired
     EstateMapperGenerate estateDao;
 
+
+    @Autowired
+    RealEstatePictureMapperGenerate realEstatePictureMapperGenerate;
+
+    @Autowired
+    PrototypeRoomPictureMapperGenerate prototypeRoomPictureMapperGenerate;
+
+    @Autowired
+    SamplePlanningPictureMapperGenerate samplePlanningPictureMapperGenerate;
+
     @Test
     /**
      * 新增文档
      */
     public void creteDoc() throws IOException, SolrServerException {
         SolrInputDocument solrInputFields=new SolrInputDocument();
-        Estate estate = getEstateZTF.returnEstate(dicDao, effectPictureDao);
+        Estate estate = getEstateZTF.returnEstate(dicDao, effectPictureDao,realEstatePictureMapperGenerate,prototypeRoomPictureMapperGenerate,samplePlanningPictureMapperGenerate);
         estateDao.insert(estate);
         solrInputFields.addField("id",estate.getId());
         solrInputFields.addField("estate_visit_times",estate.getVisitTimes());

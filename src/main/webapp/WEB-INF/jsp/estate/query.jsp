@@ -14,8 +14,14 @@
         function ask() {
             var msg="您确定要更新吗？"
             if(confirm(msg)==true){
-                //跳转
-                alert("跳转");
+                $.ajax({
+                    type:"GET",
+                    url:"http://localhost:8081/solr/solr_test/dataimport?&command=full-import&clean=true&commit=true",
+                    success:function (Msg) {
+                        alert("更新成功");
+                    }
+                })
+
             }else{
                 alert("取消");
                 return false;

@@ -2,9 +2,10 @@ package util.EstateUtil;
 
 
 import team.etop.xunfang.modules.mapper.EffectPictureMapperGenerate;
-import team.etop.xunfang.modules.po.Dic;
-import team.etop.xunfang.modules.po.EffectPicture;
-import team.etop.xunfang.modules.po.Estate;
+import team.etop.xunfang.modules.mapper.PrototypeRoomPictureMapperGenerate;
+import team.etop.xunfang.modules.mapper.RealEstatePictureMapperGenerate;
+import team.etop.xunfang.modules.mapper.SamplePlanningPictureMapperGenerate;
+import team.etop.xunfang.modules.po.*;
 import team.etop.xunfang.search.mapper.DicMapper;
 
 import java.util.Date;
@@ -18,7 +19,11 @@ import java.util.Random;
  * @date: 2017/8/13 15:30
  */
 public class getEstateZTF {
-    public static Estate returnEstate(DicMapper dicDao, EffectPictureMapperGenerate effectPictureDao){
+    public static Estate returnEstate(DicMapper dicDao,
+                                      EffectPictureMapperGenerate effectPictureDao,
+                                      RealEstatePictureMapperGenerate realEstatePictureMapperGenerate,
+                                      PrototypeRoomPictureMapperGenerate prototypeRoomPictureMapperGenerate,
+                                      SamplePlanningPictureMapperGenerate samplePlanningPictureMapperGenerate){
         List<Dic> locations = dicDao.selectByType("location");
         List<Dic> types = dicDao.selectByType("type");
         List<Dic> houseTypes = dicDao.selectByType("houseType");
@@ -31,6 +36,7 @@ public class getEstateZTF {
         Estate estate=new Estate();
         EffectPicture effectPicture=new EffectPicture();
         effectPicture.setName("73952648.jpg");
+        effectPicture.setWeight(System.currentTimeMillis());
         effectPictureDao.insert(effectPicture);
         estate.setEffectivePhotos(effectPicture.getId().toString());
         estate.setThumbnail("73952648.jpg");
@@ -64,11 +70,24 @@ public class getEstateZTF {
         estate.setArea((float)num);
         estate.setCreateTime(new Date());
 
-        estate.setSamplePlate(effectPicture.getId().toString());
+        SamplePlanningPicture samplePlanningPicture=new SamplePlanningPicture();
+        samplePlanningPicture.setName("73952648.jpg");
+        samplePlanningPicture.setWeight(System.currentTimeMillis());
+        samplePlanningPictureMapperGenerate.insert(samplePlanningPicture);
+        estate.setSamplePlate(samplePlanningPicture.getId().toString());
 
-        estate.setLiveAction(effectPicture.getId().toString());
+        RealEstatePicture realEstatePicture=new RealEstatePicture();
+        realEstatePicture.setName("73952648.jpg");
+        realEstatePicture.setWeight(System.currentTimeMillis());
+        realEstatePictureMapperGenerate.insert(realEstatePicture);
+        estate.setLiveAction(realEstatePicture.getId().toString());
 
-        estate.setPrototypeRoom(effectPicture.getId().toString());
+
+        PrototypeRoomPicture prototypeRoomPicture=new PrototypeRoomPicture();
+        prototypeRoomPicture.setName("73952648.jpg");
+        prototypeRoomPicture.setWeight(System.currentTimeMillis());
+        prototypeRoomPictureMapperGenerate.insert(prototypeRoomPicture);
+        estate.setPrototypeRoom(prototypeRoomPicture.getId().toString());
 
         estate.setProperty("新华小区");
 

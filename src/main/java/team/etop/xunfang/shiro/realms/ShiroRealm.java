@@ -1,6 +1,7 @@
 package team.etop.xunfang.shiro.realms;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -72,7 +73,7 @@ public class ShiroRealm extends AuthorizingRealm {
             }
 
             for (Permission permission : permissions) {
-                if (permissionIds.contains(permission.getId())) {
+                if (permissionIds.contains(permission.getId())&& !StringUtils.isBlank(permission.getUrl())) {
                     authorizationInfo.addStringPermission(permission.getUrl());
                 }
             }

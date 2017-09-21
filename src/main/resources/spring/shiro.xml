@@ -8,15 +8,12 @@
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="authenticator" ref="authenticator"></property>
         <property name="realm" ref="jdbcRealm"/>
-        <property name="cacheManager" ref="cacheManager"/>
+
     </bean>
     <!--
    2. 配置 CacheManager.
    2.1 需要加入 ehcache 的 jar 包及配置文件.
    -->
-    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
-    <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
-    </bean>
     <bean id="authenticator"
           class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
         <property name="authenticationStrategy">
@@ -60,11 +57,13 @@
         <property name="successUrl" value="/main" />
         <property name="filterChainDefinitions">
             <value>
-                <!--/home=anon-->
-                <!--/home/**=anon-->
-                <!--/assets/**=anon-->
-                <!--/** = authc-->
-                /**=anon
+                /home=anon
+                /login=anon
+                /login/login=anon
+                /home/**=anon
+                /assets/**=anon
+                /** = authc
+                <!--/**=anon-->
             </value>
         </property>
     </bean>
