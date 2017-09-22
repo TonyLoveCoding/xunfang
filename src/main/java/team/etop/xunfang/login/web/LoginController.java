@@ -30,7 +30,7 @@ public class LoginController {
         ModelAndView modelAndView=new ModelAndView();
         System.out.printf("a");
         System.out.println(account+","+password);
-
+        System.out.println(new Md5Hash(password,account));
         UsernamePasswordToken token=new UsernamePasswordToken(account,new Md5Hash(password,account).toString());
         System.out.println(token.getPassword());
 

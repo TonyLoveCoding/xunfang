@@ -43,5 +43,12 @@ $(document).ready(function () {
         }
     }
 
+    $(".div_logout").click(function () {
+        $("#tipModal").modal();
+    });
+    $("#btn_logout").click(function () {
+        $("#form_logout").submit();
+    });
+
 
 });
