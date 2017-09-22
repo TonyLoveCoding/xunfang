@@ -356,6 +356,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
+
         <c:if test="${!empty result}">
         var x=document.getElementById('tset');
         x.onclick= function () {
