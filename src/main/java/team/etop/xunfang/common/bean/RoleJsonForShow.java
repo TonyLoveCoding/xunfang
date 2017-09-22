@@ -17,7 +17,7 @@ public class RoleJsonForShow {
     private String permissions;
     private String updatetime;
     private String createtime;
-    private Integer status;
+    private String status;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
 
@@ -26,7 +26,7 @@ public class RoleJsonForShow {
         this.id=String.valueOf(role.getId());
         this.createtime=dateFormat.format(role.getCreatetime());
         this.updatetime=dateFormat.format(role.getUpdatetime());
-        this.status=role.getStatus();
+        this.status=role.getStatus()==1?"启用":"禁用";
         this.rolename=role.getRoleName();
         this.description=role.getDescription();
         this.permissions=role.getPermissions();
@@ -80,12 +80,12 @@ public class RoleJsonForShow {
         this.createtime = dateFormat.format(createtime);
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
-        this.status = status;
+        this.status = status==1?"启用":"禁用";
     }
 
     @Override
