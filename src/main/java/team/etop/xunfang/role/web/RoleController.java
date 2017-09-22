@@ -2,29 +2,19 @@ package team.etop.xunfang.role.web;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.mysql.cj.jdbc.Blob;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.ModelAndView;
-import team.etop.xunfang.common.bean.PageInfo;
-import team.etop.xunfang.common.bean.PermissionTree;
-import team.etop.xunfang.common.bean.Result;
-import team.etop.xunfang.common.bean.RoleJsonForShow;
-import team.etop.xunfang.modules.po.Permission;
+import team.etop.xunfang.common.bean.*;
+
 import team.etop.xunfang.modules.po.Role;
 
-import team.etop.xunfang.modules.po.User;
-import team.etop.xunfang.modules.service.PermissionServiceGenerate;
-import team.etop.xunfang.modules.service.RoleServiceGenerate;
+import team.etop.xunfang.modules.service.*;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ZYZ on 2017/8/14
@@ -51,7 +41,6 @@ public class RoleController {
         rolePage.setAsc(false);
         rolePage.setOrderByField("updateTime");
         Page<Role> page = roleServiceGenerate.selectPage(rolePage, wrapper);
-        System.out.println(page.toString());
 
         PageInfo pageInfo = new PageInfo();
         pageInfo.setCurrentPage((long) (pageNum));
@@ -84,7 +73,6 @@ public class RoleController {
         rolePage.setAsc(false);
         rolePage.setOrderByField("updateTime");
         Page<Role> page = roleServiceGenerate.selectPage(rolePage, wrapper);
-        System.out.println(page.toString());
 
         PageInfo pageInfo = new PageInfo();
         pageInfo.setCurrentPage((long) (1));
@@ -92,8 +80,12 @@ public class RoleController {
         modelAndView.addObject("pageInfo", pageInfo);
 
 
-        List<Role> list = page.getRecords();
-
+        List<Role> list2 = page.getRecords();
+        List<RoleJsonForShow> list=new ArrayList<>();
+        for(int i=0;i<list2.size();i++){
+            RoleJsonForShow roleJsonForShow=new RoleJsonForShow(list2.get(i));
+            list.add(roleJsonForShow);
+        }
 
         modelAndView.addObject("list", list);
         return modelAndView;
@@ -161,7 +153,6 @@ public class RoleController {
         rolePage.setAsc(false);
         rolePage.setOrderByField("updateTime");
         Page<Role> page = roleServiceGenerate.selectPage(rolePage, wrapper);
-        System.out.println(page.toString());
 
         PageInfo pageInfo = new PageInfo();
         pageInfo.setCurrentPage((long) (pageNum));
@@ -183,24 +174,51 @@ public class RoleController {
     public ModelAndView updateUser(@RequestParam(value = "roleId") Long roleId,
                                    @RequestParam(value = "name")String name,
                                    @RequestParam(value ="description")String description ) {
-        System.out.println(roleId+"   "+name+"   "+description);
-
-
-
-
         Result result = new Result();
-        Role role = roleServiceGenerate.selectById(roleId);
-       role.setRoleName(name);
-       role.setDescription(description);
-       role.setStatus(1);
-       roleServiceGenerate.updateById(role);
-      result.setSuccess(true);
-      result.setMsg("修改成功");
+        Role role2;
+        EntityWrapper<Role> wrapper=new EntityWrapper<>();
+        wrapper.eq("role_Name",name);
+        role2=roleServiceGenerate.selectOne(wrapper);
+        if(role2!=null){
+            result.setMsg("修改失败，该用户已存在");
+            result.setSuccess(false);
+        }else {
+
+            Role role = roleServiceGenerate.selectById(roleId);
+            role.setRoleName(name);
+            role.setDescription(description);
+            role.setStatus(1);
+            role.setUpdatetime(null);
+            roleServiceGenerate.updateById(role);
+            result.setSuccess(true);
+            result.setMsg("修改成功");
+        }
 
         ModelAndView modelAndView = getModelAndView();
         modelAndView.addObject("result", result);
         modelAndView.setViewName("/role/roleList");
         return modelAndView;
+
+    }
+    @ResponseBody
+    @RequestMapping("/roleCheck")
+    public Map accountCheck(@RequestParam(value = "name")String name){
+
+        Map<String,Object> json=new HashMap<>();
+        Role role;
+        EntityWrapper<Role> wrapper=new EntityWrapper<>();
+        wrapper.eq("role_Name",name);
+        role=roleServiceGenerate.selectOne(wrapper);
+        boolean isExist=false;
+        if(role==null){
+            isExist=true;
+
+            //如果存在则说明不能被注册,如果不存在才能注册
+
+        }
+        json.put("valid",isExist);
+        System.out.println(json.get("valid"));
+        return json;
 
     }
 
@@ -215,9 +233,8 @@ public class RoleController {
             result.setSuccess(true);
         result.setMsg("Ztree成功");
         result.add("ztreeMsg",ztree);
-        for (PermissionTree permissionTree:ztree){
-            System.out.println(permissionTree.toString());
-        }}else{
+
+        }else{
             result.setMsg("暂无权限可分配");
             result.setSuccess(false);
         }
@@ -227,16 +244,13 @@ public class RoleController {
     @RequestMapping("/getRoleTree")
     @RequiresPermissions("role/getRoleTree")
     public Result getRoleTree(@RequestParam(value = "ID")Long ID){
-        System.out.println(ID);
         Result result=new Result();
         List<PermissionTree> ztree=permissionServiceGenerate.getTreeByRoleId(ID);
         if(ztree.size()!=0){
             result.setSuccess(true);
         result.setMsg("Ztree成功");
         result.add("ztreeMsg",ztree);
-        for (PermissionTree permissionTree:ztree){
-            System.out.println(permissionTree.toString());
-        }}else{
+        }else{
             result.setMsg("该角色无任何权限");
             result.setSuccess(false);
         }
@@ -249,20 +263,13 @@ public class RoleController {
     @RequiresPermissions("role/updateRolePermission")
     public Result updateTreeById(@RequestParam (value = "checkedTree")List<Long> checkedTree ){
         Result result=new Result();
-        System.out.println(checkedTree.get(0));
-        for(int i=1;i<checkedTree.size();i++){
-            System.out.println(checkedTree.get(i));
-        }
         Role role=roleServiceGenerate.selectById(checkedTree.get(0));
         String permissions="";
         for(int i=1;i<checkedTree.size()-1;i++){
             permissions+=String.valueOf(checkedTree.get(i))+",";
         }
         permissions+=String.valueOf(checkedTree.get(checkedTree.size()-1));
-        System.out.println(role.getPermissions());
-        System.out.println(checkedTree);
         role.setPermissions(permissions);
-        System.out.println(role.getPermissions());
         roleServiceGenerate.updateById(role);
         result.setSuccess(true);
         result.setMsg("分配权限成功");
@@ -272,10 +279,9 @@ public class RoleController {
     @RequestMapping("/findRoleOne")
     public Result findRoleOne(@RequestParam(value = "ID")Long ID) throws Exception{
         Result result=new Result();
-        System.out.println(ID);
-        System.out.println("findUserOne");
         Role role=roleServiceGenerate.selectById(ID);
-        result.add("role",role);
+        RoleJsonForShow roleJsonForShow=new RoleJsonForShow(role);
+        result.add("role",roleJsonForShow);
         result.setSuccess(true);
         result.setMsg("成功");
         return result;
