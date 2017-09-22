@@ -5,26 +5,17 @@ import com.baomidou.mybatisplus.plugins.Page;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Md5Hash;
-import org.omg.PortableInterceptor.USER_EXCEPTION;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.*;
-import team.etop.xunfang.modules.po.Estate;
-import team.etop.xunfang.modules.po.Role;
-
-import team.etop.xunfang.modules.po.User;
-import team.etop.xunfang.modules.service.EstateServiceGenerate;
-import team.etop.xunfang.modules.service.RoleServiceGenerate;
-import team.etop.xunfang.modules.service.UserServiceGenerate;
+import team.etop.xunfang.modules.po.*;
+import team.etop.xunfang.modules.service.*;
 
 
-import javax.jws.WebParam;
+
 import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -57,7 +48,6 @@ public class UserController{
         userPage.setAsc(false);
         userPage.setOrderByField("updateTime");
         Page<User> page=userServiceGenerate.selectPage(userPage,wrapper);
-        System.out.println(page.toString());
 
         PageInfo pageInfo=new PageInfo();
         pageInfo.setCurrentPage((long)(pageNum));
@@ -92,7 +82,6 @@ public class UserController{
         userPage.setAsc(false);
         userPage.setOrderByField("updateTime");
         Page<User> page=userServiceGenerate.selectPage(userPage,wrapper);
-        System.out.println(page.toString());
 
         PageInfo pageInfo=new PageInfo();
         pageInfo.setCurrentPage((long)(1));
@@ -123,7 +112,6 @@ public class UserController{
             boolean isExist=false;
             if(user==null){
                 isExist=true;
-                System.out.println("存在");
 
             //如果存在则说明不能被注册,如果不存在才能注册
 
@@ -150,11 +138,9 @@ public ModelAndView addUser(@RequestParam(value ="account") String account,
     user.setUsername(name);
     user.setStatus(1);
     Date date=new Date();
-    System.out.println("日期 ： "+date);
 
     user.setCreatetime(date);
     String pwd=new Md5Hash(password,account).toString();
-    System.out.println("加密后密码"+pwd);
 
         if(password.equals(checkPwd)){
             user.setPassword(pwd);
@@ -199,12 +185,11 @@ public ModelAndView updateUser(@RequestParam(value="userId")Long userId,
     System.out.println(userId+","+name+","+password+","+checkPwd);
 
     Result result=new Result();
-    System.out.println("userID："+userId);
     User user=userServiceGenerate.selectById(userId);
-    System.out.println(user.toString());
     user.setUsername(name);
+    String pwd=new Md5Hash(password,user.getAccount()).toString();
     if(password.equals(checkPwd)){
-        user.setPassword(password);
+        user.setPassword(pwd);
         userServiceGenerate.updateById(user);
         result.setSuccess(true);
         result.setMsg("更新成功");
@@ -237,7 +222,6 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
     userPage.setAsc(false);
     userPage.setOrderByField("updateTime");
     Page<User> page=userServiceGenerate.selectPage(userPage,wrapper);
-    System.out.println(page.toString());
 
     PageInfo pageInfo=new PageInfo();
     pageInfo.setCurrentPage((long)(pageNum));
@@ -302,13 +286,11 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
           User user=userServiceGenerate.selectById(ID);
 
           String roleString=user.getRolesRelevance();
-        System.out.println(roleString);
 
         if(roleString==null){
             System.out.println("该用户无角色");
             result.setMsg("该用户无角色");
         }else{
-//            String [] strings=roleString.split(",");
             EntityWrapper<Role> wrapper=new EntityWrapper<>();
             wrapper.eq("status",1);
             List<Role> list=roleServiceGenerate.selectList(wrapper);
@@ -327,10 +309,6 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
             result.setMsg("成功");
 
             result.add("roleJsonList", roleJsonList);
-
-//      }
-
-
         }
 
         return result;
@@ -342,16 +320,11 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
     @RequiresPermissions("user/findEstatesList")
     public Result findEstatesListJson(@RequestParam(value = "ID") Long ID) throws Exception{
         Result result =new Result();
-        System.out.println("2    "+ID);
         User user=userServiceGenerate.selectById(ID);
         String estateString;
 
        estateString=user.getEstatesRelevance();
-        System.out.println(user.getEstatesRelevance());
-        System.out.println(user.toString());
-
         if(estateString==null){
-            System.out.println("该用户无楼盘");
             result.setMsg("该用户无楼盘");
         }else{
             EntityWrapper<Estate> wrapper=new EntityWrapper<>();
@@ -374,9 +347,6 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
 
             result.add("estateJsonList", estateJsonList);
 
-//      }
-
-
         }
 
         return result;
@@ -385,22 +355,17 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
     @RequestMapping("/updateUserRole")
     @RequiresPermissions("user/updateUserRole")
     public ModelAndView updateUserRole(HttpServletRequest request){
-        System.out.println("进入");
-        System.out.println(request.getParameter("userId"));
         Long userId=Long.parseLong(request.getParameter("userId"));
         User user=userServiceGenerate.selectById(userId);
 
         String[] roles=request.getParameterValues("type");
-        for(int i=0;i<roles.length;i++){
-            System.out.println("获取的角色ID: "+roles[i]);
-        }
+
         String rolesRelevance="";
         for(int i=1;i<roles.length-1;i++){
             rolesRelevance=rolesRelevance.concat(roles[i].concat(","));
 
         }
         rolesRelevance=rolesRelevance.concat(roles[roles.length-1]);
-        System.out.println(rolesRelevance);
         user.setRolesRelevance(rolesRelevance);
         userServiceGenerate.updateById(user);
         Result result=new Result();
@@ -415,8 +380,6 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
     @RequestMapping("/findUserOne")
     public Result findUserOne(@RequestParam(value = "ID")Long ID) throws Exception{
         Result result=new Result();
-        System.out.println(ID);
-        System.out.println("findUserOne");
         User user=userServiceGenerate.selectById(ID);
         UserJson userJson=new UserJson(user);
         result.add("user",userJson);

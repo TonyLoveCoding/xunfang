@@ -41,9 +41,8 @@ public class PermissionController {
             result.setSuccess(true);
             result.setMsg("成功");
             result.add("ztreeMsg",ztree);
-            for (PermissionTree permissionTree:ztree){
-                System.out.println(permissionTree.toString());
-            }}else{
+
+            }else{
             result.setMsg("暂无权限可分配");
             result.setSuccess(false);
         }
@@ -71,17 +70,11 @@ public class PermissionController {
     @RequiresPermissions("permission/updatePermissionName")
     public Result permissionReName (@RequestParam(value = "ID")List<String> ID)throws Exception{
         Result result=new Result();
-       for(int i=0;i<ID.size();i++){
-           System.out.println(ID.get(i));
-       }
-        System.out.println(ID.get(0));
-       Permission permission=permissionServiceGenerate.selectById(ID.get(0));
-        System.out.println(ID.get(0));
 
-        System.out.println(permission.toString());
+       Permission permission=permissionServiceGenerate.selectById(ID.get(0));
+
         permission.setName(ID.get(2));
         permission.setParentId(Long.parseLong(ID.get(1)));
-        System.out.println(permission.toString());
         if(permissionServiceGenerate.updateById(permission)){
             result.setSuccess(true);
             result.setMsg("修改权限名称成功");
@@ -115,13 +108,9 @@ public class PermissionController {
 
 
         permissionServiceGenerate.insert(permission);
-        System.out.println(permission.getId());
 
         String item=String.valueOf(permission.getId());
-//        Long item=permission.getId();
-        System.out.println("测试" + item);
         result.add("item", item);
-        System.out.println(result.getMap().get("item"));
         result.setSuccess(true);
         result.setMsg("获取新ID");
         return result;
@@ -133,7 +122,6 @@ public class PermissionController {
     public Result getPermissionMsg(@RequestParam(value = "ID")Long ID){
         Result result=new Result();
         Permission permission1=permissionServiceGenerate.selectById(ID);
-        System.out.println(permission1.toString());
         PermissionJson permission=new PermissionJson(permission1);
 
 
@@ -148,15 +136,11 @@ public class PermissionController {
                                          @RequestParam(value="name")String name,
                                          @RequestParam(value="description")String description,
                                          @RequestParam(value="url")String url){
-        System.out.println("update");
-        System.out.println("permissionID"+Id);
         ModelAndView modelAndView=new ModelAndView();
         Permission permission=permissionServiceGenerate.selectById(Id);
-        System.out.println(permission.toString());
         permission.setName(name);
         permission.setDescription(description);
         permission.setUrl(url);
-        System.out.println(permission.toString());
         permissionServiceGenerate.updateById(permission);
         modelAndView.setViewName("/permission/permissionList");
         return modelAndView;

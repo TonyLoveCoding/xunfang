@@ -55,17 +55,14 @@ public class ShiroRealm extends AuthorizingRealm {
         List<Permission> permissions=permissionServiceGenerate.selectList(wrapper1);
 
         EntityWrapper<User> wrapper2=new EntityWrapper<>();
-        System.out.println(account);
         wrapper2.eq("account",account);
         User user=userServiceGenerate.selectOne(wrapper2);
-        System.out.println(user.toString());
         String rolesRelevance;
         rolesRelevance=user.getRolesRelevance();
         if(!rolesRelevance.isEmpty()) {
             String[] roleList = rolesRelevance.split(",");
             for (int i = 0; i < roleList.length; i++) {
                 Role role = roleServiceGenerate.selectById(Long.parseLong(roleList[i]));
-                System.out.println(role.getPermissions());
                 String[] permissionList = role.getPermissions().split(",");
                 for (String permisionID : permissionList) {
                     permissionIds.add(Long.parseLong(permisionID));
@@ -94,10 +91,7 @@ public class ShiroRealm extends AuthorizingRealm {
 
              User user= null;
              user=userServiceGenerate.selectOne(wrapper);
-        System.out.println(user==null);
             if(user!=null){
-
-
                    AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user.getAccount(), user.getPassword(), user.getUsername());
                    this.setSession("currentUser",user);
                    return authenticationInfo;

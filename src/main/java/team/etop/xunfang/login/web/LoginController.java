@@ -28,11 +28,8 @@ public class LoginController {
     public ModelAndView login(@RequestParam(value = "account")String account,
                               @RequestParam(value = "password")String password){
         ModelAndView modelAndView=new ModelAndView();
-        System.out.printf("a");
-        System.out.println(account+","+password);
-        System.out.println(new Md5Hash(password,account));
+
         UsernamePasswordToken token=new UsernamePasswordToken(account,new Md5Hash(password,account).toString());
-        System.out.println(token.getPassword());
 
         Subject currentUser= SecurityUtils.getSubject();
         try{
