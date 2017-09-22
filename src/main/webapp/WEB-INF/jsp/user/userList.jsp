@@ -103,7 +103,6 @@
 
                     else {
                         var roleString=result.msg;
-                        alert(roleString);
                         $("#findUserRole").append(roleString);
 
                     }
@@ -706,8 +705,8 @@
                        <div class="modal-title">
                            <h1 class="text-center">修改</h1>
                        </div>
-                       <div class="modal-body">
-                           <form class="form-group" id="form5" name="form5" action="/user/updateUser" method="post" novalidate>
+
+                           <form class="form-group" id="form55" name="form55" action="/user/updateUser" method="post" novalidate >
                                <div class="modal-body" id="updateUserMsg">
 
                                </div>
@@ -720,7 +719,7 @@
                                </div>
 
                            </form>
-                       </div>
+
                    </div>
                </div>
            </div>
@@ -810,13 +809,18 @@
                         notEmpty: {
                             message: '账号不能为空'
                         },
-//                        remote: {
-//                            url: 'user/accountCheck',
-//                            message: '用户已存在',
-//                            delay: 5000,
-//                            type: 'POST',
-//                            dataType: 'json'
-//                        }
+                        remote: {
+                            url: 'user/accountCheck',
+                            message: '用户已存在',
+                            delay: 5000,
+                            type: 'POST',
+                            dataType: 'json'
+                        },
+                        stringLength: {/*长度提示*/
+                            min: 6,
+                            max: 30,
+                            message: '用户名长度必须在6到30之间'
+                        }/*最后一个没有逗号*/
                     }
                 },
                 name: {
@@ -830,7 +834,12 @@
                     validators: {
                         notEmpty: {
                             message: '密码不能为空'
-                        }
+                        },
+                        stringLength: {/*长度提示*/
+                            min: 6,
+                            max: 30,
+                            message: '用户名长度必须在6到30之间'
+                        }/*最后一个没有逗号*/
                     }
                 },
                 checkPwd: {
@@ -847,9 +856,7 @@
 
             }
         });
-    });
-    $(function() {
-        var y = $('#form5').bootstrapValidator({
+        var y = $('#form55').bootstrapValidator({
             message: 'This value is not valid',
             fields: {
                 name: {
@@ -880,6 +887,9 @@
 
             }
         });
+    });
+    $(function() {
+
     });
 
 </script>

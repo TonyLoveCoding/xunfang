@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import team.etop.xunfang.modules.po.Permission;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -19,9 +20,11 @@ public class PermissionJson {
     private String url;
     private Long parentId;
     private String ico;
-    private Date updatetime;
-    private Date createtime;
+    private String updatetime;
+    private String createtime;
     private Integer status;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
 
     public PermissionJson(Permission permission){
         this.id=String.valueOf(permission.getId());
@@ -31,8 +34,8 @@ public class PermissionJson {
         this.url=permission.getUrl();
         this.parentId=permission.getParentId();
         this.ico=permission.getIco();
-        this.createtime=permission.getCreatetime();
-        this.updatetime=permission.getUpdatetime();
+        this.createtime=dateFormat.format(permission.getCreatetime());
+        this.updatetime=dateFormat.format(permission.getUpdatetime());
         this.status=permission.getStatus();
 
     }
@@ -94,20 +97,20 @@ public class PermissionJson {
         this.ico = ico;
     }
 
-    public Date getUpdatetime() {
+    public String getUpdatetime() {
         return updatetime;
     }
 
     public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+        this.updatetime = dateFormat.format(updatetime);
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
     public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+        this.createtime = dateFormat.format(createtime);
     }
 
     public Integer getStatus() {

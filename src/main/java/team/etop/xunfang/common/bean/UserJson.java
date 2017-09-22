@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import team.etop.xunfang.modules.po.User;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -21,19 +22,22 @@ public class UserJson {
     private String estatesRelevance;
     @TableField("roles_relevance")
     private String rolesRelevance;
-    private Date updatetime;
-    private Date createtime;
-    private Integer status;
+    private String updatetime;
+    private String createtime;
+    private String status;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+
 
     public UserJson(User user){
+
         this.id=String.valueOf(user.getId());
         this.account=user.getAccount();
-        this.createtime=user.getCreatetime();
+        this.createtime=dateFormat.format(user.getCreatetime());
         this.estatesRelevance=user.getEstatesRelevance();
         this.password=user.getPassword();
         this.rolesRelevance=user.getRolesRelevance();
-        this.updatetime=user.getUpdatetime();
-        this.status=user.getStatus();
+        this.updatetime=dateFormat.format(user.getUpdatetime());
+        this.status=user.getStatus()==1?"启用":"禁用";
         this.username=user.getUsername();
     }
 
@@ -86,28 +90,28 @@ public class UserJson {
         this.rolesRelevance = rolesRelevance;
     }
 
-    public Date getUpdatetime() {
+    public String getUpdatetime() {
         return updatetime;
     }
 
     public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+        this.updatetime = dateFormat.format(updatetime);
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
     public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+        this.createtime = dateFormat.format(createtime);
     }
 
-    public Integer getStatus() {
+    public String getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
-        this.status = status;
+        this.status = status==1?"启用":"禁用";
     }
 
     @Override

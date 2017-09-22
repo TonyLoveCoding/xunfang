@@ -25,9 +25,7 @@ import team.etop.xunfang.modules.service.UserServiceGenerate;
 import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ZYZ on 2017/8/11
@@ -101,13 +99,41 @@ public class UserController{
         pageInfo.setTotal((long)(page.getPages()));
         modelAndView.addObject("pageInfo",pageInfo);
 
-
-        List<User> list=page.getRecords();
-
+        List<User> list2=page.getRecords();
+        List<UserJson> list=new ArrayList<>();
+        for(int i=0;i<list2.size();i++){
+            UserJson userJson=new UserJson(list2.get(i));
+            list.add(userJson);
+        }
 
         modelAndView.addObject("list",list);
         return modelAndView;
     }
+
+    @ResponseBody
+    @RequestMapping("/accountCheck")
+    public Map accountCheck(@RequestParam(value = "account")String account){
+        System.out.println("account"+account);
+
+            Map<String,Object> json=new HashMap<>();
+            User user;
+            EntityWrapper<User> wrapper=new EntityWrapper<>();
+            wrapper.eq("account",account);
+            user=userServiceGenerate.selectOne(wrapper);
+            boolean isExist=false;
+            if(user==null){
+                isExist=true;
+                System.out.println("存在");
+
+            //如果存在则说明不能被注册,如果不存在才能注册
+
+        }
+        json.put("valid",isExist);
+        System.out.println(json.get("valid"));
+        return json;
+
+    }
+
 
 
 @RequiresPermissions("user/addUser")
@@ -236,9 +262,12 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
 
     EntityWrapper<Role> wrapper=new EntityWrapper<>();
     wrapper.eq("status",1);
-        List<Role> roleList=roleServiceGenerate.selectList(wrapper);
-        for(int i=0;i<roleList.size();i++){
-            System.out.println(roleList.get(i).getRoleName());
+        List<Role> roleList1=roleServiceGenerate.selectList(wrapper);
+        List<RoleJsonForShow> roleList=new ArrayList<>();
+
+        for(int i=0;i<roleList1.size();i++){
+            RoleJsonForShow roleJsonForShow=new RoleJsonForShow(roleList1.get(i));
+            roleList.add(roleJsonForShow);
         }
 
         User user=userServiceGenerate.selectById(ID);
@@ -250,7 +279,7 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
         for(int i=0;i<roleList.size();i++){
             RoleJson roleJson=new RoleJson();
             roleJson.setRole(roleList.get(i));
-            if(roleString.contains(String.valueOf(roleList.get(i).getId()))){
+            if(roleString.contains(roleList.get(i).getId())){
                 roleJson.setExist(true);
             }
             roleJsonList.add(roleJson);
@@ -289,7 +318,8 @@ public ModelAndView findUser(@RequestParam(value = "pn",defaultValue ="1")int pa
             for(int i=0;i<list.size();i++){
                 if(roleString.contains(String.valueOf(list.get(i).getId()))){
                     RoleJson roleJson = new RoleJson();
-                    roleJson.setRole(list.get(i));
+                    RoleJsonForShow roleJsonForShow=new RoleJsonForShow(list.get(i));
+                    roleJson.setRole(roleJsonForShow);
                     roleJsonList.add(roleJson);
                 }
             }
