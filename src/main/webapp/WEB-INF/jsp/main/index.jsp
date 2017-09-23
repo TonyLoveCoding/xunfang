@@ -15,7 +15,7 @@
 <nav class="navbar">
     <div class="navbarLeft"><span class="logo-lg"><b>寻房网</b><div class="glyphicon glyphicon-home"></div>后台管理</span></div>
     <div class="navbarRight div_logout"><a href="javascript:void(0);"><div class="text_center"><span class="glyphicon glyphicon-log-out"></span> 退出登录</div></a></div>
-    <div class="navbarMiddle"><div class="text_center"><span class="glyphicon glyphicon-user"></span> 尊敬的用户，您好！</div></div>
+    <div class="navbarMiddle"><div class="text_center"><span class="glyphicon glyphicon-user"></span> 尊敬的${account}，您好！</div></div>
 </nav>
 <aside class="main-sidebar">
     <section id="div_menu" class="sidebar">
@@ -29,7 +29,7 @@
                 <h4 class="modal-title">确定要退出登录吗？</h4>
             </div>
             <div class="modal-body">
-                <h2>当前用户：</h2>
+                <h2>当前用户：${account}</h2>
             </div>
             <div class="modal-footer">
                 <button data-dismiss="modal" class="btn btn-default" type="button">关闭</button>
