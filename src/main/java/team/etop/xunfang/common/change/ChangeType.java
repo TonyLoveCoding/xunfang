@@ -21,8 +21,16 @@ public class ChangeType {
         estateDto.setMinPrice(estate.getMinPrice());
         estateDto.setMaxPrice(estate.getMaxPrice());
         estateDto.setDeveloperQuotes(estate.getDeveloperQuotes());
-        estateDto.setLocation(estate.getLocation());
-        estateDto.setType(estate.getType());
+        String location=estate.getLocation();
+        if(location.contains("none")){
+            location=location.replace("none","不限");
+        }
+        estateDto.setLocation(location);
+        String type=estate.getType();
+        if(type.contains("none")){
+            type=type.replace("none","不限");
+        }
+        estateDto.setType(type);
         estateDto.setFeature(estate.getFeature());
         estateDto.setEstateName(estate.getEstateName());
         estateDto.setEstateAddress(estate.getEstateAddress());
@@ -34,7 +42,27 @@ public class ChangeType {
         estateDto.setLatestOpening(simpleDateFormat.format(estate.getLatestOpening()));
         estateDto.setPropertyRights(estate.getPropertyRights());
         estateDto.setTakeTime(simpleDateFormat.format(estate.getTakeTime()));
-        estateDto.setHouseType(estate.getHouseType());
+        String str=estate.getHouseType();
+        if(str.contains("none")){
+            str=str.replace("none","不限");
+        }else{
+            if(str.contains("1")){
+                str=str.replace("1","一居");
+            }
+            if(str.contains("2")){
+                str=str.replace("2","二居");
+            }
+            if(str.contains("3")){
+                str=str.replace("3","三居");
+            }
+            if(str.contains("4")){
+                str=str.replace("4","四居");
+            }
+            if(str.contains("5")){
+                str=str.replace("5","五居及以上");
+            }
+        }
+        estateDto.setHouseType(str);
         estateDto.setCompany(estate.getCompany());
         estateDto.setPropertyCost(estate.getPropertyCost());
         estateDto.setPowerType(estate.getPowerType());
@@ -49,7 +77,30 @@ public class ChangeType {
         estateDto.setPrototypeRoom(estate.getPrototypeRoom());
         estateDto.setSamplePlate(estate.getSamplePlate());
         estateDto.setLiveAction(estate.getLiveAction());
-        estateDto.setFeature(estate.getFeature());
+        String string=estate.getFeature();
+        if(string.contains("none")){
+            string=string.replace("none","不限");
+        }else {
+            if(string.contains("1")){
+                string=string.replace("1","品牌地产");
+            }
+            if(string.contains("2")){
+                string=string.replace("2","自由购");
+            }
+            if(string.contains("3")){
+                string=string.replace("3","现房");
+            }
+            if(string.contains("4")){
+                string=string.replace("4","精装修");
+            }
+            if(string.contains("5")){
+                string=string.replace("5","临地铁");
+            }
+            if(string.contains("6")){
+                string=string.replace("6","小户型");
+            }
+        }
+        estateDto.setFeature(string);
         estateDto.setTurnover(estate.getTurnover());
         estateDto.setSign(estate.getSign());
         estateDto.setUpdateTime(estateDto.getUpdateTime());
@@ -73,12 +124,6 @@ public class ChangeType {
     }
 
     public Estate change(EstateDto estateDto) throws Exception{
-//        Date date=new Date();
-//        long times=date.getTime();
-//        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//        times=(times + 8 * 60 * 60 * 1000);
-//        String d=format.format(times);
-//        date=format.parse(d);
         Estate estate=new Estate();
         estate.setId(estateDto.getId());
         estate.setStatus(estateDto.getStatus());

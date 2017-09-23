@@ -79,7 +79,7 @@ public class EstateController {
      * @return
      */
     @RequestMapping(value = "/query",method = RequestMethod.GET)
-    public ModelAndView queryEstate(@RequestParam(value = "pn",defaultValue ="1") int current,@RequestParam(value = "keyword",defaultValue = "")String keyword){
+    public ModelAndView queryEstate(@RequestParam(value = "pn",defaultValue ="1") int current,@RequestParam(value = "keyword",defaultValue = "")String keyword)throws Exception{
         ModelAndView modelAndView=new ModelAndView("/estate/query");
         modelAndView.addObject("keyword",keyword);
         keyword="%"+keyword+"%";
@@ -94,9 +94,16 @@ public class EstateController {
         Page<Estate> page =estateServiceGenerate.selectPage(estatePage,wrapper);
         //获取分页后的楼盘信息
         List<Estate> estateList=page.getRecords();
+        List<EstateDto> estateDtos=new ArrayList<>();
+        ChangeType changeType=new ChangeType();
+        for(Estate estate:estateList){
+            EstateDto estateDto=changeType.change(estate);
+            System.out.println(estateDto);
+            estateDtos.add(estateDto);
+        }
         //得到总页数
         int pageNum=page.getPages();
-        modelAndView.addObject("estateList",estateList);
+        modelAndView.addObject("estateDtos",estateDtos);
         modelAndView.addObject("current",current);
         modelAndView.addObject("pageNum",pageNum);
         modelAndView.addObject("shownum",countindex);
@@ -215,10 +222,20 @@ public class EstateController {
         EntityWrapper<Dic> featureWrapper=new EntityWrapper<>();
         featureWrapper.where("type = {0}","feature").orderBy("weight",false);
         List<Dic> dic_feature=dicServiceGenerate.selectList(featureWrapper);
+        for(int i=0;i<dic_feature.size();i++){
+            if(dic_feature.get(i).getCode().equals("none")){
+                dic_feature.remove(i);
+            }
+        }
 
         EntityWrapper<Dic> houseTypeWrapper=new EntityWrapper<>();
         houseTypeWrapper.where("type = {0}","houseType").orderBy("weight",false);
         List<Dic> dic_houseType=dicServiceGenerate.selectList(houseTypeWrapper);
+        for(int i=0;i<dic_houseType.size();i++){
+            if(dic_houseType.get(i).getCode().equals("none")){
+                dic_houseType.remove(i);
+            }
+        }
 
         EntityWrapper<Dic> typeWrapper=new EntityWrapper<>();
         typeWrapper.where("type = {0}","type").orderBy("weight",false);
@@ -264,10 +281,20 @@ public class EstateController {
         EntityWrapper<Dic> featureWrapper=new EntityWrapper<>();
         featureWrapper.where("type = {0}","feature").orderBy("weight",false);
         List<Dic> dic_feature=dicServiceGenerate.selectList(featureWrapper);
+        for(int i=0;i<dic_feature.size();i++){
+            if(dic_feature.get(i).getCode().equals("none")){
+                dic_feature.remove(i);
+            }
+        }
 
         EntityWrapper<Dic> houseTypeWrapper=new EntityWrapper<>();
         houseTypeWrapper.where("type = {0}","houseType").orderBy("weight",false);
         List<Dic> dic_houseType=dicServiceGenerate.selectList(houseTypeWrapper);
+        for(int i=0;i<dic_houseType.size();i++){
+            if(dic_houseType.get(i).getCode().equals("none")){
+                dic_houseType.remove(i);
+            }
+        }
 
         EntityWrapper<Dic> typeWrapper=new EntityWrapper<>();
         typeWrapper.where("type = {0}","type").orderBy("weight",false);

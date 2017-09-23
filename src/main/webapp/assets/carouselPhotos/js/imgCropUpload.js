@@ -283,7 +283,8 @@
     function _startCrop(img, jcropOpt) {
         var imgW = img.offsetWidth;
         var imgH = img.offsetHeight;
-        var minW = jcropOpt.minSize[0], minH = jcropOpt.minSize[1];
+        // var minW = jcropOpt.minSize[0], minH = jcropOpt.minSize[1];
+        var minW = imgW, minH = imgH;
         var offsetWidth = (imgW / 2) - (minW / 2);
         var offsetHeight = (imgH / 2) - (minH / 2);
         var obj = {

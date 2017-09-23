@@ -75,7 +75,7 @@
                 <div class="btn-group">
                     <select id="location" name="location" value="${EstateDto.location}" class="btn btn-default dropdown-toggle">
                         <c:forEach var="dl" items="${dic_location}">
-                            <option value="${dl.name}" <c:if test="${dl.name.equals(EstateDto.location)}">selected</c:if>>${dl.name}</option>
+                            <option value="${dl.code}" <c:if test="${dl.name.equals(EstateDto.location) || (EstateDto.location==null && dl.code.equals('none'))}">selected</c:if>>${dl.name}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -99,7 +99,7 @@
                 <div class="btn-group">
                     <select id="type" name="type" value="${EstateDto.type}" class="btn btn-default dropdown-toggle">
                         <c:forEach var="dt" items="${dic_type}">
-                            <option value="${dt.name}" <c:if test="${dt.name.equals(EstateDto.type)}">selected</c:if>>${dt.name}</option>
+                            <option value="${dt.code}" <c:if test="${dt.name.equals(EstateDto.type) || (EstateDto.type==null && dt.code.equals('none'))}">selected</c:if>>${dt.name}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -198,7 +198,7 @@
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <select name="houseType" id="houseType" class="selectpicker show-tick form-control" multiple data-live-search="false">
                     <c:forEach var="dh" items="${dic_houseType}">
-                        <option value="${dh.name}" <c:if test="${EstateDto.houseType.contains(dh.name)}">selected</c:if>>${dh.name}</option>
+                        <option value="${dh.code}" <c:if test="${EstateDto.houseType.contains(dh.name) || (EstateDto.houseType==null && dh.code.equals('1'))}">selected</c:if>>${dh.name}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -312,7 +312,7 @@
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <select name="feature" id="feature" class="selectpicker show-tick form-control" multiple data-live-search="false">
                     <c:forEach var="df" items="${dic_feature}">
-                        <option value="${df.name}" <c:if test="${EstateDto.feature.contains(df.name)}">selected</c:if>>${df.name}</option>
+                        <option value="${df.code}" <c:if test="${EstateDto.feature.contains(df.name) || (EstateDto.feature==null && df.code.equals('1'))}">selected</c:if>>${df.name}</option>
                     </c:forEach>
                 </select>
             </div>

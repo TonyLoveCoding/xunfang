@@ -90,21 +90,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${estateList}" var="estate">
+                <c:forEach items="${estateDtos}" var="estateDto">
                     <tr>
-                        <td>${estate.estateName}</td>
-                        <td>${estate.estateAddress}</td>
-                        <td>${estate.location}</td>
-                        <td>${estate.type}</td>
-                        <td>${estate.houseType}</td>
-                        <td>${estate.minPrice}</td>
-                        <td>${estate.maxPrice}</td>
+                        <td>${estateDto.estateName}</td>
+                        <td>${estateDto.estateAddress}</td>
+                        <td>${estateDto.location}</td>
+                        <td>${estateDto.type}</td>
+                        <td>${estateDto.houseType}</td>
+                        <td>${estateDto.minPrice}</td>
+                        <td>${estateDto.maxPrice}</td>
                         <td>
                             <div class="btn-group center-block" role="group" aria-label="..." style="display: block;margin-left: auto;margin-right: auto">
-                                <a class="btn btn-default center-block glyphicon glyphicon-list-alt" href="/estate/selectbyid?id=${estate.id}" role="button">查看</a>
-                                <a class="btn btn-default center-block glyphicon glyphicon-erase" href="/estate/update?id=${estate.id}" role="button">修改</a>
-                                <a class="btn btn-default center-block glyphicon glyphicon-picture" href="/estate/upload?id=${estate.id}" role="button">楼盘图片</a>
-                                <a class="btn btn-warning center-block glyphicon glyphicon-trash" href="javascript:void(0);" role="button" onclick="contirmd('${estate.id}')">删除</a>
+                                <a class="btn btn-default center-block glyphicon glyphicon-list-alt" href="/estate/selectbyid?id=${estateDto.id}" role="button">查看</a>
+                                <a class="btn btn-default center-block glyphicon glyphicon-erase" href="/estate/update?id=${estateDto.id}" role="button">修改</a>
+                                <a class="btn btn-default center-block glyphicon glyphicon-picture" href="/estate/upload?id=${estateDto.id}" role="button">楼盘图片</a>
+                                <a class="btn btn-warning center-block glyphicon glyphicon-trash" href="javascript:void(0);" role="button" onclick="contirmd('${estateDto.id}')">删除</a>
                             </div>
                         </td>
                     </tr>

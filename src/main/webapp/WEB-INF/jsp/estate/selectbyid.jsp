@@ -77,7 +77,9 @@
             <div style="font-size:15px">建筑类型：</div>
         </div>
         <div class="col-sm-4" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">${EstateDto.type}</div>
+            <div style="font-size:15px">
+                ${EstateDto.type}
+            </div>
         </div>
     </div>
     <div class="row">
@@ -164,7 +166,8 @@
             <div style="font-size:15px">楼盘户型：</div>
         </div>
         <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-            <div style="font-size:15px">${EstateDto.houseType}</div>
+            <div style="font-size:15px">${EstateDto.houseType}
+            </div>
         </div>
         <div class="col-sm-1 col-md-offset-1" style="padding-left: 0px;padding-top: 10px">
             <div style="font-size:15px">产权年限：</div>
