@@ -62,9 +62,9 @@
                             <a href="home"><b>热搜词：</b></a>
                         </li>
 
-                        <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
+                        <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
                             <li>
-                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                                <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
                             </li>
                         </c:forEach>
                     </ul>
@@ -96,9 +96,9 @@
                             <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
                         </li>
 
-                        <c:forEach begin="0" end="4" items="${RecommendEstate}" var="estate">
+                        <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
                             <li>
-                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                                <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
                             </li>
                         </c:forEach>
                     </ul>
@@ -322,44 +322,30 @@
                 <div class="col-md-9 column">
                     <div class="carousel slide set_carousel" id="carousel-index">
                         <ol class="carousel-indicators">
-                            <li class="active" data-slide-to="0" data-target="#carousel-index">
-                            </li>
-                            <li data-slide-to="1" data-target="#carousel-index">
-                            </li>
-                            <li data-slide-to="2" data-target="#carousel-index">
-                            </li>
+                            <c:forEach items="${carouselPhotoList}" var="photo" varStatus="i">
+                                <li data-slide-to="${i.count}" data-target="#carousel-index"
+                                    <c:if test="${i.count eq 1}">
+                                        class="active"
+                                    </c:if>
+                                ></li>
+                            </c:forEach>
                         </ol>
                         <div class="carousel-inner carousel-image">
-                            <div class="item active">
-                                <a href="/home/details/${RecommendEstate.get(0).id}">
-                                    <img alt="" src="/assets/home/index/image/default.jpg"/>
-                                </a>
-                                <div class="carousel-caption carousel-title">
-                                    <h3>
-                                        1、${RecommendEstate.get(0).estateName}
-                                    </h3>
+                            <c:forEach items="${carouselPhotoList}" var="photo" varStatus="i">
+                                <div class="item
+                                        <c:if test="${i.count eq 1}">
+                                            active
+                                        </c:if> ">
+                                    <a href="${photo.url}">
+                                        <img src="${photo.name}"/>
+                                    </a>
+                                    <div class="carousel-caption carousel-title">
+                                        <h3>
+                                            ${i.count}、${photo.url}
+                                        </h3>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <a href="/home/details/${RecommendEstate.get(1).id}">
-                                    <img alt="" src="/assets/home/index/image/default1.jpg" />
-                                </a>
-                                <div class="carousel-caption carousel-title">
-                                    <h3>
-                                        2、${RecommendEstate.get(1).estateName}
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <a href="/home/details/${RecommendEstate.get(2).id}">
-                                    <img alt="" src="/assets/home/index/image/default2.jpg" />
-                                </a>
-                                <div class="carousel-caption carousel-title">
-                                    <h3>
-                                        3、${RecommendEstate.get(2).estateName}
-                                    </h3>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                         <a class="left carousel-control" href="#carousel-index" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>

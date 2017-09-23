@@ -96,6 +96,12 @@ $(document).ready(function(){
         $("#form_search").submit();
     }
 
+    //热搜词设置
+    $(".a_heatWord").click(function () {
+        var keyWord=this.innerHTML;
+        $("#inp_hid_keyword").attr("value", keyWord);
+        $("#form_search").submit();
+    });
 
 });
 

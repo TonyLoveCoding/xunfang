@@ -50,4 +50,10 @@ $(function(){
     //为右侧导航栏子节点赋予滚动效果
     $.scrollToDom("#myScrollspy a",600);
 
+	//热搜词设置
+    $(".a_heatWord").click(function () {
+        var keyWord=this.innerHTML;
+        $("#inp_hid_keyword").attr("value", keyWord);
+        $("#form_search").submit();
+    });
 }); 
