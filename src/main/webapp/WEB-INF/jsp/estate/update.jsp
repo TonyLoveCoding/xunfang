@@ -25,10 +25,20 @@
     <script src="assets/estate/update/update.js"></script>
     <script src="assets/js/bootstrapValidator.js"></script>
 
+    <script src="assets/jquery-validation-1.17.0/lib/jquery.js"></script>
+    <script src="assets/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+    <script src="assets/jquery-validation-1.17.0/dist/localization/messages_zh.js"></script>
+
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+
 </head>
 <body style="height: auto">
 <div  class="container-fluid">
-    <form id="form1" name="in_form" action="/estate/update" method="post" onsubmit="return update(this)">
+    <form id="form1" name="in_form" action="/estate/update" method="post">
         <div class="row">
             <div class="col-sm-12" style="padding-left: 0px">
                 <h3>基本信息</h3>

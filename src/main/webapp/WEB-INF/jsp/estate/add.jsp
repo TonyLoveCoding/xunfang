@@ -25,10 +25,20 @@
     <script src="assets/estate/add/add.js"></script>
     <script src="assets/js/bootstrapValidator.js"></script>
 
+    <script src="assets/jquery-validation-1.17.0/lib/jquery.js"></script>
+    <script src="assets/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+    <script src="assets/jquery-validation-1.17.0/dist/localization/messages_zh.js"></script>
+
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+
 </head>
 <body style="height: auto">
 <div  class="container-fluid">
-    <form id="form1" action="/estate/add" method="post" onsubmit="return update(this)">
+    <form id="form1" action="/estate/add" method="post">
         <div class="row">
             <div class="col-sm-12" style="padding-left: 0px">
                 <h3>基本信息</h3>
@@ -188,7 +198,7 @@
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
                 <select name="houseType" id="houseType" class="selectpicker show-tick form-control" multiple data-live-search="false">
                     <c:forEach var="dh" items="${dic_houseType}">
-                        <option value="${dh.name}" <c:if test="${EstateDto.houseType.contains(dh.name)}">selected</c:if>>${dh.name}</option>
+                        <option value="${dh.code}" <c:if test="${EstateDto.houseType.contains(dh.code)}">selected</c:if>>${dh.name}</option>
                     </c:forEach>
                 </select>
             </div>
@@ -300,9 +310,9 @@
                 <div style="font-size:15px">特色：</div>
             </div>
             <div class="col-sm-3" style="padding-left: 0px;padding-top: 10px">
-                <select name="feature" id="feature" class="selectpicker show-tick form-control" multiple data-live-search="false">
+                <select name="feature" id="feature"class="selectpicker show-tick form-control" multiple data-live-search="false">
                     <c:forEach var="df" items="${dic_feature}">
-                        <option value="${df.name}" <c:if test="${EstateDto.feature.contains(df.name)}">selected</c:if>>${df.name}</option>
+                        <option value="${df.code}" <c:if test="${EstateDto.feature.contains(df.code)}">selected</c:if>>${df.name}</option>
                     </c:forEach>
                 </select>
             </div>
