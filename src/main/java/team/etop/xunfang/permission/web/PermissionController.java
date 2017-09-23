@@ -31,6 +31,7 @@ public class PermissionController {
     @Autowired
     private PermissionServiceGenerate permissionServiceGenerate;
 
+
     @RequiresPermissions("permission/permissionList")
     @RequestMapping("/permissionList")
     public ModelAndView getPermissionList(HttpServletRequest request){
@@ -48,7 +49,7 @@ public class PermissionController {
         }
 
 
-        modelAndView.addObject("result",result);
+//        modelAndView.addObject("result",result);
         modelAndView.setViewName("/permission/permissionList");
 
         return modelAndView;

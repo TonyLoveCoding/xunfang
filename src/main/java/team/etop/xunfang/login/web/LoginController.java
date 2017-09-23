@@ -46,4 +46,12 @@ public class LoginController {
 
         return modelAndView;
     }
+    @RequestMapping("/logout")
+    public ModelAndView logout(){
+        ModelAndView modelAndView=new ModelAndView();
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        modelAndView.setViewName("/login/login");
+        return modelAndView;
+    }
 }

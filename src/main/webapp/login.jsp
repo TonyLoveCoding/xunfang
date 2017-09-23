@@ -26,7 +26,7 @@
         <div class="col-md-4 column">
         </div>
         <div class="col-md-4 column  form-box">
-            <h3 class="cursive-font text-center">权限系统</h3>
+            <h3 class="cursive-font text-center">后台管理系统</h3>
             <form class="form-horizontal"  action="/login/login" method="POST">
                 <div class="form-group">
                     <label for="id" class="col-sm-2 control-label">账号</label>

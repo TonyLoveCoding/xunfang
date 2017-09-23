@@ -91,6 +91,8 @@
                     $("#permissionMsg").append(permisiionString);
                 }
                 else{
+                    $("#resultMsg").append(result.msg);
+                    $('#Result').modal('show');
 
                 }
 
@@ -127,6 +129,8 @@
                         confirmVal=true;
                     }
                     else {
+                        $("#resultMsg").append(result.msg);
+                        $('#Result').modal('show');
                         confirmVal=false;
                     }
                 }
@@ -166,10 +170,13 @@
             type:"POST",
             success: function (result) {
                 if (result.success) {
+                    $("#resultMsg").append(result.msg);
                     $('#Result').modal('show');
 
                 }
                 else {
+                    $("#resultMsg").append(result.msg);
+                    $('#Result').modal('show');
 
                 }
             }
@@ -211,6 +218,8 @@
 
                     }
                     else {
+                        $("#resultMsg").append(result.msg);
+                        $('#Result').modal('show');
 
                     }
                 }
