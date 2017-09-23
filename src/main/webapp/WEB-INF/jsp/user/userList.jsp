@@ -21,202 +21,11 @@
 
 
     <script src="/assets/home/search/zxf_page.js" type="text/javascript"></script>
-
-
-    <script>
-        var ID;
-        $(document).ready(function(){
-            $("#Mymodal").click(function(){
-                $("#new").modal("show")
-            })
-        });
-
-        $(document).on('click', '.roleBtn', function () {
-            ID = $(this).attr("id");
-            $("#updateRole").empty();
-//           alert(ID);
-            $.ajax({
-                url: "user/getRoleJson",
-                data: "ID=" + ID,
-                type: "GET",
-                success: function (result) {
-                    if (result.success) {
-                        var roleList = result.map.roleJsonList;
-                        $("#updateRole").empty();
-                        var checkboxString='<input type="hidden" name="userId" value="'+ID+'">';
-                        $("#updateRole").append(checkboxString);
-                        var checkboxString = '<input type="hidden" name="type" value="-1"  ><br>';
-                        $("#updateRole").append(checkboxString);
-
-                        $.each(roleList, function (index, item) {
-//                            var checkboxString;
-                            if(item.isExist){
-                                var checkboxString = '<input type="checkbox" name="type" value="' + item.role.id + '"  checked><span>' + item.role.roleName + '</span><br>';
-
-                            }
-                            else {
-                                var checkboxString = '<input type="checkbox" name="type" value="' + item.role.id + '" ><span>' + item.role.roleName + '</span><br>';
-                            }
-                            $("#updateRole").append(checkboxString);
-//                              alert(item.role.roleName);
-//                                var roleBtn = $("<input>")
-////                                    .addClass("btn roleBtnShow")
-//                                    .attr("type", "checkbox")
-//                                    .attr("name","type")
-//                                    .attr("value", item.role.id);
-//                                $("#updateRole").append(roleBtn).append(item.role.roleName+"<br>");
-                        });
-                    }
-                    else {
-                    }
-                }
-            });
-        });
-
-        $(document).on('click', '.findUserRoleBtn', function () {
-            ID = $(this).attr("id");
-            $("#findUserRole").empty();
-//           alert(ID);
-            $.ajax({
-                url: "user/getUserRoleJson",
-                data: "ID=" + ID,
-                type: "GET",
-                success: function (result) {
-                    if (result.success) {
-                        var roleList = result.map.roleJsonList;
-                        $("#findUserRole").empty();
-
-                        $.each(roleList, function (index, item) {
-//                            var checkboxString;
-                            var roleString= '<span>' + item.role.roleName + '</span><br>';
-                            $("#findUserRole").append(roleString);
-//                              alert(item.role.roleName);
-//                                var roleBtn = $("<input>")
-////                                    .addClass("btn roleBtnShow")
-//                                    .attr("type", "checkbox")
-//                                    .attr("name","type")
-//                                    .attr("value", item.role.id);
-//                                $("#updateRole").append(roleBtn).append(item.role.roleName+"<br>");
-                        });
-                    }
-
-
-                    else {
-                        var roleString=result.msg;
-                        alert(roleString);
-                        $("#findUserRole").append(roleString);
-
-                    }
-                }
-            });
-        });
-
-        $(document).on('click', '.estateBtn', function () {
-            ID = $(this).attr("id");
-            $("#findEstates").empty();
-
-            $.ajax({
-                url: "user/findEstatesList",
-                data: "ID=" + ID,
-                type: "GET",
-                success: function (result) {
-                    if (result.success) {
-                        var estateList = result.map.estateJsonList;
-                        $("#findEstates").empty();
-                        $.each(estateList, function (index, item) {
-//                            var checkboxString;
-                            var estateString= '<span>' + item.estate.estateName + '</span><br>';
-
-                            $("#findEstates").append(estateString);
-//                              alert(item.role.roleName);
-//                                var roleBtn = $("<input>")
-////                                    .addClass("btn roleBtnShow")
-//                                    .attr("type", "checkbox")
-//                                    .attr("name","type")
-//                                    .attr("value", item.role.id);
-//                                $("#updateRole").append(roleBtn).append(item.role.roleName+"<br>");
-                        });
-                    }
-                    else {
-                        var estateString=result.msg;
-                        $("#findEstates").append(estateString);
-                    }
-                }
-            });
-        });
-        $(document).on('click','.updateUserBtn',function(){
-            ID = $(this).attr("id");
-//            alert("updateUser");
-            $("#updateUserMsg").empty();
-            $.ajax({
-                url: "user/findUserOne",
-                data: "ID=" + ID,
-                type: "GET",
-                success: function (result) {
-                    if (result.success) {
-
-                        var user = result.map.user;
-                        var updateUserString='<h3>账号：'+user.account+'</h3>';
-                        $("#updateUserMsg").append(updateUserString);
-                        updateUserString='<input type="hidden" name="userId" value="'+user.id+'"><br>';
-                        $("#updateUserMsg").append(updateUserString);
-                        updateUserString=' <label>昵称：</label>';
-                        $("#updateUserMsg").append(updateUserString);
-                        updateUserString='<input class="form-control" type="text" name="name" value="'+user.username+'"><br>';
-                        $("#updateUserMsg").append(updateUserString);
-                        updateUserString=' <label>密码：</label>';
-                        $("#updateUserMsg").append(updateUserString);
-                        updateUserString='<input class="form-control" type="password" name="password" placeholder="至少6位数字或字母" value="'+user.password+'"><br>';
-                        $("#updateUserMsg").append(updateUserString);
-                        updateUserString='<label>验证密码：</label>';
-                        $("#updateUserMsg").append(updateUserString);
-                        updateUserString='<input class="form-control" type="password" name="checkPwd" autofocus="autofocus" placeholder="至少6位字母或数字" value="'+user.password+'"><br>';
-                        $("#updateUserMsg").append(updateUserString);
+    <script src="/assets/user/js/user.js" type="text/javascript"></script>
 
 
 
 
-
-
-
-
-
-                    }
-                    else {
-                        var estateString=result.msg;
-                        $("#findEstates").append(estateString);
-                    }
-                }
-            });
-        });
-
-        $(document).on('click', '.deteleUserBtn', function () {
-            ID = $(this).attr("id");
-            $("#deleteUser").empty();
-//           alert(ID);
-            var deteleUserString='<h1 class=\"text-center\"> 确认删除？</h1>';
-            $("#deleteUser").append(deteleUserString);
-            var deteleUserString='<input type="hidden" name="userId" value="'+ID+'">';
-            $("#deleteUser").append(deteleUserString);
-
-        });
-        $(document).ready(function () {
-
-           <c:if test="${!empty result}">
-            var x=document.getElementById('test');
-            x.onclick= function () {
-
-                $('#Result').modal('show');
-
-            };
-            x.click();
-            </c:if>
-        });
-
-
-
-
-    </script>
 
 
 </head>
@@ -226,8 +35,6 @@
 
        <form action="/user/userList" method="GET" id="form_search">
            <input id="inp_hid_pn" type="hidden" name="pn" value="${pageInfo.getCurrentPage()}">
-           <%--<input id="inp_hid_status" type="hidden" name="status" value="${SearchPageMsg.status}">--%>
-
        </form>
 
 
@@ -275,19 +82,13 @@
                                <span>&times;</span>
                            </button>
                        </div>
-
-
-
                                <div class="modal-body">
                                    <h1>${result.msg}</h1>
-
                                </div>
                        <div class="modal-footer">
 
                            <button class="btn btn-primary" data-dismiss="modal">取消</button>
                        </div>
-
-
                    </div>
                </div>
            </div>
@@ -355,17 +156,15 @@
 <%--用户列表--%>
 <div class="container-fluid">
     <div class="row clearfix">
-        <div class="col-md-12 column">
 
-        </div>
 
-        <div class="col-md-12 column">
-            <table class="table table-striped">
+    <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>
                         ID
                     </th>
+
                     <th>
                         账号
                     </th>
@@ -380,12 +179,18 @@
                     <th>
                         用户状态
                     </th>
+
+                    <shiro:hasPermission name="user/findUserRole">
                     <th>
                         查看用户类型
                     </th>
+                    </shiro:hasPermission>
+                       <shiro:hasPermission name="user/findEstatesList">
                     <th>
                         所拥有楼盘
                     </th>
+                       </shiro:hasPermission>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -400,213 +205,35 @@
                         <th>${user.createtime }</th>
                         <th>${user.updatetime }</th>
                         <th>${user.status }</th>
-                        <%--<th>${user.estatesRelevance }</th>--%>
-                            <%--可做成按钮，进行楼盘管理--%>
+
                         <shiro:hasPermission name="user/findUserRole">
-                        <td><a class=" btn btn-info findUserRoleBtn" data-target="#findUserRoleModel" data-toggle="modal" href="" id="${user.id}">查看用户类型</a></td>
+                        <th><a class=" btn btn-info findUserRoleBtn" data-target="#findUserRoleModel" data-toggle="modal" href="" id="${user.id}">查看用户类型</a></th>
                         </shiro:hasPermission>
-                            <%--&lt;%&ndash;查看用户角色类型模态框&ndash;%&gt;--%>
 
-                        <%--<div id="findUserRole" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
-                            <%--<div class="form-wrap">--%>
-                                <%--<div class="modal-dialog">--%>
-                                    <%--<div class="modal-content">--%>
-                                        <%--<div class="modal-title">--%>
-                                            <%--<h1 class="text-center">用户类型</h1>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="modal-body">--%>
-                                            <%--<form class="form-group" id="findUserRole" name="form3"--%>
-                                                  <%--action="/user/findUserRole" method="post">--%>
-                                                <%--<input type="hidden" name="userId" value=${user.id}>--%>
-                                                    <%--&lt;%&ndash;<div class="modal-body" id="updateRole">&ndash;%&gt;--%>
-
-                                                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                                                <%--<div class="modal-footer">--%>
-                                                    <%--<button class="btn btn-primary" type="submit" id="tijia3">提交--%>
-                                                    <%--</button>--%>
-                                                    <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
-                                                <%--</div>--%>
-
-                                            <%--</form>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-
-                            <%--&lt;%&ndash;查看用户类型模态框结束&ndash;%&gt;--%>
                         <shiro:hasPermission name="user/findEstatesList">
-                        <td><a class=" btn btn-info estateBtn" data-target="#findEstatesList" data-toggle="modal" href="" id="${user.id}">查看楼盘</a></td>
+                        <th><a class=" btn btn-info estateBtn" data-target="#findEstatesList" data-toggle="modal" href="" id="${user.id}">查看楼盘</a></th>
                         </shiro:hasPermission>
-                            <%--&lt;%&ndash;查看樓盤模态框&ndash;%&gt;--%>
-
-                        <%--<div id="findEstatesList" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
-                            <%--<div class="form-wrap">--%>
-                                <%--<div class="modal-dialog">--%>
-                                    <%--<div class="modal-content">--%>
-                                        <%--<div class="modal-title">--%>
-                                            <%--<h1 class="text-center">所拥有的楼盘</h1>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="modal-body">--%>
-                                            <%--<form class="form-group" id="findEstates" name="form4"--%>
-                                                  <%--action="/user/findEstatesList" method="post">--%>
-                                                <%--<input type="hidden" name="userId" value=${user.id}>--%>
-                                                    <%--&lt;%&ndash;<div class="modal-body" id="updateRole">&ndash;%&gt;--%>
-
-                                                    <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                                                <%--<div class="modal-footer">--%>
-                                                    <%--<button class="btn btn-primary" type="submit" id="tijia30">提交--%>
-                                                    <%--</button>--%>
-                                                    <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
-                                                <%--</div>--%>
-
-                                            <%--</form>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-
-                            <%--&lt;%&ndash;查看樓盤模态框结束&ndash;%&gt;--%>
 
                         <shiro:hasPermission name="user/updateUser">
 
-                        <td><a class="btn btn-success updateUserBtn" data-target="#updateUser" data-toggle="modal" id="${user.id}">修改</a></td>
+                        <th><a class="btn btn-success updateUserBtn" data-target="#updateUser" data-toggle="modal" id="${user.id}">修改</a></th>
                         </shiro:hasPermission>
-                            <%--<td><a class="btn btn-danger" data-target="#deleteUser" data-toggle="modal" href="" method="post">删除</a></td>--%>
-                            <%--<td><a class="btn btn-info" data-target="#updateUserRole" data-toggle="modal"--%>
-                            <%--href="">分配角色</a></td>--%>
-                            <%--<td><a class="btn btn-info" data-target="#updateEstate" data-toggle="modal"--%>
-                            <%--href="">楼盘管理</a></td>--%>
 
-
-                            <%--修改用户信息模态框--%>
-                        <%--<div id="updateUser" class="modal fade" aria-labelledby="myModalLabel"  aria-hidden="true">--%>
-                            <%--<div class="form-wrap">--%>
-                                <%--<div class="modal-dialog">--%>
-                                    <%--<div class="modal-content">--%>
-                                        <%--<div class="modal-header">--%>
-                                            <%--<button class="close" data-dismiss="modal">--%>
-                                                <%--<span>&times;</span>--%>
-                                            <%--</button>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="modal-title">--%>
-                                            <%--<h1 class="text-center">修改</h1>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="modal-body">--%>
-                                            <%--<form class="form-group" id="form5" name="form5" action="/user/updateUser" method="post" novalidate>--%>
-                                                <%--<div class="modal-body">--%>
-                                                    <%--<label>账号:</label>--%>
-                                                    <%--<input type="hidden" name="userId" value=${user.id }>--%>
-                                                <%--</div>--%>
-                                                <%--<div class="modal-body">--%>
-                                                    <%--<label>昵称</label>--%>
-                                                    <%--<input type="text" name="name" value=${user.username }>--%>
-                                                <%--</div>--%>
-                                                <%--<div class="modal-body">--%>
-                                                    <%--<label>密码</label>--%>
-                                                    <%--<input class="form-control" type="password" name="password"--%>
-                                                           <%--autofocus="autofocus" placeholder="至少6位字母或数字"--%>
-                                                           <%--value="${user.password }">--%>
-                                                <%--</div>--%>
-                                                <%--<div class="modal-body">--%>
-                                                    <%--<label>验证密码</label>--%>
-                                                    <%--<input class="form-control" type="password" name="checkPwd"  autofocus="autofocus" placeholder="至少6位字母或数字"               value="${user.password}">--%>
-                                                <%--</div>--%>
-
-                                                <%--<div class="modal-footer">--%>
-                                                    <%--<button class="btn btn-primary" type="submit" id="tijiao22">提交</button>--%>
-
-                                                    <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
-                                                <%--</div>--%>
-
-                                            <%--</form>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                            <%--&lt;%&ndash;修改用户模态框结束&ndash;%&gt;--%>
                        <shiro:hasPermission name="user/deleteUser">
-                        <td><a class="btn btn-danger deteleUserBtn" data-target="#deleteUserById" data-toggle="modal" href="" method="post" id="${user.id}">删除</a></td>
+                        <th><a class="btn btn-danger deteleUserBtn" data-target="#deleteUserById" data-toggle="modal" href="" method="post" id="${user.id}">删除</a></th>
                        </shiro:hasPermission>
-                            <%--&lt;%&ndash;删除用户模态框&ndash;%&gt;--%>
-                        <%--<div id="deleteUser${user.account}" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
-                            <%--<div class="form-wrap">--%>
-                                <%--<div class="modal-dialog">--%>
-                                    <%--<div class="modal-content">--%>
-                                        <%--<div class="modal-header">--%>
-                                            <%--<button class="close" data-dismiss="modal">--%>
-                                                <%--<span>&times;</span>--%>
-                                            <%--</button>--%>
-                                        <%--</div>--%>
-
-                                        <%--<div class="modal-body">--%>
-                                            <%--<form class="form-group" id="form6" name="form6" action="/user/deleteUser"--%>
-                                                  <%--method="post">--%>
-                                                <%--<div class="modal-body">--%>
-                                                    <%--<h1 class="text-center"> 确认删除？</h1>--%>
-                                                    <%--<input type="hidden" name="account" value=${user.account }>--%>
-                                                <%--</div>--%>
-                                                <%--<div class="modal-footer">--%>
-                                                    <%--<button class="btn btn-primary" type="submit" id="tijiao2">提交--%>
-                                                    <%--</button>--%>
-                                                    <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
-                                                <%--</div>--%>
-                                            <%--</form>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                            <%--&lt;%&ndash;删除用户模态框结束&ndash;%&gt;--%>
 
                         <shiro:hasPermission name="user/updateUserRole">
-                        <td><a class=" btn btn-info roleBtn" data-target="#updateUserRole" data-toggle="modal" href="" id="${user.id}" value="${user}">分配角色</a></td>
+                        <th><a class=" btn btn-info roleBtn" data-target="#updateUserRole" data-toggle="modal" href="" id="${user.id}" value="${user}">分配角色</a></th>
                         </shiro:hasPermission>
-                            <%--&lt;%&ndash;分配角色模态框&ndash;%&gt;--%>
-                        <%--<div id="updateUserRole" class="modal fade" aria-labelledby="myModalLabel" aria-hidden="true">--%>
-                            <%--<div class="form-wrap">--%>
-                                <%--<div class="modal-dialog">--%>
-                                    <%--<div class="modal-content">--%>
-                                        <%--<div class="modal-title">--%>
-                                            <%--<h1 class="text-center">分配角色</h1>--%>
-                                        <%--</div>--%>
-                                        <%--<div class="modal-body">--%>
-                                            <%--<form class="form-group" id="updateRole" name="form7"--%>
-                                                  <%--action="/user/updateUserRole" method="post">--%>
-                                                <%--<input type="hidden" name="roleId" value=${user.id}>--%>
-                                                <%--&lt;%&ndash;<div class="modal-body" id="updateRole">&ndash;%&gt;--%>
-
-                                                <%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-                                                <%--<div class="modal-footer">--%>
-                                                    <%--<button class="btn btn-primary" type="submit" id="tijiao223">提交--%>
-                                                    <%--</button>--%>
-                                                    <%--<button class="btn btn-danger" data-dismiss="modal">取消</button>--%>
-                                                <%--</div>--%>
-
-                                            <%--</form>--%>
-                                        <%--</div>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                            <%--&lt;%&ndash;分配角色模态框结束&ndash;%&gt;--%>
-
-
 
                     </tr>
                 </c:forEach>
-
-
-
-
 
                 </tbody>
 
             </table>
 
-    </div>
 
 
 
@@ -618,6 +245,7 @@
 
         </div>
     </div>
+
 
 
 
@@ -679,9 +307,9 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit" id="tijia3">提交
-                            </button>
-                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            <%--<button class="btn btn-primary" type="submit" id="tijia3">提交--%>
+                            <%--</button>--%>
+                            <button class="btn btn-danger" data-dismiss="modal">关闭</button>
                         </div>
 
                     </form>
@@ -706,8 +334,8 @@
                        <div class="modal-title">
                            <h1 class="text-center">修改</h1>
                        </div>
-                       <div class="modal-body">
-                           <form class="form-group" id="form5" name="form5" action="/user/updateUser" method="post" novalidate>
+
+                           <form class="form-group" id="form55" name="form55" action="/user/updateUser" method="post" novalidate >
                                <div class="modal-body" id="updateUserMsg">
 
                                </div>
@@ -720,7 +348,7 @@
                                </div>
 
                            </form>
-                       </div>
+
                    </div>
                </div>
            </div>
@@ -748,9 +376,9 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" type="submit" id="tijia30">提交
-                            </button>
-                            <button class="btn btn-danger" data-dismiss="modal">取消</button>
+                            <%--<button class="btn btn-primary" type="submit" id="tijia30">提交--%>
+                            <%--</button>--%>
+                            <button class="btn btn-danger" data-dismiss="modal">关闭</button>
                         </div>
 
                     </form>
@@ -779,10 +407,6 @@
                         <div class="modal-body" id="deleteUser">
 
                         </div>
-                        <%--<div class="modal-body">--%>
-                            <%--<h1 class="text-center"> 确认删除？</h1>--%>
-                            <%--<input type="hidden" name="account" value=${user.account }>--%>
-                        <%--</div>--%>
                         <div class="modal-footer">
                             <button class="btn btn-primary" type="submit" id="tijiao2">提交
                             </button>
@@ -800,98 +424,21 @@
 
 
 </body>
-<script>
-    $(function() {
-        var x = $('#form2').bootstrapValidator({
-            message: 'This value is not valid',
-            fields: {
-                account: {
-                    validators: {
-                        notEmpty: {
-                            message: '账号不能为空'
-                        },
-//                        remote: {
-//                            url: 'user/accountCheck',
-//                            message: '用户已存在',
-//                            delay: 5000,
-//                            type: 'POST',
-//                            dataType: 'json'
-//                        }
-                    }
-                },
-                name: {
-                    validators: {
-                        notEmpty: {
-                            message: '用户名不能为空'
-                        }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: {
-                            message: '密码不能为空'
-                        }
-                    }
-                },
-                checkPwd: {
-                    validators: {
-                        notEmpty: {
-                            message: '密码不能为空'
-                        },
-                        identical: {
-                            field: 'password',
-                            message: '前后密码不一致'
-                        }
-                    }
-                }
-
-            }
-        });
-    });
-    $(function() {
-        var y = $('#form5').bootstrapValidator({
-            message: 'This value is not valid',
-            fields: {
-                name: {
-                    validators: {
-                        notEmpty: {
-                            message: '用户名不能为空'
-                        }
-                    }
-                },
-                password: {
-                    validators: {
-                        notEmpty: {
-                            message: '密码不能为空'
-                        }
-                    }
-                },
-                checkPwd: {
-                    validators: {
-                        notEmpty: {
-                            message: '密码不能为空'
-                        },
-                        identical: {
-                            field: 'password',
-                            message: '前后密码不一致'
-                        }
-                    }
-                }
-
-            }
-        });
-    });
-
-</script>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        <c:if test="${!empty result}">
+        var x=document.getElementById('test');
+        x.onclick= function () {
+            $('#Result').modal('show');
+
+        };
+        x.click();
+        </c:if>
+    });
 
 
         $(document).ready(function () {
-
-
-
-
 
         $(".zxf_pagediv").createPage({
 //            pageNum: 10,//总页码
@@ -909,7 +456,6 @@
     });
 </script>
 <script src="assets/js/bootstrapValidator.js"></script>
-
 
 
 

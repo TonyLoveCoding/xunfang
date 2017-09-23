@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import team.etop.xunfang.modules.po.User;
 
 
 /**
@@ -28,16 +29,15 @@ public class LoginController {
     public ModelAndView login(@RequestParam(value = "account")String account,
                               @RequestParam(value = "password")String password){
         ModelAndView modelAndView=new ModelAndView();
-        System.out.printf("a");
-        System.out.println(account+","+password);
 
         UsernamePasswordToken token=new UsernamePasswordToken(account,new Md5Hash(password,account).toString());
-        System.out.println(token.getPassword());
 
         Subject currentUser= SecurityUtils.getSubject();
         try{
             currentUser.login(token);
             modelAndView.setViewName("/main/index");
+            User user = (User) currentUser.getSession().getAttribute("currentUser");
+            modelAndView.addObject("account",user.getAccount());
         }catch (Exception e){
             modelAndView.setViewName("/login/login");
             e.printStackTrace();

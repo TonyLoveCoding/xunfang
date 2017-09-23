@@ -49,7 +49,7 @@ public class insertDateZTF {
      */
     @Test
     public void insertData(){
-        for(int i=0;i<10000;i++){
+        for(int i=0;i<15;i++){
             estateMapper.insert(getEstateZTF.returnEstate(search_DicMapper,effectPictureMapper,
                     realEstatePictureMapperGenerate,prototypeRoomPictureMapperGenerate,
                     samplePlanningPictureMapperGenerate));

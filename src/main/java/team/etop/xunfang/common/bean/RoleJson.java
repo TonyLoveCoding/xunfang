@@ -6,7 +6,7 @@ import team.etop.xunfang.modules.po.Role;
  * Created by ZYZ on 2017/8/14
  */
 public class RoleJson {
-    Role role;
+    RoleJsonForShow role;
     Boolean exist;
 
     public Boolean getExist() {
@@ -17,10 +17,10 @@ public class RoleJson {
         this.exist = exist;
     }
 
-    public Role getRole() {
+    public RoleJsonForShow getRole() {
         return role;
     }
-    public void setRole(Role role){
+    public void setRole(RoleJsonForShow role){
         this.role=role;
     }
     
