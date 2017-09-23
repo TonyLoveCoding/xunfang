@@ -43,6 +43,20 @@
 </head>
 <body data-spy="scroll" data-target="#myScrollspy" data-offset="50">
 
+<%--条件搜索的提交表单--%>
+<form action="/home/search" method="get" id="form_search">
+    <input id="inp_hid_pn" type="hidden" name="pn" value="1">
+    <input id="inp_hid_keyword" type="hidden" name="keyWord" value="">
+    <input id="inp_hid_saleStatus" type="hidden" name="saleStatus" value="none">
+    <input id="inp_hid_location" type="hidden" name="location" value="none">
+    <input id="inp_hid_totalPrices" type="hidden" name="totalPrices" value="none">
+    <input id="inp_hid_type" type="hidden" name="type" value="none">
+    <input id="inp_hid_houseType" type="hidden" name="houseType" value="none">
+    <input id="inp_hid_feature" type="hidden" name="feature" value="none">
+    <input id="inp_hid_unitPrice" type="hidden" name="unitPrice" value="none">
+    <input id="inp_hid_area" type="hidden" name="area" value="none">
+</form>
+
 <div class="container-fluid">
     <%--浮动框的设置--%>
     <div class="header-hover">
@@ -70,9 +84,9 @@
                             <a href="home"><b>热搜词：</b></a>
                         </li>
 
-                        <c:forEach begin="0" end="2" items="${RecommendEstate}" var="estate">
+                        <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
                             <li>
-                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                                <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
                             </li>
                         </c:forEach>
                     </ul>
@@ -102,10 +116,9 @@
                         <li>
                             <a href="javascript:void(0);" style="text-decoration-color: red">热搜词：</a>
                         </li>
-
-                        <c:forEach begin="0" end="4" items="${RecommendEstate}" var="estate">
+                        <c:forEach var="heatSearchWord" items="${heatSearchWordList}">
                             <li>
-                                <a href="home/details/${estate.id}">${estate.estateName}</a>
+                                <a class="a_heatWord" href="javascript:void(0);">${heatSearchWord.word}</a>
                             </li>
                         </c:forEach>
                     </ul>
@@ -113,7 +126,6 @@
             </nav>
 
             <ul class="breadcrumb">
-
                 <li>
                     <a href="home">寻房网</a>
                 </li>
@@ -192,7 +204,7 @@
                                 <div class="row" style="padding-top:10px">
                                     <div class="col-md-2 col-md-offset-2">
                                         <div id="img-1" class="hovereffect blueBorder">
-                                            <img class="img-responsive " src="/assets/home/details/image/1-small.jpg" alt="">
+                                            <img class="img-responsive " src="${picList1.get(0).name}" alt="">
                                             <a href="#Carousel-ID" data-slide-to="0">
                                                 <div class="overlay">
                                                     <h2>效果图</h2>

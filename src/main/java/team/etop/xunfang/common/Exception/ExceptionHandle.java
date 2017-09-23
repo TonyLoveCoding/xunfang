@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import team.etop.xunfang.common.bean.Msg;
+import team.etop.xunfang.common.bean.Result;
 
 /**
  * @version V1.0
@@ -22,8 +23,12 @@ public class ExceptionHandle {
 
     @ExceptionHandler({UnauthorizedException.class})
     @ResponseBody
-    public Msg JsonUnauthorizedException() {
-        return Msg.fail("你没有获得该权限");
+    public Result JsonUnauthorizedException() {
+        Result result=new Result();
+
+        result.setSuccess(false);
+        result.setMsg("你没有获得该权限");
+        return result;
     }
 
     @ExceptionHandler({Exception.class})

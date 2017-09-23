@@ -1,5 +1,7 @@
 package team.etop.xunfang.common.bean;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +15,9 @@ public class Result implements Serializable{
 
     private static final long serialVersionUID = 5576237395711742681L;
 
-    private boolean success = false;
+    private static boolean success = false;
 
-    private String msg = "";
+    private static String msg = "";
 
     private Object obj = null;
     private Map<String,Object> map=new HashMap<String,Object>();

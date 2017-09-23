@@ -97,8 +97,8 @@
 
 
 
-                <div class="modal-body">
-                    <h1>${result.msg}</h1>
+                <div class="modal-body" id="resultMsg">
+
 
                 </div>
                 <div class="modal-footer">

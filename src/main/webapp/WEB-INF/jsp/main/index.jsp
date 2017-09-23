@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-<form id="form_logout" action="/login"></form>
+<form id="form_logout" action="/login/logout"></form>
 <iframe src="/main/welcome" id="iframeMain"  scrolling="no" frameborder="0"></iframe>
 <script src="/assets/menu/jquery.min.js"></script>
 <script src="/assets/menu/sidebar-menu.js"></script>
