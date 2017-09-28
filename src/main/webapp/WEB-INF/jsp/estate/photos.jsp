@@ -21,6 +21,7 @@
     <div class="row">
         <div class="col-sm-12" style="padding-left: 0px">
             <h3>${EstateDto.estateName}</h3>
+            <input type="text" value="${bool}" hidden>
         </div>
     </div>
     <div class="row">

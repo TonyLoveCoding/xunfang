@@ -3,6 +3,7 @@ package team.etop.xunfang.estate.web;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,8 @@ import team.etop.xunfang.search.dto.SearchPageMsg;
 import team.etop.xunfang.search.mapper.DicMapper;
 import team.etop.xunfang.search.service.DicService;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -73,6 +76,8 @@ public class EstateController {
     SamplePlanningPictureServiceGenerate samplePlanningPictureServiceGenerate;
     @Autowired
     DicServiceGenerate dicServiceGenerate;
+    @Autowired
+    private UserServiceGenerate userServiceGenerate;
 
     /**
      * 查找所有楼盘信息（只返回楼盘名，楼盘地址，位置，户型，类型，户型，最低价位，最高价位）
@@ -330,12 +335,26 @@ public class EstateController {
         estate.setSamplePlate("0");
         estate.setLiveAction("0");
         estateServiceGenerate.insertOrUpdate(estate);
+        Page<Estate> estatePage=new Page<>();
+        estatePage.setAsc(false);
+        estatePage.setOrderByField("update_Time");
+        Page<Estate> page =estateServiceGenerate.selectPage(estatePage);
+        //获取分页后的楼盘信息
+        List<Estate> estateList=page.getRecords();
+        long id=estateList.get(0).getId();
+        User currentUser = (User) SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+        if(currentUser.getEstatesRelevance()==null){
+            currentUser.setEstatesRelevance(String.valueOf(id));
+        }else {
+            currentUser.setEstatesRelevance(currentUser.getEstatesRelevance()+","+String.valueOf(id));
+        }
+        userServiceGenerate.insertOrUpdate(currentUser);
         System.out.println("添加成功");
         return queryEstate(1,"");
     }
 
     @RequestMapping(value = "/upload",method = RequestMethod.GET)
-    public ModelAndView upload(@RequestParam("id")long id) throws Exception{
+    public ModelAndView upload(@RequestParam("id")long id,@RequestParam(value = "bool",defaultValue ="true") boolean bool) throws Exception{
         Estate estate=estateServiceGenerate.selectById(id);
         ChangeType c=new ChangeType();
         EstateDto estateDto=c.change(estate);
@@ -415,6 +434,7 @@ public class EstateController {
         }
         ModelAndView modelAndView=new ModelAndView("/estate/photos");
         modelAndView.addObject("EstateDto",estateDto);
+        modelAndView.addObject("bool",bool);
         modelAndView.addObject("esize",esize);
         modelAndView.addObject("psize",psize);
         modelAndView.addObject("rsize",rsize);
@@ -424,25 +444,30 @@ public class EstateController {
 
     @RequestMapping(value = "/saveEffectPicture",method = RequestMethod.POST)
     public ModelAndView saveEffectPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id) throws Exception{
-        System.out.println(id);
+        boolean bool=true;
         String ids="";
         String k="";
         EntityWrapper<EffectPicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
-            EffectPicture picture=new EffectPicture();
-            GetName getName=new GetName();
-            String name=getName.getName(f.getOriginalFilename());
-            String filepath=savePath+name;
-            File file=new File(filepath);
-            f.transferTo(file);
-            picture.setName(name);
-            picture.setWeight(ThreadLocalRandom.current().nextLong());
-            effectPictureServiceGenerate.insert(picture);
-            wrapper.where("name = {0}",name);
-            picture.setId((Long)effectPictureServiceGenerate.selectObj(wrapper));
-            ids+=k;
-            ids+=picture.getId();
-            k=",";
+            BufferedImage image= ImageIO.read(f.getInputStream());
+            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+                EffectPicture picture=new EffectPicture();
+                GetName getName=new GetName();
+                String name=getName.getName(f.getOriginalFilename());
+                String filepath=savePath+name;
+                File file=new File(filepath);
+                f.transferTo(file);
+                picture.setName(name);
+                picture.setWeight(ThreadLocalRandom.current().nextLong());
+                effectPictureServiceGenerate.insert(picture);
+                wrapper.where("name = {0}",name);
+                picture.setId((Long)effectPictureServiceGenerate.selectObj(wrapper));
+                ids+=k;
+                ids+=picture.getId();
+                k=",";
+            }else {
+                bool=false;
+            }
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getEffectivePhotos();
@@ -453,29 +478,35 @@ public class EstateController {
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
 
-        return upload(id);
+        return upload(id,bool);
     }
 
     @RequestMapping(value = "/savePrototypeRoomPicture",method = RequestMethod.POST)
     public ModelAndView savePrototypeRoomPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
+        boolean bool=true;
         String ids="";
         String k="";
         EntityWrapper<PrototypeRoomPicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
-            PrototypeRoomPicture picture=new PrototypeRoomPicture();
-            GetName getName=new GetName();
-            String name=getName.getName(f.getOriginalFilename());
-            String filepath=savePath+name;
-            File file=new File(filepath);
-            f.transferTo(file);
-            picture.setName(name);
-            picture.setWeight(ThreadLocalRandom.current().nextLong());
-            prototypeRoomPictureServiceGenerate.insert(picture);
-            wrapper.where("name = {0}",name);
-            picture.setId((Long)prototypeRoomPictureServiceGenerate.selectObj(wrapper));
-            ids+=k;
-            ids+=picture.getId();
-            k=",";
+            BufferedImage image= ImageIO.read(f.getInputStream());
+            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+                PrototypeRoomPicture picture=new PrototypeRoomPicture();
+                GetName getName=new GetName();
+                String name=getName.getName(f.getOriginalFilename());
+                String filepath=savePath+name;
+                File file=new File(filepath);
+                f.transferTo(file);
+                picture.setName(name);
+                picture.setWeight(ThreadLocalRandom.current().nextLong());
+                prototypeRoomPictureServiceGenerate.insert(picture);
+                wrapper.where("name = {0}",name);
+                picture.setId((Long)prototypeRoomPictureServiceGenerate.selectObj(wrapper));
+                ids+=k;
+                ids+=picture.getId();
+                k=",";
+            }else {
+                bool=false;
+            }
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getPrototypeRoom();
@@ -485,30 +516,35 @@ public class EstateController {
         estate.setPrototypeRoom(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
-//        return Msg.success();
-        return upload(id);
+        return upload(id,bool);
     }
 
     @RequestMapping(value = "/saveRealEststePicture",method = RequestMethod.POST)
     public ModelAndView saveRealEststePicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
+        boolean bool=true;
         String ids="";
         String k="";
         EntityWrapper<RealEstatePicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
-            RealEstatePicture picture=new RealEstatePicture();
-            GetName getName=new GetName();
-            String name=getName.getName(f.getOriginalFilename());
-            String filepath=savePath+name;
-            File file=new File(filepath);
-            f.transferTo(file);
-            picture.setName(name);
-            picture.setWeight(ThreadLocalRandom.current().nextLong());
-            realEstatePictureServiceGenerate.insert(picture);
-            wrapper.where("name = {0}",name);
-            picture.setId((Long)realEstatePictureServiceGenerate.selectObj(wrapper));
-            ids+=k;
-            ids+=picture.getId();
-            k=",";
+            BufferedImage image= ImageIO.read(f.getInputStream());
+            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+                RealEstatePicture picture=new RealEstatePicture();
+                GetName getName=new GetName();
+                String name=getName.getName(f.getOriginalFilename());
+                String filepath=savePath+name;
+                File file=new File(filepath);
+                f.transferTo(file);
+                picture.setName(name);
+                picture.setWeight(ThreadLocalRandom.current().nextLong());
+                realEstatePictureServiceGenerate.insert(picture);
+                wrapper.where("name = {0}",name);
+                picture.setId((Long)realEstatePictureServiceGenerate.selectObj(wrapper));
+                ids+=k;
+                ids+=picture.getId();
+                k=",";
+            }else {
+                bool=false;
+            }
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getLiveAction();
@@ -518,30 +554,35 @@ public class EstateController {
         estate.setLiveAction(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
-//        return Msg.success();
-        return upload(id);
+        return upload(id,bool);
     }
 
     @RequestMapping(value = "/saveSamplePlanningPicture",method = RequestMethod.POST)
     public ModelAndView saveSamplePlanningPicture(@RequestParam("files") MultipartFile[] multipartFile,@RequestParam("id")long id)throws Exception{
+        boolean bool=true;
         String ids="";
         String k="";
         EntityWrapper<SamplePlanningPicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
-            SamplePlanningPicture picture=new SamplePlanningPicture();
-            GetName getName=new GetName();
-            String name=getName.getName(f.getOriginalFilename());
-            String filepath=savePath+name;
-            File file=new File(filepath);
-            f.transferTo(file);
-            picture.setName(name);
-            picture.setWeight(ThreadLocalRandom.current().nextLong());
-            samplePlanningPictureServiceGenerate.insert(picture);
-            wrapper.where("name = {0}",name);
-            picture.setId((Long)samplePlanningPictureServiceGenerate.selectObj(wrapper));
-            ids+=k;
-            ids+=picture.getId();
-            k=",";
+            BufferedImage image= ImageIO.read(f.getInputStream());
+            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+                SamplePlanningPicture picture=new SamplePlanningPicture();
+                GetName getName=new GetName();
+                String name=getName.getName(f.getOriginalFilename());
+                String filepath=savePath+name;
+                File file=new File(filepath);
+                f.transferTo(file);
+                picture.setName(name);
+                picture.setWeight(ThreadLocalRandom.current().nextLong());
+                samplePlanningPictureServiceGenerate.insert(picture);
+                wrapper.where("name = {0}",name);
+                picture.setId((Long)samplePlanningPictureServiceGenerate.selectObj(wrapper));
+                ids+=k;
+                ids+=picture.getId();
+                k=",";
+            }else {
+                bool=false;
+            }
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getSamplePlate();
@@ -551,8 +592,7 @@ public class EstateController {
         estate.setSamplePlate(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
-//        return Msg.success();
-        return upload(id);
+        return upload(id,bool);
     }
 
     @RequestMapping(value = "/deleteEffectPicture",method = RequestMethod.POST)

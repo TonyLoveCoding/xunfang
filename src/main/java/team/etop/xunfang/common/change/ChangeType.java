@@ -140,7 +140,6 @@ public class ChangeType {
         estate.setProperty(estateDto.getProperty());
         estate.setDeveloper(estateDto.getDeveloper());
         estate.setSaleStatus(estateDto.getSaleStatus());
-//        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         estate.setFirstDelivery(new ModifyTime().modify(estateDto.getFirstDelivery()));
         estate.setLatestOpening(new ModifyTime().modify(estateDto.getLatestOpening()));
         estate.setPropertyRights(estateDto.getPropertyRights());

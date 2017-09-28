@@ -4,6 +4,15 @@ $(document).ready(function () {
     $(".inp_photos").change(function (){
         // var id=$(this).prev().val();
         var type=1;
+        var file=$(this).value;
+        var filepath=$("input[name='files']").val();
+        alert(filepath)
+        var extStart=filepath.lastIndexOf(".");
+        var ext=filepath.substring(extStart,filepath.length).toUpperCase();
+        if(ext!=".BMP"&&ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"){
+            alert("图片限于bmp,png,gif,jpeg,jpg格式");
+            return false;
+        }
         $(this).parent().submit();
     });
 });
