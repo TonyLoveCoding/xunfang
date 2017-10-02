@@ -34,11 +34,11 @@
             <div class="header-hover">
                 <div class="header-hover-wrap">
                     <ul class="menu">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">寻房网</a>
-                        </div>
                         <div class="collapse navbar-collapse">
                             <div class="navbar-form navbar-left" role="search">
+                                <a href="home">
+                                    <img src="/assets/home/index/image/logo.png">
+                                </a>
                                 <div class="form-group">
                                     <input id="inp_coll_keyword" type="text" class="form-control"
                                            value="${SearchPageMsg.keyWord}"/>
@@ -67,13 +67,12 @@
     <div class="row">
         <div class="col-md-12">
             <nav class="navbar navbar-default " role="navigation">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">寻房网</a>
-                </div>
-
                 <div class="collapse navbar-collapse">
 
                     <div class="navbar-form navbar-left" role="search">
+                        <a href="home">
+                            <img src="/assets/home/index/image/logo.png">
+                        </a>
                         <div class="form-group">
                             <input id="inp_nav_keyword" type="text" class="form-control"
                                    value="${SearchPageMsg.keyWord}"/>
@@ -266,7 +265,7 @@
         <div class="row search_list">
             <div class="col-md-2 col-md-offset-1">
                 <a href="${Estate.estateDetailsURL}">
-                    <img src="http://othgjp7hs.bkt.clouddn.com/17-8-14/91109352.jpg" class="estateThumbnail">
+                    <img src="${Estate.thumbnail}" class="estateThumbnail">
                 </a>
 
             </div>
@@ -297,8 +296,6 @@
                 </div>
                 <div class="row search_list_detail">
                     <div class="col-md-6 col-md-offset-1">
-                        <div class="estateSign nomral_div">${Estate.sign}</div>
-                        <div class="estateSign nomral_div">${Estate.sign}</div>
                         <div class="estateSign nomral_div">${Estate.sign}</div>
                     </div>
                     <div class="col-md-5">
@@ -358,7 +355,7 @@
                 <div class="RecommendEstateBo">
                     <div class="tip_img">
                         <a href="${Recommend.estateDetailsURL}"> <img
-                                src="http://othgjp7hs.bkt.clouddn.com/17-8-14/91109352.jpg" class="tip_estateThumbnail"></a>
+                                src="${Recommend.thumbnail}" class="tip_estateThumbnail"></a>
                     </div>
 
                     <div class="bg_RecommendEstate">

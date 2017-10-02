@@ -16,6 +16,15 @@ public class HomeEstateBo {
     private Integer minPrice;
     private Integer maxPrice;
     private String estateDetailsURL;
+    private String thumbnail;
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
 
     public Long getId() {
         return id;
@@ -83,6 +92,7 @@ public class HomeEstateBo {
                 ", minPrice=" + minPrice +
                 ", maxPrice=" + maxPrice +
                 ", estateDetailsURL='" + estateDetailsURL + '\'' +
+                ", thumbnail='" + thumbnail + '\'' +
                 '}';
     }
 }
