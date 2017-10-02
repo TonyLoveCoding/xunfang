@@ -196,3 +196,9 @@ a:hover{
 .estateArea{
 	color: #f44336;
 }
+#inp_coll_keyword{
+	width:400px;
+}
+#inp_nav_keyword{
+	width:400px;
+}

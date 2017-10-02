@@ -120,7 +120,7 @@ function showEstates(area, list) {
         var div = $("<div class=\"col-md-3\"></div>");
             var div2 = $("<div class=\"thumbnail hovereffect img-background\">");
         var perLink = $("<a href=\"home/details/" + list[estate].id + "\">" +
-                        "<img class=\"img-responsive\" src=\"" + list[estate].estateDetailsURL +"\" alt=\"\">" +
+                        "<img class=\"img-responsive\" src=\"" + list[estate].thumbnail +"\" alt=\"\">" +
                         "<div class=\"overlay\"><h2>" + list[estate].estateName + "</h2></div></a>");
         var perDesc = $("<div class=\"caption\">" +
                         "<h3><a href=\"home/details/" + list[estate].id + "\">" + list[estate].estateName + "</a></h3>" +

@@ -20,24 +20,23 @@ import java.util.*;
  */
 public class SearchUtil {
 
-    public static RecommendEstateBo DocToRecommendEstate(SolrDocument solrDocument, String serverAddress) {
+    public static RecommendEstateBo DocToRecommendEstate(SolrDocument solrDocument, String serverAddress,String businessImageUrl) {
         RecommendEstateBo recommendEstateBo = new RecommendEstateBo();
         recommendEstateBo.setId(Long.valueOf(solrDocument.get("id").toString()));
         recommendEstateBo.setDeveloperQuotes(Integer.valueOf(solrDocument.get("estate_developer_quotes").toString()));
         recommendEstateBo.setHouseType(solrDocument.get("estate_house_type").toString());
         recommendEstateBo.setEstateName(solrDocument.get("estate_name").toString());
         recommendEstateBo.setEstateAddress(solrDocument.get("estate_address").toString());
-        recommendEstateBo.setThumbnail(solrDocument.get("estate_thumbnail").toString());
+        recommendEstateBo.setThumbnail(businessImageUrl+solrDocument.get("estate_thumbnail").toString());
         recommendEstateBo.setEstateDetailsURL(serverAddress + recommendEstateBo.getId());
         return recommendEstateBo;
     }
 
-    public static HomeEstateBo DocToHomeEstate(SolrDocument solrDocument, String serverAddress) {
+    public static HomeEstateBo DocToHomeEstate(SolrDocument solrDocument, String serverAddress,String businessImageUrl) {
         HomeEstateBo homeEstateBo = new HomeEstateBo();
         homeEstateBo.setId(Long.valueOf(solrDocument.get("id").toString()));
-        //TODO
-        homeEstateBo.setEstateDetailsURL("http://othgjp7hs.bkt.clouddn.com/17-8-14/91109352.jpg");
-//        homeEstateBo.setEstateDetailsURL(serverAddress + solrDocument.get("estate_thumbnail").toString());
+        homeEstateBo.setEstateDetailsURL(serverAddress + solrDocument.get("id").toString());
+        homeEstateBo.setThumbnail(businessImageUrl + solrDocument.get("estate_thumbnail").toString());
         homeEstateBo.setArea(Float.valueOf(solrDocument.get("estate_area").toString()));
         homeEstateBo.setEstateName(solrDocument.get("estate_name").toString());
         homeEstateBo.setLocation(solrDocument.get("estate_location").toString());
@@ -46,7 +45,7 @@ public class SearchUtil {
         return homeEstateBo;
     }
 
-    public static EstateSearchBo DocToEstateSearchBean(SolrDocument solrDocument, String serverAddress, Map<String, Map<String, List<String>>> highlighting) {
+    public static EstateSearchBo DocToEstateSearchBean(SolrDocument solrDocument, String serverAddress, Map<String, Map<String, List<String>>> highlighting,String businessImageUrl) {
         EstateSearchBo estateSearchBo = new EstateSearchBo();
         estateSearchBo.setId(Long.valueOf(solrDocument.get("id").toString()));
         estateSearchBo.setVisitTimes(Long.valueOf(solrDocument.get("estate_visit_times").toString()));
@@ -59,7 +58,7 @@ public class SearchUtil {
         estateSearchBo.setFeature(solrDocument.get("estate_feature").toString());
         estateSearchBo.setUpdateTime((Date) solrDocument.get("estate_update_time"));
         estateSearchBo.setCreateTime((Date) solrDocument.get("estate_create_time"));
-        estateSearchBo.setThumbnail(solrDocument.get("estate_thumbnail").toString());
+        estateSearchBo.setThumbnail(businessImageUrl+solrDocument.get("estate_thumbnail").toString());
         estateSearchBo.setSaleStatus(Boolean.valueOf(solrDocument.get("estate_sale_status").toString()));
         estateSearchBo.setSign(solrDocument.get("estate_sign").toString());
         estateSearchBo.setTurnover(Long.valueOf(solrDocument.get("estate_turnover").toString()));

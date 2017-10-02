@@ -34,6 +34,9 @@ public class EstateSearchServiceImpl implements EstateSearchService {
     @Autowired
     SolrClient solrClient;
 
+    @Value("${businessImage.url}")
+    String businessImageUrl;
+
 
     @Value("${server.address}")
     String serverAddress;
@@ -116,7 +119,7 @@ public class EstateSearchServiceImpl implements EstateSearchService {
         Map<String, Map<String, List<String>>> highlighting = query.getHighlighting();
         List<EstateSearchBo> estateSearchBos = new ArrayList<>();
         for (SolrDocument document : results) {
-            estateSearchBos.add(SearchUtil.DocToEstateSearchBean(document, serverAddress, highlighting));
+            estateSearchBos.add(SearchUtil.DocToEstateSearchBean(document, serverAddress, highlighting,businessImageUrl));
         }
         return new SearchInfoBo(estateSearchBos, results.getNumFound());
     }
@@ -139,7 +142,7 @@ public class EstateSearchServiceImpl implements EstateSearchService {
         SolrDocumentList results = solrClient.query(solrQuery).getResults();
         List<RecommendEstateBo> recommendEstateBos = new ArrayList<>();
         for (SolrDocument document : results) {
-            recommendEstateBos.add(SearchUtil.DocToRecommendEstate(document, serverAddress));
+            recommendEstateBos.add(SearchUtil.DocToRecommendEstate(document, serverAddress,businessImageUrl));
         }
         return recommendEstateBos;
     }
@@ -161,7 +164,7 @@ public class EstateSearchServiceImpl implements EstateSearchService {
         SolrDocumentList results = solrClient.query(solrQuery).getResults();
         List<HomeEstateBo> HomeEstateBoList = new ArrayList<>();
         for (SolrDocument document : results) {
-            HomeEstateBoList.add(SearchUtil.DocToHomeEstate(document, serverAddress));
+            HomeEstateBoList.add(SearchUtil.DocToHomeEstate(document, serverAddress,businessImageUrl));
         }
         return HomeEstateBoList;
     }
