@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <script src="assets/estate/photos/js/jquery-1.7.2.min.js"></script>
     <link rel="stylesheet" href="assets/estate/photos/css/photos.css">
+    <script>
+        window.onload = function (){
+            if(${bool}==false){
+                alert("图片上传失败！请确保图片比例为3:2");
+            }
+        };
+    </script>
 </head>
 <body style="height: auto">
 <div  class="container-fluid">
@@ -36,7 +43,7 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <form action="/estate/saveEffectPicture" method="post" enctype="multipart/form-data">
                 <input type="text" name="id" value="${EstateDto.id}" hidden>
-                <input id="file1" class="inp_photos" name="files" type="file" style="display: none" accept="image/gif, image/jpeg, image/png, image/jpg">
+                <input id="file1" class="inp_photos conImage" name="files" type="file" style="display: none" accept="image/gif, image/jpeg, image/png, image/jpg">
                 <label for="file1" class="btn btn-default savePhoto">添加图片</label>
             </form>
         </div>
@@ -103,7 +110,7 @@
         <div class="col-sm-12" style="padding-left: 0px">
             <form action="/estate/saveSamplePlanningPicture" method="post" enctype="multipart/form-data">
                 <input type="text" name="id" value="${EstateDto.id}" hidden>
-                <input id="file3" class="inp_photos" name="files" type="file" style="display: none" accept="image/gif, image/jpeg, image/png">
+                <input onChange="handleConFiles(this.files);" id="file3" class="inp_photos" name="files" type="file" style="display: none" accept="image/gif, image/jpeg, image/png">
                 <label for="file3" class="btn btn-default savePhoto">添加图片</label>
             </form>
         </div>

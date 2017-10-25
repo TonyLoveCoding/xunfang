@@ -450,7 +450,9 @@ public class EstateController {
         EntityWrapper<EffectPicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
             BufferedImage image= ImageIO.read(f.getInputStream());
-            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+
+
+            if(image!=null && (double)image.getWidth()/(double)image.getHeight()==1.5){
                 EffectPicture picture=new EffectPicture();
                 GetName getName=new GetName();
                 String name=getName.getName(f.getOriginalFilename());
@@ -489,7 +491,7 @@ public class EstateController {
         EntityWrapper<PrototypeRoomPicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
             BufferedImage image= ImageIO.read(f.getInputStream());
-            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+            if(image!=null && (double)image.getWidth()/(double)image.getHeight()==1.5){
                 PrototypeRoomPicture picture=new PrototypeRoomPicture();
                 GetName getName=new GetName();
                 String name=getName.getName(f.getOriginalFilename());
@@ -527,7 +529,7 @@ public class EstateController {
         EntityWrapper<RealEstatePicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
             BufferedImage image= ImageIO.read(f.getInputStream());
-            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+            if(image!=null && (double)image.getWidth()/(double)image.getHeight()==1.5){
                 RealEstatePicture picture=new RealEstatePicture();
                 GetName getName=new GetName();
                 String name=getName.getName(f.getOriginalFilename());
@@ -565,7 +567,7 @@ public class EstateController {
         EntityWrapper<SamplePlanningPicture> wrapper=new EntityWrapper<>();
         for(MultipartFile f:multipartFile){
             BufferedImage image= ImageIO.read(f.getInputStream());
-            if(image!=null || ((long)image.getWidth()/image.getHeight()==((long)3/2))){
+            if(image!=null && (double)image.getWidth()/(double)image.getHeight()==1.5){
                 SamplePlanningPicture picture=new SamplePlanningPicture();
                 GetName getName=new GetName();
                 String name=getName.getName(f.getOriginalFilename());

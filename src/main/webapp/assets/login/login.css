@@ -1,0 +1,17 @@
+.div_row{
+    margin-top: 150px ;
+}
+.div_container{
+    height: 100%;
+}
+#btn_login{
+    width: 100%;
+}
+#h3_title{
+    margin-bottom: 50px;
+    font-size: 35px;
+    font-weight: 900;
+}
+.lab_text{
+    font-size: 15px;
+}

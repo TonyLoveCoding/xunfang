@@ -1,5 +1,6 @@
 package team.etop.xunfang.main.web;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -51,7 +52,12 @@ public class MainController {
 
     @RequestMapping("/welcome")
     public ModelAndView welcome(){
-        return new ModelAndView("/main/welcome");
+        Subject currentUser= SecurityUtils.getSubject();
+        User user = (User) currentUser.getSession().getAttribute("currentUser");
+        if(StringUtils.isBlank(user.getAccount())){
+            return new ModelAndView("/main/welcome");
+        }
+        return new ModelAndView("/main/welcome").addObject("account",user.getAccount());
     }
 
     @RequestMapping("/menu")
