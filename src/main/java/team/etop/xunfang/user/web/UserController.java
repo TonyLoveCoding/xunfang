@@ -137,6 +137,7 @@ public ModelAndView addUser(@RequestParam(value ="account") String account,
     user.setAccount(account);
     user.setUsername(name);
     user.setStatus(1);
+    user.setEstatesRelevance("0");
     Date date=new Date();
 
     user.setCreatetime(date);

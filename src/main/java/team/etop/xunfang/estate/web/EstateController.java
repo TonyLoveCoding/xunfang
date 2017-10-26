@@ -85,6 +85,8 @@ public class EstateController {
      */
     @RequestMapping(value = "/query",method = RequestMethod.GET)
     public ModelAndView queryEstate(@RequestParam(value = "pn",defaultValue ="1") int current,@RequestParam(value = "keyword",defaultValue = "")String keyword)throws Exception{
+        User currentUser = (User) SecurityUtils.getSubject().getSession().getAttribute("currentUser");
+        String estatesRelevance=currentUser.getEstatesRelevance();
         ModelAndView modelAndView=new ModelAndView("/estate/query");
         modelAndView.addObject("keyword",keyword);
         keyword="%"+keyword+"%";
@@ -101,11 +103,20 @@ public class EstateController {
         List<Estate> estateList=page.getRecords();
         List<EstateDto> estateDtos=new ArrayList<>();
         ChangeType changeType=new ChangeType();
-        for(Estate estate:estateList){
-            EstateDto estateDto=changeType.change(estate);
-            System.out.println(estateDto);
-            estateDtos.add(estateDto);
+        if(estatesRelevance.contains("-1")){
+            for(Estate estate:estateList){
+                EstateDto estateDto=changeType.change(estate);
+                estateDtos.add(estateDto);
+            }
+        }else{
+            for(Estate estate:estateList){
+                if(estatesRelevance.contains(""+estate.getId())){
+                    EstateDto estateDto=changeType.change(estate);
+                    estateDtos.add(estateDto);
+                }
+            }
         }
+
         //得到总页数
         int pageNum=page.getPages();
         modelAndView.addObject("estateDtos",estateDtos);
@@ -343,7 +354,7 @@ public class EstateController {
         List<Estate> estateList=page.getRecords();
         long id=estateList.get(0).getId();
         User currentUser = (User) SecurityUtils.getSubject().getSession().getAttribute("currentUser");
-        if(currentUser.getEstatesRelevance()==null){
+        if(currentUser.getEstatesRelevance()==null || currentUser.getEstatesRelevance().equals("0")){
             currentUser.setEstatesRelevance(String.valueOf(id));
         }else {
             currentUser.setEstatesRelevance(currentUser.getEstatesRelevance()+","+String.valueOf(id));
@@ -451,7 +462,6 @@ public class EstateController {
         for(MultipartFile f:multipartFile){
             BufferedImage image= ImageIO.read(f.getInputStream());
 
-
             if(image!=null && (double)image.getWidth()/(double)image.getHeight()==1.5){
                 EffectPicture picture=new EffectPicture();
                 GetName getName=new GetName();
@@ -468,13 +478,16 @@ public class EstateController {
                 ids+=picture.getId();
                 k=",";
             }else {
+                System.out.println("图片大小不合格");
                 bool=false;
             }
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getEffectivePhotos();
-        if(s.length()!=0 && (!s.equals("0"))){
+        if(s.length()!=0 && (!s.equals("0") && !ids.equals(""))){
             ids=s+","+ids;
+        }else if(ids.equals("")){
+            ids=s;
         }
         estate.setEffectivePhotos(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -512,8 +525,10 @@ public class EstateController {
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getPrototypeRoom();
-        if(s.length()!=0 && !s.equals("0")){
+        if(s.length()!=0 && (!s.equals("0") && !ids.equals(""))){
             ids=s+","+ids;
+        }else if(ids.equals("")){
+            ids=s;
         }
         estate.setPrototypeRoom(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -550,8 +565,10 @@ public class EstateController {
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getLiveAction();
-        if(s.length()!=0 && !s.equals("0")){
+        if(s.length()!=0 && (!s.equals("0") && !ids.equals(""))){
             ids=s+","+ids;
+        }else if(ids.equals("")){
+            ids=s;
         }
         estate.setLiveAction(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -588,8 +605,10 @@ public class EstateController {
         }
         Estate estate=estateServiceGenerate.selectById(id);
         String s=estate.getSamplePlate();
-        if(s.length()!=0 && !s.equals("0")){
+        if(s.length()!=0 && (!s.equals("0") && !ids.equals(""))){
             ids=s+","+ids;
+        }else if(ids.equals("")){
+            ids=s;
         }
         estate.setSamplePlate(ids);
         estateServiceGenerate.insertOrUpdate(estate);
@@ -709,7 +728,7 @@ public class EstateController {
         return Msg.success("删除成功");
     }
 
-    @RequestMapping("/moveEffectPicture")
+    @RequestMapping(value="/moveEffectPicture",method = RequestMethod.POST)
     @ResponseBody
     public Msg moveEffectPicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
         EntityWrapper<Estate> wrapper=new EntityWrapper<>();
@@ -718,6 +737,7 @@ public class EstateController {
         String[] string=estate.getEffectivePhotos().split(",");
         List<String> list=new ArrayList(Arrays.asList(string));
         int i=list.indexOf(""+id);
+        System.out.println(i);
         switch (direction){
             case -1:
                 if(i==0){
@@ -729,7 +749,7 @@ public class EstateController {
                 }
                 break;
             case 1:
-                if(i==list.size()){
+                if((i+1)==list.size()){
                     return Msg.success("无法往后移动");
                 }else {
                     String s=list.get((i+1));
@@ -747,10 +767,10 @@ public class EstateController {
         }
         estate.setEffectivePhotos(effectivePhotos);
         estateServiceGenerate.insertOrUpdate(estate);
-        return Msg.success();
+        return Msg.success("操作成功");
     }
 
-    @RequestMapping("/movePrototypeRoomPicture")
+    @RequestMapping(value = "/movePrototypeRoomPicture",method = RequestMethod.POST)
     @ResponseBody
     public Msg movePrototypeRoomPicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
         EntityWrapper<Estate> wrapper=new EntityWrapper<>();
@@ -770,7 +790,7 @@ public class EstateController {
                 }
                 break;
             case 1:
-                if(i==list.size()){
+                if((i+1)==list.size()){
                     return Msg.success("无法往后移动");
                 }else {
                     String s=list.get((i+1));
@@ -788,10 +808,10 @@ public class EstateController {
         }
         estate.setPrototypeRoom(prototypeRoom);
         estateServiceGenerate.insertOrUpdate(estate);
-        return Msg.success();
+        return Msg.success("操作成功");
     }
 
-    @RequestMapping("/moveRealEststePicture")
+    @RequestMapping(value = "/moveRealEststePicture",method = RequestMethod.POST)
     @ResponseBody
     public Msg moveRealEststePicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
         EntityWrapper<Estate> wrapper=new EntityWrapper<>();
@@ -829,10 +849,10 @@ public class EstateController {
         }
         estate.setLiveAction(realEststePicture);
         estateServiceGenerate.insertOrUpdate(estate);
-        return Msg.success();
+        return Msg.success("操作成功");
     }
 
-    @RequestMapping("/moveSamplePlanningPicture")
+    @RequestMapping(value = "/moveSamplePlanningPicture",method = RequestMethod.POST)
     @ResponseBody
     public Msg moveSamplePlanningPicture(@RequestParam("id")Long id,@RequestParam("direction")int direction){
         EntityWrapper<Estate> wrapper=new EntityWrapper<>();
@@ -852,7 +872,7 @@ public class EstateController {
                 }
                 break;
             case 1:
-                if(i==list.size()){
+                if((i+1)==list.size()){
                     return Msg.success("无法往后移动");
                 }else {
                     String s=list.get((i+1));
@@ -870,6 +890,6 @@ public class EstateController {
         }
         estate.setSamplePlate(samplePlanningPicture);
         estateServiceGenerate.insertOrUpdate(estate);
-        return Msg.success();
+        return Msg.success("操作成功");
     }
 }

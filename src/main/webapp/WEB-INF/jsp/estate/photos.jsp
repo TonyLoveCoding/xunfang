@@ -55,10 +55,10 @@
                     <img src="${e.name}" class="photo100">
                     <c:if test="${esize!=0}">
                         <div class="btn-group" role="group" aria-label="...">
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="moveEffectPicture('${e.id}','-1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="moveEffectPicture('${EstateDto.id}','${e.id}','-1')"></button>
                                 <%--<button class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" onclick="deleteEffectPicture('${e.id}','${EstateDto.id}')">删除</button>--%>
                             <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deleteEffectPicture('${e.id}','${EstateDto.id}')">删除</a>
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="moveEffectPicture('${e.id}','1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="moveEffectPicture('${EstateDto.id}','${e.id}','1')"></button>
                         </div>
                     </c:if>
                 </div>
@@ -89,9 +89,9 @@
                     <img src="${e.name}" class="photo100">
                     <c:if test="${psize!=0}">
                         <div class="btn-group" role="group" aria-label="...">
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="movePrototypeRoomPicture('${e.id}','-1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="movePrototypeRoomPicture('${EstateDto.id}','${e.id}','-1')"></button>
                             <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deletePrototypeRoomPicture('${e.id}','${EstateDto.id}')">删除</a>
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="movePrototypeRoomPicture('${e.id}','1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="movePrototypeRoomPicture('${EstateDto.id}','${e.id}','1')"></button>
                         </div>
                     </c:if>
                 </div>
@@ -122,9 +122,9 @@
                     <img src="${e.name}" class="photo100">
                     <c:if test="${ssize!=0}">
                         <div class="btn-group" role="group" aria-label="...">
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="moveSamplePlanningPicture('${e.id}','-1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="moveSamplePlanningPicture('${EstateDto.id}','${e.id}','-1')"></button>
                             <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deleteSamplePlanningPicture('${e.id}','${EstateDto.id}')">删除</a>
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="moveSamplePlanningPicture('${e.id}','1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="moveSamplePlanningPicture('${EstateDto.id}','${e.id}','1')"></button>
                         </div>
                     </c:if>
                 </div>
@@ -155,9 +155,9 @@
                     <img src="${e.name}" class="photo100">
                     <c:if test="${rsize!=0}">
                         <div class="btn-group" role="group" aria-label="...">
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="moveRealEststePicture('${e.id}','-1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-left" onclick="moveRealEststePicture('${EstateDto.id}','${e.id}','-1')"></button>
                             <a class="btn btn-default center-block glyphicon glyphicon-remove" href="javascript:void(0);" role="button" onclick="deleteRealEststePicture('${e.id}','${EstateDto.id}')">删除</a>
-                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="moveRealEststePicture('${e.id}','1')"></button>
+                            <button type="button" class="btn btn-default glyphicon glyphicon-menu-right" onclick="moveRealEststePicture('${EstateDto.id}','${e.id}','1')"></button>
                         </div>
                     </c:if>
                 </div>
