@@ -34,12 +34,12 @@ public class getEstateZTF {
         int num=0;
         Random random=new Random();
         Estate estate=new Estate();
-        EffectPicture effectPicture=new EffectPicture();
-        effectPicture.setName("73952648.jpg");
-        effectPicture.setWeight(System.currentTimeMillis());
-        effectPictureDao.insert(effectPicture);
-        estate.setEffectivePhotos(effectPicture.getId().toString());
-        estate.setThumbnail("73952648.jpg");
+//        EffectPicture effectPicture=new EffectPicture();
+//        effectPicture.setName("73952648.jpg");
+//        effectPicture.setWeight(System.currentTimeMillis());
+//        effectPictureDao.insert(effectPicture);
+        estate.setEffectivePhotos("0");
+        estate.setThumbnail("0.jpg");
         num=random.nextInt(locations.size());
         estate.setLocation(locations.get(num).getName());
         num=random.nextInt(features.size());
@@ -70,24 +70,24 @@ public class getEstateZTF {
         estate.setArea((float)num);
         estate.setCreateTime(new Date());
 
-        SamplePlanningPicture samplePlanningPicture=new SamplePlanningPicture();
-        samplePlanningPicture.setName("73952648.jpg");
-        samplePlanningPicture.setWeight(System.currentTimeMillis());
-        samplePlanningPictureMapperGenerate.insert(samplePlanningPicture);
-        estate.setSamplePlate(samplePlanningPicture.getId().toString());
+//        SamplePlanningPicture samplePlanningPicture=new SamplePlanningPicture();
+//        samplePlanningPicture.setName("73952648.jpg");
+//        samplePlanningPicture.setWeight(System.currentTimeMillis());
+//        samplePlanningPictureMapperGenerate.insert(samplePlanningPicture);
+        estate.setSamplePlate("0");
 
-        RealEstatePicture realEstatePicture=new RealEstatePicture();
-        realEstatePicture.setName("73952648.jpg");
-        realEstatePicture.setWeight(System.currentTimeMillis());
-        realEstatePictureMapperGenerate.insert(realEstatePicture);
-        estate.setLiveAction(realEstatePicture.getId().toString());
+//        RealEstatePicture realEstatePicture=new RealEstatePicture();
+//        realEstatePicture.setName("73952648.jpg");
+//        realEstatePicture.setWeight(System.currentTimeMillis());
+//        realEstatePictureMapperGenerate.insert(realEstatePicture);
+        estate.setLiveAction("0");
 
 
-        PrototypeRoomPicture prototypeRoomPicture=new PrototypeRoomPicture();
-        prototypeRoomPicture.setName("73952648.jpg");
-        prototypeRoomPicture.setWeight(System.currentTimeMillis());
-        prototypeRoomPictureMapperGenerate.insert(prototypeRoomPicture);
-        estate.setPrototypeRoom(prototypeRoomPicture.getId().toString());
+//        PrototypeRoomPicture prototypeRoomPicture=new PrototypeRoomPicture();
+//        prototypeRoomPicture.setName("73952648.jpg");
+//        prototypeRoomPicture.setWeight(System.currentTimeMillis());
+//        prototypeRoomPictureMapperGenerate.insert(prototypeRoomPicture);
+        estate.setPrototypeRoom("0");
 
         estate.setProperty("新华小区");
 
