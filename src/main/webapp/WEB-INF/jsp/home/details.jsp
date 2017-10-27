@@ -174,22 +174,22 @@
                                     <div class="carousel-inner full-image">
                                         <div id="item-1" class="item active">
                                             <a href="javascript:void(0);" id="toPic1" data-scroll="#section-1">
-                                                <img alt=""  src="/assets/home/details/image/1-big.jpg" />
+                                                <img alt=""  src="${photoList1.get(0).name}" />
                                             </a>
                                         </div>
                                         <div id="item-2" class="item">
                                             <a href="javascript:void(0);" id="toPic2" data-scroll="#section-2">
-                                                <img alt="" src="/assets/home/details/image/2-big.jpg" />
+                                                <img alt="" src="${photoList2.get(0).name}" />
                                             </a>
                                         </div>
                                         <div id="item-3" class="item">
                                             <a href="javascript:void(0);" id="toPic3" data-scroll="#section-3">
-                                                <img alt="" src="/assets/home/details/image/3-big.jpg" />
+                                                <img alt="" src="${photoList3.get(0).name}" />
                                             </a>
                                         </div>
                                         <div id="item-4" class="item">
                                             <a href="javascript:void(0);" id="toPic4" data-scroll="#section-4">
-                                                <img alt="" src="/assets/home/details/image/4-big.jpg" />
+                                                <img alt="" src="${photoList4.get(0).name}" />
                                             </a>
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@
                                 <div class="row" style="padding-top:10px">
                                     <div class="col-md-2 col-md-offset-2">
                                         <div id="img-1" class="hovereffect blueBorder">
-                                            <img class="img-responsive " src="${picList1.get(0).name}" alt="">
+                                            <img class="img-responsive " src="${photoList1.get(0).name}" alt="">
                                             <a href="#Carousel-ID" data-slide-to="0">
                                                 <div class="overlay">
                                                     <h2>效果图</h2>
@@ -214,7 +214,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <div id="img-2" class="hovereffect">
-                                            <img class="img-responsive" src="/assets/home/details/image/2-small.jpg" alt="">
+                                            <img class="img-responsive" src="${photoList2.get(0).name}" alt="">
                                             <a href="#Carousel-ID" data-slide-to="1">
                                                 <div class="overlay">
                                                     <h2>样板间</h2>
@@ -225,7 +225,7 @@
 
                                     <div class="col-md-2">
                                         <div id="img-3" class="hovereffect">
-                                            <img class="img-responsive" src="/assets/home/details/image/3-small.jpg" alt="">
+                                            <img class="img-responsive" src="${photoList3.get(0).name}" alt="">
                                             <a href="#Carousel-ID" data-slide-to="2">
                                                 <div class="overlay">
                                                     <h2>环境规划图</h2>
@@ -236,7 +236,7 @@
 
                                     <div class="col-md-2">
                                         <div id="img-4" class="hovereffect">
-                                            <img class="img-responsive" src="/assets/home/details/image/4-small.jpg" alt="">
+                                            <img class="img-responsive" src="${photoList4.get(0).name}" alt="">
                                             <a href="#Carousel-ID" data-slide-to="3">
                                                 <div class="overlay">
                                                     <h2>楼盘实景图</h2>
@@ -449,21 +449,21 @@
                                     <div class="col-xs-10 picture-area">
                                         <a data-toggle="collapse"  href="#auto-loop-1">
                                             <div class="list-group-item active">
-                                                <b id="section-1">效果图（12）</b>
+                                                <b id="section-1">效果图（${photoList1.size()}）</b>
                                             </div>
                                         </a>
                                         <div id="auto-loop-1" class="row gallery in">
-                                            <c:forEach begin="0" end="11">
+                                            <c:forEach items="${photoList1}" var="photo">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
                                                      data-sub-html="<div class='fullScreen-font'>
                                                                         <b>${estate.estateName}</b>
                                                                         <p>${estate.estateName}效果图</p>
                                                                     </div>"
-                                                     data-src="/assets/home/details/image/1.jpg">
+                                                     data-src="${photo.name}">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
-                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                             src="${photo.name}" alt="${estate.estateName}">
                                                         <a href="javascript:void(0);">
                                                             <div class="overlay">
                                                                 <h2>${estate.estateName}效果图</h2>
@@ -477,21 +477,21 @@
 
                                         <a data-toggle="collapse"  href="#auto-loop-2">
                                             <div class="list-group-item active">
-                                                <b id="section-2">样板间（20）</b>
+                                                <b id="section-2">样板间（${photoList2.size()}）</b>
                                             </div>
                                         </a>
                                         <div id="auto-loop-2" class="row gallery in">
-                                            <c:forEach begin="0" end="19">
+                                            <c:forEach items="${photoList2}" var="photo">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
                                                      data-sub-html="<div class='fullScreen-font'>
                                                                     <b class='fullScreen-font'>${estate.estateName}</b>
                                                                     <p>${estate.estateName}样板间</p>
                                                                     </div>"
-                                                     data-src="/assets/home/details/image/1.jpg">
+                                                     data-src="${photo.name}">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
-                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                             src="${photo.name}" alt="${estate.estateName}">
                                                         <a href="javascript:void(0);">
                                                             <div class="overlay">
                                                                 <h2>${estate.estateName}样板间</h2>
@@ -505,21 +505,21 @@
 
                                         <a data-toggle="collapse"  href="#auto-loop-3">
                                             <div class="list-group-item active">
-                                                <b id="section-3">环境规划图（1）</b>
+                                                <b id="section-3">环境规划图（${photoList3.size()}）</b>
                                             </div>
                                         </a>
                                         <div id="auto-loop-3" class="row gallery in">
-                                            <c:forEach begin="0" end="0">
+                                            <c:forEach items="${photoList3}" var="photo">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
                                                      data-sub-html="<div class='fullScreen-font'>
                                                                     <b class='fullScreen-font'>${estate.estateName}</b>
                                                                     <p>${estate.estateName}环境规划图</p>
                                                                     </div>"
-                                                     data-src="/assets/home/details/image/1.jpg">
+                                                     data-src="${photo.name}">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
-                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                             src="${photo.name}" alt="${estate.estateName}">
                                                         <a href="javascript:void(0);">
                                                             <div class="overlay">
                                                                 <h2>${estate.estateName}环境规划图</h2>
@@ -533,21 +533,21 @@
 
                                         <a data-toggle="collapse"  href="#auto-loop-4">
                                             <div class="list-group-item active">
-                                                <b id="section-4">楼盘实景图（21）</b>
+                                                <b id="section-4">楼盘实景图（${photoList4.size()}）</b>
                                             </div>
                                         </a>
                                         <div id="auto-loop-4" class="row gallery ">
-                                            <c:forEach begin="0" end="20">
+                                            <c:forEach items="${photoList4}" var="photo">
                                                 <div class="col-xs-6 col-sm-4 col-md-3 pic-show"
                                                      data-responsive=""
                                                      data-sub-html="<div class='fullScreen-font'>
                                                                     <b class='fullScreen-font'>${estate.estateName}</b>
                                                                     <p>${estate.estateName}楼盘实景图</p>
                                                                     </div>"
-                                                     data-src="/assets/home/details/image/1.jpg">
+                                                     data-src="${photo.name}">
                                                     <div class="hovereffect">
                                                         <img class="img-responsive"
-                                                             src="/assets/home/details/image/example1.jpg" alt="${estate.estateName}">
+                                                             src="${photo.name}" alt="${estate.estateName}">
                                                         <a href="javascript:void(0);">
                                                             <div class="overlay">
                                                                 <h2>${estate.estateName}楼盘实景图</h2>
@@ -562,11 +562,11 @@
 
                                     <div class="col-xs-2" id="myScrollspy">
                                         <ul class="nav nav-tabs nav-stacked affix" data-spy="affix" data-offset-top="100">
-                                            <li><a data-scroll="#section-0" href="javascript:void(0);">全部（54）</a></li>
-                                            <li><a data-scroll="#section-1" href="javascript:void(0);">效果图（12）</a></li>
-                                            <li><a data-scroll="#section-2" href="javascript:void(0);">样板间（20）</a></li>
-                                            <li><a data-scroll="#section-3" href="javascript:void(0);">环境规划图（1）</a></li>
-                                            <li><a data-scroll="#section-4" href="javascript:void(0);">楼盘实景图（21）</a></li>
+                                            <li><a data-scroll="#section-0" href="javascript:void(0);">全部（${photoListTotal}）</a></li>
+                                            <li><a data-scroll="#section-1" href="javascript:void(0);">效果图（${photoList1.size()}）</a></li>
+                                            <li><a data-scroll="#section-2" href="javascript:void(0);">样板间（${photoList2.size()}）</a></li>
+                                            <li><a data-scroll="#section-3" href="javascript:void(0);">环境规划图（${photoList3.size()}）</a></li>
+                                            <li><a data-scroll="#section-4" href="javascript:void(0);">楼盘实景图（${photoList4.size()}）</a></li>
                                         </ul>
                                     </div>
 
