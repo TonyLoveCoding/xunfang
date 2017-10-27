@@ -1,3 +1,4 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <html>
 <head>
     <title>楼盘列表</title>
@@ -68,7 +69,9 @@
         </div>
         <div class="col-md-3 col-md-offset-1">
             <div class="btn-group center-block" role="group" aria-label="...">
-                <a class="btn btn-default center-block glyphicon glyphicon-plus" href="/estate/add" role="button">添加楼盘</a>
+                <shiro:hasPermission name="estate/add">
+                    <a class="btn btn-default center-block glyphicon glyphicon-plus" href="/estate/add" role="button">添加楼盘</a>
+                </shiro:hasPermission>
                 <a class="btn btn-default center-block glyphicon glyphicon-pencil" href="javascript:void(0);" role="button" onclick="ask()">更新索引库</a>
             </div>
         </div>
@@ -104,7 +107,9 @@
                                 <a class="btn btn-default center-block glyphicon glyphicon-list-alt" href="/estate/selectbyid?id=${estateDto.id}" role="button">查看</a>
                                 <a class="btn btn-default center-block glyphicon glyphicon-erase" href="/estate/update?id=${estateDto.id}" role="button">修改</a>
                                 <a class="btn btn-default center-block glyphicon glyphicon-picture" href="/estate/upload?id=${estateDto.id}" role="button">楼盘图片</a>
-                                <a class="btn btn-warning center-block glyphicon glyphicon-trash" href="javascript:void(0);" role="button" onclick="contirmd('${estateDto.id}')">删除</a>
+                                <shiro:hasPermission name="estate/delete">
+                                    <a class="btn btn-warning center-block glyphicon glyphicon-trash" href="javascript:void(0);" role="button" onclick="contirmd('${estateDto.id}')">删除</a>
+                                </shiro:hasPermission>
                             </div>
                         </td>
                     </tr>

@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -271,6 +272,7 @@ public class EstateController {
      * @param id
      * @return
      */
+    @RequiresPermissions("estate/delete")
     @RequestMapping(value = "/delete",method = RequestMethod.GET)
     @ResponseBody
     public Msg deleteEstate(@RequestParam("id")long id){
@@ -286,6 +288,7 @@ public class EstateController {
     }
 
 
+    @RequiresPermissions("estate/add")
     @RequestMapping(value = "/add",method = RequestMethod.GET)
     public ModelAndView addEstateView()throws Exception{
         EstateDto estateDto=new EstateDto();
@@ -489,6 +492,9 @@ public class EstateController {
         }else if(ids.equals("")){
             ids=s;
         }
+        String[] str=ids.split(",");
+        String pic=effectPictureServiceGenerate.selectById(Long.parseLong(str[0])).getName();
+        estate.setThumbnail(pic);
         estate.setEffectivePhotos(ids);
         estateServiceGenerate.insertOrUpdate(estate);
         System.out.println("完成");
@@ -637,6 +643,9 @@ public class EstateController {
             sub=","+sub;
             s=s.replace(sub,"");
         }
+        String[] str=s.split(",");
+        String pic=effectPictureServiceGenerate.selectById(Long.parseLong(str[0])).getName();
+        estate.setThumbnail(pic);
         estate.setEffectivePhotos(s);
         estateServiceGenerate.insertOrUpdate(estate);
         File file=new File(path);
@@ -765,6 +774,8 @@ public class EstateController {
             effectivePhotos+=o;
             k=",";
         }
+        String pic=effectPictureServiceGenerate.selectById(Long.parseLong(list.get(0))).getName();
+        estate.setThumbnail(pic);
         estate.setEffectivePhotos(effectivePhotos);
         estateServiceGenerate.insertOrUpdate(estate);
         return Msg.success("操作成功");
@@ -892,4 +903,5 @@ public class EstateController {
         estateServiceGenerate.insertOrUpdate(estate);
         return Msg.success("操作成功");
     }
+
 }
